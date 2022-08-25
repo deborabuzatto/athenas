@@ -13,6 +13,7 @@
     try {
         $conn = new pdo('mysql:host=' . servername . ';port=' . porta . ';dbname=' . db_name, username, password);
         echo "Conexão realizada com sucesso.";
+        return $conn;
     } 
     catch (PDOException $e) {
         echo "Erro: " . $e->getMessage();
