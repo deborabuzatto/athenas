@@ -1,0 +1,737 @@
+/*padrão*/
+body{
+    overflow-x: hidden;
+}
+
+.tela{
+    font-family: Poppins;
+}
+
+.form-control:focus {
+    color: #212529;
+    background-color: #fff;
+    border-color: #ced4da;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+.form-select:focus {
+    border-color: #ced4da;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+/*barra de navegação*/
+.div-nav{
+    width: 6%;
+    padding: 15px 0px 0px 20px;
+}
+
+.div-nav img{
+    width: 80px;
+    height: 70px;
+    margin-left: 50px;
+}
+
+.active{
+    border-bottom: 2px solid #5f6c9e
+}
+
+.navbar{
+    --bs-navbar-padding-y: 0rem;
+}
+
+.navbar-nav{
+    display: flex;
+    width: 40%;
+    padding-left: 80px;
+
+}
+
+.navbar-nav a{
+    text-decoration: none;
+    color: rgb(59, 7, 84);
+    font-size: 18px;
+    font-weight: 800;
+    margin: 10px;
+}
+
+.btn-login {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 91px;
+    margin-left: auto;
+    margin-right: 0px;
+    background-color: #7625c9;
+    border: 0.05em solid #7625c9;
+    animation-name: btnlogin;
+    animation-duration: 0.7s;
+    animation-delay: 0.8s;
+    animation-timing-function: linear;
+    animation-iteration-count: unset;
+}
+
+.btn-login a {
+    font-size: 36px;
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 1px;
+    color: #e8e8e8;
+    text-decoration: none;
+    text-transform: uppercase;
+    display: flex;
+    animation-name: btnlogin1;
+    animation-duration: 0.7s;
+    animation-delay: 0.8s;
+    animation-timing-function: linear;
+    animation-iteration-count: unset;
+    width: 90px;
+}
+
+@keyframes btnlogin1{
+    0%{
+        width: 0px;
+    }
+
+    100%{
+        width: 90px;
+    }
+}
+
+@keyframes btnlogin{
+    0%{
+        width: 0px;
+    }
+
+    100%{
+        width: 300px;
+    }
+}
+
+.form-check-input:checked {
+    background-color: #7625c9;
+    border-color: #7625c9;
+}
+
+.form-check-input:focus {
+    border-color: #7625c9;
+    outline: 0;
+    box-shadow: 0 0 0 0;
+}
+
+.navbar{
+    box-shadow: 0 0 0.05em #000;
+}
+
+.navbar-toggler{
+    margin-left: auto;
+    margin-right: 50px;
+}
+
+/* conteudo index */
+.conteudo-index{
+    width: 100%;
+}
+
+.conteudo-index img{
+    width: 100%;
+    height: 80%;
+}
+
+.conteudo{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 80px;
+    background-color: #ffffff;
+}
+
+.conteudo h2{
+    color: #7625c9;
+    font-size: 30px;
+    font-family: Poppins;
+    font-weight: 900;
+    width: 80%;
+    text-align: start;
+    padding-top: 50px;
+    letter-spacing: 0.5px;
+}
+
+.conteudo p{
+    color: #3c3c3c;
+    font-size: 24px;
+    font-family: Poppins;
+    width: 80%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.conteudo span{
+    color:#4c0677;
+    font-weight: 900;
+
+}
+
+
+.acesso{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #f4f4f4;
+}
+
+.acesso .informes-login{
+    width: 45%;
+    border-right:0.05em solid rgb(181, 181, 181);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.acesso h2{
+    color: #7625c9;
+    font-size: 36px;
+    font-family: Poppins;
+    font-weight: 900;
+    text-align: start;
+    padding: 0px;
+}
+
+.acesso p{
+    width: 80%;
+    color: #3c3c3c;
+    font-size: 20px;
+    font-family: Poppins;
+    padding-top: 50px;
+}
+
+.acesso .form-login{
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 60px;
+}
+
+.form-login button{
+    background-color: #7625c9;
+    border-color: #7625c9;
+}
+
+.form-acessar-login input{
+    width: 400px;
+}
+
+.links a{
+    color: #3c3c3c;
+    display: block;
+    text-decoration: none;
+    padding-top: 12px;
+}
+
+.links i{
+    color: #7625c9;
+    padding-left: 6px;
+}
+
+.links i:hover{
+    padding-left: 15px;
+}
+
+.contato{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #f4f4f4;
+}
+
+.contato h2{
+    color: #7625c9;
+    font-size: 30px;
+    font-family: Poppins;
+    font-weight: 900;
+    text-align: start;
+    padding: 0px 0px 50px 0px;
+}
+
+.contato .form-contato{
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 60px;
+}
+
+.form-contato button{
+    background-color: #7625c9;
+    border-color: #7625c9;
+    color: #fff;
+}
+
+.form-contato button:hover{
+    background-color: #ffffff;
+    border-color: #7625c9;
+    color: #7625c9;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+}
+
+/*página de login*/
+
+.nav-login{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.nav-login > div{
+    width: 100%;
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.nav-login > div i{
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.nav-login > div a{
+    text-decoration: none;
+    color: rgb(59, 7, 84);
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.nav-login-menu{
+    text-align: center;
+    font-size: 16px;
+}
+
+.nav-login-menu img{
+    width: 140px;
+    height: 100px;
+    margin-top: 20px;
+    margin-bottom: 15px;
+}
+
+
+
+.login{
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 220px;
+    background-color: #ffffff;
+}
+
+.login h2{
+    color: #7625c9;
+    font-size: 36px;
+    font-family: Poppins;
+    font-weight: 900;
+    text-align: center;
+    padding: 0px 0px 50px 0px;
+}
+
+.login .form-login-page{
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 30px;
+}
+
+
+.form-login-page button{
+    width: 100%;
+    margin-top: 20px;
+    background-color: #4c0677;
+    border-color: #4c0677;
+}
+
+/*home do aluno*/
+.conteudo-home{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 200px;
+}
+.conteudo-home a{
+    text-decoration: none;
+    color: #4f4f4f;
+}
+
+.conteudo-home div{
+    width: 200px;
+    border-radius: 10px;
+    border: 0.05em solid #dcdada;
+    padding: 10px;
+    margin: 3px;
+}
+
+.conteudo-home i{
+    font-size: 24px;
+    color: #4c0677;
+    margin-left: 78px;
+}
+
+.div-app{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    background-color: #f4f4f4;
+    margin-bottom: 100px;
+}
+
+.div-app img{
+    width: 80%;
+}
+
+.div-app div:first-child{
+    width: 50%;
+}
+
+.div-app h1{
+    text-align: center;
+    color:rgb(59, 7, 84);
+    font-weight: 900;
+    margin-bottom: 40px;
+    width: 100%;
+}
+
+.div-app p{
+    font-size: 22px;
+    width: 100%;
+    text-align: center;
+}
+
+.img-home-aluno{
+    width: 100%;
+}
+
+.img-home-aluno img{
+    width: 100%;
+}
+
+
+/*página livros aluno*/
+
+.conteudo-livro-page{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+
+.p-autor{
+    font-size: 14px;
+    text-align: center;
+}
+
+.titulo-livro-page{
+    width: 100%;
+    text-align: center;
+}
+
+.titulo-livro-page h2{
+    color: #4c0677;
+    font-weight: 900;
+    font-size: 36px;
+    text-transform: uppercase;
+}
+
+.busca-livro-page{
+    margin-top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 10px;
+}
+
+.busca-livro-page input{
+    width: 450px;
+    margin: 5px 10px 10px 0px;
+    display: inline;
+    margin-right: 10px;
+}
+
+.busca-livro-page select{
+    margin-top: 5px;
+    display: inline;
+    width: 150px;
+    margin-right: 10px;
+}
+
+.busca-livro-page span{
+    display: inline;
+    justify-content: center;
+    flex-wrap: wrap;
+    width:200px;
+}
+
+.btn-pesquisa{
+    border: 0.05rem solid #4c0677;
+    background-color: #4c0677;
+    color: #ffffff;
+}
+
+.btn-pesquisa:hover{
+    border-color: #4c0677;
+    color: #000;
+    
+}
+
+.table-livro-aluno{
+    display: flex; 
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.table-livro-aluno > div{
+    display: flex; 
+    align-items: center;
+    border: 0.2rem solid #f4f4f4;
+    border-radius: 30px 3px;
+    width: 60%;
+    min-width: 500px;
+    height: 150px;
+    margin-top: 20px;
+}
+
+
+.table-livro-aluno img{
+    width: 90px;
+    height: 120px;
+    margin-left: 20px;
+}
+
+.table-livro-aluno .table-conteudo{
+    margin-left: 50px;
+    
+}
+
+.table-conteudo h3{
+    color:rgb(59, 7, 84);
+    font-weight: 700;
+    font-size: 22px;
+    padding-top: 20px;
+}
+
+h3 span, .disponibilidade{
+    max-width: 77px;
+    background-color: #7625c9;
+    color: #ffffff;
+    padding: 2px 7px;
+    font-size: 11px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+}
+
+.indisponibilidade{
+    max-width: 77px;
+    background-color: #5f6c9e;
+    color: #ffffff;
+    padding: 2px 7px;
+    font-size: 11px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+}
+
+.disponibilidade, .indisponibilidade{
+    margin: 2px 60px;
+}
+
+
+.table-conteudo  p{
+    font-size: 12px;
+    margin: 2px;
+    font-weight: 700;
+}
+
+.table-conteudo .sinopse{
+    width: 70%;
+    font-size: 14px;
+    font-weight: none;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.page-link{
+    color: #4c0677;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+.page-link:hover{
+    color: #4c0677;
+}
+
+/*historico*/
+.navbar-historico{
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    width: 100%;
+}
+
+.navbar-historico button{
+    color:#4c0677;
+    border: none;
+    text-decoration: none;
+    color: rgb(59, 7, 84);
+    font-size: 18px;
+    font-weight: 800;
+    margin-right: 20px;
+}
+
+.navbar-historico a{
+    text-decoration: none;
+    color: rgb(59, 7, 84);
+    font-size: 18px;
+    font-weight: 800;
+    margin-right: 50px;
+}
+
+
+
+/*div historico vazio*/
+.erro-historico h2{
+    color: #4c0677;
+    font-size: 32px;
+    margin-top: 50px;
+}
+
+.erro-historico p{
+    text-align: center;
+    font-size: 16px;
+}
+
+.erro-historico a{
+    color:rgb(59, 7, 84);
+    font-weight: 700;
+}
+
+/*footer*/
+.footer{
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    padding: 80px 0px 50px 0px;
+
+}
+
+.footer .div-footer{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 70%;
+    border-top: 0.1px solid #4f4f4f;
+    padding-top: 20px;
+    border-bottom: 0.1px solid #4f4f4f;
+    padding-bottom: 20px;
+}
+
+.div-footer div{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    width: 300px;
+    padding: 30px 0px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+.footer img{
+    width: 100px;
+    height: 100px;
+}
+
+.footer a{
+    color:rgb(181, 181, 181);   
+    text-decoration: none;
+}
+
+div .icon-footer {
+    text-align: center;
+    color: #fff;
+    font-size: 25px;
+    letter-spacing: 20px;
+    text-decoration: none;
+
+}
+
+
+
+@media  (max-width: 1500px) {
+    .alinhamento-busc, .conteudo div{
+        width: 80%;
+    }
+    .link-navegacao a{
+        font-size: 20px;
+    }
+    .table-conteudo .sinopse{
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    .table-conteudo h3{
+        font-size: 22px;
+    }
+    .table-livro-aluno > div{
+        width: 70%;
+        min-width: 500px;
+    }
+}
+
+@media  (max-width: 1000px) {
+     .alinhamento-busca, .conteudo div{
+        width: 100%;
+    }
+
+    h3 span, .disponibilidade{
+        font-size: 9px;
+    }
+
+    .table-conteudo .sinopse{
+        font-size: 10.5px;
+        margin-top: 10px;
+    }
+
+    .table-livro-aluno > div{
+        width:  90%;
+        min-width: 500px;
+    }
+
+    .table-conteudo h3{
+        font-size: 18px;
+        padding-top: 20px;
+    }
+
+    .link-navegacao a{
+        font-size: 18px;
+    }
+
+    .conteudo h2, .contato h2{
+        font-size: 24px;
+    }
+    
+    .conteudo p{
+        font-size: 20px;
+    }
+}
