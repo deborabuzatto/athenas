@@ -1,5 +1,5 @@
 <?php
-    class Aluno {
+    class Livro {
         public $titulo;
         public $ISBN;
         public $data_publicacao;
