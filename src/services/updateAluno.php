@@ -4,7 +4,7 @@
     include("../models/classAluno.php");
 
     $codigo_pessoa = 5;
-    $data = "24/10/1999";
+    $data = "11/11/1111";
     $nome= "Bruno Duarte";
 
     try {
