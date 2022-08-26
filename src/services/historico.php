@@ -1,27 +1,16 @@
-<?php 
-    /*require("../utils/conexao.php");*/
+<?php
 
-    define('servername', 'localhost');
-    define('username', 'root');
-    define('password', 'usbw');
-    define('db_name', 'athenas');
-    define('porta', '3307');
+    $db = require("../utils/conexao.php");
 
-    try{
-        $conn = new PDO('mysql:host=' . servername . ';port=' . porta . ';dbname=' . db_name, username, password);
-        echo "Connection is successful!<br/>";
-        $sql = 'SELECT nome from pessoas';
-        $users = $conn->query($sql);
-        foreach ($users as $row) {
-            print $row["nome"];
+    try {
+
+        $consulta = $db->query('SELECT nome, username from pessoa');
+
+        while ($linha = $consulta->fetch(PDO::FETCH_ASSOC)) {
+            echo "Nome: {$linha['nome']} User: {$linha['username']}<br />";
         }
-        $conn = null;
-        $users->execute();
-    }
-    catch(PDOexception $e){
-        echo "Error is: " . $e-> etmessage();
-    }
-   
 
-  
+        } catch(PDOException $e) {
+        echo 'Error: ' . $e->getMessage();
+        }
 ?>
