@@ -132,25 +132,32 @@ body{
 /* conteudo index */
 .conteudo-index{
     width: 100%;
+    height: 1000px;
 }
 
 .conteudo-index img{
     width: 100%;
-    height: 80%;
+    height: 100%;
 }
 
-.conteudo{
+.conteudo, .servico{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     padding-top: 100px;
     padding-bottom: 80px;
+    background-color: #090614;
+}
+
+.servico{
     background-color: #ffffff;
+    padding-bottom: 40px;
+
 }
 
 .conteudo h2{
-    color: #7625c9;
+    color: #62248F;
     font-size: 30px;
     font-family: Poppins;
     font-weight: 900;
@@ -169,7 +176,7 @@ body{
     padding-bottom: 30px;
 }
 
-.conteudo span{
+.servico span{
     color:#4c0677;
     font-weight: 900;
 
@@ -194,7 +201,7 @@ body{
 }
 
 .acesso h2{
-    color: #7625c9;
+    color: #62248F;
     font-size: 36px;
     font-family: Poppins;
     font-weight: 900;
@@ -253,7 +260,7 @@ body{
 }
 
 .contato h2{
-    color: #7625c9;
+    color: #62248F;
     font-size: 30px;
     font-family: Poppins;
     font-weight: 900;
@@ -263,9 +270,20 @@ body{
 
 .contato .form-contato{
     width: 50%;
-    margin-left: auto;
-    margin-right: auto;
     padding-top: 60px;
+    margin-left: auto;
+    margin-right: 0px
+}
+
+.contato .img-form{
+    width: 40%;
+    height: 500px;
+}
+.img-form img{
+    width: 80%;
+    height: 100%;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .form-contato button{
@@ -284,47 +302,72 @@ body{
 
 /*página de login*/
 
+/*página de login*/
+
 .nav-login{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
 }
-.nav-login > div{
-    width: 100%;
+
+.nav-login .page-info-name, .nav-login .nav-link-item  {
+    
     padding-top: 10px;
     padding-left: 20px;
 }
 
-.nav-login > div i{
+.nav-login .page-info-name{
+    margin-left: auto;
+    margin-right: 50px;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+.page-info-name p{
+    font-family: nunito;
+    font-size:12px; 
+    color: #c3c3c3; 
+    display: inline; 
+    padding-right: 20px;
+}
+
+.nav-login .page-info-name i, .nav-login .nav-link-item i{
     margin-right: 10px;
     margin-top: 20px;
 }
 
-.nav-login > div a{
+.nav-login .page-info-name a, .nav-login .nav-link-item a{
     text-decoration: none;
     color: rgb(59, 7, 84);
     font-size: 20px;
-    font-weight: 600;
+    font-weight: 800;
+    font-family: nunito;
 }
 
 .nav-login-menu{
+    width: 100%;
     text-align: center;
     font-size: 16px;
 }
 
+.nav-login-menu p{
+    font-family: nunito;
+    color: #000;
+    font-weight: 500px;
+}
+
+
 .nav-login-menu img{
-    width: 140px;
+    width: 120px;
     height: 100px;
     margin-top: 20px;
     margin-bottom: 15px;
 }
 
-
-
 .login{
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
     padding-top: 30px;
@@ -342,19 +385,39 @@ body{
 }
 
 .login .form-login-page{
-    width: 400px;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
 }
 
+.form-login-page form{
+    color: #000;
+    font-weight: 500;
+    font-family: nunito;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+
+.login .img-login{
+    width: 50%;
+    height: 500px;
+}
+
+.img-login img{
+    width: 100%;
+    height: 100%
+}
 
 .form-login-page button{
     width: 100%;
     margin-top: 20px;
-    background-color: #4c0677;
-    border-color: #4c0677;
+    background-color: #FA4D39;
+    border-color: #FA4D39;
 }
+
 
 /*home do aluno*/
 .conteudo-home{
@@ -628,6 +691,98 @@ h3 span, .disponibilidade{
     font-weight: 700;
 }
 
+/*páginas do bibliotecario*/
+.button-plus {
+    border: 0.05rem solid #4c0677;
+    background-color: #4c0677; 
+    padding: 8px 12px;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 3px;
+}
+
+.button-plus:hover {
+    background-color: #ffffff; 
+    color:#4c0677;
+    border: 0.05rem solid #4c0677;
+}
+
+.btn-pesquisa-bibliotecario{
+    border: 0.05rem solid #4c0677;
+    background-color: #4c0677; 
+    padding: 8px 12px;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 3px;
+    margin-top: 10px;
+}
+
+.btn-pesquisa-bibliotecario:hover{
+    background-color: #ffffff; 
+    border: 0.05rem solid #4c0677;
+    color: #4c0677;
+}
+
+.icones-table p{
+    margin-top: 15px;
+    margin-bottom: 20px;
+}
+
+.btn-conclui-cadastro{
+    text-align: end;
+}
+
+.cadastrar-livro{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    background-color: #ffffff;
+}
+
+.input-nomes{
+    width: 900px;
+    min-width: 600px;
+    margin-bottom: 10px;
+}
+.input-nomes input{
+    margin-bottom: 30px;
+}
+.input-selecionar{
+    margin-top: 20px;
+    width: 900px;
+    margin-bottom: 30px;
+    min-width: 600px;
+}
+.input-selecionar select{
+    width: 600px;
+    display: inline;
+}
+.input-selecionar label{
+    width: 100%
+}
+.input-selecionar button{
+    width: 200px;
+    margin-left: 50px;
+}
+.input-textarea textarea{
+    height: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*footer*/
 .footer{
     background-color: #000;
@@ -733,5 +888,35 @@ div .icon-footer {
     
     .conteudo p{
         font-size: 20px;
+    }
+    .contato .img-form{
+        width: 60%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .img-form img{
+        width: 100%;
+    }
+
+    .contato .form-contato{
+        width: 50%;
+        padding-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .acesso .form-login{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 60px;
+    }
+
+    .acesso .informes-login{
+        width: 80%;
+        border-right: none;
+        margin-left: auto;
+        margin-right: auto;
     }
 }
