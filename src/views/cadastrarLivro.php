@@ -21,6 +21,9 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&display=swap" rel="stylesheet">
 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+
         <!-- Css externo -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         
@@ -33,42 +36,17 @@
     <body>
         <div class="tela">
             
-            <nav class="navbar navbar-expand-lg ">
-                <a class="navbar-brand div-nav" href="#"><img src="/public/static/imagens/athenas.png"></a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </button>
-
-                <div class="collapse navbar-collapse" id="barraNavegacao" >
-                    <ul class="navbar-nav navbar-historico">
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Alunos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Livros</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Locação</a>
-                        </li>
-                        <div class="btn-group">
-                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Meu perfil
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#">Alterar dados</a></li>
-                                <li><a class="dropdown-item" href="#">Alterar senha</a></li>
-                                <li><a class="dropdown-item" href="#">Fazer Logout</a></li>
-                            </ul>
-                        </div>
-                    </ul>
-                    
-                </div>
-            </nav>
-            
             <div class="nav-login">
+                <div class="nav-link-item">
+                    <a href="index.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                </div>
+
+                <div class="page-info-name">
+                    <p>Você está na página:</p><a href="#">Cadastro de livros</a>
+                </div>
+
                 <div class="nav-login-menu">
-                    <img src="imagens/athenas.png">
+                    <img src="/public/static/imagens/logolaranja.png">
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
@@ -144,7 +122,7 @@
 
                 <div class="div-footer">
                     <div>
-                        <img src="imagens/athenas-preto-branco.png">
+                        <img src="/public/static/imagens/athenas-preto-branco.png">
                     </div>
                     
                     <div class="icon-footer">

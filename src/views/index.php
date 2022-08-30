@@ -23,9 +23,8 @@
 
         <!-- Css externo -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/estilos.css">
         
+        <link rel="stylesheet" href="/public/static/css/style.css">        
 
         <!--<script src="js/api.js"></script>-->
 
@@ -53,16 +52,16 @@
                         </li>
                     </ul>
                     <div class="btn-login">
-                        <a href="login.html">Login</a>
+                        <a href="login.php">Login</a>
                     </div>
                 </div>
             </nav>
             
-            <div class="conteudo-index">
+            <!---<div class="conteudo-index">
                 <img src="imagens/front-view-school-kids-reading.jpg">
-            </div>
+            </div>-->
 
-            <div class="conteudo">
+            <div class=" servico">
                 <h1>Serviço <span >bibliotecário</span> gratuito para instituições sem fins lucrativos</h1>
             </div>
 
@@ -144,10 +143,10 @@
                         <button type="submit" class="btn btn-email">Enviar e-mail</button>
                     </form>
                 </div>
-            </div>
 
-            <div class="conteudo-index">
-                <img src="imagens/front-view-school-kids-reading.jpg">
+                <div class="img-form">
+                    <img src="/public/static/imagens/img-form.jpg">
+                </div>
             </div>
             
             <div class="conteudo">
@@ -157,42 +156,7 @@
 
             </div>
 
-            <footer class="footer">
-
-                <div class="div-footer">
-                    <div>
-                        <img src="imagens/athenas-preto-branco.png">
-                    </div>
-                    
-                    <div class="icon-footer">
-                        <a href="https://github.com/deborabuzatto" target="_blank">
-                            <i class="fa fa-github hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-linkedin hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-whatsapp hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-google hover-opacity"></i>
-                        </a>
-                        
-                    </div>
-
-                    <div>
-                        <a href="https://goo.gl/maps/zGGbKuK77NsXjuFe6" target="_blank">
-                            Av. Fernando Ferrari, 1080.<br> 
-                            Ed. Centro Empresarial, Torre Central, sala 604.<br>
-                            Mata da Praia. Vitória - ES, 29066-380
-                        </a>
-                    </div>
-                </div>
-
-            </footer>
+            <?php include("components/footer.php")?>
         </div>
 
         <!-- Script FontAwesome -->

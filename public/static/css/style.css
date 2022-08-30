@@ -302,8 +302,6 @@ body{
 
 /*página de login*/
 
-/*página de login*/
-
 .nav-login{
     display: flex;
     justify-content: space-between;
@@ -340,7 +338,7 @@ body{
 .nav-login .page-info-name a, .nav-login .nav-link-item a{
     text-decoration: none;
     color: rgb(59, 7, 84);
-    font-size: 20px;
+    font-size: 18px;
     font-weight: 800;
     font-family: nunito;
 }
@@ -371,7 +369,7 @@ body{
     flex-wrap: wrap;
     width: 100%;
     padding-top: 30px;
-    padding-bottom: 220px;
+    padding-bottom: 30px;
     background-color: #ffffff;
 }
 
@@ -418,6 +416,13 @@ body{
     border-color: #FA4D39;
 }
 
+.footer-login{
+    width: 100%;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-bottom: 20px;
+}
 
 /*home do aluno*/
 .conteudo-home{
@@ -691,7 +696,7 @@ h3 span, .disponibilidade{
     font-weight: 700;
 }
 
-/*páginas do bibliotecario*/
+/*páginas cadastrar livro*/
 .button-plus {
     border: 0.05rem solid #4c0677;
     background-color: #4c0677; 
@@ -708,8 +713,8 @@ h3 span, .disponibilidade{
 }
 
 .btn-pesquisa-bibliotecario{
-    border: 0.05rem solid #4c0677;
-    background-color: #4c0677; 
+    border: 0.05rem solid #FA4D39;
+    background-color: #FA4D39; 
     padding: 8px 12px;
     color: #ffffff;
     border-radius: 10px;
@@ -738,40 +743,50 @@ h3 span, .disponibilidade{
     flex-wrap: wrap;
     width: 100%;
     padding-top: 30px;
-    padding-bottom: 30px;
+    padding-bottom: 100px;
     background-color: #ffffff;
 }
 
 .input-nomes{
-    width: 900px;
-    min-width: 600px;
+    width: 100%;
+    min-width: 300px;
     margin-bottom: 10px;
+    font-family: nunito;
+    font-weight: 500;
 }
 .input-nomes input{
-    margin-bottom: 30px;
+    margin: 0px 0px 30px 0px;
 }
 .input-selecionar{
     margin-top: 20px;
     width: 900px;
     margin-bottom: 30px;
-    min-width: 600px;
+    min-width: 300px;
 }
 .input-selecionar select{
-    width: 600px;
+    width: 70%;
     display: inline;
+    font-family: nunito;
+    font-weight: 500;
 }
 .input-selecionar label{
-    width: 100%
+    width: 100%;
+    font-family: nunito;
+    font-weight: 500;
 }
 .input-selecionar button{
-    width: 200px;
+    width: 23%;
     margin-left: 50px;
+}
+.input-textarea{
+    font-family: nunito;
+    font-weight: 500;
 }
 .input-textarea textarea{
     height: 200px;
+    font-family: nunito;
+    font-weight: 500;
 }
-
-
 
 
 
@@ -835,12 +850,6 @@ div .icon-footer {
 
 
 @media  (max-width: 1500px) {
-    .alinhamento-busc, .conteudo div{
-        width: 80%;
-    }
-    .link-navegacao a{
-        font-size: 20px;
-    }
     .table-conteudo .sinopse{
         font-size: 12px;
         margin-top: 10px;
@@ -855,37 +864,24 @@ div .icon-footer {
 }
 
 @media  (max-width: 1000px) {
-     .alinhamento-busca, .conteudo div{
-        width: 100%;
-    }
-
     h3 span, .disponibilidade{
         font-size: 9px;
     }
-
     .table-conteudo .sinopse{
         font-size: 10.5px;
         margin-top: 10px;
     }
-
     .table-livro-aluno > div{
         width:  90%;
         min-width: 500px;
     }
-
     .table-conteudo h3{
         font-size: 18px;
         padding-top: 20px;
     }
-
-    .link-navegacao a{
-        font-size: 18px;
-    }
-
     .conteudo h2, .contato h2{
         font-size: 24px;
     }
-    
     .conteudo p{
         font-size: 20px;
     }
@@ -894,29 +890,36 @@ div .icon-footer {
         margin-left: auto;
         margin-right: auto;
     }
-
     .img-form img{
         width: 100%;
     }
-
     .contato .form-contato{
         width: 50%;
         padding-top: 60px;
         margin-left: auto;
         margin-right: auto;
     }
-
     .acesso .form-login{
         width: 80%;
         margin-left: auto;
         margin-right: auto;
         padding-top: 60px;
     }
-
     .acesso .informes-login{
         width: 80%;
         border-right: none;
         margin-left: auto;
         margin-right: auto;
+    }
+    .input-selecionar, .input-selecionar button, .input-nomes, .input-textarea, .btn-conclui-cadastro{
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn-conclui-cadastro{
+        text-align: start;
+    }
+    .page-info-name{
+        display: none;
     }
 }
