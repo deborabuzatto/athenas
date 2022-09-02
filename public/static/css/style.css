@@ -905,19 +905,19 @@ h4 span, .disponibilidade{
 
 /*home aluno*/
 
-.page-item-topo{
+.page-item-topo {
     padding-top: 10px;
     padding-left: 20px;
 }
 
-.nav-login .page-item-topo{
+.nav-login .page-item-topo {
     margin-left: 30px;
     margin-right: auto;
     margin-top: 25px;
     text-transform: uppercase;
 }
 
-.page-item-topo p{
+.page-item-topo p {
     font-family: nunito;
     font-size:12px; 
     color: #c3c3c3; 
@@ -925,12 +925,12 @@ h4 span, .disponibilidade{
     padding-right: 20px;
 }
 
-.nav-login .page-item-topo i{
+.nav-login .page-item-topo i {
     margin-right: 10px;
     margin-top: 20px;
 }
 
-.nav-login .page-item-topo a{
+.nav-login .page-item-topo a {
     text-decoration: none;
     color: rgb(59, 7, 84);
     font-size: 18px;
@@ -938,33 +938,34 @@ h4 span, .disponibilidade{
     font-family: nunito;
 }
 
-.home-div-conteudo{
+.home-div-conteudo {
     margin-top: 50px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     margin-bottom: 100px;
     width: 100%;
+    height: 630px;
 }
 
-.home-div{
+.home-div {
     display: flex;
     flex-wrap: wrap;
-    box-shadow: 0 0 7px rgb(67, 67, 67);
+    box-shadow: 0 0 3px #3c3c3c;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
     font-family: nunito;
-    border-radius: 3px;
+    border-radius: 5px;
 }
 
-.home-div .home-pessoa{
+.home-div .home-pessoa {
     width: 70%;
     border-right: 0.05rem solid #ced4da;
     text-align: center;
 }
 
-.home-pessoa div{
+.home-pessoa div {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -973,16 +974,19 @@ h4 span, .disponibilidade{
     margin-right: 18px;
 }  
 
-.home-pessoa div > img{
+.home-pessoa div > img {
     width: 190px; 
     height: 190px;
     border-radius: 200px;
 }
 
-.home-opcoes{
+.home-opcoes {
+    padding-top: 50px;
     width: 30%;
+    display: block;
+    justify-content: center;
 }
-.home-opcoes .sair{
+.home-opcoes .sair {
     width: 100%;
     text-align: center;
     color:#4c0677;
@@ -990,17 +994,35 @@ h4 span, .disponibilidade{
     letter-spacing: 0.9px;
     font-weight: 600;
     margin-top: 70px;
+    transition: all 0.2s ease-in-out;
 }
 
-.home-opcoes div{
+.home-opcoes div {
     text-align: center;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    padding: 7px;
+    width: 90%;
+    margin-left: 15px;
+    margin-right: 5px;
+    padding: 15px 7px 15px 7px;
     margin-top: 30px;
-    background-color: rgb(251, 251, 251);
-    box-shadow: 0 0 5px #000;
+    border-bottom: 0.05rem solid #df9ba6;
+    transition: all 0.3s ease-in-out;
+    transform: scale(0.9);
+}
+
+.home-opcoes div:hover {
+    transform: scale(1);
+    border-radius: 15px;
+    transition: all 0.5s ease-in-out;
+}
+
+.home-opcoes div a, .home-opcoes p a {
+    text-decoration: none;
+    color: #731ec7;
+}
+
+.home-opcoes div a:hover {
+    text-decoration: none;
+    color: #991de7;
 }
 
 /*página modal*/
