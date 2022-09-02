@@ -310,9 +310,10 @@ body{
 }
 
 .nav-login .page-info-name, .nav-login .nav-link-item  {
-    
     padding-top: 10px;
     padding-left: 20px;
+    color:rgb(181, 181, 181);
+    font-size: 22px;
 }
 
 .nav-login .page-info-name{
@@ -506,11 +507,6 @@ body{
     padding-bottom: 150px;
 }
 
-.p-autor{
-    font-size: 14px;
-    text-align: center;
-}
-
 .titulo-livro-page{
     width: 100%;
     text-align: center;
@@ -524,7 +520,6 @@ body{
 }
 
 .busca-livro-page{
-    margin-top: 100px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -554,15 +549,14 @@ body{
 }
 
 .btn-pesquisa{
-    border: 0.05rem solid #4c0677;
-    background-color: #4c0677;
+    border: 0.05rem solid #FA4D39;
+    background-color: #FA4D39;
     color: #ffffff;
 }
 
 .btn-pesquisa:hover{
-    border-color: #4c0677;
+    border-color: #FA4D39;
     color: #000;
-    
 }
 
 .table-livro-aluno{
@@ -575,34 +569,30 @@ body{
 .table-livro-aluno > div{
     display: flex; 
     align-items: center;
-    border: 0.2rem solid #f4f4f4;
-    border-radius: 30px 3px;
-    width: 60%;
-    min-width: 500px;
+    border: 0.05rem solid #ced4da;
+    border-radius: 3px 30px;
+    width: 40%;
+    min-width: 200px;
     height: 150px;
-    margin-top: 20px;
-}
-
-
-.table-livro-aluno img{
-    width: 90px;
-    height: 120px;
-    margin-left: 20px;
-}
-
-.table-livro-aluno .table-conteudo{
-    margin-left: 50px;
+    margin: 20px auto 0px auto;
     
 }
-
-.table-conteudo h3{
-    color:rgb(59, 7, 84);
-    font-weight: 700;
-    font-size: 22px;
-    padding-top: 20px;
+.table-livro-aluno img{
+    width: 80px;
+    height: 110px;
+    margin-left: 40px;
 }
-
-h3 span, .disponibilidade{
+.table-conteudo{
+    margin-left: 50px;
+    width: 60%;
+}
+.table-conteudo h4{
+    color:#000;
+    font-weight: 500;
+    font-family: nunito;
+    margin-bottom: 0px;
+}
+h4 span, .disponibilidade{
     max-width: 77px;
     background-color: #7625c9;
     color: #ffffff;
@@ -610,35 +600,44 @@ h3 span, .disponibilidade{
     font-size: 11px;
     border-radius: 12px;
     letter-spacing: 0.5px;
+    display: inline;
 }
-
-.indisponibilidade{
+.categoria{
     max-width: 77px;
-    background-color: #5f6c9e;
+    background-color: #FA4D39;
     color: #ffffff;
     padding: 2px 7px;
     font-size: 11px;
     border-radius: 12px;
     letter-spacing: 0.5px;
+    display: inline;
 }
 
+.indisponibilidade{
+    max-width: 77px;
+    color: #ffffff;
+    padding: 2px 7px;
+    font-size: 11px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    display: inline;
+    background-color: #5f6c9e;
+}
 .disponibilidade, .indisponibilidade{
     margin: 2px 60px;
 }
-
-
 .table-conteudo  p{
     font-size: 12px;
     margin: 2px;
     font-weight: 700;
 }
 
-.table-conteudo .sinopse{
-    width: 70%;
-    font-size: 14px;
-    font-weight: none;
-    margin-top: 20px;
+.sinopse{
+    width: 90%;
+    font-size: 12px;
+    margin-top: 10px;
     margin-bottom: 20px;
+    color: #212529;
 }
 
 .page-link{
@@ -727,7 +726,6 @@ h3 span, .disponibilidade{
     border: 0.05rem solid #4c0677;
     color: #4c0677;
 }
-
 .icones-table p{
     margin-top: 15px;
     margin-bottom: 20px;
@@ -763,7 +761,7 @@ h3 span, .disponibilidade{
     margin-bottom: 30px;
     min-width: 300px;
 }
-.input-selecionar select{
+.input-selecionar select, .input-selecionar input{
     width: 70%;
     display: inline;
     font-family: nunito;
@@ -787,6 +785,249 @@ h3 span, .disponibilidade{
     font-family: nunito;
     font-weight: 500;
 }
+
+/*alterar senha*/
+.alterar-senha{
+    margin-bottom: 100px;
+    margin-top: 30px;
+}
+
+/*página avaliar*/
+.dados-livro-avaliar{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: nunito;
+}
+.dados-livro-avaliar p span{
+    font-weight: 600;
+    padding: 0px 5px 0px 0px;
+    margin: 0px;
+}
+.img-avaliar{
+    width: 38%;
+    text-align: end;
+    padding-right: 50px;
+    height: 150px;
+}
+.img-avaliar img{
+    width: 120px;
+    height: 100%;
+}
+.dados-avaliar{
+    width: 40%;
+    text-align: start;
+}
+.form-avalia{
+    margin-top: 50px;
+    width: 30%
+}
+.link-avaliacoes{
+    width: 100%;
+    text-align: center;
+    margin-top: 40px;
+}
+.link-avaliacoes a{
+    color:#4c0677;
+    font-family: nunito;
+    font-weight: 500;
+    text-decoration: none;
+    border-bottom: 7px double #4c0677;
+}
+
+.avalia-livro{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    font-family: nunito;
+}
+
+.avalia-livro p span{
+    font-weight: 600;
+    padding: 0px 5px 0px 0px;
+    margin: 0px;
+}
+.img-pessoa{
+    width: 25%;
+    text-align: end;
+    padding-right: 50px;
+    height: 150px;
+}
+.img-pessoa img{
+    width: 120px;
+    height: 100%;
+}
+
+.dados-avaliar{
+    width: 50%;
+    text-align: start;
+}
+.form-avalia{
+    margin-top: 50px;
+    width: 30%
+}
+.div-dados-avaliar{
+    text-align: start;
+}
+.div-avaliacao{
+    display: flex;
+    flex-wrap: wrap;
+    font-family: nunito;
+    border-top: 0.05rem solid #c4c4c4;
+    width: 50%;
+    padding-top: 40px;
+}
+
+/*página consulta de alunos*/
+
+.div-dados-aluno{
+    width: 60%;
+}
+.div-dados-aluno p{
+    font-size: 12px;
+    margin: 2px;
+    font-weight: 700;
+}
+.img-pessoa1{
+    display: flex;
+    justify-content: end;
+    height: 100px; width: 160px;
+    padding: 10px;
+    margin-right: 18px;
+}
+.img-pessoa1 img{
+    width: 70px; 
+    height:70px;
+    border-radius: 200px
+}
+
+/*home aluno*/
+
+.page-item-topo{
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.nav-login .page-item-topo{
+    margin-left: 30px;
+    margin-right: auto;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+.page-item-topo p{
+    font-family: nunito;
+    font-size:12px; 
+    color: #c3c3c3; 
+    display: inline; 
+    padding-right: 20px;
+}
+
+.nav-login .page-item-topo i{
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.nav-login .page-item-topo a{
+    text-decoration: none;
+    color: rgb(59, 7, 84);
+    font-size: 18px;
+    font-weight: 800;
+    font-family: nunito;
+}
+
+.home-div-conteudo{
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    width: 100%;
+}
+
+.home-div{
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 7px rgb(67, 67, 67);
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: nunito;
+    border-radius: 3px;
+}
+
+.home-div .home-pessoa{
+    width: 70%;
+    border-right: 0.05rem solid #ced4da;
+    text-align: center;
+}
+
+.home-pessoa div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px; width: 100%;
+    padding: 10px;
+    margin-right: 18px;
+}  
+
+.home-pessoa div > img{
+    width: 190px; 
+    height: 190px;
+    border-radius: 200px;
+}
+
+.home-opcoes{
+    width: 30%;
+}
+.home-opcoes .sair{
+    width: 100%;
+    text-align: center;
+    color:#4c0677;
+    text-decoration: underline;
+    letter-spacing: 0.9px;
+    font-weight: 600;
+    margin-top: 70px;
+}
+
+.home-opcoes div{
+    text-align: center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 7px;
+    margin-top: 30px;
+    background-color: rgb(251, 251, 251);
+    box-shadow: 0 0 5px #000;
+}
+
+/*página modal*/
+.modal-title{
+    font-family: nunito;
+    font-weight: 600;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -858,22 +1099,22 @@ div .icon-footer {
         font-size: 22px;
     }
     .table-livro-aluno > div{
-        width: 70%;
+        width: 60%;
         min-width: 500px;
+    }
+    .table-conteudo .sinopse{
+        font-size: 10px;
+        margin-bottom: 3px;
     }
 }
 
 @media  (max-width: 1000px) {
+    .table-livro-aluno > div{
+        width: 70%;
+        min-width: 500px;
+    }
     h3 span, .disponibilidade{
         font-size: 9px;
-    }
-    .table-conteudo .sinopse{
-        font-size: 10.5px;
-        margin-top: 10px;
-    }
-    .table-livro-aluno > div{
-        width:  90%;
-        min-width: 500px;
     }
     .table-conteudo h3{
         font-size: 18px;
@@ -921,5 +1162,10 @@ div .icon-footer {
     }
     .page-info-name{
         display: none;
+    }
+
+    .table-conteudo .sinopse{
+       font-size: 10px;
+       margin-bottom: 3px;
     }
 }

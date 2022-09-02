@@ -18,14 +18,15 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
+
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+
 
         <!-- Css externo -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/estilos.css">
         
+        <link rel="stylesheet" href="/public/static/css/style.css">
 
         <!--<script src="js/api.js"></script>-->
 
@@ -33,53 +34,28 @@
     </head>
     <body>
         <div class="tela">
-            <nav class="navbar navbar-expand-lg ">
-                <a class="navbar-brand div-nav" href="#"><img src="imagens/athenas.png"></a>
-                
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
-                    <i class="fa-solid fa-bars-staggered"></i>
-                </button>
-
-                <div class="collapse navbar-collapse" id="barraNavegacao" >
-                    <ul class="navbar-nav navbar-historico">
-                        <li class="nav-item">
-                            <a class="nav-link" href="livrosAluno.html">Obras literárias</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="historicoAlunoPage.html">Histórico</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="rankingPage.html">Ranking</a>
-                        </li>
-                        <div class="btn-group">
-                            <button type="button" class="btn dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                Meu perfil
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="editarPerfilAluno.html">Alterar dados</a></li>
-                                <li><a class="dropdown-item" href="alterarSenhaAluno.html">Alterar senha</a></li>
-                                <li><a class="dropdown-item" href="#">Excluir conta</a></li>
-                                <li><a class="dropdown-item" href="#">Fazer Logout</a></li>
-                            </ul>
-                        </div>
-                    </ul>
-                    
+            <div class="nav-login">
+                <div class="nav-link-item">
+                    <a href="index.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
-            </nav>
+
+                <div class="page-info-name">
+                    <p>Você está vendo:</p><a href="#">Seu histórico</a>
+                </div>
+
+                <div class="nav-login-menu">
+                    <img src="/public/static/imagens/logolaranja.png">
+                    <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
+                </div>
+            </div>
+            
+            
 
             <div class="conteudo-livro-page">
-                <div class="titulo-livro-page">
-                    <h2>Sua biblioteca pessoal!</h2>
-                    <p>"A leitura é a viagem de quem não pode pegar um  trem."</p>
-
-                    <p class="p-autor">(Francis de Croisset)</p>
-                </div>
-
                 <div class="busca-livro-page">
                     <form method="post">
                         <input type="text" class="form-control" id="input-pesquisa" placeholder="Busque por título ou autor">
                         
-
                         <select class="form-select" name="Categoria" >
                             <option selected>Categoria</option>
                             <option value="2">Romance</option>
@@ -104,31 +80,8 @@
                     </div>
     
                 </div>
-
-                
-
             </div>
             
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             <footer class="footer">
 
                 <div class="div-footer">
@@ -152,7 +105,6 @@
                         <a href="" target="_blank">
                             <i class="fa fa-google hover-opacity"></i>
                         </a>
-                        
                     </div>
 
                     <div>
