@@ -17,7 +17,7 @@
             else{*/
                 //string com a consulta select
                 $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                $consultar = $db->c("SELECT * FROM pessoa WHERE username = :usuario and senha = :password");
+                $consultar = $db->prepare("SELECT * FROM pessoa WHERE username = :usuario and senha = :password");
 
                 //se o prepare existir...
                 if($consultar){

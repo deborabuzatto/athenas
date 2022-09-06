@@ -13,25 +13,5 @@
             $this->data_nasc = $data_nasc;
             $this->senha = $senha;
         }
-        
-        function get_name() {
-            return $this->name;
-        }
-
-        function get_usuario() {
-            return $this->usuario;
-        }
-        
-        function get_email() {
-            return $this->email;
-        }
-
-        function get_data_nasc() {
-            return $this->data_nasc;
-        }
-
-        function get_senha() {
-            return $this->senha;
-        }
     }
 ?>

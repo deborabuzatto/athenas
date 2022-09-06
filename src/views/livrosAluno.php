@@ -1,3 +1,12 @@
+<?php 
+    session_start();
+    require_once '../utils/conexao.php';
+    //include 'login.php';
+
+    /*if(!isset($_SESSION = ['logado'])){
+        header('Location: ../login.php');
+    }*/
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -72,7 +81,14 @@
                         </span>
                     </form>
                 </div>
+                
+                <?php
+                    include '../models/classLivro.php';
 
+                    $imprimir = new Livro("insulina", "arroz", "diaria", 1);
+                    while($imprime = $imprimir->imprimirLivro()):
+
+                ?>
                 
 
                 <div class="table-livro-aluno">
@@ -81,8 +97,7 @@
                             <img src="/public/static/imagens/amoregelato.jpg">
                         </div>
                         <div class="table-conteudo">
-                            <h4>Nome do livro <span>4.5</span></h4>
-                            <p><i class="fa fa-location"></i> Pratileira 5</p>
+                            <h4><?php echo $imprime["titulo"];?> <span>4.5</span></h4>
                             
                             <p class="disponibilidade">Disponivel</p>
                             <p class="categoria">Romance</p>
@@ -91,72 +106,10 @@
                         </div>
                     </div>                    
                 </div>
+                <?php
+                    endwhile; 
+                ?>
                 
-                <div class="table-livro-aluno">
-                    <div>
-                        <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
-                        </div>
-                        <div class="table-conteudo">
-                            <h4>Nome do livro <span>4.5</span></h4>
-                            <p><i class="fa fa-location"></i> Pratileira 5</p>
-                            
-                            <p class="indisponibilidade">Indisponível</p>
-                            <p class="categoria">Romance</p>
-
-                            <p class="sinopse" >Atendendo ao último desejo da mãe, Lina decide passar o último verão antes da faculdade em Roma, onde descobre o amor...</p>
-                        </div>
-                    </div>                    
-                </div>
-                <div class="table-livro-aluno">
-                    <div>
-                        <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
-                        </div>
-                        <div class="table-conteudo">
-                            <h4>Nome do livro <span>4.5</span></h4>
-                            <p><i class="fa fa-location"></i> Pratileira 5</p>
-                            
-                            <p class="disponibilidade">Disponivel</p>
-                            <p class="categoria">Romance</p>
-
-                            <p class="sinopse" >Atendendo ao último desejo da mãe, Lina decide passar o último verão antes da faculdade em Roma, onde descobre o amor...</p>
-                        </div>
-                    </div>                    
-                </div>
-                <div class="table-livro-aluno">
-                    <div>
-                        <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
-                        </div>
-                        <div class="table-conteudo">
-                            <h4>Nome do livro <span>4.5</span></h4>
-                            <p><i class="fa fa-location"></i> Pratileira 5</p>
-                            
-                            <p class="disponibilidade">Disponivel</p>
-                            <p class="categoria">Romance</p>
-
-                            <p class="sinopse" >Atendendo ao último desejo da mãe, Lina decide passar o último verão antes da faculdade em Roma, onde descobre o amor...</p>
-                        </div>
-                    </div>                    
-                </div>
-                <div class="table-livro-aluno">
-                    <div>
-                        <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
-                        </div>
-                        <div class="table-conteudo">
-                            <h4>Nome do livro <span>4.5</span></h4>
-                            <p><i class="fa fa-location"></i> Pratileira 5</p>
-                            
-                            <p class="disponibilidade">Disponivel</p>
-                            <p class="categoria">Romance</p>
-
-                            <p class="sinopse" >Atendendo ao último desejo da mãe, Lina decide passar o último verão antes da faculdade em Roma, onde descobre o amor...</p>
-                        </div>
-                    </div>                    
-                </div>
-
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                       <li class="page-item">
