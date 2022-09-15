@@ -5,6 +5,8 @@
 	abstract class CRUD extends Database{
 		
 		protected $table;
+		protected $id;
+		protected $buscar;
 
 		abstract public function insert();
 		abstract public function update($id);
@@ -29,12 +31,19 @@
 		}
 		
 		public function delete($id){
-			$sql="DELETE FROM $this->table WHERE id = :id";
+			$sql="DELETE FROM $this->table WHERE $this->id = :id";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			return $stmt->execute();
-			
 		}
-		
+
+		public function busca($pesquisar){
+			$sql="SELECT * FROM $this->table WHERE $this->buscar LIKE :pesquisar";
+			$stmt = Database::prepare($sql);	
+			$stmt->bindParam(':pesquisar', $pesquisar);
+			$stmt->execute();
+
+			return $stmt->fetchAll(PDO::FETCH_BOTH );
+		}
 	}
 ?>

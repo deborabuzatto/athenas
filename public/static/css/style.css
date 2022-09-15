@@ -761,17 +761,27 @@ h4 span, .disponibilidade{
     margin-bottom: 30px;
     min-width: 300px;
 }
-.input-selecionar select, .input-selecionar input{
+.input-selecionar select{
     width: 70%;
     display: inline;
     font-family: nunito;
     font-weight: 500;
 }
-.input-selecionar label{
+
+.input-selecionar input{
     width: 100%;
+    display: inline;
     font-family: nunito;
     font-weight: 500;
 }
+
+.input-selecionar label{
+    width: 400px;
+    display: block;
+    font-family: nunito;
+    font-weight: 500;
+}
+
 .input-selecionar button{
     width: 23%;
     margin-left: 50px;

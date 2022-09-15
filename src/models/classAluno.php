@@ -3,6 +3,8 @@
 
     class Aluno extends CRUD{
         protected $table = 'pessoa';
+        protected $id = 'codigo_pessoa';
+        protected $buscar = 'nome';
 
         private $nome;
         private $usuario;
@@ -51,7 +53,7 @@
         }*/
 
         public function insert(){
-            $sql="INSERT INTO $this->table (nome,usuario,email,data_nasc,senha) VALUES (:nome,:usuario,:email,:data_nasc,:senha)";
+            $sql="INSERT INTO $this->table (nome, username ,email,data_nasc,senha) VALUES (:nome,:usuario,:email,:data_nasc,:senha)";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':nome', $this->nome);
             $stmt->bindParam(':usuario', $this->usuario);
@@ -73,14 +75,5 @@
 
             return $stmt->execute();
         }
-
-        public function deleteAluno($id){
-			$sql="DELETE FROM $this->table WHERE codigo_pessoa = :id";
-			$stmt = Database::prepare($sql);	
-			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-			return $stmt->execute();
-			
-		}
-        
     }
 ?>

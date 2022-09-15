@@ -1,59 +1,94 @@
 <?php
-    $conn = require_once '../utils/conexao.php';
-    class Livro {
-        public $titulo;
-        public $ISBN;
-        public $data_publicacao;
-        private $id;
+    require_once 'classCrud.php';
 
-        function __construct($titulo, $ISBN, $data_publicacao, $id) {
-            $this->titulo = $titulo;
+    class Livro extends CRUD{
+        protected $table = 'livro';
+        protected $id = 'codigo_livro';
+        protected $buscar = 'titulo';
+
+        private $ISBN;
+        private $data_publicacao;
+        private $titulo;
+        private $sinopse;
+
+        public function setISBN($ISBN){
             $this->ISBN = $ISBN;
+        }
+        public function getISBN(){
+            return $this->ISBN;
+        }
+        public function setdata_publicacao($data_publicacao){
             $this->data_publicacao = $data_publicacao;
-            $this->id = $id;
+        }
+        public function getdata_publicacao(){
+            return $this->data_publicacao;
+        }
+        public function settitulo($titulo){
+            $this->titulo = $titulo;
+        }
+        public function gettitulo(){
+            return $this->titulo;
+        }
+        public function setsinopse($sinopse){
+            $this->sinopse = $sinopse;
+        }
+        public function getsinopse(){
+            return $this->sinopse;
         }
         
-        function imprimirLivro(){
-            $stmt = $this->conn->prepare('SELECT :titulo, :data_publicacao, :ISBN FROM livro where codigo_livro = :id');
-            $stmt->bindParam(":usuario", $this->titulo);
-            $stmt->bindParam(":data_publicacao", $this->data_publicacao);
-            $stmt->bindParam(":ISBN", $this->ISBN);
-            $stmt->bindParam(":id", $this->id);
-            $stmt->execute();
-            $livro = $stmt->fetchAll();
-        }
 
-        /*function inserirLivro(){
-            $stmt = $conn->prepare('SELECT :titulo, :data_publicacao, :ISBN FROM livro where codigo_livro = :id');
-            $stmt->bindParam(":usuario", $this->titulo);
-            $stmt->bindParam(":data_publicacao", $this->data_publicacao);
-            $stmt->bindParam(":ISBN", $this->ISBN);
-            $stmt->bindParam(":id", $this->id);
-            $stmt->execute();
-            $livro = $stmt->fetchAll();
+        /*function __construct($isbn, $data_publicacao, $titulo) {
+            $this->isbn = $isbn;
+            $this->data_publicacao = $data_publicacao;
+            $this->titulo = $titulo;
+        }*/
 
-
-            $query = 'INSERT INTO '. $this->table . ' SET titulo = :titulo';
-		
-            //prepare statement
-            $stmt = $this->conn->prepare($query);
-            //clean data
-            $this->titulo = htmlspecialchars(strip_tags($this->titulo));
-            
-            //binding of parameters
+        public function insertLivro(){
+            $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse)";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':ISBN', $this->ISBN);
+            $stmt->bindParam(':data_publicacao', $this->data_publicacao);
             $stmt->bindParam(':titulo', $this->titulo);
-            
-            //execute the query
-            if($stmt->execute()){
-                return true;
-                
-            }
-            
-            //print erro if something goes wrong
-            printf("Error %s. \n", $stmt->error);
-            
-            return false;
+            $stmt->bindParam(':sinopse', $this->sinopse);
+
+            return $stmt->execute();
         }
-        */
+        
+        public function update($id){
+            $sql="UPDATE $this->table SET ISBN = :ISBN, data_publicacao = :data_publicacao, titulo = :titulo WHERE codigo_livro = :id";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':ISBN', $this->ISBN);
+            $stmt->bindParam(':data_publicacao', $this->data_publicacao);
+            $stmt->bindParam(':titulo', $this->titulo);
+
+            return $stmt->execute();
+        } 
+        
+        public function insertCategoria(){
+            $sql="INSERT INTO categoria (dsc_categoria) VALUES (:dsc_categoria)";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':dsc_categoria', $this->dsc_categoria);
+
+            return $stmt->execute();
+        }
+
+        public function insertAutor($nome, $nacionalidade){
+            $sql="INSERT INTO autor (nome, nacionalidade) VALUES (:nome, :nacionalidade)";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':nome', $this->nome);
+            $stmt->bindParam(':nacionalidade', $this->nacionalidade);
+            
+            return $stmt->execute();
+        }
+        
+        /*public function insert(){
+            $sql="INSERT INTO $this->table (ISBN, data_publicacao ,titulo) VALUES (:ISBN,:data_publicacao,:titulo)";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':ISBN', $this->ISBN);
+            $stmt->bindParam(':data_publicacao', $this->data_publicacao);
+            $stmt->bindParam(':titulo', $this->titulo);
+
+            return $stmt->execute();
+        }*/
     }
 ?>
