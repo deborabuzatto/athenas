@@ -1,3 +1,6 @@
+<?php 
+    include_once '../models/classLivro.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -50,103 +53,78 @@
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
+
+            
             
             <div class="cadastrar-livro">
                 <form method="post" action="../services/cadastrarLivro.php">
                     <div class="input-nomes">
-                        <label for="nomeContato" class="form-label">Título:</label>
-                        <input type="text" class="form-control" id="nomeContato">
+                        <label for="titulo" class="form-label">Título:</label>
+                        <input type="text" class="form-control" id="titulo" name="titulo">
                     
                         <label for="senhaLogin" class="form-label">Data de publicação:</label>
-                        <input type="date" class="form-control" id="senhaLogin" > 
+                        <input type="date" class="form-control" id="senhaLogin" name="data_publicacao"> 
                         
 
                         <label for="senhaLogin" class="form-label">ISBN:</label>
-                        <input type="text" class="form-control" id="senhaLogin" > 
-                    </div>
-
-                    <div class="input-selecionar">
-                        <label for="nomeContato" class="form-label">Título:</label>
-                        <input type="text" class="form-control" id="nomeContato">
+                        <input type="text" class="form-control" id="senhaLogin" name="ISBN" > 
+                    
+                        <label for="nomeContato" class="form-label">Autor:</label>
+                        <input type="text" class="form-control" id="nomeContato" name="autor">
                 
                         <label for="Nacionalidade" class="form-label">Nacionalidade do autor:</label>
-                        <input type="text" class="form-control " id="Nacionalidade">
+                        <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade">
                     </div>
 
                     <div class="input-selecionar">
                         <label for="senhaLogin" class="form-label">Categoria:</label>
-                        <select class="form-select" name="Categoria" >
-                            <option value="2">Romance</option>
-                            <option value="3">Literatura estrangeira</option>
-                            <option value="4">Fantasia</option>
-                            <option value="5">Terror</option>
-                            <option value="6">Suspense</option>
-                            <option value="7">Clássico</option>
-                            <option value="8">Poesia</option>
+                        <select class="form-select" name="categoria" >
+                            <?php
+                                $livro = new Livro();
+                                $imprimir = $livro->listarCategoria();
+                                if(count($imprimir)>0):
+                                    foreach($imprimir as $dados){
+                            ?>
+                            <option value="<?php echo $dados['codigo_categoria']?>"><?php echo $dados['dsc_categoria']?></option>
+
+                            <?php
+                                }
+                                endif;
+                            ?>
                         </select>
+                        
+                        <label for="addcategoria" class="form-label">addcategoria:</label>
+                        <input type="text" class="form-control " id="addcategoria" name="addcategoria">
 
                         <span>
-                            <button class="btn btn-pesquisa-bibliotecario">Cadastrar categoria</button>
+                            <button class="btn btn-pesquisa-bibliotecario" >Cadastrar categoria</button>
                         </span> 
                     </div>
                     
                     
                     
                     <div class="input-selecionar ">
-                        <label for="senhaLogin" class="form-label">Importar capa:</label>
-                        <input type="file" class="form-control" id="nomeContato" placeholder="Imagem da capa">
+                        <label for="importar" class="form-label">Importar capa:</label>
+                        <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="importar">
                     </div>
                     
 
                     <div class="input-textarea">
-                        <label for="textArea" class="form-label">Sinopse:</label>
-                        <textarea type="email" class="form-control" id="textArea"></textarea>
+                        <label for="sinopse" class="form-label">Sinopse:</label>
+                        <textarea type="email" class="form-control" id="sinopse" name="sinopse"></textarea>
                     </div>
 
                     <div class="btn-conclui-cadastro">
-                        <button class="btn btn-pesquisa-bibliotecario">Concluir Cadastro do Livro</button>
+                        <button class="btn btn-pesquisa-bibliotecario" name="btn-cadastrar">Concluir Cadastro do Livro</button>
                     </div> 
                     
                 </form>
+
+                
             </div>
-
-
-            <footer class="footer">
-
-                <div class="div-footer">
-                    <div>
-                        <img src="/public/static/imagens/athenas-preto-branco.png">
-                    </div>
-                    
-                    <div class="icon-footer">
-                        <a href="https://github.com/deborabuzatto" target="_blank">
-                            <i class="fa fa-github hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-linkedin hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-whatsapp hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-google hover-opacity"></i>
-                        </a>
-                        
-                    </div>
-
-                    <div>
-                        <a href="https://goo.gl/maps/zGGbKuK77NsXjuFe6" target="_blank">
-                            Av. Fernando Ferrari, 1080.<br> 
-                            Ed. Centro Empresarial, Torre Central, sala 604.<br>
-                            Mata da Praia. Vitória - ES, 29066-380
-                        </a>
-                    </div>
-                </div>
-
-            </footer>
+            <?php 
+                include '../components/footer.php'
+            ?>
         </div>
 
         <!-- Script FontAwesome -->

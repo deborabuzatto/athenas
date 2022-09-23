@@ -21,11 +21,13 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&display=swap" rel="stylesheet">
 
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+
         <!-- Css externo -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/style.css">
-        <link rel="stylesheet" href="css/estilos.css">
         
+        <link rel="stylesheet" href="/public/static/css/style.css">
 
         <!--<script src="js/api.js"></script>-->
 
@@ -33,43 +35,50 @@
     </head>
     <body>
         <div class="tela">
+            
             <div class="nav-login">
-                <div>
-                    <a href="homeAluno.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                <div class="nav-link-item">
+                    <a href="index.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
+
+                <div class="page-info-name">
+                    <p>Você está na página:</p><a href="#">Cadastro de alunos</a>
+                </div>
+
                 <div class="nav-login-menu">
-                    <img src="imagens/athenas.png">
+                    <img src="/public/static/imagens/logolaranja.png">
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
             
-            <div class="login">
-                <div class="form-login-page">
-                    <form>
-                        <div class="mb-3">
-                            <label for="nomeContato" class="form-label">Nome Completo :</label>
-                            <input type="text" class="form-control" id="nomeContato" disabled placeholder="Edição não permitida">
-                        </div>
+            <div class="cadastrar-livro">
+                <form method="post" action="../services/cadastrarAluno.php">
+                    <div class="input-nomes">
+                        <label for="nomeContato" class="form-label">Nome completo:</label>
+                        <input type="text" class="form-control" id="nomeContato" name="nome">
 
-                        <div class="mb-3">
-                            <label for="senhaLogin" class="form-label">Usuário:</label>
-                            <input type="text" class="form-control" id="senhaLogin">
-                        </div>
+                        <label for="nomeContato" class="form-label">Nome de usuário:</label>
+                        <input type="text" class="form-control" id="nomeContato" name="username">
+                    
+                        <label for="senhaLogin" class="form-label">Data de nascimento:</label>
+                        <input type="date" class="form-control" id="senhaLogin" name="data_nasc"> 
 
-                        <div class="mb-3">
-                            <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                            <input type="date" class="form-control" id="senhaLogin" disabled placeholder="Edição não permitida"> 
-                        </div>
+                        <label for="senhaLogin" class="form-label">E-mail:</label>
+                        <input type="text" class="form-control" id="senhaLogin" name="email">
+                        
+                        <label for="nomeContato" class="form-label">Senha padrão:</label>
+                        <input type="text" class="form-control mb-0" id="nomeContato" name="senha" placeholder="biblioteca123" disabled>
 
-                        <div class="mb-3">
-                            <label for="senhaLogin" class="form-label">E-mail:</label>
-                            <input type="email" class="form-control" id="senhaLogin">
-                        </div>
+                        <p class="text-danger mb-5">Apenas o usuário pode alterar essa senha</p>
+                    </div>
 
-                        <button type="submit" class="btn btn-primary"><a href="homeAluno.html">Atualizar</a></button>
-                    </form>
-                </div>
+                    <div class="btn-conclui-cadastro">
+                        <button type="submit" name="btn-cadastrar" class="btn btn-pesquisa-bibliotecario">Concluir Cadastro do Aluno</button>
+                    </div> 
+                    
+                </form>
             </div>
+
 
             <?php 
                 include '../components/footer.php'

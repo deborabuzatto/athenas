@@ -1,6 +1,6 @@
 <?php
 //Classe de aluno
-include '../models/classAluno.php';
+include '../models/classLivro.php';
 
 //Iniciar  Sessão
 if (session_status() === PHP_SESSION_NONE) {
@@ -15,30 +15,43 @@ if(isset($_POST['btn-cadastrar'])):
 	$autor = filter_var($_POST['autor'], FILTER_SANITIZE_EMAIL);
 	$nacionalidade = filter_var($_POST['nacionalidade'], FILTER_SANITIZE_NUMBER_INT);
 	$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_NUMBER_INT);
+	$categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_NUMBER_INT);
+	$addcategoria = filter_var($_POST['addcategoria'], FILTER_SANITIZE_NUMBER_INT);
 
+	// inserindo os dados do livro na tabela livro
 	$livro = new Livro();	
 	$livro->settitulo($titulo);
 	$livro->setdata_publicacao($data_publicacao);
 	$livro->setsinopse($sinopse);
 	$livro->setISBN($ISBN);
-
-	$inserirLivro = $livro->insertLivro();
+	$insert = $livro->insert();
+	// inserindo o autor na tabela autor
 	$inserirAutor = $livro->insertAutor($autor, $nacionalidade);
+	// conectando o livro ao autor 
+	$inserirLivro_Autor = $livro->insertLivro_Autor($insert, $inserirAutor);
 
-	$sql="INSERT INTO livro_autor (	FK_LIVRO_codigo_livro, FK_AUTOR_codigo_autor) VALUES (:nome, :nacionalidade)";
-	$stmt = Database::prepare($sql);
-	$stmt->bindParam(':nome', $this->nome);
-	$stmt->bindParam(':nacionalidade', $this->nacionalidade);
+	// tente inserir a categoria
+	$inserirCategoria = $livro->insertCategoria($addcategoria);
+	if($inserirCategoria){
+		// se retornar true, a categoria não existia e foi inserida
+		// conexao do livro com o autor
+		$inserirLivro_categoria = $livro->categoriaSelecionada($insert, $inserirCategoria);
+		$_SESSION['mensagem'] = "Cadastro com sucesso!";
+		header('Location: ../views/livrosBibliotecario.php');
+	}else{
+		// se a categoria já existir, imprima o erro
+		echo 'ERROR: essa categoria já existe, não é possível cadastrá-la novamente';
+
+	}
+
 	
-	return $stmt->execute();
-	
-	if($inserirLivro && $inserirAutor):
+	/*if($inserirLivro && $inserirAutor):
 		$_SESSION['mensagem'] = "Cadastro com sucesso!";
 		header('Location: ../views/alunosBibliotecario.php');
 	else:
 		$_SESSION['mensagem'] = "Erro ao cadastrar!";		
 		header('Location: alunosBibliotecario.php');
-	endif;
+	endif;*/
 endif;	
 
 ?>

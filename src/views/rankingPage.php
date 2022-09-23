@@ -2,6 +2,10 @@
 //Classe Aluno
 include_once '../models/classLivro.php';
 session_start();
+//Header
+//include_once '30_DB_header.php';
+//Mensagem
+//include_once '30_DB_mensagem.php';
 ?>
 
 <!DOCTYPE html>
@@ -42,11 +46,11 @@ session_start();
         <div class="tela">
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="homeAlunos.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
-                    <p>Você está vendo:</p><a href="#">Todos os Livros</a>
+                    <p>Você está vendo:</p><a href="#">Ranking de notas</a>
                 </div>
 
                 <div class="nav-login-menu">
@@ -54,8 +58,9 @@ session_start();
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
-
             
+            
+
             <div class="conteudo-livro-page">
                 <div class="busca-livro-page">
                     <form method="post">
@@ -110,7 +115,7 @@ session_start();
                 endif;
                 else:
                     $livro = new Livro();
-                    $imprimir = $livro->findAllLivro();
+                    $imprimir = $livro->rankingNota();
                     if(count($imprimir)>0):
                         foreach($imprimir as $dados){
                 ?>
@@ -157,9 +162,41 @@ session_start();
 
             </div>
             
-            <?php 
-                include '../components/footer.php'
-            ?>
+            <footer class="footer">
+
+                <div class="div-footer">
+                    <div>
+                        <img src="imagens/athenas-preto-branco.png">
+                    </div>
+                    
+                    <div class="icon-footer">
+                        <a href="https://github.com/deborabuzatto" target="_blank">
+                            <i class="fa fa-github hover-opacity"></i>
+                        </a>
+
+                        <a href="" target="_blank">
+                            <i class="fa fa-linkedin hover-opacity"></i>
+                        </a>
+
+                        <a href="" target="_blank">
+                            <i class="fa fa-whatsapp hover-opacity"></i>
+                        </a>
+
+                        <a href="" target="_blank">
+                            <i class="fa fa-google hover-opacity"></i>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="https://goo.gl/maps/zGGbKuK77NsXjuFe6" target="_blank">
+                            Av. Fernando Ferrari, 1080.<br> 
+                            Ed. Centro Empresarial, Torre Central, sala 604.<br>
+                            Mata da Praia. Vitória - ES, 29066-380
+                        </a>
+                    </div>
+                </div>
+
+            </footer>
         </div>
 
         <!-- Script FontAwesome -->

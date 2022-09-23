@@ -37,12 +37,14 @@
         <div class="tela">
             
             <div class="nav-login">
-                <div class="nav-link-item">
-                    <a href="homeAlunos.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                <div class="page-item-topo">
+                    <p>Você está vendo a:</p><a href="#">Página Inicial</a>
+
                 </div>
 
                 <div class="page-info-name">
-                    <p>Você está na página:</p><a href="#">Meu perfil</a>
+                    <i class="fa fa-gear"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </div>
 
                 <div class="nav-login-menu">
@@ -51,37 +53,23 @@
                 </div>
             </div>
             
-            <div class="cadastrar-livro">
-                <form>
-                    <div class="input-nomes">
-                        <label for="nomeContato" class="form-label">Nome completo:</label>
-                        <input type="text" class="form-control" id="nomeContato" disabled placeholder="Débora Buzatto">
-                    
-                        <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                        <input type="date" class="form-control" id="senhaLogin" disabled placeholder="24/10/2004" > 
-
-                        <label for="nomeContato" class="form-label">E-mail:</label>
-                        <input type="text" class="form-control" id="nomeContato" placeholder="deborabuzatto27@gmail.com">
+            <div class="home-div-conteudo">
+                <div class="home-div">
+                    <div class="home-pessoa">
+                        <div><img src="/public/static/imagens/amoregelato.jpg"></div>
+                        <h4>Bem vinda, Débora Buzatto</h4>
+                        <p class="w-75 m-auto mt-5 pt-5">O instituto agredece sua matrícula, esperamos que esse site informativo, seja exatamente o que você procura para passar seu tempo, essa ferramenta foi excluxivamente pensada em você, faça bom uso!
+                        </p>
                     </div>
-                    
-                    <div class="input-selecionar">
-                        <label for="nomeContato" class="form-label">Usuário:</label>
-                        <input type="text" class="form-control" id="nomeContato" placeholder="Debs">
-
+                    <div class="home-opcoes">
+                        <div><a href="livrosAluno.php">Todas as obras</a></div>
+                        <div><a href="rankingPage.php">Rangink de avaliações</a></div>
+                        <div><a href="historicoAlunoPage.html">Meu histórico</a></div>
+                        <div><a href="meuperfil.html">Meus dados</a></div>
+                        <p class="sair"><a href="logout.php">Sair</a></p>
                     </div>
-
-                    <div class="input-nomes">
-                        <label for="senhaLogin" class="form-label">Importar foto:</label>
-                        <input type="file" class="form-control" id="nomeContato" placeholder="Imagem da capa">
-                    </div>
-
-                    <div class="btn-conclui-cadastro">
-                        <button class="btn btn-pesquisa-bibliotecario">Concluir Atualizações</button>
-                    </div> 
-                    
-                </form>
+                </div>
             </div>
-
 
             <footer class="footer">
 

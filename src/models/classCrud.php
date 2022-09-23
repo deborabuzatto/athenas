@@ -38,7 +38,7 @@
 		}
 
 		public function busca($pesquisar){
-			$sql="SELECT * FROM $this->table WHERE $this->buscar LIKE :pesquisar";
+			$sql="SELECT * FROM $this->table WHERE $this->buscar ILIKE :pesquisar";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':pesquisar', $pesquisar);
 			$stmt->execute();
