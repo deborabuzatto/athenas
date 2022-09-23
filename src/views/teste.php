@@ -1,9 +1,11 @@
 <?php 
-    require_once '../models/classConexao.php';
+    require("../models/classAluno.php");
+    $aluno = new Aluno();
 
-    $sql = "select * from pessoa where nome like '%debora%'";
-    $data = Database::prepare($sql);
-    $data->execute();
+    $usuarios = $aluno->findAll();
 
-    print_r($data->fetchAll());
+    foreach($usuarios as $user) {
+        print_r($user);
+        echo "\n";
+    }
 ?>

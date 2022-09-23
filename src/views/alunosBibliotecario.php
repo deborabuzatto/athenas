@@ -2,10 +2,10 @@
 //Classe Aluno
 include_once '../models/classAluno.php';
 session_start();
-//Header
-//include_once '30_DB_header.php';
-//Mensagem
-//include_once '30_DB_mensagem.php';
+if(isset($_SESSION['bibliotecario'])){
+    usset
+}
+
 ?>
 
 
@@ -71,17 +71,16 @@ session_start();
                             <button type="submit" name="btn-buscar" class="btn btn-pesquisa">Buscar</button>
                         </span>
                         <span>
-                            <button class="btn btn-pesquisa">Adicionar Aluno <i class="fa fa-plus"></i></button>
+                            <button class="btn btn-pesquisa" name="btn-adicionar">Adicionar Aluno <i class="fa fa-plus"></i></button>
                         </span>
                     </form>
                     
                 </div>
 
                 <?php
-                    /*$cliente = new Cliente();
-                    $tabela= $cliente->findAll(); 
-                    if (count($tabela)>0):
-                    foreach($tabela as $linha){*/
+                    if(isset($_POST['btn-adicionar'])){
+                        header('Location: cadastrarAluno.php');
+                    }
 
                     if(isset($_POST['btn-buscar'])):
                         $pesquisar = $_POST['pesquisar'];

@@ -36,13 +36,15 @@ session_start();
 
         <!--<script src="js/api.js"></script>-->
 
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
         <title>Teste 1</title>
     </head>
     <body>
         <div class="tela">
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="homeAlunos.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
@@ -75,18 +77,27 @@ session_start();
                         <span>
                             <button class="btn btn-pesquisa" name="btn-buscar">Pesquisar</button>
                         </span>
+
+                        <span>
+                            <button class="btn btn-pesquisa" name="btn-adicionar">Adicionar</button>
+                        </span>
                     </form>
                 </div>
 
                 <?php
-                    if(isset($_POST['btn-buscar'])):
+                    if(isset($_POST['btn-adicionar'])){
+                        header('Location: cadastrarAluno.php');
+                    }
+
+                    if(isset($_POST['btn-buscar'])){
                         $pesquisar = $_POST['pesquisar'];
                         $palavra = '%' . $pesquisar. '%';
                     
                         $livro = new Livro();
                         $busca = $livro->buscarLivro($palavra);
-                        if(count($busca)>0):
+                        if(count($busca)>0){
                             foreach($busca as $dados){
+                        
                 ?>
 
                 <div class="table-livro-aluno">
@@ -106,9 +117,8 @@ session_start();
                 </div>
                 
                 <?php
-                }
-                endif;
-                else:
+                }}}
+                else{
                     $livro = new Livro();
                     $imprimir = $livro->findAllLivro();
                     if(count($imprimir)>0):
@@ -127,15 +137,26 @@ session_start();
                             <p class="categoria">Romance</p>
 
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
+
+                            <a href="#informacoes" name="informacao" class="informacoes btn btn-icone-table" data-bs-toggle="modal" 
+                            data-bs-target="#informacoes" data-cod="<?php echo $dados['codigo_livro'];?>">
+                            <i class="fa fa-file-lines"></i></a> 
+
+                            <a href="#editar" class=" editar btn btn-icone-table" data-bs-toggle="modal" data-bs-target="#editar" data-ida="<?php echo $dados['codigo_livro'];?>"><i class="fa fa-pen"></i></a> 
+                            
+                            <td><a href="#excluir" class="excluir btn btn-icone-table" data-bs-toggle="modal" data-bs-target="#excluir" data-id="<?php echo $dados['codigo_livro'];?>"><i class="fa fa-trash"></i></a> 
                         </div>
                     </div>                    
                 </div>
+				  
 
                 <?php
                 }
                 endif;
-                endif;
+                }
                 ?>
+
+                
 
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -158,9 +179,83 @@ session_start();
             </div>
             
             <?php 
-                include '../components/footer.php'
+                include '../components/footer.php';
             ?>
+
+            
         </div>
+            <!-- Modal -->
+            <div class="modal fade" id="informacoes" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <form id="formId" method="post" action="../services/preenchermodal.php">
+                            <input type="text" name="infoHidden" id="infoHidden" class="text-dark">
+                        </form>
+                        
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel"></h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="dados-livro-avaliar">
+                                <div class="img-avaliar w-25">
+                                    <img src="/public/static/imagens/amoregelato.jpg">
+                                </div>
+                                
+                                <div class="dados-avaliar w-75">
+                                    <p><span>Sinopse:</span><?php echo $a['sinopse'];?></p>
+                                    <p><span>Autor:</span><?php echo $a['titulo'];?></p>
+                                    <p><span>Editora:</span>Letares</p>
+                                    <p><span>ISBN:</span>198890675-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer btn-conclui-cadastro" >
+                            <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
+                            <button type="button" class="btn btn-pesquisa-bibliotecario" name="avaliacoes">Avaliações</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+           
+        
+        <script>
+            $('.informacoes').on('click', function(){
+                var id = $(this).data('cod'); // vamos buscar o valor do atributo data-id
+                $('#infoHidden').val(id); // atribui o id ao input hidden
+                $.post(
+                    '#formId',
+                    function (data) {
+                        console.log(data);
+                    },
+                    );
+                console.log(id);
+            });
+            /*$('.editar').on('click', function(){
+                var id = $(this).data('ida'); // vamos buscar o valor do atributo data-id
+                var nome = $(this).data('nome');
+                var username = $(this).data('username');
+                var email = $(this).data('email');
+                $('#editarHidden').val(id); // atribui o id ao input hidden
+                $('#editar').modal('show'); // modal aparece
+                $('#nome').val(nome);
+                $('#usuario').val(username);
+                $('#email').val(email);
+            });
+
+            $('.excluir').on('click', function(){
+                var id = $(this).data('id'); // vamos buscar o valor do atributo data-id
+                $('#excluirHidden').val(id); // atribui o id ao input hidden
+                $('#excluir').modal('show'); // modal aparece
+            });*/
+        </script>
+
+        <script
+        src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+        crossorigin="anonymous"
+        ></script>
 
         <!-- Script FontAwesome -->
         <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>

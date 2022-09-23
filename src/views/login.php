@@ -61,7 +61,7 @@
                     <img src="/public/static/imagens/img-login.jpg">
                 </div>
                 <div class="form-login-page">
-                    <form method="POST" action="/login.php">
+                    <form method="POST" action="../services/login.php">
                         <?php
                             if(isset($_SESSION['nao_autenticado'])):
                         ?>
@@ -83,7 +83,7 @@
                         </div>
 
                         <div class="mb-3">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="bibliotecario">
                             <label class="form-check-label" for="exampleCheck1">Acessar como bibliotecário</label>
                         </div>
 
