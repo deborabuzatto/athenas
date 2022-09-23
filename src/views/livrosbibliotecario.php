@@ -1,11 +1,11 @@
 <?php 
 //Classe Aluno
-include_once '../models/classLivro.php';
+include '../models/classLivro.php';
 session_start();
 ?>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <!-- Padrão -->
         <meta charset="UTF-8">
@@ -60,7 +60,7 @@ session_start();
             
             <div class="conteudo-livro-page">
                 <div class="busca-livro-page">
-                    <form method="post">
+                    <form method="post" action='#'>
                         <input type="text" class="form-control" id="input-pesquisa" placeholder="Busque por título ou autor" name="pesquisar">
                         
                         <select class="form-select" name="Categoria" >
@@ -131,6 +131,8 @@ session_start();
                             <img src="/public/static/imagens/amoregelato.jpg">
                         </div>
                         <div class="table-conteudo">
+                            <input type="hidden" name='batata' value='<?php echo $dados['codigo_livro'];?>'>
+
                             <h4><?php echo $dados['titulo'];?></h4>
                             
                             <p class="disponibilidade">Disponivel</p>
@@ -148,15 +150,16 @@ session_start();
                         </div>
                     </div>                    
                 </div>
-				  
 
                 <?php
                 }
                 endif;
                 }
+                function batata() {
+                    $id = 4;
+                    return $id;
+                }
                 ?>
-
-                
 
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
@@ -177,18 +180,45 @@ session_start();
                 </nav>
 
             </div>
+
+
+                <?php
+                    $livro = new Livro();
+                    $imprimir = $livro->findAll();
+                    if(count($imprimir)>0):
+                        foreach($imprimir as $dados){
+                ?>
+
+                <div class="table-livro-aluno">
+                    <div>
+                        <div class="table-conteudo">
+                        <input id='1' type='text' value='<?php echo $dados['codigo_livro'];?>'>
+                        <input id='2' type='text' value='<?php echo $dados['sinopse'];?>'>
+                        <input id='3' type='text' value='<?php echo $dados['titulo'];?>'>
+                        <input id='4' type='text' value='<?php echo $dados['ISBN'];?>'>
+                        <input id='5' type='text' value='<?php echo $dados['editora'];?>'>
+                        <input id='6' type='text' value='<?php echo $dados['categoria'];?>'>
+                        <input id='7' type='text' value='<?php echo $dados['data_publicacao'];?>'>
+                        <input id='8' type='text' value='<?php echo $dados['autor'];?>'>    
+                    </div>                    
+                </div>
+
+                <?php
+                }
+                endif;
+                ?>
+
             
             <?php 
                 include '../components/footer.php';
             ?>
 
-            
         </div>
             <!-- Modal -->
-            <div class="modal fade" id="informacoes" tabindex="-1" aria-hidden="true">
+            <div class="modal fade" id="informacoes" tabindex="-1" aria-text="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
-                        <form id="formId" method="post" action="../services/preenchermodal.php">
+                        <form id="formId" method="post" action="modal.php">
                             <input type="text" name="infoHidden" id="infoHidden" class="text-dark">
                         </form>
                         
@@ -203,8 +233,8 @@ session_start();
                                 </div>
                                 
                                 <div class="dados-avaliar w-75">
-                                    <p><span>Sinopse:</span><?php echo $a['sinopse'];?></p>
-                                    <p><span>Autor:</span><?php echo $a['titulo'];?></p>
+                                    <p><span>Sinopse:</span></p>
+                                    <p><span>Autor:</span></p>
                                     <p><span>Editora:</span>Letares</p>
                                     <p><span>ISBN:</span>198890675-17</p>
                                 </div>
@@ -218,19 +248,32 @@ session_start();
                     </div>
                 </div>
             </div>
-           
         
-        <script>
-            $('.informacoes').on('click', function(){
-                var id = $(this).data('cod'); // vamos buscar o valor do atributo data-id
+        <script type="text/javascript">
+            $('.informacoes').on('click', function(event){
+                event.preventDefault();
+                $('#informacoes').modal;
+                var id = $(this).data('cod');  // vamos buscar o valor do atributo data-id
                 $('#infoHidden').val(id); // atribui o id ao input hidden
+
+                var input1 = $('#2').val();
+                console.log(input1);
+
+
+
+                /*var chamado = $("#infoHidden").val();
                 $.post(
-                    '#formId',
-                    function (data) {
-                        console.log(data);
+                    '#formID', {
+                    type: 'POST',
+                    url: 'modal.php',
+                    data: {
+                        chamado,
                     },
-                    );
-                console.log(id);
+                    function (response) {
+                        console.log(chamado);
+                        alert('Post realizado');
+                    },
+                });*/
             });
             /*$('.editar').on('click', function(){
                 var id = $(this).data('ida'); // vamos buscar o valor do atributo data-id
@@ -243,6 +286,10 @@ session_start();
                 $('#usuario').val(username);
                 $('#email').val(email);
             });
+            '#formID', {
+                        type:"POST",
+                        infoHidden: chamado,
+                    },
 
             $('.excluir').on('click', function(){
                 var id = $(this).data('id'); // vamos buscar o valor do atributo data-id
