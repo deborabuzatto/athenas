@@ -10,6 +10,8 @@
         private $data_publicacao;
         private $titulo;
         private $sinopse;
+        private $comentario;
+        private $nota;
 
         public function setISBN($ISBN){
             $this->ISBN = $ISBN;
@@ -35,7 +37,18 @@
         public function getsinopse(){
             return $this->sinopse;
         }
-        
+        public function setcomentario($comentario){
+            $this->comentario = $comentario;
+        }
+        public function getcomentario(){
+            return $this->comentario;
+        }
+        public function setnota($nota){
+            $this->nota = $nota;
+        }
+        public function getnota(){
+            return $this->nota;
+        }
 
         /*function __construct($isbn, $data_publicacao, $titulo) {
             $this->isbn = $isbn;
@@ -153,5 +166,18 @@
             
             return $stmt->fetchAll(PDO::FETCH_BOTH );
         }
+
+        public function avaliarLivro($codigo_livro, $codigo_pessoa,  $nota, $dsc_comentario){
+            $sql = "INSERT INTO livro_pessoa_avalia (FK_pessoa_codigo_pessoa, FK_livro_codigo_livro, nota) VALUES (:codigo_livro,:codigo_pessoa,:nota); INSERT INTO comentario (:dsc_comentario)";
+			$stmt = Database::prepare($sql);	
+			$stmt->bindParam(':codigo_livro', $codigo_livro);
+            $stmt->bindParam(':codigo_pessoa', $codigo_pessoa);
+            $stmt->bindParam(':nota', $nota);
+            $stmt->bindParam(':dsc_comentario', $dsc_comentario);
+			$stmt->execute();
+
+			return $stmt->fetchAll(PDO::FETCH_BOTH );
+        }
+
     }
 ?>

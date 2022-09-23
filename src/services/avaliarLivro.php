@@ -7,29 +7,18 @@ if (session_status() === PHP_SESSION_NONE) {
 	session_start();
 }
 
-if(isset($_POST['btn-cadastrar'])):
+if(isset($_POST['btn-avaliar'])):
 	
-	$titulo = filter_var($_POST['titulo'], FILTER_SANITIZE_STRING);
-	$data_publicacao = filter_var($_POST['data_publicacao'], FILTER_SANITIZE_STRING);
-	$ISBN = filter_var($_POST['ISBN'], FILTER_SANITIZE_STRING);
-	$autor = filter_var($_POST['autor'], FILTER_SANITIZE_EMAIL);
-	$nacionalidade = filter_var($_POST['nacionalidade'], FILTER_SANITIZE_NUMBER_INT);
-	$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_NUMBER_INT);
-	$categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_NUMBER_INT);
-	$addcategoria = filter_var($_POST['addcategoria'], FILTER_SANITIZE_NUMBER_INT);
+	$codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+	$codigo_livro = filter_var($_POST['codigo_pessoa'], FILTER_SANITIZE_STRING);
+	$nota = filter_var($_POST['nota'], FILTER_SANITIZE_STRING);
+	$dsc_comentario = filter_var($_POST['dsc_comentario'], FILTER_SANITIZE_EMAIL);
 
 	// inserindo os dados do livro na tabela livro
 	$livro = new Livro();	
-	$livro->settitulo($titulo);
-	$livro->setdata_publicacao($data_publicacao);
-	$livro->setsinopse($sinopse);
-	$livro->setISBN($ISBN);
-	$insert = $livro->insert();
-	// inserindo o autor na tabela autor
-	$inserirAutor = $livro->insertAutor($autor, $nacionalidade);
-	// conectando o livro ao autor 
-	$inserirLivro_Autor = $livro->insertLivro_Autor($insert, $inserirAutor);
-
+	$livro->avaliarLivro($codigo_livro, $codigo_pessoa, $nota, $dsc_comentario);
+	
+    
 	// tente inserir a categoria
 	$inserirCategoria = $livro->insertCategoria($addcategoria);
 	if($inserirCategoria){
