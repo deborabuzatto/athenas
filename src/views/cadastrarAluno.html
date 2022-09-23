@@ -52,28 +52,28 @@
             </div>
             
             <div class="cadastrar-livro">
-                <form>
+                <form method="post" action="/src/services/cadastrarAluno.php">
                     <div class="input-nomes">
                         <label for="nomeContato" class="form-label">Nome completo:</label>
-                        <input type="text" class="form-control" id="nomeContato">
+                        <input type="text" class="form-control" id="nomeContato" name="nome">
 
                         <label for="nomeContato" class="form-label">Nome de usuário:</label>
-                        <input type="text" class="form-control" id="nomeContato">
+                        <input type="text" class="form-control" id="nomeContato" name="username">
                     
                         <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                        <input type="date" class="form-control" id="senhaLogin" > 
+                        <input type="date" class="form-control" id="senhaLogin" name="data_nasc"> 
 
                         <label for="senhaLogin" class="form-label">E-mail:</label>
-                        <input type="text" class="form-control" id="senhaLogin">
+                        <input type="text" class="form-control" id="senhaLogin" name="email">
                         
                         <label for="nomeContato" class="form-label">Senha padrão:</label>
-                        <input type="text" class="form-control mb-0" id="nomeContato" placeholder="biblioteca123" disabled>
+                        <input type="text" class="form-control mb-0" id="nomeContato" name="senha" placeholder="biblioteca123" disabled>
 
                         <p class="text-danger mb-5">Apenas o usuário pode alterar essa senha</p>
                     </div>
 
                     <div class="btn-conclui-cadastro">
-                        <button class="btn btn-pesquisa-bibliotecario">Concluir Cadastro do Aluno</button>
+                        <button type="submit" name="btn-cadastrar" class="btn btn-pesquisa-bibliotecario">Concluir Cadastro do Aluno</button>
                     </div> 
                     
                 </form>

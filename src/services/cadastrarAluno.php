@@ -1,6 +1,6 @@
 <?php
 //Classe de aluno
-include_once './src/models/classAluno.php';
+include '../models/classAluno.php';
 
 //Iniciar  Sessão
 if (session_status() === PHP_SESSION_NONE) {
@@ -16,16 +16,16 @@ if(isset($_POST['btn-cadastrar'])):
 
 	$aluno = new Aluno();	
 	$aluno->setNome($nome);
-	$aluno->setUsername($username);
+	$aluno->setUsuario($username);
 	$aluno->setEmail($email);
 	$aluno->setData_nasc($data_nasc);
 	
 	if($aluno->insert()):
 		$_SESSION['mensagem'] = "Cadastro com sucesso!";
-		header('Location: ../30_DB_index.php?sucesso');
+		header('Location: ../views/alunosBibliotecario.php');
 	else:
 		$_SESSION['mensagem'] = "Erro ao cadastrar!";		
-		header('Location: ../30_DB_index.php?erro');
+		header('Location: alunosBibliotecario.php');
 	endif;
 endif;	
 

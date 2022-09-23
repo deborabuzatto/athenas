@@ -52,7 +52,7 @@
             </div>
             
             <div class="cadastrar-livro">
-                <form>
+                <form method="post" action="../services/cadastrarLivro.php">
                     <div class="input-nomes">
                         <label for="nomeContato" class="form-label">Título:</label>
                         <input type="text" class="form-control" id="nomeContato">
@@ -60,8 +60,18 @@
                         <label for="senhaLogin" class="form-label">Data de publicação:</label>
                         <input type="date" class="form-control" id="senhaLogin" > 
                         
+
+                        <label for="senhaLogin" class="form-label">ISBN:</label>
+                        <input type="text" class="form-control" id="senhaLogin" > 
                     </div>
-                    
+
+                    <div class="input-selecionar">
+                        <label for="nomeContato" class="form-label">Título:</label>
+                        <input type="text" class="form-control" id="nomeContato">
+                
+                        <label for="Nacionalidade" class="form-label">Nacionalidade do autor:</label>
+                        <input type="text" class="form-control " id="Nacionalidade">
+                    </div>
 
                     <div class="input-selecionar">
                         <label for="senhaLogin" class="form-label">Categoria:</label>
@@ -81,25 +91,8 @@
                     </div>
                     
                     
-                    <div class="input-selecionar">
-                        <label for="senhaLogin" class="form-label">Autor:</label>
-                        <select class="form-select" name="Autor" >
-                            <option selected>Autor</option>
-                            <option value="2">Autor</option>
-                            <option value="3">Autor</option>
-                            <option value="4">Autor</option>
-                            <option value="5">Autor</option>
-                            <option value="6">Autor</option>
-                            <option value="7">Autor</option>
-                            <option value="8">Autor</option>
-                        </select>
-
-                        <span>
-                            <button class="btn btn-pesquisa-bibliotecario">Cadastrar Autor</button>
-                        </span> 
-                    </div>
                     
-                    <div class="input-selecionar">
+                    <div class="input-selecionar ">
                         <label for="senhaLogin" class="form-label">Importar capa:</label>
                         <input type="file" class="form-control" id="nomeContato" placeholder="Imagem da capa">
                     </div>
