@@ -1,3 +1,7 @@
+<?php
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -31,7 +35,7 @@
 
         <!--<script src="js/api.js"></script>-->
 
-        <title>Teste 1</title>
+        <title>VER AVALIAÇÕES</title>
     </head>
     <body>
         <div class="tela">
@@ -50,6 +54,14 @@
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
+
+            <?php 
+                    $livro = new Livro();
+                    $busca = $livro->listarTodosDadosLivro(1);
+                    if(count($busca)>0):
+                        foreach($busca as $dados){
+            ?>
+
             
             <div class="cadastrar-livro">
                 <div class="dados-livro-avaliar">
@@ -57,37 +69,55 @@
                         <img src="/public/static/imagens/amoregelato.jpg">
                     </div>
                     <div class="dados-avaliar">
-                        <h4>Amor e Gelato</h4>
+                        <h4><?php echo $dados['titulo'];?></h4>
                         
-                        <p><span>Autor:</span>Kiera Cass</p>
-                        <p><span>Editora:</span>Letares</p>
-                        <p><span>ISBN:</span>198890675-17</p>
+                        <p><span>Autor:</span><?php echo $dados['nome'];?></p>
+                        <p><span>Editora:</span><?php echo $dados['titulo'];?></p>
+                        <p><span>ISBN:</span><?php echo $dados['sinopse'];?></p>
 
                     </div>
                     
                 </div>
                 
                 <div class="form-avalia">
-                    <form>
+                    <form method='post' action='../services/avaliarLivro.php'>
                         <div class="input-textarea mb-3">
                             <label for="textArea" class="form-label">Descreva sua experiência:</label>
-                            <textarea type="email" class="form-control" id="textArea" placeholder="máximo de 250 caracteres"></textarea>
+                            <textarea type="text" class="form-control" id="dsc_comentario" name="dsc_comentario" placeholder="máximo de 250 caracteres"></textarea>
+                            <input type="text" id="dsc_comentario" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>" >
                         </div>
 
                         <div class="input-nomes">
                             <label for="nomeContato" class="form-label">Nota:</label>
-                            <input type="number" class="form-control" id="nomeContato" placeholder="avalie de 1 à 5">                        
+                            <input type="number" class="form-control" id="nota" name="nota" placeholder="avalie de 1 à 5">                        
                         </div>
                         <div class="btn-conclui-cadastro">
-                            <button class="btn btn-pesquisa-bibliotecario">Concluir Avaliação</button>
+                            <button class="btn btn-pesquisa-bibliotecario" name='btn_avalia'>Concluir Avaliação</button>
                         </div>
                     </form>
                 </div>
+
+
+                <?php 
+                    }
+                    endif;
+                //endif;
+                ?>
 
                 <div class="link-avaliacoes">
                     <a href="#avaliacoes">Ver outras Avaliações</a>
                 </div>             
             </div>
+
+            <?php 
+                if(isset($_POST['btn-avaliar'])):
+                    $id = $_POST['input_hidden'];
+                    
+                    $livro = new Livro();
+                    $busca = $livro->listarAvaliacoes($id);
+                    if(count($busca)>0):
+                        foreach($busca as $dados){
+            ?>
 
             <div class="avalia-livro" id="avaliacoes">
                 <div class="div-avaliacao">
@@ -95,101 +125,25 @@
                         <img src="/public/static/imagens/amoregelato.jpg" style="border-radius: 100px; width: 70px; height: 70px;">
                     </div>
                     <div class="div-dados-avaliar">
-                        <h4>Débora Buzatto</h4>
-                        <p><span>Nota:</span>4.5</p>
+                        <h4><?php echo $dados['nome'];?></h4>
+                        <p><span>Nota:</span><?php echo $dados['nota'];?></p>
                         <p><span>Opinião:</span>Livro péssimo, desinteressante até onde eu li, não consegui terminar, dá muito sono.</p>
                     </div>
                 </div>
             </div>
 
-            <div class="avalia-livro">
-                <div class="div-avaliacao">
-                    <div class="img-pessoa">
-                        <img src="/public/static/imagens/amoregelato.jpg" style="border-radius: 100px; width: 70px; height: 70px;">
-                    </div>
-                    <div class="div-dados-avaliar">
-                        <h4>Débora Buzatto</h4>
-                        <p><span>Nota:</span>4.5</p>
-                        <p><span>Opinião:</span>Livro péssimo, desinteressante até onde eu li, não consegui terminar, dá muito sono.</p>
-                    </div>
-                </div>
-            </div>
+            <?php 
+                    }
+                endif;
+            endif;
+            ?>
+
+            <?php
             
-            <div class="avalia-livro">
-                <div class="div-avaliacao">
-                    <div class="img-pessoa">
-                        <img src="/public/static/imagens/amoregelato.jpg" style="border-radius: 100px; width: 70px; height: 70px;">
-                    </div>
-                    <div class="div-dados-avaliar">
-                        <h4>Débora Buzatto</h4>
-                        <p><span>Nota:</span>4.5</p>
-                        <p><span>Opinião:</span>Livro péssimo, desinteressante até onde eu li, não consegui terminar, dá muito sono.</p>
-                    </div>
-                </div>
-            </div>
+                include '../components/footer.php'
+            ?>
+
             
-            <div class="avalia-livro">
-                <div class="div-avaliacao">
-                    <div class="img-pessoa">
-                        <img src="/public/static/imagens/amoregelato.jpg" style="border-radius: 100px; width: 70px; height: 70px;">
-                    </div>
-                    <div class="div-dados-avaliar">
-                        <h4>Débora Buzatto</h4>
-                        <p><span>Nota:</span>4.5</p>
-                        <p><span>Opinião:</span>Livro péssimo, desinteressante até onde eu li, não consegui terminar, dá muito sono.</p>
-                    </div>
-                </div>
-            </div>
-            
-
-            <!--<div class="div-avaliar">
-                <div>
-                    <img src="/public/static/imagens/amoregelato.jpg">
-                </div>
-                <div>
-                    <h4>Debora Buzatto</h4>
-                    <p></p>
-                </div>
-
-            </div>-->
-
-
-            <footer class="footer">
-
-                <div class="div-footer">
-                    <div>
-                        <img src="/public/static/imagens/athenas-preto-branco.png">
-                    </div>
-                    
-                    <div class="icon-footer">
-                        <a href="https://github.com/deborabuzatto" target="_blank">
-                            <i class="fa fa-github hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-linkedin hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-whatsapp hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-google hover-opacity"></i>
-                        </a>
-                        
-                    </div>
-
-                    <div>
-                        <a href="https://goo.gl/maps/zGGbKuK77NsXjuFe6" target="_blank">
-                            Av. Fernando Ferrari, 1080.<br> 
-                            Ed. Centro Empresarial, Torre Central, sala 604.<br>
-                            Mata da Praia. Vitória - ES, 29066-380
-                        </a>
-                    </div>
-                </div>
-
-            </footer>
         </div>
 
         <!-- Script FontAwesome -->

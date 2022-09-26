@@ -2,45 +2,28 @@
 //Classe de aluno
 include '../models/classLivro.php';
 
+session_start();
 //Iniciar  Sessão
-if (session_status() === PHP_SESSION_NONE) {
-	session_start();
+if ($_SESSION['aluno']) {
+	$aluno = $_SESSION['nome_aluno'];
 }
 
-if(isset($_POST['btn-avaliar'])):
-	
+if(isset($_POST['btn-avalia'])):
+
 	$codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
-	$codigo_livro = filter_var($_POST['codigo_pessoa'], FILTER_SANITIZE_STRING);
 	$nota = filter_var($_POST['nota'], FILTER_SANITIZE_STRING);
 	$dsc_comentario = filter_var($_POST['dsc_comentario'], FILTER_SANITIZE_EMAIL);
 
 	// inserindo os dados do livro na tabela livro
 	$livro = new Livro();	
-	$livro->avaliarLivro($codigo_livro, $codigo_pessoa, $nota, $dsc_comentario);
-	
-    
-	// tente inserir a categoria
-	$inserirCategoria = $livro->insertCategoria($addcategoria);
-	if($inserirCategoria){
-		// se retornar true, a categoria não existia e foi inserida
-		// conexao do livro com o autor
-		$inserirLivro_categoria = $livro->categoriaSelecionada($insert, $inserirCategoria);
+	$inserir = $livro->inserirAvaliacoes($codigo_livro, $aluno, $nota, $dsc_comentario);
+
+	if($inserir){
 		$_SESSION['mensagem'] = "Cadastro com sucesso!";
-		header('Location: ../views/livrosBibliotecario.php');
+		header('Location: ../views/avaliarLivro.php');
 	}else{
-		// se a categoria já existir, imprima o erro
-		echo 'ERROR: essa categoria já existe, não é possível cadastrá-la novamente';
-
+		$_SESSION['mensagem'] = "Erro ao executar função";
 	}
-
-	
-	/*if($inserirLivro && $inserirAutor):
-		$_SESSION['mensagem'] = "Cadastro com sucesso!";
-		header('Location: ../views/alunosBibliotecario.php');
-	else:
-		$_SESSION['mensagem'] = "Erro ao cadastrar!";		
-		header('Location: alunosBibliotecario.php');
-	endif;*/
 endif;	
 
 ?>
