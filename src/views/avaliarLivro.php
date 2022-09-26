@@ -1,5 +1,5 @@
 <?php
-    
+    include '../models/classLivro.php';
 ?>
 
 <!DOCTYPE html>
