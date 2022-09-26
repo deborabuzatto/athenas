@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+    $_SESSION['nome_aluno'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -64,7 +69,7 @@
                     <div class="home-opcoes">
                         <div><a href="livrosAluno.php">Todas as obras</a></div>
                         <div><a href="rankingPage.php">Rangink de avaliações</a></div>
-                        <div><a href="historicoAlunoPage.html">Meu histórico</a></div>
+                        <div><a href="historicoAlunoPage.php">Meu histórico</a></div>
                         <div><a href="meuperfil.html">Meus dados</a></div>
                         <p class="sair"><a href="logout.php">Sair</a></p>
                     </div>

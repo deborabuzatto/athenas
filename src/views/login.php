@@ -74,20 +74,20 @@
                         ?>
                         <div class="mb-3">
                             <label for="nomeContato" class="form-label">Usuário:</label>
-                            <input type="text" class="form-control" id="nomeContato" aria-describedby="emailHelp" name="usuario">
+                            <input type="text" class="form-control" id="nomeContato" aria-describedby="emailHelp" name="email" required>
                         </div>
 
                         <div class="mb-3">
                             <label for="senhaLogin" class="form-label">Senha:</label>
-                            <input type="password" class="form-control" id="senhaLogin" name="senha">
+                            <input type="password" class="form-control" id="senhaLogin" name="senha" required>
                         </div>
 
                         <div class="mb-3">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="bibliotecario">
+                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="bibliotecario" >
                             <label class="form-check-label" for="exampleCheck1">Acessar como bibliotecário</label>
                         </div>
 
-                        <button type="submit" class="btn btn-primary"><a href="homeAluno.html">Acessar</a></button>
+                        <button type="submit" class="btn btn-primary" name="btn-login">ACESSAR</button>
                     </form>
                 </div>
             </div>

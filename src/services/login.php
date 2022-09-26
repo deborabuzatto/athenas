@@ -1,22 +1,20 @@
 <?php
     include("../models/classAluno.php");
-  
+    session_start();
     try {
-        if($_SERVER["REQUEST_METHOD"] == "POST"){
+        if(isset($_POST['btn-login'])){
             $aluno = new Aluno();
             
             $email = filter_var($_POST['email'], FILTER_SANITIZE_STRING);
             $senha = filter_var($_POST['senha'], FILTER_SANITIZE_STRING);
-            $aq = filter_var($_POST['senha'], FILTER_SANITIZE_STRING);
 
-            $senhadgt = $_POST['senha'];
-            $cripto = md5($senhadgt);
+            $cripto = md5($senha);
 
             $aluno->setEmail($email);
             $aluno->setSenha($senha);
 
             $consulta = $aluno->login();
-            if (count($consulta) > 0) {
+            if ($consulta) {
                 $id = $consulta["codigo_pessoa"];
                 $email = $consulta["email"];
                 $password = $consulta["senha"];
@@ -32,15 +30,15 @@
                         header("Location: ../views/login.php");
                         exit();
                     }
-                exit();
+             
                 }else{
                     $_SESSION['aluno'] = true;
-                    $_SESSION['nome_aluno'] = $usuario;
+                    $_SESSION['nome_aluno'] = $id;
                     header("Location: ../views/homeAlunos.php");
                     exit();
 
                 }
-            exit(); 
+      
             }else{
                 $_SESSION['nao_autenticado'] = true;
                 header("Location: ../views/login.php");

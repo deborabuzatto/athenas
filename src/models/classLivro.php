@@ -67,7 +67,7 @@
 
         public function listarTodosDadosLivro($id){
             //LISTAGEM ÚTIL
-			$sql = "select distinct li.titulo, li.sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
+			$sql = "select distinct li.codigo_livro, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
             autor.nome, cat.dsc_categoria, autor.nacionalidade, lpa.qtd_estrelas from livro as li
             join editora as ed on (li.FK_editora_codigo_edit = ed.codigo_edit)
             join livro_pessoa_avalia as lpa on (lpa.FK_livro_codigo_livro = li.codigo_livro)
@@ -104,7 +104,7 @@
         }
 
         public function listarHistorico($id_pessoa){
-            $sql="select distinct li.titulo, li.sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, 
+            $sql="select distinct li.titulo, SUBSTRING(li.sinopse from 1 for 100) as sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, 
             li.qtd_paginas, ed.nome as editora, autor.nome, cat.dsc_categoria, autor.nacionalidade, lpa.qtd_estrelas, pes.nome as aluno, locado.data_entrega
             from livro_pessoa_loca as locado
             join livro as li on (li.codigo_livro = locado.FK_LIVRO_codigo_livro)
@@ -117,7 +117,7 @@
             join autor on (la.FK_autor_codigo_autor = autor.codigo_autor) 
             where pes.codigo_pessoa = :codigo_pessoa";
 			$stmt = Database::prepare($sql);	
-			$stmt->bindParam(':codigo_livro', $id_pessoa);
+			$stmt->bindParam(':codigo_pessoa', $id_pessoa);
 			$stmt->execute();
 
 			return $stmt->fetchAll(PDO::FETCH_BOTH );
@@ -178,15 +178,19 @@
         }
 
         public function inserirAvaliacoes($codigo_livro, $codigo_pessoa,  $nota, $dsc_comentario){
-            $sql = "INSERT INTO livro_pessoa_avalia (FK_pessoa_codigo_pessoa, FK_livro_codigo_livro, qtd_estrelas) VALUES (:codigo_livro,:codigo_pessoa,:nota); INSERT INTO comentario (':dsc_comentario')";
+            $sql = "INSERT INTO livro_pessoa_avalia (FK_pessoa_codigo_pessoa, FK_livro_codigo_livro, qtd_estrelas) VALUES (:codigo_pessoa,:codigo_livro,:nota);";
 			$stmt = Database::prepare($sql);	
-			$stmt->bindParam(':codigo_livro', $codigo_livro);
             $stmt->bindParam(':codigo_pessoa', $codigo_pessoa);
+			$stmt->bindParam(':codigo_livro', $codigo_livro);
             $stmt->bindParam(':nota', $nota);
-            $stmt->bindParam(':dsc_comentario', $dsc_comentario);
 			$stmt->execute();
 
-			return $stmt->fetchAll(PDO::FETCH_BOTH );
+            $sql1 = "INSERT INTO comentario (dsc_comentario) VALUES (:dsc_comentario)";
+			$stmt1 = Database::prepare($sql1);
+            $stmt1->bindParam(':dsc_comentario', $dsc_comentario);
+			$stmt1->execute();
+
+			return true;
         }
 
 

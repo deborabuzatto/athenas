@@ -1,5 +1,9 @@
 <?php
     include '../models/classLivro.php';
+    session_start();
+//Iniciar  Sessão
+echo $_SESSION['nome_aluno'];
+
 ?>
 
 <!DOCTYPE html>
@@ -56,10 +60,10 @@
             </div>
 
             <?php 
-                    $livro = new Livro();
-                    $busca = $livro->listarTodosDadosLivro(1);
-                    if(count($busca)>0):
-                        foreach($busca as $dados){
+                $livro = new Livro();
+                $busca = $livro->listarTodosDadosLivro(2);
+                if(count($busca)>0):
+                    foreach($busca as $dados){
             ?>
 
             
@@ -73,7 +77,8 @@
                         
                         <p><span>Autor:</span><?php echo $dados['nome'];?></p>
                         <p><span>Editora:</span><?php echo $dados['titulo'];?></p>
-                        <p><span>ISBN:</span><?php echo $dados['sinopse'];?></p>
+                        <p><span>ISBN:</span><?php echo $dados['ISBN'];?></p>
+                        <p><span>Sinopse:</span><?php echo $dados['sinopse'];?></p>
 
                     </div>
                     
@@ -84,12 +89,12 @@
                         <div class="input-textarea mb-3">
                             <label for="textArea" class="form-label">Descreva sua experiência:</label>
                             <textarea type="text" class="form-control" id="dsc_comentario" name="dsc_comentario" placeholder="máximo de 250 caracteres"></textarea>
-                            <input type="text" id="dsc_comentario" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>" >
+                            <input type="hidden" id="dsc_comentario" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>" >
                         </div>
 
                         <div class="input-nomes">
                             <label for="nomeContato" class="form-label">Nota:</label>
-                            <input type="number" class="form-control" id="nota" name="nota" placeholder="avalie de 1 à 5">                        
+                            <input type="text" class="form-control" id="nota" name="nota" placeholder="avalie de 1 à 5">                        
                         </div>
                         <div class="btn-conclui-cadastro">
                             <button class="btn btn-pesquisa-bibliotecario" name='btn_avalia'>Concluir Avaliação</button>
@@ -99,9 +104,8 @@
 
 
                 <?php 
-                    }
-                    endif;
-                //endif;
+                }
+                endif; 
                 ?>
 
                 <div class="link-avaliacoes">
@@ -110,11 +114,11 @@
             </div>
 
             <?php 
-                if(isset($_POST['btn-avaliar'])):
-                    $id = $_POST['input_hidden'];
+                //if(isset($_POST['btn-avaliar'])):
+                    //$id = $_POST['input_hidden'];
                     
                     $livro = new Livro();
-                    $busca = $livro->listarAvaliacoes($id);
+                    $busca = $livro->listarAvaliacoes(2);
                     if(count($busca)>0):
                         foreach($busca as $dados){
             ?>
@@ -133,13 +137,11 @@
             </div>
 
             <?php 
-                    }
-                endif;
+            }
             endif;
             ?>
 
             <?php
-            
                 include '../components/footer.php'
             ?>
 

@@ -1,24 +1,16 @@
-<<<<<<< HEAD
+
 <?php 
-    require("../models/classAluno.php");
-    $aluno = new Aluno();
+    
+    require("../models/classConexao.php");
 
-    $usuarios = $aluno->findAll();
+    $sql = "SELECT * FROM comentario";
+    $stmt = Database::prepare($sql);
+    $stmt->execute();
+    $resp = $stmt->fetchAll();
 
-    foreach($usuarios as $user) {
-        print_r($user);
-        echo "\n";
+    foreach($resp as $x) {
+        print_r($x);
+        echo "<br>";
     }
-=======
-<?php 
-    require("../models/classAluno.php");
-    $aluno = new Aluno();
 
-    $usuarios = $aluno->findAll();
-
-    foreach($usuarios as $user) {
-        print_r($user);
-        echo "\n";
-    }
->>>>>>> af50a1e83a6d2eb1b31808fbf6dcefefb25e51cb
 ?>

@@ -1,3 +1,10 @@
+<?php
+    include '../models/classLivro.php';
+    session_start();
+    $aluno = $_SESSION['nome_aluno'];
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -54,7 +61,7 @@
             <div class="conteudo-livro-page">
                 <?php
                     $historico = new Livro();
-                    $busca = $historico->listarHistorico($id_pessoa);
+                    $busca = $historico->listarHistorico($aluno);
                     if(count($busca)>0){
                         foreach($busca as $dados){
                 ?>

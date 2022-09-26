@@ -3,12 +3,10 @@
 include '../models/classLivro.php';
 
 session_start();
-//Iniciar  Sessão
-if ($_SESSION['aluno']) {
-	$aluno = $_SESSION['nome_aluno'];
-}
+$aluno = $_SESSION['nome_aluno'];
 
-if(isset($_POST['btn-avalia'])):
+
+if(isset($_POST['btn_avalia'])):
 
 	$codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
 	$nota = filter_var($_POST['nota'], FILTER_SANITIZE_STRING);
@@ -17,7 +15,7 @@ if(isset($_POST['btn-avalia'])):
 	// inserindo os dados do livro na tabela livro
 	$livro = new Livro();	
 	$inserir = $livro->inserirAvaliacoes($codigo_livro, $aluno, $nota, $dsc_comentario);
-
+	print_r($inserir);
 	if($inserir){
 		$_SESSION['mensagem'] = "Cadastro com sucesso!";
 		header('Location: ../views/avaliarLivro.php');
