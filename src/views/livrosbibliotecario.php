@@ -1,5 +1,5 @@
 <?php 
-//Classe Aluno
+//Classe Livro
 include '../models/classLivro.php';
 session_start();
 ?>
@@ -140,12 +140,12 @@ session_start();
 
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
 
-                            <form method="post" action="modalInformacoes.php">
+                            <form method="post" action='modalInformacoes.php'>
                                 <input type="hidden" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>">
-                                <button type="submit" class="informacoes btn btn-icone-table" data-bs-toggle="modal" 
+                                <button class="informacoes btn btn-icone-table" data-bs-toggle="modal" 
                                 data-bs-target="#informacoes"><i class="fa fa-file-lines"></i></button>
                             </form>
-
+                    
                             <!--     FAZER O FORMULARIO ACIMA PARA OS OUTROS BOTÕES ABAIXO      --> 
 
                             <a href="#editar" class=" editar btn btn-icone-table" data-bs-toggle="modal" data-bs-target="#editar" data-ida="<?php echo $dados['codigo_livro'];?>"><i class="fa fa-pen"></i></a> 
@@ -214,7 +214,7 @@ session_start();
             ?>
 
         </div>
-            <!-- Modal -->
+            <!-- Modal 
             <div class="modal fade" id="informacoes" tabindex="-1" aria-text="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
@@ -247,21 +247,18 @@ session_start();
                         
                     </div>
                 </div>
-            </div>
+            </div>-->
         
-        <script type="text/javascript">
-            /*$('.informacoes').on('click', function(event){
-                event.preventDefault();
-                $('#informacoes').modal;
-                var id = $(this).data('cod');  // vamos buscar o valor do atributo data-id
-                $('#infoHidden').val(id); // atribui o id ao input hidden
+    
 
-                var input1 = $('#2').val();
+        <script>
+           $('.informacoes').on('click', function(){
+                $('#informacoes').modal('show');
+            });
+                /*var input1 = $('#2').val();
                 console.log(input1);
 
-*/
-
-                /*var chamado = $("#infoHidden").val();
+                var chamado = $("#infoHidden").val();
                 $.post(
                     '#formID', {
                     type: 'POST',
@@ -273,9 +270,9 @@ session_start();
                         console.log(chamado);
                         alert('Post realizado');
                     },
-                });*/
-            //});
-            /*$('.editar').on('click', function(){
+                });
+            });
+            $('.editar').on('click', function(){
                 var id = $(this).data('ida'); // vamos buscar o valor do atributo data-id
                 var nome = $(this).data('nome');
                 var username = $(this).data('username');
