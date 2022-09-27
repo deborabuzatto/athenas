@@ -1,3 +1,8 @@
+<?php 
+    session_start();
+    $_SESSION['nome_aluno'];
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -37,12 +42,14 @@
         <div class="tela">
             
             <div class="nav-login">
-                <div class="nav-link-item">
-                    <a href="index.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                <div class="page-item-topo">
+                    <p>Você está vendo a:</p><a href="#">Página Inicial</a>
+
                 </div>
 
                 <div class="page-info-name">
-                    <p>Você está na página:</p><a href="#">Cadastro de alunos</a>
+                    <i class="fa fa-gear"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </div>
 
                 <div class="nav-login-menu">
@@ -51,71 +58,32 @@
                 </div>
             </div>
             
-            <div class="cadastrar-livro">
-                <form method="post" action="/src/services/cadastrarAluno.php">
-                    <div class="input-nomes">
-                        <label for="nomeContato" class="form-label">Nome completo:</label>
-                        <input type="text" class="form-control" id="nomeContato" name="nome">
+            <div class="home-div-conteudo">
+                <div class="home-div">
+                    <div class="home-pessoa">
+                        <div>
+                            <img src="/public/static/imagens/amoregelato.jpg">
+                        </div>
 
-                        <label for="nomeContato" class="form-label">Nome de usuário:</label>
-                        <input type="text" class="form-control" id="nomeContato" name="username">
-                    
-                        <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                        <input type="date" class="form-control" id="senhaLogin" name="data_nasc"> 
+                        <h4>Bem vinda, Bibliotecario!</h4>
 
-                        <label for="senhaLogin" class="form-label">E-mail:</label>
-                        <input type="text" class="form-control" id="senhaLogin" name="email">
-                        
-                        <label for="nomeContato" class="form-label">Senha padrão:</label>
-                        <input type="text" class="form-control mb-0" id="nomeContato" name="senha" placeholder="biblioteca123" disabled>
-
-                        <p class="text-danger mb-5">Apenas o usuário pode alterar essa senha</p>
+                        <p class="w-75 m-auto mt-5 pt-5">
+                            O instituto agredece seus serviços, esperamos que esse sistema seja exatamente o que você procura para passar facilitar e te ajudar nesse trabalho, essa ferramenta foi excluxivamente pensada em você, faça bom uso!
+                        </p>
                     </div>
-
-                    <div class="btn-conclui-cadastro">
-                        <button type="submit" name="btn-cadastrar" class="btn btn-pesquisa-bibliotecario">Concluir Cadastro do Aluno</button>
-                    </div> 
-                    
-                </form>
-            </div>
-
-
-            <footer class="footer">
-
-                <div class="div-footer">
-                    <div>
-                        <img src="/public/static/imagens/athenas-preto-branco.png">
-                    </div>
-                    
-                    <div class="icon-footer">
-                        <a href="https://github.com/deborabuzatto" target="_blank">
-                            <i class="fa fa-github hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-linkedin hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-whatsapp hover-opacity"></i>
-                        </a>
-
-                        <a href="" target="_blank">
-                            <i class="fa fa-google hover-opacity"></i>
-                        </a>
-                        
-                    </div>
-
-                    <div>
-                        <a href="https://goo.gl/maps/zGGbKuK77NsXjuFe6" target="_blank">
-                            Av. Fernando Ferrari, 1080.<br> 
-                            Ed. Centro Empresarial, Torre Central, sala 604.<br>
-                            Mata da Praia. Vitória - ES, 29066-380
-                        </a>
+                    <div class="home-opcoes">
+                        <div><a href="alunosBibliotecario.php">Consultar Alunos</a></div>
+                        <div><a href="livrosbibliotecario.php">Consultar Livros</a></div>
+                        <div><a href="locacao.php">Locação</a></div>
+                        <div><a href="meuperfil.html">Ajuda</a></div>
+                        <p class="sair"><a href="logout.php">Sair</a></p>
                     </div>
                 </div>
+            </div>
 
-            </footer>
+            <?php
+                include '../components/footer.php';
+            ?>
         </div>
 
         <!-- Script FontAwesome -->

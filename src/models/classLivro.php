@@ -12,6 +12,10 @@
         private $sinopse;
         private $comentario;
         private $nota;
+        private $autor;
+        private $nacionalidade;
+        private $editora;
+        private $categoria;
 
         public function setISBN($ISBN){
             $this->ISBN = $ISBN;
@@ -49,6 +53,30 @@
         public function getnota(){
             return $this->nota;
         }
+        public function setautor($autor){
+            $this->autor = $autor;
+        }
+        public function getautor(){
+            return $this->autor;
+        }
+        public function setnacionalidade($nacionalidade){
+            $this->nacionalidade = $nacionalidade;
+        }
+        public function getnacionalidade(){
+            return $this->nacionalidade;
+        }
+        public function seteditora($editora){
+            $this->editora = $editora;
+        }
+        public function geteditora(){
+            return $this->editora;
+        }
+        public function setcategoria($categoria){
+            $this->categoria = $categoria;
+        }
+        public function getcategoria(){
+            return $this->categoria;
+        }
 
         
 
@@ -69,12 +97,12 @@
             //LISTAGEM ÚTIL
 			$sql = "select distinct li.codigo_livro, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
             autor.nome, cat.dsc_categoria, autor.nacionalidade, lpa.qtd_estrelas from livro as li
-            join editora as ed on (li.FK_editora_codigo_edit = ed.codigo_edit)
-            join livro_pessoa_avalia as lpa on (lpa.FK_livro_codigo_livro = li.codigo_livro)
-            join livro_categoria as lc on (li.codigo_livro = lc.FK_livro_codigo_livro)
-            join categoria as cat on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
-            join livro_autor as la on (li.codigo_livro = la.FK_autor_codigo_autor)
-            join autor on (la.FK_autor_codigo_autor = autor.codigo_autor) 
+            join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
+            join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
+            join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
+            join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
+            join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
+            join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor) 
             where li.codigo_livro = :codigo_livro";
 			$stmt = Database::prepare($sql);
             $stmt->bindParam(':codigo_livro', $id);		
@@ -107,14 +135,14 @@
             $sql="select distinct li.titulo, SUBSTRING(li.sinopse from 1 for 100) as sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, 
             li.qtd_paginas, ed.nome as editora, autor.nome, cat.dsc_categoria, autor.nacionalidade, lpa.qtd_estrelas, pes.nome as aluno, locado.data_entrega
             from livro_pessoa_loca as locado
-            join livro as li on (li.codigo_livro = locado.FK_LIVRO_codigo_livro)
-            join pessoa as pes on (pes.codigo_pessoa = locado.FK_pessoa_codigo_pessoa)
-            join editora as ed on (li.FK_editora_codigo_edit = ed.codigo_edit)
-            join livro_pessoa_avalia as lpa on (lpa.FK_livro_codigo_livro = li.codigo_livro)
-            join livro_categoria as lc on (li.codigo_livro = lc.FK_livro_codigo_livro)
-            join categoria as cat on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
-            join livro_autor as la on (li.codigo_livro = la.FK_autor_codigo_autor)
-            join autor on (la.FK_autor_codigo_autor = autor.codigo_autor) 
+            join livro as li                    on (li.codigo_livro = locado.FK_LIVRO_codigo_livro)
+            join pessoa as pes                  on (pes.codigo_pessoa = locado.FK_pessoa_codigo_pessoa)
+            join editora as ed                  on (li.FK_editora_codigo_edit = ed.codigo_edit)
+            join livro_pessoa_avalia as lpa     on (lpa.FK_livro_codigo_livro = li.codigo_livro)
+            join livro_categoria as lc          on (li.codigo_livro = lc.FK_livro_codigo_livro)
+            join categoria as cat               on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
+            join livro_autor as la              on (li.codigo_livro = la.FK_autor_codigo_autor)
+            join autor                          on (la.FK_autor_codigo_autor = autor.codigo_autor) 
             where pes.codigo_pessoa = :codigo_pessoa";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':codigo_pessoa', $id_pessoa);
@@ -130,52 +158,58 @@
 
 
         public function insert(){
-            $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse) returning codigo_livro";
+            //insere na tabela livro
+            $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse, FK_EDITORA_codigo_edit) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse, :FK_EDITORA_codigo_edit) returning codigo_livro";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':ISBN', $this->ISBN);
             $stmt->bindParam(':data_publicacao', $this->data_publicacao);
             $stmt->bindParam(':titulo', $this->titulo);
             $stmt->bindParam(':sinopse', $this->sinopse);
-
-            return $stmt->execute();
-        }
-        
-        public function insertCategoria($categoria){
-            $sql="SELECT dsc_categoria from categoria";
-            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':FK_EDITORA_codigo_edit', $this->$FK_EDITORA_codigo_edit);
             $stmt->execute();
 
-            $dados = $stmt->fetchAll(PDO::FETCH_BOTH );
+            //insere autor na tabela autor
+            $sql1="INSERT INTO autor (nome, nacionalidade) VALUES (:nome, :nacionalidade) returning codigo_autor";
+            $stmt1 = Database::prepare($sql1);
+            $stmt1->bindParam(':nome', $this->autor);
+            $stmt1->bindParam(':nacionalidade', $this->nacionalidade);
+            $stmt1->execute();
+
+            //associa o autor ao livro
+            $FK_LIVRO_codigo_livro = $stmt->fetch()["codigo_livro"]; //id do livro inserido agora
+            $FK_LIVRO_codigo_autor = $stmt1->fetch()["codigo_autor"]; //id do autor inserido agora
+            $sql2="INSERT INTO livro_autor (	FK_LIVRO_codigo_livro, FK_AUTOR_codigo_autor) VALUES (:FK_LIVRO_codigo_livro, :FK_AUTOR_codigo_autor)";
+            $stmt2 = Database::prepare($sql2);
+            $stmt2->bindParam(':FK_LIVRO_codigo_livro', $FK_LIVRO_codigo_livro);
+            $stmt2->bindParam(':FK_AUTOR_codigo_autor', $FK_LIVRO_codigo_autor);            
+            $stmt2->execute();
+
+            //insere editora
+            $sql3="INSERT INTO editora (nome) VALUES (:nome) returning codigo_edit";
+            $stmt3 = Database::prepare($sql3);
+            $stmt3->bindParam(':nome', $this->editora);
+            $stmt3->execute();
+            $FK_EDITORA_codigo_edit = $stmt3->fetch()["codigo_edit"];
+
+            //insere categoria
+            $sql4="SELECT dsc_categoria from categoria";
+            $stmt4 = Database::prepare($sql4);
+            $stmt4->execute();
+
+            $dados = $stmt4->fetchAll(PDO::FETCH_BOTH );
             foreach($dados as $cat){
-                if($cat === $categoria){
-                    return false;
+                if($cat === $this->categoria){
+                    
                 }
             }
 
-            $sql="INSERT INTO categoria (dsc_categoria) VALUES (:dsc_categoria) returning codigo_categoria";
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(':dsc_categoria', $categoria);
+            $sql5="INSERT INTO categoria (dsc_categoria) VALUES (:dsc_categoria) returning codigo_categoria";
+            $stmt5 = Database::prepare($sql5);
+            $stmt5->bindParam(':dsc_categoria', $this->categoria);
+            $stmt5->execute();
 
-            return $stmt->execute();
         }
 
-        public function insertAutor($nome, $nacionalidade){
-            $sql="INSERT INTO autor (nome, nacionalidade) VALUES (:nome, :nacionalidade) returning codigo_autor";
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(':nome', $this->nome);
-            $stmt->bindParam(':nacionalidade', $this->nacionalidade);
-            
-            return $stmt->execute();
-        }
-        
-        public function insertLivro_Autor($FK_LIVRO_codigo_livro, $FK_LIVRO_codigo_autor){
-            $sql="INSERT INTO livro_autor (	FK_LIVRO_codigo_livro, FK_AUTOR_codigo_autor) VALUES (:FK_LIVRO_codigo_livro, :FK_AUTOR_codigo_autor)";
-            $stmt = Database::prepare($sql);
-            $stmt->bindParam(':FK_LIVRO_codigo_livro', $FK_LIVRO_codigo_livro);
-            $stmt->bindParam(':FK_AUTOR_codigo_autor', $FK_LIVRO_codigo_autor);
-            
-            return $stmt->execute();
-        }
 
         public function inserirAvaliacoes($codigo_livro, $codigo_pessoa,  $nota, $dsc_comentario){
             $sql = "INSERT INTO livro_pessoa_avalia (FK_pessoa_codigo_pessoa, FK_livro_codigo_livro, qtd_estrelas) VALUES (:codigo_pessoa,:codigo_livro,:nota);";
