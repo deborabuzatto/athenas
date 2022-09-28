@@ -21,61 +21,6 @@ body{
     box-shadow: 0 0 0 0;
 }
 
-/*barra de navegação*/
-.div-nav{
-    width: 6%;
-    padding: 15px 0px 0px 20px;
-}
-
-.div-nav img{
-    width: 80px;
-    height: 60px;
-    margin-left: 50px;
-}
-.button img{
-    width: 80px;
-    height: 60px;
-    margin-left: 50px;
-}
-.navbar{
-    --bs-navbar-padding-y: 0rem;
-}
-.navbar-nav{
-    display: flex;
-    width: 40%;
-    padding-left: 80px;
-
-}
-.navbar-nav a{
-    text-decoration: none;
-    color: rgb(59, 7, 84);
-    font-size: 18px;
-    font-weight: 800;
-    margin: 10px;
-}
-.navbar{
-    border-bottom: 0.2em solid #4d1586;
-}
-.navbar a{
-    font-family: ubuntu;
-}
-.navbar-toggler{
-    margin-left: 80px;
-    margin-right: 380px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-}
-.navbar-toggler:focus{
-    box-shadow: none;
-}
-.btn-login{
-    border: 1px solid #c3c3c3;
-    border-radius: 20px;
-    margin-left: auto;
-    margin-right: 60px;
-    width: 150px;
-}
-
 /* conteudo index */
 .conteudo-index{
     width: 100%;

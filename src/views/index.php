@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         
     <link rel="stylesheet" href="/public/static/css/estilo.css">
+    <link rel="stylesheet" href="/public/static/css/style.css">
 
     <title>Athenas</title>
 </head>
@@ -108,6 +109,10 @@
             <p>Para implementar o sistema, entre em contato com os desenvolvedores através do formulário acima, informe o nome e o e-mail da instituição, assim como o motivo o papel social da instituição e aguarde contato.</p>
         </div>
       </div>
+
+      <?php
+        include '../components/footer.php';
+      ?>
 
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js"
     crossorigin="anonymous"></script>
