@@ -29,25 +29,23 @@ body{
 
 .div-nav img{
     width: 80px;
-    height: 70px;
+    height: 60px;
     margin-left: 50px;
 }
-
-.active{
-    border-bottom: 2px solid #5f6c9e
+.button img{
+    width: 80px;
+    height: 60px;
+    margin-left: 50px;
 }
-
 .navbar{
     --bs-navbar-padding-y: 0rem;
 }
-
 .navbar-nav{
     display: flex;
     width: 40%;
     padding-left: 80px;
 
 }
-
 .navbar-nav a{
     text-decoration: none;
     color: rgb(59, 7, 84);
@@ -55,78 +53,27 @@ body{
     font-weight: 800;
     margin: 10px;
 }
-
-.btn-login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    height: 91px;
-    margin-left: auto;
-    margin-right: 0px;
-    background-color: #7625c9;
-    border: 0.05em solid #7625c9;
-    animation-name: btnlogin;
-    animation-duration: 0.7s;
-    animation-delay: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: unset;
-}
-
-.btn-login a {
-    font-size: 36px;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 1px;
-    color: #e8e8e8;
-    text-decoration: none;
-    text-transform: uppercase;
-    display: flex;
-    animation-name: btnlogin1;
-    animation-duration: 0.7s;
-    animation-delay: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: unset;
-    width: 90px;
-}
-
-@keyframes btnlogin1{
-    0%{
-        width: 0px;
-    }
-
-    100%{
-        width: 90px;
-    }
-}
-
-@keyframes btnlogin{
-    0%{
-        width: 0px;
-    }
-
-    100%{
-        width: 300px;
-    }
-}
-
-.form-check-input:checked {
-    background-color: #7625c9;
-    border-color: #7625c9;
-}
-
-.form-check-input:focus {
-    border-color: #7625c9;
-    outline: 0;
-    box-shadow: 0 0 0 0;
-}
-
 .navbar{
-    box-shadow: 0 0 0.05em #000;
+    border-bottom: 0.2em solid #4d1586;
 }
-
+.navbar a{
+    font-family: ubuntu;
+}
 .navbar-toggler{
+    margin-left: 80px;
+    margin-right: 380px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.navbar-toggler:focus{
+    box-shadow: none;
+}
+.btn-login{
+    border: 1px solid #c3c3c3;
+    border-radius: 20px;
     margin-left: auto;
-    margin-right: 50px;
+    margin-right: 60px;
+    width: 150px;
 }
 
 /* conteudo index */
@@ -1138,6 +1085,7 @@ div .icon-footer {
         font-size: 10px;
         margin-bottom: 3px;
     }
+
 }
 
 @media  (max-width: 1000px) {
@@ -1199,5 +1147,16 @@ div .icon-footer {
     .table-conteudo .sinopse{
        font-size: 10px;
        margin-bottom: 3px;
+    }
+
+    .div-nav{
+        display: none;
+    }
+
+    .btn-login{
+        margin-top: 20px;
+        margin-bottom: 30px;
+        margin-left: 80px;
+        margin-right: auto;
     }
 }

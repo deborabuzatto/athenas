@@ -3,14 +3,11 @@
     
     require("../models/classConexao.php");
 
-    $sql = "SELECT * FROM comentario";
+    $sql = "INSERT INTO autor(nome, nacionalidade) VALUES ('aaa', 'brasil') returning codigo_autor";
     $stmt = Database::prepare($sql);
     $stmt->execute();
-    $resp = $stmt->fetchAll();
+    $codigoLivro = $stmt->fetch()["codigo_autor"];
 
-    foreach($resp as $x) {
-        print_r($x);
-        echo "<br>";
-    }
+    print_r($codigoLivro);
 
 ?>
