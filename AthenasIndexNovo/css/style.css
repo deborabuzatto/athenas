@@ -6,6 +6,7 @@
 .div-nav{
     width: 6%;
     padding: 15px 0px 0px 20px;
+    font-family: Poppins;
 }
 .div-nav img{
     width: 80px;
@@ -27,16 +28,27 @@
 }
 .navbar-nav a{
     text-decoration: none;
-    color: rgb(59, 7, 84);
+    color: #000;
     font-size: 18px;
     font-weight: 800;
     margin: 10px;
 }
+
+.navbar-nav a:hover {
+    text-decoration: none;
+    color: #a776d9;
+    opacity: 0.8;
+    font-size: 18px;
+}
+
 .navbar{
-    border-bottom: 0.2em solid #4D1586;
+    border-bottom: 0.16em solid #a776d9;
+    font-family: Poppins;
+    font-weight: 400;
 }
 .navbar a{
-    font-family: ubuntu;
+    font-family: Poppins;
+    font-weight: 400;
 }
 .navbar-toggler{
     margin-left: 80px;
@@ -48,11 +60,18 @@
     box-shadow: none;
 }
 .btn-login{
-    border: 1px solid #C3C3C3;
+    border: 1px solid #a776d9;
     border-radius: 20px;
     margin-left: auto;
     margin-right: 60px;
     width: 150px;
+    font-family: Poppins;
+}
+.btn-login:hover{
+    border: 1px solid #7625C9;
+}
+.btn-login:focus{
+    border: 1px solid #7625C9;
 }
 
 .centralizar-txt {
@@ -68,7 +87,7 @@
 
 .ball {
     animation: float 3.5s ease-in-out infinite;
-    margin-left: 180px;
+    margin-left: 100px;
     height: 110px;
     width: 110px;
     border-radius: 50%;
@@ -95,7 +114,7 @@
     background: #DB9EDF;
     width: 110px;
     height: 40px;
-    margin-left: 180px;
+    margin-left: 100px;
     animation: expand 3.5s infinite;
     position: absolute;
     border-radius: 50%;
@@ -161,8 +180,9 @@
     transition: all 0.3s ease-out;
     text-align: center;
 }
+
 .cartao:hover {
-    transform: translateY(-5px);
+    transform: translateY(-10px);
     cursor: pointer;
 }
 
@@ -199,10 +219,136 @@
     flex-direction: column;
 }
 
-.inputs input{
-    border-radius: 10px;
+input[type=text], textarea {
+    width: calc(60% - 20px);
+    padding: 10px;
     border: none;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+    border-radius: 10px;
+    box-shadow: inset 0 0 0 transparent, 0 0 0.3em #a776d9;
+    color: #000;
+    outline: 0;
+  }
+
+  .wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .button {
+    width: 180px;
+    height: 50px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 16px;
+    font-family: Poppins;
+    letter-spacing: 1px;
+    font-weight: 400;
+    color: #f2f2f2;
+    background: #a776d9;
+    border: none;
+    border-radius: 20px;
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 10px;
+    box-shadow: inset 0 0 0 transparent, 0 0 0.3em #000;
+    margin-bottom: 30px;
 }
+  
+  .button:hover, .button:focus {
+    color: #fff;
+    transform: scale(0.9);
+  }
+  
+  .button::after {
+    content: '';
+    width: 30px; height: 30px;
+    border-radius: 100%;
+    border: 6px solid #a776d9;
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: ring 1.5s infinite;
+  }
+  
+  button:hover::after, button:focus::after {
+    animation: none;
+    display: none;
+  }
+  
+  @keyframes ring {
+    0% {
+      width: 30px;
+      height: 30px;
+      opacity: 1;
+    }
+    100% {
+      width: 120px;
+      height: 120px;
+      opacity: 0;
+    }
+  }
+
+
+.align-solicitar {
+    display: flex;
+    justify-content: center;
+    margin: 50px;
+}
+  
+.solicitar {
+    width: calc(70% - 20px);
+    height: 200px;
+    background-color: #a776d9;
+    border-radius: 20px 0 20px 0;
+}
+
+.solicitar p{
+    color: #fff;
+    font-size: 16px;
+    font-family: Poppins;
+    font-weight: 400;
+    padding: 20px;
+    text-align: center;
+    margin-top: 3%;
+}
+
+@media  (max-width: 1380px) {
+    .div-nav{
+        display: none;
+    }
+    .btn-login{
+        margin-top: 20px;
+        margin-bottom: 30px;
+        margin-left: 80px;
+    }
+    .ball {
+        display: none;
+    }
+    .shadow {
+        display: none;
+    }
+
+    .centralizar-txt h1 {
+        font-size: 25px;
+    }
+
+    .alinhar-p p{
+        font-size: 18px;
+    }
+
+    .img-bg img {
+        width: calc(80% - 20px);
+     }
+}
+  
 
 
 
