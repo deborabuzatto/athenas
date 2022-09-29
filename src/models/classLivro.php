@@ -158,6 +158,13 @@
 
 
         public function insert(){
+            //insere editora
+            $sql3="INSERT INTO editora (nome) VALUES (:nome) returning codigo_edit";
+            $stmt3 = Database::prepare($sql3);
+            $stmt3->bindParam(':nome', $this->editora);
+            $stmt3->execute();
+            $FK_EDITORA_codigo_edit = $stmt3->fetch()["codigo_edit"];
+            
             //insere na tabela livro
             $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse, FK_EDITORA_codigo_edit) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse, :FK_EDITORA_codigo_edit) returning codigo_livro";
             $stmt = Database::prepare($sql);
@@ -165,7 +172,7 @@
             $stmt->bindParam(':data_publicacao', $this->data_publicacao);
             $stmt->bindParam(':titulo', $this->titulo);
             $stmt->bindParam(':sinopse', $this->sinopse);
-            $stmt->bindParam(':FK_EDITORA_codigo_edit', $this->$FK_EDITORA_codigo_edit);
+            $stmt->bindParam(':FK_EDITORA_codigo_edit', $FK_EDITORA_codigo_edit);
             $stmt->execute();
 
             //insere autor na tabela autor
@@ -178,36 +185,19 @@
             //associa o autor ao livro
             $FK_LIVRO_codigo_livro = $stmt->fetch()["codigo_livro"]; //id do livro inserido agora
             $FK_LIVRO_codigo_autor = $stmt1->fetch()["codigo_autor"]; //id do autor inserido agora
-            $sql2="INSERT INTO livro_autor (	FK_LIVRO_codigo_livro, FK_AUTOR_codigo_autor) VALUES (:FK_LIVRO_codigo_livro, :FK_AUTOR_codigo_autor)";
+            $sql2="INSERT INTO livro_autor (FK_LIVRO_codigo_livro, FK_AUTOR_codigo_autor) VALUES (:FK_LIVRO_codigo_livro, :FK_AUTOR_codigo_autor)";
             $stmt2 = Database::prepare($sql2);
             $stmt2->bindParam(':FK_LIVRO_codigo_livro', $FK_LIVRO_codigo_livro);
             $stmt2->bindParam(':FK_AUTOR_codigo_autor', $FK_LIVRO_codigo_autor);            
             $stmt2->execute();
 
-            //insere editora
-            $sql3="INSERT INTO editora (nome) VALUES (:nome) returning codigo_edit";
-            $stmt3 = Database::prepare($sql3);
-            $stmt3->bindParam(':nome', $this->editora);
-            $stmt3->execute();
-            $FK_EDITORA_codigo_edit = $stmt3->fetch()["codigo_edit"];
-
-            //insere categoria
-            $sql4="SELECT dsc_categoria from categoria";
-            $stmt4 = Database::prepare($sql4);
-            $stmt4->execute();
-
-            $dados = $stmt4->fetchAll(PDO::FETCH_BOTH );
-            foreach($dados as $cat){
-                if($cat === $this->categoria){
-                    
-                }
-            }
-
-            $sql5="INSERT INTO categoria (dsc_categoria) VALUES (:dsc_categoria) returning codigo_categoria";
+            //associar a categoria selecionada ao livro
+            $sql5="INSERT INTO livro_categoria (FK_categoria_codigo_categoria, FK_livro_codigo_livro) VALUES (:FK_categoria_codigo_categoria, :FK_LIVRO_codigo_livro)";
             $stmt5 = Database::prepare($sql5);
-            $stmt5->bindParam(':dsc_categoria', $this->categoria);
+            $stmt5->bindParam(':FK_categoria_codigo_categoria', $this->categoria);
+            $stmt5->bindParam(':FK_LIVRO_codigo_livro', $FK_LIVRO_codigo_livro);
             $stmt5->execute();
-
+            
         }
 
 
@@ -242,26 +232,6 @@
         }
 
 
-        #########     FUNÇÕES INDEFINIDA    ###########
-
-        public function categoriaSelecionada($categoria, $FK_LIVRO_codigo_livro){
-            $sql="SELECT codigo_categoria from categoria";
-            $stmt = Database::prepare($sql);
-            $stmt->execute();
-            $dados = $stmt->fetchAll(PDO::FETCH_BOTH );
-            foreach($dados as $cat){
-                if($cat === $categoria){
-                    $sql="INSERT INTO livro_categoria (	FK_LIVRO_codigo_livro, FK_CATEGORIA_codigo_categoria) VALUES (:FK_LIVRO_codigo_livro, :FK_CATEGORIA_codigo_categoria)";
-                    $stmt = Database::prepare($sql);
-                    $stmt->bindParam(':FK_LIVRO_codigo_livro', $FK_LIVRO_codigo_livro);
-                    $stmt->bindParam(':FK_AUTOR_codigo_categoria', $cat);
-                    
-                    return $stmt->execute();
-                }
-            }
-        }
-
-
         #########     FUNÇÕES DE LISTAGEM ESPECÍFICA     ###########
 
         public function rankingNota(){
@@ -277,7 +247,7 @@
         }
 
         public function buscarLivro($pesquisar){
-			$sql="SELECT titulo, SUBSTRING(sinopse from 1 for 100) as sinopse  FROM livro WHERE titulo ILIKE :pesquisar";
+			$sql="SELECT codigo_livro, titulo, SUBSTRING(sinopse from 1 for 100) as sinopse  FROM livro WHERE titulo ILIKE :pesquisar";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':pesquisar', $pesquisar);
 			$stmt->execute();
@@ -285,8 +255,15 @@
 			return $stmt->fetchAll(PDO::FETCH_BOTH );
 		}
 
-        
-        
+        public function disponibilidade($codigo_livro){
+            $sql="select distinct codigo_livro, titulo, dsc_status from livro_pessoa_loca lpl 
+            join status_loca sl on(lpl.fk_status_loca_codigo_status=sl.codigo_status)
+            join livro li on(lpl.fk_livro_codigo_livro=li.codigo_livro) where codigo_livro = :codigo_livro and dsc_status = 'disponivel'";
+            $stmt = Database::prepare($sql);	
+			$stmt->bindParam(':codigo_livro', $codigo_livro);
+			$stmt->execute();
 
+            $stmt->rowCount();
+        }
     }
 ?>

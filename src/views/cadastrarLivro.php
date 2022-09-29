@@ -61,6 +61,9 @@
                     <div class="input-nomes">
                         <label for="titulo" class="form-label">Título:</label>
                         <input type="text" class="form-control" id="titulo" name="titulo">
+
+                        <label for="editora" class="form-label">Editora:</label>
+                        <input type="text" class="form-control" id="editora" name="editora">
                     
                         <label for="senhaLogin" class="form-label">Data de publicação:</label>
                         <input type="date" class="form-control" id="senhaLogin" name="data_publicacao"> 
@@ -92,12 +95,9 @@
                                 endif;
                             ?>
                         </select>
-                        
-                        <label for="addcategoria" class="form-label">addcategoria:</label>
-                        <input type="text" class="form-control " id="addcategoria" name="addcategoria">
 
                         <span>
-                            <button class="btn btn-pesquisa-bibliotecario" >Cadastrar categoria</button>
+                            <button class="btn btn-pesquisa-bibliotecario">Cadastrar categoria</button>
                         </span> 
                     </div>
                     

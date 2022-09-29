@@ -2,14 +2,9 @@
 //Classe Aluno
 include_once '../models/classAluno.php';
 session_start();
-if(isset($_SESSION['bibliotecario'])){
-    usset
-}
+
 
 ?>
-
-
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

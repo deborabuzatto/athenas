@@ -37,9 +37,9 @@
                 </li>
             </ul>
         </div>
-        <button class="btn-login btn grow_box" type="button">
+        <a href="/src/views/login.php" class="btn-login btn grow_box" type="button">
             <i class="fa fa-user"></i> Login
-        </button>
+        </a>
     </nav>
 
       <div class="centralizar-txt">
@@ -49,7 +49,7 @@
       </div>
 
       <div class="img-bg">
-        <img src="img/multidao-de-pessoas-de-diferentes-idades-e-racas_74855-5235-removebg-preview.png" alt="Pessoas">
+        <img src="/public/static/imagens/multidao-de-pessoas-de-diferentes-idades-e-racas_74855-5235-removebg-preview.png" alt="Pessoas">
       </div>
 
       <div class="conteudo-2 centralizar-txt">
@@ -87,7 +87,7 @@
       <div class="conteudo-3 centralizar-txt" id="contato">
         <h1 style="color: #7625C9; margin-bottom: 40px;">Contato com os desenvolvdedores</h1>
         <div class="inputs">
-            <form method="post" action="../services/action.php">
+            <form method="post" action="/src/services/action.php">
                 <div>
                     <input type="text" id="nome" name="nome" placeholder="Nome Completo" autocomplete="off" required>
                 </div>
@@ -111,7 +111,7 @@
       </div>
 
       <?php
-        include '../components/footer.php';
+        include '/src/components/footer.php';
       ?>
 
     <script src="https://kit.fontawesome.com/a9ac96b7ba.js"

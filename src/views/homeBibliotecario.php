@@ -75,7 +75,7 @@
                         <div><a href="alunosBibliotecario.php">Consultar Alunos</a></div>
                         <div><a href="livrosbibliotecario.php">Consultar Livros</a></div>
                         <div><a href="locacao.php">Locação</a></div>
-                        <div><a href="meuperfil.html">Ajuda</a></div>
+                        <div><a href="ajuda.php">Ajuda</a></div>
                         <p class="sair"><a href="logout.php">Sair</a></p>
                     </div>
                 </div>
