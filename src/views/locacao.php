@@ -1,8 +1,8 @@
+<!DOCTYPE html>
 <?php 
     include_once '../models/classLivro.php';
     include_once '../models/classAluno.php';
 ?>
-<!DOCTYPE html>
 <html lang="en">
     <head>
         <!-- Padrão -->
@@ -55,9 +55,12 @@
                 </div>
             </div>
 
-            
+            <form action="../services/locacao.php" method="POST">
+                <input name="codigo_livro" value="4">
+                <input name="codigo_pessoa" value="4">
+                <button name="btn-locar">enviar</button>
+            </form>
 
-            
             <?php 
                 //include '../components/footer.php'
             ?>

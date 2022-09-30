@@ -95,17 +95,6 @@ session_start();
                             <img src="/public/static/imagens/amoregelato.jpg">
                         </div>
                         <div class="table-conteudo">
-                            <?php
-                                $livro = new Livro();
-                                $codigo_livro = $dados['codigo_livro']; 
-                                print_r($dados['codigo_livro']);
-                                $livro->disponibilidade($codigo_livro);
-                                if($livro == null){
-                                    $disponibilidade = 'indisponivel';
-                                }else{
-                                    $disponibilidade = 'xxdisponivel';
-                                }
-                            ?>
                             <h4><?php echo $dados['titulo'];?></h4>
                             
                             <p class="disponibilidade"></p>
@@ -136,15 +125,18 @@ session_start();
                             <?php
                                 $livro = new Livro();
                                 $codigo_livro = $dados['codigo_livro']; 
-                                $arroz = $livro->disponibilidade($codigo_livro);
-                                if($arroz === 0){
-                                    $disponibilidade = 'disponivel';
-                                }else{
-                                    $disponibilidade = 'indisponivel';
-                                }
+                                $disponibilidade = $livro->disponibilidade($codigo_livro);
+                                if($disponibilidade['valor'] === "0"){
                             ?>
-                            <p class="disponibilidade"><?php echo $disponibilidade?></p>
-                            <p class="categoria">Romance</p>
+                                <p class="disponibilidade">Disponível</p>
+                            <?php
+                                } else{   
+                            ?>
+                                <p class="disponibilidade">Indisponível</p>
+                            <?php
+                            }
+                            ?>
+                                <p class="categoria">Romance</p>
 
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
                         </div>

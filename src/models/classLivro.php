@@ -231,6 +231,44 @@
             return $stmt->execute();
         }
 
+        public function locacao($codigo_livro, $codigo_pessoa){
+            //exibe se o livro está disponível ou não
+            $sql="select count(*) as valor from (select livro.codigo_livro,livro.titulo,pessoa.nome,status_loca.codigo_status,
+            lpl.data_locacao,lpl.data_entrega from livro_pessoa_loca lpl
+            join livro                       on(livro.codigo_livro = lpl.fk_livro_codigo_livro)
+            inner join pessoa                on (pessoa.codigo_pessoa = lpl.fk_pessoa_codigo_pessoa)
+            inner join status_loca           on status_loca.codigo_status = lpl.fk_status_loca_codigo_status
+            where livro.codigo_livro=:codigo_livro and status_loca.codigo_status=1) as teste";
+            $stmt = Database::prepare($sql);	
+            $stmt->bindParam(':codigo_livro', $codigo_livro);
+            $stmt->execute();
+            $dados = $stmt->fetch();
+
+            if($dados['valor'] === "0"){//disponivel, possivel locar, cria a locacao com status locado:
+                $sql1 = 'insert into livro_pessoa_loca 
+                (fk_livro_codigo_livro, fk_pessoa_codigo_pessoa, fk_status_loca_codigo_status)
+                values (:codigo_livro, :codigo_pessoa, 1)';
+                $stmt1 = Database::prepare($sql1);	
+                $stmt1->bindParam(':codigo_livro', $codigo_livro);
+                $stmt1->bindParam(':codigo_pessoa', $codigo_pessoa);
+                $stmt1->execute();
+
+                return true;
+            }
+            else{//se estiver locado, só é possível devolver, então muda o status para disponivel
+                $sql2 = 'update into livro_pessoa_loca 
+                set fk_status_loca_codigo_status = 2
+                where fk_livro_codigo_livro = :codigo_livro 
+                and fk_pessoa_codigo_pessoa = :codigo_pessoa;';
+                $stmt2 = Database::prepare($sql2);	
+                $stmt2->bindParam(':codigo_livro', $codigo_livro);
+                $stmt2->bindParam(':codigo_pessoa', $codigo_pessoa);
+                $stmt2->execute();
+
+                return false;
+            }
+        }
+
 
         #########     FUNÇÕES DE LISTAGEM ESPECÍFICA     ###########
 
@@ -256,14 +294,17 @@
 		}
 
         public function disponibilidade($codigo_livro){
-            $sql="select distinct codigo_livro, titulo, dsc_status from livro_pessoa_loca lpl 
-            join status_loca sl on(lpl.fk_status_loca_codigo_status=sl.codigo_status)
-            join livro li on(lpl.fk_livro_codigo_livro=li.codigo_livro) where codigo_livro = :codigo_livro and dsc_status = 'disponivel'";
+            //exibe se o livro está disponível ou não
+            $sql="select count(*) as valor from (select livro.codigo_livro,livro.titulo,pessoa.nome,status_loca.codigo_status,
+            lpl.data_locacao,lpl.data_entrega from livro_pessoa_loca lpl
+            join livro                       on(livro.codigo_livro = lpl.fk_livro_codigo_livro)
+            inner join pessoa                on (pessoa.codigo_pessoa = lpl.fk_pessoa_codigo_pessoa)
+            inner join status_loca           on status_loca.codigo_status = lpl.fk_status_loca_codigo_status
+            where livro.codigo_livro=:codigo_livro and status_loca.codigo_status=1) as teste";
             $stmt = Database::prepare($sql);	
-			$stmt->bindParam(':codigo_livro', $codigo_livro);
-			$stmt->execute();
-
-            $stmt->rowCount();
+            $stmt->bindParam(':codigo_livro', $codigo_livro);
+            $stmt->execute();
+            return $stmt->fetch();
         }
     }
 ?>
