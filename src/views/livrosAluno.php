@@ -36,11 +36,7 @@ session_start();
 
         <!--<script src="js/api.js"></script>-->
 
-        <script>
-            function info(){
-                alert ("oi")
-            }
-        </script>
+       
 
         <title>Teste 1</title>
     </head>
@@ -133,8 +129,8 @@ session_start();
                         foreach($imprimir as $dados){
                 ?>
 
-                <div class="table-livro-aluno" onclick='info()'>
-                    <div class="aa">
+                <div class="table-livro-aluno">
+                    <div>
                         <div>
                             <img src="/public/static/imagens/amoregelato.jpg">
                         </div>
@@ -154,6 +150,7 @@ session_start();
                             <?php
                             }
                             ?>
+                            <a href="avaliarLivro.php?id=<?php echo $dados['codigo_livro'];?>">avaliar</a>
                             <p class="categoria"><?php echo $dados['categoria'];?></p>
                             <p class="categoria"><?php echo $dados['nota'];?></p>
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
@@ -193,7 +190,7 @@ session_start();
         </div>
 
         
-
+        
         <!-- Script FontAwesome -->
         <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
 

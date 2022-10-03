@@ -1,8 +1,6 @@
 <?php
     include '../models/classLivro.php';
     session_start();
-//Iniciar  Sessão
-echo $_SESSION['nome_aluno'];
 
 ?>
 
