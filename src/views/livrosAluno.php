@@ -36,6 +36,12 @@ session_start();
 
         <!--<script src="js/api.js"></script>-->
 
+        <script>
+            function info(){
+                alert ("oi")
+            }
+        </script>
+
         <title>Teste 1</title>
     </head>
     <body>
@@ -96,13 +102,25 @@ session_start();
                         </div>
                         <div class="table-conteudo">
                             <h4><?php echo $dados['titulo'];?></h4>
-                            
-                            <p class="disponibilidade"></p>
-                            <p class="categoria">Romance</p>
-
-                            <p class="sinopse" ><?php echo $dados['sinopse'];?></p>
+                            <?php
+                                $livro = new Livro();
+                                $codigo_livro = $dados['codigo_livro']; 
+                                $disponibilidade = $livro->disponibilidade($codigo_livro);
+                                if($disponibilidade['valor'] === "0"){
+                            ?>
+                                <p class="disponibilidade">Disponível</p>
+                            <?php
+                                } else{   
+                            ?>
+                                <p class="disponibilidade">Indisponível</p>
+                            <?php
+                            }
+                            ?>
+                            <p class="categoria"><?php echo $dados['categoria'];?></p>
+                            <p class="categoria"><?php echo $dados['nota'];?></p>
+                            <p class="sinopse"><?php echo $dados['sinopse'];?></p>
                         </div>
-                    </div>                    
+                    </div>                      
                 </div>
                 
                 <?php
@@ -115,8 +133,8 @@ session_start();
                         foreach($imprimir as $dados){
                 ?>
 
-                <div class="table-livro-aluno">
-                    <div>
+                <div class="table-livro-aluno" onclick='info()'>
+                    <div class="aa">
                         <div>
                             <img src="/public/static/imagens/amoregelato.jpg">
                         </div>
@@ -136,8 +154,8 @@ session_start();
                             <?php
                             }
                             ?>
-                                <p class="categoria">Romance</p>
-
+                            <p class="categoria"><?php echo $dados['categoria'];?></p>
+                            <p class="categoria"><?php echo $dados['nota'];?></p>
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
                         </div>
                     </div>                    
@@ -173,6 +191,8 @@ session_start();
                 include '../components/footer.php'
             ?>
         </div>
+
+        
 
         <!-- Script FontAwesome -->
         <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>

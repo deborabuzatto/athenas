@@ -13,9 +13,9 @@ include '../models/classLivro.php';
         $acao = $loca->locacao($livro, $pessoa);
 
         if($acao){
-            header('Location: ../views/alunosBibliotecario.php');
+            header('Location: ../views/livrosBibliotecario.php');
         }else{
-            header('Location: login1.php');
+            header('Location: ../views/livrosBibliotecario.php');
         }
     }
 ?>

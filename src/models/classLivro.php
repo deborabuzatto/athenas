@@ -85,7 +85,13 @@
 
         public function findAllLivro(){
             //LISTAGEM PARA TABELA
-			$sql = "SELECT codigo_livro, titulo, SUBSTRING(sinopse from 1 for 100) as sinopse  FROM $this->table";
+			$sql = "SELECT codigo_livro, titulo, cat.dsc_categoria as categoria, trunc( AVG(lpa.qtd_estrelas),1) as nota,  SUBSTRING(sinopse from 1 for 100) as sinopse  
+            FROM livro as li 
+            full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
+            full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
+            full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
+            group by  codigo_livro,titulo,categoria,sinopse
+            ";
 			$stmt = Database::prepare($sql);			
 			$stmt->execute();
 			//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
@@ -95,15 +101,16 @@
 
         public function listarTodosDadosLivro($id){
             //LISTAGEM ÚTIL
-			$sql = "select distinct li.codigo_livro, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
-            autor.nome, cat.dsc_categoria, autor.nacionalidade, lpa.qtd_estrelas from livro as li
+			$sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
+            li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
+            autor.nome as autor, cat.dsc_categoria as categoria, autor.nacionalidade as nacao from livro as li
             join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
             join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
             join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
             join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
             join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
-            join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor) 
-            where li.codigo_livro = :codigo_livro";
+            join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
+            where li.codigo_livro = :codigo_livro group by  editora,codigo,autor,categoria,nacao";
 			$stmt = Database::prepare($sql);
             $stmt->bindParam(':codigo_livro', $id);		
 			$stmt->execute();
@@ -256,7 +263,7 @@
                 return true;
             }
             else{//se estiver locado, só é possível devolver, então muda o status para disponivel
-                $sql2 = 'update into livro_pessoa_loca 
+                $sql2 = 'update livro_pessoa_loca 
                 set fk_status_loca_codigo_status = 2
                 where fk_livro_codigo_livro = :codigo_livro 
                 and fk_pessoa_codigo_pessoa = :codigo_pessoa;';
@@ -265,7 +272,7 @@
                 $stmt2->bindParam(':codigo_pessoa', $codigo_pessoa);
                 $stmt2->execute();
 
-                return false;
+                return true;
             }
         }
 
@@ -285,7 +292,13 @@
         }
 
         public function buscarLivro($pesquisar){
-			$sql="SELECT codigo_livro, titulo, SUBSTRING(sinopse from 1 for 100) as sinopse  FROM livro WHERE titulo ILIKE :pesquisar";
+			$sql="SELECT codigo_livro, titulo, cat.dsc_categoria as categoria, trunc( AVG(lpa.qtd_estrelas),1) as nota,  SUBSTRING(sinopse from 1 for 100) as sinopse  
+            FROM livro as li 
+            full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
+            full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
+            full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
+            WHERE titulo ILIKE :pesquisar
+            group by  codigo_livro,titulo,categoria,sinopse";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':pesquisar', $pesquisar);
 			$stmt->execute();
@@ -306,5 +319,6 @@
             $stmt->execute();
             return $stmt->fetch();
         }
+
     }
 ?>
