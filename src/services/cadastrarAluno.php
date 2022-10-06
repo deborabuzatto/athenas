@@ -14,11 +14,14 @@ if(isset($_POST['btn-cadastrar'])):
 	$email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 	$data_nasc = filter_var($_POST['data_nasc'], FILTER_SANITIZE_NUMBER_INT);
 
+	$senha = md5('biblioteca123');
+
 	$aluno = new Aluno();	
 	$aluno->setNome($nome);
-	$aluno->setUsuario($username);
+	$aluno->setUsername($username);
 	$aluno->setEmail($email);
 	$aluno->setData_nasc($data_nasc);
+	$aluno->setSenha($senha);
 	
 	if($aluno->insert()):
 		$_SESSION['mensagem'] = "Cadastro com sucesso!";

@@ -13,7 +13,7 @@
 		
 		
 		public function  find($id){
-			$sql = "SELECT * FROM $this->table WHERE id = :id";
+			$sql = "SELECT * FROM $this->table WHERE codigo_pessoa = :id";
 			$stmt = Database::prepare($sql);
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			$stmt->execute();
@@ -28,13 +28,6 @@
 			//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
 			return $stmt->fetchAll(PDO::FETCH_BOTH );
 			
-		}
-		
-		public function delete($id){
-			$sql="DELETE FROM $this->table WHERE $this->id = :id";
-			$stmt = Database::prepare($sql);	
-			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
-			return $stmt->execute();
 		}
 
 		public function busca($pesquisar){

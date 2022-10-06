@@ -1,3 +1,8 @@
+<?php 
+include '../models/classAluno.php';
+session_start();
+$codigo_aluno = $_SESSION['nome_aluno'];
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -51,23 +56,29 @@
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
+            <?php
             
+                $aluno = new Aluno();
+                $imprimir = $aluno->find($codigo_aluno);
+                if($imprimir):
+                    
+            ?>
             <div class="cadastrar-livro">
                 <form>
                     <div class="input-nomes">
                         <label for="nomeContato" class="form-label">Nome completo:</label>
-                        <input type="text" class="form-control" id="nomeContato" disabled placeholder="Débora Buzatto">
+                        <input type="text" class="form-control" id="nomeContato" disabled value="<?php echo $imprimir['nome']?>">
                     
                         <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                        <input type="date" class="form-control" id="senhaLogin" disabled placeholder="24/10/2004" > 
+                        <input type="date" class="form-control" id="senhaLogin" disabled value="<?php echo $imprimir['data_nasc']?>" > 
 
                         <label for="nomeContato" class="form-label">E-mail:</label>
-                        <input type="text" class="form-control" id="nomeContato" placeholder="deborabuzatto27@gmail.com">
+                        <input type="text" class="form-control" id="nomeContato" value="<?php echo $imprimir['email']?>">
                     </div>
                     
                     <div class="input-selecionar">
                         <label for="nomeContato" class="form-label">Usuário:</label>
-                        <input type="text" class="form-control" id="nomeContato" placeholder="Debs">
+                        <input type="text" class="form-control" id="nomeContato" value="<?php echo $imprimir['username']?>">
 
                     </div>
 
@@ -77,11 +88,14 @@
                     </div>
 
                     <div class="btn-conclui-cadastro">
-                        <button class="btn btn-pesquisa-bibliotecario">Concluir Atualizações</button>
+                        <button class="btn btn-pesquisa-bibliotecario" name="btn-meuperfil">Concluir Atualizações</button>
                     </div> 
                     
                 </form>
             </div>
+            <?php
+                endif;
+            ?>
 
 
             <footer class="footer">

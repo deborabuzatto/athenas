@@ -14,7 +14,7 @@ if(isset($_POST['btn_avalia'])):
 	
 	if($inserir){
 		$_SESSION['mensagem'] = "Cadastro com sucesso!";
-		header('Location: ../views/avaliarLivro.php');
+		header('Location: ../views/livros.php');
 	}else{
 		$_SESSION['mensagem'] = "Erro ao executar função";
 	}

@@ -57,11 +57,15 @@
                 </div>
             </div>
 
+
             <?php 
-                $livro = new Livro();
-                $busca = $livro->listarTodosDadosLivro(2);
-                if(count($busca)>0):
-                    foreach($busca as $dados){
+                if(isset($_POST['avaliacoes'])){
+                    $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+                
+                    $livro = new Livro();
+                    $busca = $livro->listarTodosDadosLivro($codigo_livro);
+                    if(count($busca)>0):
+                        foreach($busca as $dados){
             ?>
 
             
@@ -73,9 +77,9 @@
                     <div class="dados-avaliar">
                         <h4><?php echo $dados['titulo'];?></h4>
                         
-                        <p><span>Autor:</span><?php echo $dados['nome'];?></p>
-                        <p><span>Editora:</span><?php echo $dados['titulo'];?></p>
-                        <p><span>ISBN:</span><?php echo $dados['ISBN'];?></p>
+                        <p><span>Autor:</span><?php echo $dados['autor'];?></p>
+                        <p><span>Editora:</span><?php echo $dados['editora'];?></p>
+                        <p><span>ISBN:</span><?php echo $dados['isbn'];?></p>
                         <p><span>Sinopse:</span><?php echo $dados['sinopse'];?></p>
 
                     </div>
@@ -103,7 +107,7 @@
 
                 <?php 
                 }
-                endif; 
+                endif; }
                 ?>
 
                 <div class="link-avaliacoes">
@@ -112,11 +116,11 @@
             </div>
 
             <?php 
-                //if(isset($_POST['btn-avaliar'])):
-                    //$id = $_POST['input_hidden'];
-                    
+                if(isset($_POST['avaliacoes'])){
+                    $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+                
                     $livro = new Livro();
-                    $busca = $livro->listarAvaliacoes(2);
+                    $busca = $livro->listarAvaliacoes($codigo_livro);
                     if(count($busca)>0):
                         foreach($busca as $dados){
             ?>
@@ -127,16 +131,16 @@
                         <img src="/public/static/imagens/amoregelato.jpg" style="border-radius: 100px; width: 70px; height: 70px;">
                     </div>
                     <div class="div-dados-avaliar">
-                        <h4><?php echo $dados['nome'];?></h4>
+                        <h4><?php echo $dados['pessoa'];?></h4>
                         <p><span>Nota:</span><?php echo $dados['nota'];?></p>
-                        <p><span>Opinião:</span>Livro péssimo, desinteressante até onde eu li, não consegui terminar, dá muito sono.</p>
+                        <p><span>Opinião:</span>aaaa</p>
                     </div>
                 </div>
             </div>
 
             <?php 
             }
-            endif;
+            endif;}
             ?>
 
             <?php

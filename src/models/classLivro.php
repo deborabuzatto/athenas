@@ -104,13 +104,14 @@
 			$sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
             li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
             autor.nome as autor, cat.dsc_categoria as categoria, autor.nacionalidade as nacao from livro as li
-            join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
-            join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
-            join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
-            join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
-            join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
-            join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
-            where li.codigo_livro = :codigo_livro group by  editora,codigo,autor,categoria,nacao";
+            full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
+            full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
+            full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
+            full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
+            full outer join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
+            full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
+			where codigo_livro = :codigo_livro
+            group by  editora,codigo,autor,categoria,nacao";
 			$stmt = Database::prepare($sql);
             $stmt->bindParam(':codigo_livro', $id);		
 			$stmt->execute();
@@ -128,9 +129,18 @@
         }
 
         public function listarAvaliacoes($id){
-            $sql="select distinct li.titulo, ps.nome, lpa.qtd_estrelas as nota from livro_pessoa_avalia as lpa 
-            join livro as li on(lpa.FK_livro_codigo_livro = li.codigo_livro) 
-            join pessoa as ps on (lpa.FK_pessoa_codigo_pessoa = ps.codigo_pessoa) where codigo_livro = :codigo_livro";
+            $sql="select trunc( AVG(lpa.qtd_estrelas),0) as nota, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
+            li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, pes.nome as pessoa,
+            autor.nome as autor, cat.dsc_categoria as categoria, autor.nacionalidade as nacao from livro as li
+            full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
+            join livro_pessoa_avalia as lpa                    on (lpa.FK_livro_codigo_livro = li.codigo_livro)
+            full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
+            full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
+            full outer join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
+            full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
+            full outer join pessoa as pes                      on (lpa.FK_pessoa_codigo_pessoa = pes.codigo_pessoa)
+			where lpa.FK_livro_codigo_livro = :codigo_livro
+            group by  editora,codigo,autor,categoria,nacao,pessoa";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':codigo_livro', $id);
 			$stmt->execute();
