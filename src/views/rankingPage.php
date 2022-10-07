@@ -154,8 +154,8 @@ session_start();
                             <?php
                             }
                             ?>
-                            <p class="categoria"><?php echo $dados['categoria'];?></p>
-                            <p class="categoria"><?php echo $dados['nota'];?></p>
+                            <p class="categoria"><?php// echo $dados['categoria'];?> Categoria</p>
+                            <p class="categoria"><?php// echo $dados['nota'];?>0.0</p>
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
                             <i class="fa fa-book"></i>
