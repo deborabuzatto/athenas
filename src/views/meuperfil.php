@@ -64,31 +64,32 @@ $codigo_aluno = $_SESSION['nome_aluno'];
                     
             ?>
             <div class="cadastrar-livro">
-                <form>
+                <form  method="POST" action="../services/meuperfil.php">
+                    <input type='hidden' class="form-control" name="codigo_pessoa" value="<?php echo $imprimir['codigo_pessoa']?>">
                     <div class="input-nomes">
                         <label for="nomeContato" class="form-label">Nome completo:</label>
-                        <input type="text" class="form-control" id="nomeContato" disabled value="<?php echo $imprimir['nome']?>">
+                        <input class="form-control" name="nome"  disabled value="<?php echo $imprimir['nome']?>">
                     
                         <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                        <input type="date" class="form-control" id="senhaLogin" disabled value="<?php echo $imprimir['data_nasc']?>" > 
+                        <input type="date" class="form-control" name="data_nasc" disabled value="<?php echo $imprimir['data_nasc']?>" > 
 
                         <label for="nomeContato" class="form-label">E-mail:</label>
-                        <input type="text" class="form-control" id="nomeContato" value="<?php echo $imprimir['email']?>">
+                        <input class="form-control" name="email" value="<?php echo $imprimir['email']?>">
                     </div>
                     
                     <div class="input-selecionar">
                         <label for="nomeContato" class="form-label">Usuário:</label>
-                        <input type="text" class="form-control" id="nomeContato" value="<?php echo $imprimir['username']?>">
+                        <input class="form-control" name="username" value="<?php echo $imprimir['username']?>">
 
                     </div>
 
                     <div class="input-nomes">
                         <label for="senhaLogin" class="form-label">Importar foto:</label>
-                        <input type="file" class="form-control" id="nomeContato" placeholder="Imagem da capa">
+                        <input type="file" class="form-control" id="img-pessoa" name="img-pessoa" placeholder="Imagem da capa">
                     </div>
 
                     <div class="btn-conclui-cadastro">
-                        <button class="btn btn-pesquisa-bibliotecario" name="btn-meuperfil">Concluir Atualizações</button>
+                        <button class="btn btn-pesquisa-bibliotecario" name="btn-editar">Concluir Atualizações</button>
                     </div> 
                     
                 </form>

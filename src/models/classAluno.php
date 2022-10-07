@@ -44,15 +44,6 @@
             return $this->senha;
         }
         
-
-        /*function __construct($name, $usuario, $email, $data_nasc, $senha) {
-            $this->name = $name;
-            $this->usuario = $usuario;
-            $this->email = $email;
-            $this->data_nasc = $data_nasc;
-            $this->senha = $senha;
-        }*/
-
         public function login() {
             $sql = "SELECT * FROM pessoa WHERE email = :email and senha = :senha";
             $stmt = Database::prepare($sql);
@@ -82,6 +73,16 @@
             $stmt->bindParam(':username', $this->username);
             $stmt->bindParam(':email', $this->email);
             $stmt->bindParam(':data_nasc', $this->data_nasc);
+            $stmt->bindParam(':id', $id);
+
+            return $stmt->execute();
+        }
+
+        public function update_perfil($id){
+            $sql="UPDATE pessoa SET username = :username, email = :email  WHERE codigo_pessoa = :id";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':username', $this->username);
+            $stmt->bindParam(':email', $this->email);
             $stmt->bindParam(':id', $id);
 
             return $stmt->execute();
