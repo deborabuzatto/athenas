@@ -15,7 +15,7 @@ session_start();
         <div class="tela">
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="home.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
@@ -157,7 +157,7 @@ session_start();
                             </div>
                             <div class="modal-footer btn-conclui-cadastro" >
                                 <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
-                                <form action="../views/avaliarLivro.php" method="POST">
+                                <form action="/src/views/aluno/avaliarLivro.php" method="POST">
                                     <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
                                     <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes">Avaliações</button>
                                 </form>

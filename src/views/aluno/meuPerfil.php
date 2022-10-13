@@ -11,7 +11,7 @@
         <div class="tela">
             <div class="nav-login">
                 <div>
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="home.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
                 <div class="nav-login-menu">
                     <img src="imagens/athenas.png">
@@ -21,7 +21,7 @@
             
             <div class="login">
                 <div class="form-login-page">
-                    <form>
+                    <form action="/src/services/meuperfil.php" method="POST">
                         <div class="mb-3">
                             <label for="nomeContato" class="form-label">Nome Completo :</label>
                             <input type="text" class="form-control" id="nomeContato" disabled placeholder="Edição não permitida">

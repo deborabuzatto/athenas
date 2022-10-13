@@ -38,7 +38,7 @@
             
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="home.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
@@ -52,7 +52,7 @@
             </div>
             
             <div class="cadastrar-livro alterar-senha">
-                <form>
+                <form action="/src/services/meuperfil.php" method="POST">
                     <div class="input-nomes">
                         <label for="nomeContato" class="form-label">Senha padrão ou atual:</label>
                         <input type="password" class="form-control" id="nomeContato">

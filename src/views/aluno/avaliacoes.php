@@ -18,7 +18,7 @@
             
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="home.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
@@ -61,7 +61,7 @@
                 </div>
                 
                 <div class="form-avalia">
-                    <form method='post' action='../services/avaliarLivro.php'>
+                    <form method='post' action='/src/services/avaliarLivro.php'>
                         <div class="input-textarea mb-3">
                             <label for="textArea" class="form-label">Descreva sua experiência:</label>
                             <textarea type="text" class="form-control" id="dsc_comentario" name="dsc_comentario" placeholder="máximo de 250 caracteres"></textarea>
