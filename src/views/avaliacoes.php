@@ -1,5 +1,5 @@
 <?php
-    include '/src/models/classLivro.php';
+    include '../models/classLivro.php';
     session_start();
 
 ?>
@@ -8,7 +8,7 @@
 <html lang="en">
     <head>
         <?php
-            include '/src/components/header.php';
+            include '../components/header.php';
         ?>
 
         <title>VER AVALIAÇÕES</title>
@@ -18,7 +18,7 @@
             
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="home.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
@@ -59,26 +59,7 @@
                     </div>
                     
                 </div>
-                
-                <div class="form-avalia">
-                    <form method='post' action='/src/services/avaliarLivro.php'>
-                        <div class="input-textarea mb-3">
-                            <label for="textArea" class="form-label">Descreva sua experiência:</label>
-                            <textarea type="text" class="form-control" id="dsc_comentario" name="dsc_comentario" placeholder="máximo de 250 caracteres"></textarea>
-                            <input type="hidden" id="dsc_comentario" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>" >
-                        </div>
-
-                        <div class="input-nomes">
-                            <label for="nomeContato" class="form-label">Nota:</label>
-                            <input type="text" class="form-control" id="nota" name="nota" placeholder="avalie de 1 à 5">                        
-                        </div>
-                        <div class="btn-conclui-cadastro">
-                            <button class="btn btn-pesquisa-bibliotecario" name='btn_avalia'>Concluir Avaliação</button>
-                        </div>
-                    </form>
-                </div>
-
-
+            
                 <?php 
                 }
                 endif; }
@@ -118,7 +99,7 @@
             ?>
 
             <?php
-                include '/src/components/footer.php'
+                include '../components/footer.php'
             ?>
 
             

@@ -952,6 +952,19 @@ h4 span, .disponibilidade{
     font-weight: 600;
 }
 
+.btn-comprido{
+    width: 150px;
+    background-color: #5f6c9e;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 2px 7px;
+    font-size: 11px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    display: inline;
+    border: none;
+}
+
 
 
 

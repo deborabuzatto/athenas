@@ -7,44 +7,16 @@ session_start();
 <!DOCTYPE html>
 <html lang="pt-br">
     <head>
-        <!-- Padrão -->
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <!-- Link font -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="shortcut icon" href="/favicon/favicon.ico"/>
-        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;700&family=Radio+Canada:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
-
-
-        <!-- Css externo -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        
-        <link rel="stylesheet" href="/public/static/css/style.css">
-
-        <!--<script src="js/api.js"></script>-->
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-
+        <?php
+            include '../components/header.php';
+        ?>
         <title>Teste 1</title>
     </head>
     <body>
         <div class="tela">
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="homeAlunos.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
@@ -214,86 +186,46 @@ session_start();
             ?>
 
         </div>
-            <!-- Modal 
-            <div class="modal fade" id="informacoes" tabindex="-1" aria-text="true">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <form id="formId" method="post" action="modal.php">
-                            <input type="text" name="infoHidden" id="infoHidden" class="text-dark">
-                        </form>
-                        
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel"></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="dados-livro-avaliar">
-                                <div class="img-avaliar w-25">
-                                    <img src="/public/static/imagens/amoregelato.jpg">
-                                </div>
-                                
-                                <div class="dados-avaliar w-75">
-                                    <p><span>Sinopse:</span></p>
-                                    <p><span>Autor:</span></p>
-                                    <p><span>Editora:</span>Letares</p>
-                                    <p><span>ISBN:</span>198890675-17</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="modal-footer btn-conclui-cadastro" >
-                            <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
-                            <button type="button" class="btn btn-pesquisa-bibliotecario" name="avaliacoes">Avaliações</button>
-                        </div>
-                        
+        <!-- Modal -->
+        <div class="modal fade" id="editar<?php echo $dados['codigo_pessoa'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Editar Livro</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
+                    <div class="modal-body">
+                        <div class="cadastrar-livro">
+                            <form method="POST" action="../services/editarAluno.php">
+                                <div class="input-nomes">
+                                    <input type="hidden" class="form-control" id="codigo_pessoa" name="codigo_pessoa" value="<?php echo $dados['codigo_pessoa'];?>">
+
+                                    <label for="nomeContato" class="form-label">Nome completo:</label>
+                                    <input type="text" class="form-control" id="nomeContato" name="nome" value="<?php echo $dados['nome'];?>">
+
+                                    <label for="nomeContato" class="form-label">Nome de usuário:</label>
+                                    <input type="text" class="form-control" id="nomeContato" name="username" value="<?php echo $dados['username'];?>">
+                                
+                                    <label for="senhaLogin" class="form-label">Data de nascimento:</label>
+                                    <input type="date" class="form-control" id="senhaLogin" name="data_nasc" value="<?php echo $dados['data_nasc'];?>"> 
+
+                                    <label for="email" class="form-label">E-mail:</label>
+                                    <input type="text" class="form-control" id="email" name="email" value="<?php echo $dados['email'];?>">
+                                </div>
+                                <div class="modal-footer btn-conclui-cadastro" >
+                                    <div type="button" class="btn-conclui-cadastro">
+                                        <button class="btn btn-pesquisa-bibliotecario" name="btn-editar">Concluir Edição do Livro</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    
                 </div>
-            </div>-->
+            </div>
+
+
         
-    
-
-        <script>
-           $('.informacoes').on('click', function(){
-                $('#informacoes').modal('show');
-            });
-                /*var input1 = $('#2').val();
-                console.log(input1);
-
-                var chamado = $("#infoHidden").val();
-                $.post(
-                    '#formID', {
-                    type: 'POST',
-                    url: 'modal.php',
-                    data: {
-                        chamado,
-                    },
-                    function (response) {
-                        console.log(chamado);
-                        alert('Post realizado');
-                    },
-                });
-            });
-            $('.editar').on('click', function(){
-                var id = $(this).data('ida'); // vamos buscar o valor do atributo data-id
-                var nome = $(this).data('nome');
-                var username = $(this).data('username');
-                var email = $(this).data('email');
-                $('#editarHidden').val(id); // atribui o id ao input hidden
-                $('#editar').modal('show'); // modal aparece
-                $('#nome').val(nome);
-                $('#usuario').val(username);
-                $('#email').val(email);
-            });
-            '#formID', {
-                        type:"POST",
-                        infoHidden: chamado,
-                    },
-
-            $('.excluir').on('click', function(){
-                var id = $(this).data('id'); // vamos buscar o valor do atributo data-id
-                $('#excluirHidden').val(id); // atribui o id ao input hidden
-                $('#excluir').modal('show'); // modal aparece
-            });*/
-        </script>
 
         <script
         src="https://code.jquery.com/jquery-3.6.0.min.js"
