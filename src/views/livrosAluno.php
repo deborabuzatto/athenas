@@ -1,23 +1,50 @@
 <?php 
 //Classe Aluno
-include_once '/src/models/classLivro.php';
+include_once '../models/classLivro.php';
 session_start();
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php
-            include '/src/components/header.php';
-        ?>
-    
+        <!-- Padrão -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Link font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="shortcut icon" href="/favicon/favicon.ico"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;700&family=Radio+Canada:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+
+
+        <!-- Css externo -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="/public/static/css/style.css">
+
+        <!--<script src="js/api.js"></script>-->
+
+       
+
         <title>Teste 1</title>
     </head>
     <body>
         <div class="tela">
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="home.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
@@ -163,7 +190,7 @@ session_start();
                             </div>
                             <div class="modal-footer btn-conclui-cadastro" >
                                 <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
-                                <form action="/src/views/aluno/avaliar.php" method="POST">
+                                <form action="../views/avaliarLivro.php" method="POST">
                                     <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
                                     <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes">Avaliações</button>
                                 </form>
@@ -200,8 +227,8 @@ session_start();
 
             </div>
             
-            <?php
-                include '/src/components/footer.php'
+            <?php 
+                include '../components/footer.php'
             ?>
         </div>
 

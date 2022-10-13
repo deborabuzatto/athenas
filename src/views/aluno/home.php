@@ -6,8 +6,9 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
+        
         <?php
-            include '../components/header.php';
+            include '/src/components/header.php';
         ?>
 
         <title>Teste 1</title>
@@ -28,6 +29,7 @@
 
                 <div class="nav-login-menu">
                     <img src="/public/static/imagens/athenas.png">
+
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
@@ -36,10 +38,10 @@
                 <div class="home-div">
                     
                     <div class="home-opcoes">
-                        <div><a href="livrosAluno.php"><i class="fa fa-book-open"></i></a></div>
-                        <div><a href="rankingPage.php"><i class="fa fa-ranking-star"></i></a></div>
-                        <div><a href="historicoAlunoPage.php"><i class="fa fa-address-book"></i></a></div>
-                        <div><a href="meuperfil.html"><i class="fa fa-user"></i></a></div>
+                        <div><a href="livros.php"><i class="fa fa-book-open"></i></a></div>
+                        <div><a href="ranking.php"><i class="fa fa-ranking-star"></i></a></div>
+                        <div><a href="historico.php"><i class="fa fa-address-book"></i></a></div>
+                        <div><a href="meuperfil.php"><i class="fa fa-user"></i></a></div>
                         <p class="sair"><a href="logout.php">Sair</a></p>
                     </div>
                     <div class="home-pessoa">
@@ -52,7 +54,7 @@
             </div>
 
             <?php
-                include '../components/footer.php';
+                include '/src/components/footer.php'
             ?>
         </div>
 

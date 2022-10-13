@@ -9,7 +9,7 @@
 		protected $buscar;
 
 		abstract public function insert();
-		//abstract public function update($id);
+		abstract public function update($id);
 		
 		
 		public function  find($id){

@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <?php
-            include '../components/header.php';
+            include '/src/components/header.php';
         ?>
 
         <title>Teste 1</title>
@@ -47,8 +47,8 @@
                 </div>
             </div>
 
-            <?php 
-                include '../components/footer.php'
+            <?php
+                include '/src/components/footer.php';
             ?>
         </div>
 

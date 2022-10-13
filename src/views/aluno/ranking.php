@@ -1,5 +1,5 @@
 <?php 
-include_once '../models/classLivro.php';
+include_once '/src/models/classLivro.php';
 session_start();
 ?>
 
@@ -7,7 +7,7 @@ session_start();
 <html lang="en">
     <head>
         <?php
-            include '../components/header.php';
+            include '/src/components/footer.php';
         ?>
         <title>Ranking de Notas</title>
     </head>
@@ -194,9 +194,8 @@ session_start();
             
 
             <?php
-                include '../components/footer.php'
+                include '/src/components/footer.php';
             ?>
-            
         </div>
 
         <!-- Script FontAwesome -->

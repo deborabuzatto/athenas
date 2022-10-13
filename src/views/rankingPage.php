@@ -1,27 +1,56 @@
 <?php 
 //Classe Aluno
-include_once '/src/models/classLivro.php';
+include_once '../models/classLivro.php';
 session_start();
+//Header
+//include_once '30_DB_header.php';
+//Mensagem
+//include_once '30_DB_mensagem.php';
 ?>
 
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php
-            include '/src/components/header.php';
-        ?>
-    
+        <!-- Padrão -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Link font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="shortcut icon" href="/favicon/favicon.ico"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;700&family=Radio+Canada:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
+
+
+        <!-- Css externo -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+        
+        <link rel="stylesheet" href="/public/static/css/style.css">
+
+        <!--<script src="js/api.js"></script>-->
+
         <title>Teste 1</title>
     </head>
     <body>
         <div class="tela">
             <div class="nav-login">
                 <div class="nav-link-item">
-                    <a href="home.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                    <a href="homeAlunos.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
                 </div>
 
                 <div class="page-info-name">
-                    <p>Você está vendo:</p><a href="#">Todos os Livros</a>
+                    <p>Você está vendo:</p><a href="#">Ranking de notas</a>
                 </div>
 
                 <div class="nav-login-menu">
@@ -29,8 +58,9 @@ session_start();
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
-
             
+            
+
             <div class="conteudo-livro-page">
                 <div class="busca-livro-page">
                     <form method="post">
@@ -89,7 +119,7 @@ session_start();
                             <p class="categoria"><?php echo $dados['nota'];?></p>
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
                         </div>
-                    </div>                      
+                    </div>                    
                 </div>
                 
                 <?php
@@ -97,13 +127,9 @@ session_start();
                 endif;
                 else:
                     $livro = new Livro();
-                    $imprimir = $livro->findAllLivro();
-                    
+                    $imprimir = $livro->rankingNota();
                     if(count($imprimir)>0):
                         foreach($imprimir as $dados){
-                            $id = $dados['codigo_livro'];
-                            $imprime = $livro->listarTodosDadosLivro($id);
-                            foreach($imprime as $dado){
                 ?>
 
                 <div class="table-livro-aluno">
@@ -111,6 +137,7 @@ session_start();
                         <div>
                             <img src="/public/static/imagens/amoregelato.jpg">
                         </div>
+                        
                         <div class="table-conteudo">
                             <h4><?php echo $dados['titulo'];?></h4>
                             <?php
@@ -127,19 +154,17 @@ session_start();
                             <?php
                             }
                             ?>
-                            <p class="categoria"><?php echo $dados['categoria'];?></p>
-                            <p class="categoria"><?php echo $dados['nota'];?></p>
+                            <p class="categoria"><?php// echo $dados['categoria'];?> Categoria</p>
+                            <p class="categoria"><?php// echo $dados['nota'];?>0.0</p>
                             <p class="sinopse"><?php echo $dados['sinopse'];?></p>
                             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
                             <i class="fa fa-book"></i>
                             </button>
                         </div>
+                        
                     </div>                    
                 </div>
-                
 
-                
-                
                 <div class="modal fade" id="informacoes<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
@@ -163,7 +188,7 @@ session_start();
                             </div>
                             <div class="modal-footer btn-conclui-cadastro" >
                                 <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
-                                <form action="/src/views/aluno/avaliar.php" method="POST">
+                                <form action="../views/avaliarLivro.php" method="POST">
                                     <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
                                     <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes">Avaliações</button>
                                 </form>
@@ -172,10 +197,8 @@ session_start();
                     </div>
                 </div>
 
-
-
                 <?php
-                }}
+                }
                 endif;
                 endif;
                 ?>
@@ -200,13 +223,43 @@ session_start();
 
             </div>
             
-            <?php
-                include '/src/components/footer.php'
-            ?>
+            <footer class="footer">
+
+                <div class="div-footer">
+                    <div>
+                        <img src="imagens/athenas-preto-branco.png">
+                    </div>
+                    
+                    <div class="icon-footer">
+                        <a href="https://github.com/deborabuzatto" target="_blank">
+                            <i class="fa fa-github hover-opacity"></i>
+                        </a>
+
+                        <a href="" target="_blank">
+                            <i class="fa fa-linkedin hover-opacity"></i>
+                        </a>
+
+                        <a href="" target="_blank">
+                            <i class="fa fa-whatsapp hover-opacity"></i>
+                        </a>
+
+                        <a href="" target="_blank">
+                            <i class="fa fa-google hover-opacity"></i>
+                        </a>
+                    </div>
+
+                    <div>
+                        <a href="https://goo.gl/maps/zGGbKuK77NsXjuFe6" target="_blank">
+                            Av. Fernando Ferrari, 1080.<br> 
+                            Ed. Centro Empresarial, Torre Central, sala 604.<br>
+                            Mata da Praia. Vitória - ES, 29066-380
+                        </a>
+                    </div>
+                </div>
+
+            </footer>
         </div>
 
-        
-        
         <!-- Script FontAwesome -->
         <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
 

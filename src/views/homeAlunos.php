@@ -1,9 +1,8 @@
 <?php 
-	session_start();
-	if (isset($_SESSION['aluno']) || isset($_SESSION['bibliotecario'])) {
-		session_destroy();
-	}
+    ///session_start();
+    //$_SESSION['nome_aluno'];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -24,16 +23,14 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&display=swap" rel="stylesheet">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
+
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet"> 
 
         <!-- Css externo -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
         
-        <link rel="stylesheet" href="/public/static/css/style.css">        
+        <link rel="stylesheet" href="/public/static/css/style.css">
 
         <!--<script src="js/api.js"></script>-->
 
@@ -41,62 +38,46 @@
     </head>
     <body>
         <div class="tela">
+            
             <div class="nav-login">
-                <div class="nav-link-item">
-                    <a href="index.html"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
+                <div class="page-item-topo">
+                    <p>Você está vendo a:</p><a href="#" class="gradiente">Página Inicial</a>
+
                 </div>
 
                 <div class="page-info-name">
-                    <p>Você está na página:</p><a href="#">login</a>
+                    <i class="fa fa-gear"></i>
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
                 </div>
 
                 <div class="nav-login-menu">
-                    <img src="/public/static/imagens/logolaranja.png">
+                    <img src="/public/static/imagens/athenas.png">
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
             
-            <div class="login">
-                <div class="img-login">
-                    <img src="/public/static/imagens/Login-cuate.png">
-                </div>
-                <div class="form-login-page">
-                    <form method="POST" action="../services/login.php">
-                        <?php
-                            if(isset($_SESSION['nao_autenticado'])):
-                        ?>
-                        <div>
-                            <p class="text-center text-warning">Dados incorretos. Tente novamente!</p>
-                        </div>
-                        <?php
-                            unset($_SESSION["nao_autenticado"]);
-                            endif;
-                        ?>
-                        <div class="mb-3">
-                            <label for="nomeContato" class="form-label">Usuário:</label>
-                            <input type="text" class="form-control" id="nomeContato" aria-describedby="emailHelp" name="email" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <label for="senhaLogin" class="form-label">Senha:</label>
-                            <input type="password" class="form-control" id="senhaLogin" name="senha" required>
-                        </div>
-
-                        <div class="mb-3">
-                            <input type="checkbox" class="form-check-input" id="exampleCheck1" name="bibliotecario" >
-                            <label class="form-check-label" for="exampleCheck1">Acessar como bibliotecário</label>
-                        </div>
-
-                        <button type="submit" class="btn btn-primary" name="btn-login">ACESSAR</button>
-                    </form>
+            <div class="home-div-conteudo">
+                <div class="home-div">
+                    
+                    <div class="home-opcoes">
+                        <div><a href="livrosAluno.php"><i class="fa fa-book-open"></i></a></div>
+                        <div><a href="rankingPage.php"><i class="fa fa-ranking-star"></i></a></div>
+                        <div><a href="historicoAlunoPage.php"><i class="fa fa-address-book"></i></a></div>
+                        <div><a href="meuperfil.html"><i class="fa fa-user"></i></a></div>
+                        <p class="sair"><a href="logout.php">Sair</a></p>
+                    </div>
+                    <div class="home-pessoa">
+                        <div><img src="/public/static/imagens/amoregelato.jpg"></div>
+                        <h4 >Bem vinda, Débora Buzatto</h4>
+                        <p class="w-75 m-auto mt-5 pt-5">O instituto agredece sua matrícula, esperamos que esse site informativo, seja exatamente o que você procura para passar seu tempo, essa ferramenta foi excluxivamente pensada em você, faça bom uso!
+                        </p>
+                    </div>
                 </div>
             </div>
 
-            <div class="page-info-name footer-login fixed-bottom">
-                <p> &copy; Desenvolvido por Athenas produção; </p>
-            </div>
-                
-            
+            <?php
+                include '../components/footer.php';
+            ?>
         </div>
 
         <!-- Script FontAwesome -->

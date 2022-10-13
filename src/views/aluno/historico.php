@@ -1,5 +1,5 @@
 <?php
-    include '../models/classLivro.php';
+    include '/src/models/classLivro.php';
     session_start();
     $aluno = $_SESSION['nome_aluno'];
 
@@ -9,7 +9,7 @@
 <html lang="en">
     <head>
         <?php
-            include '../components/header.php';
+            include '/src/components/header.php';
         ?>
         <title>Teste 1</title>
     </head>
@@ -73,6 +73,9 @@
                 ?>
             </div>
             
+            <?php
+                include '/src/components/footer.php'
+            ?>
             
         </div>
 
