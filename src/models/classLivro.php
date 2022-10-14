@@ -237,7 +237,6 @@
 
         #########     FUNÇÕES DE ATUALIZAÇÃO DE DADOS     ###########
 
-
         
         public function locacao($codigo_livro, $codigo_pessoa){
             //exibe se o livro está disponível ou não
@@ -328,5 +327,73 @@
             return $stmt->fetch();
         }
 
+
+        #########     FUNÇÃO DE EXCLUSÃO    ###########
+
+
+        public function excluir($id){
+            // excluir livro categoria
+            $sql6="SELECT * FROM livro_categoria WHERE fk_livro_codigo_livro = :id";
+			$stmt6 = Database::prepare($sql6);	
+			$stmt6->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt6->execute();
+            $dados6 = $stmt6->fetch();
+
+            if($dados6['fk_livro_codigo_livro']){
+                $sql8="DELETE FROM livro_pessoa_loca WHERE fk_livro_codigo_livro = :id";
+                $stmt8 = Database::prepare($sql8);	
+                $stmt8->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt8->execute();
+            }
+
+            // excluir livro autor
+            $sql5="SELECT * FROM livro_autor WHERE fk_livro_codigo_livro = :id";
+			$stmt5 = Database::prepare($sql5);	
+			$stmt5->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt5->execute();
+            $dados5 = $stmt5->fetch();
+
+            if($dados5['fk_livro_codigo_livro']){
+                $sql7="DELETE FROM livro_autor WHERE fk_livro_codigo_livro = :id";
+                $stmt7 = Database::prepare($sql7);	
+                $stmt7->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt7->execute();
+            }
+
+            // excluir da tabela livro_pessoa_avalia
+            $sql2="SELECT * FROM livro_pessoa_avalia WHERE fk_livro_codigo_livro = :id";
+			$stmt2 = Database::prepare($sql2);	
+			$stmt2->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt2->execute();
+            $dados2 = $stmt2->fetch();
+
+            if($dados2['fk_livro_codigo_livro']){
+                $sql1="DELETE FROM livro_pessoa_avalia WHERE fk_livro_codigo_livro = :id";
+                $stmt1 = Database::prepare($sql1);	
+                $stmt1->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt1->execute();
+            }
+
+            // excluir da tabela livro_pessoa_loca
+            $sql3="SELECT * FROM livro_pessoa_loca WHERE fk_livro_codigo_livro = :id";
+			$stmt3 = Database::prepare($sql3);	
+			$stmt3->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt3->execute();
+            $dados1 = $stmt3->fetch();
+
+            if($dados1['fk_livro_codigo_livro']){
+                $sql4="DELETE FROM livro_pessoa_loca WHERE fk_livro_codigo_livro = :id";
+                $stmt4 = Database::prepare($sql4);	
+                $stmt4->bindParam(':id', $id, PDO::PARAM_INT);
+                $stmt4->execute();
+            }
+
+            // excluir da tabela livro
+			$sql="DELETE FROM pessoa WHERE codigo_pessoa = :id";
+			$stmt = Database::prepare($sql);	
+			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			return $stmt->execute();
+
+        }
     }
 ?>
