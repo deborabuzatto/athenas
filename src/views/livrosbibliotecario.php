@@ -72,9 +72,7 @@ session_start();
                                 $id = $dados['codigo_livro'];
                                 $imprime = $livro->listarTodosDadosLivro($id);
                                 foreach($imprime as $dado){
-                        
-                    
-                        
+                       
                 ?>
 
                 <div class="table-livro-aluno">
@@ -158,16 +156,16 @@ session_start();
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">excluir Livro</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">Excluir Livro</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
                                 <div class="cadastrar-livro">
                                     <p>Deseja realmente excluir o livro <?php echo $dado['titulo'];?>?</p>
                                     <div>
-                                        <form method="POST" action="../services/excluirAluno.php">
-                                            <input type="hidden" class="form-control" id="codigo_livro" name="codigo_pessoa" 
-                                            value="<?php echo $dados['codigo_livro'];?>">
+                                        <form method="POST" action="../services/excluirLivro.php">
+                                            <input type="hidden" class="form-control" id="codigo_livro" name="codigo_livro" 
+                                            value="<?php echo $dado['codigo_livro'];?>">
                                             
                                             <div type="button" class="btn-conclui-cadastro">
                                                 <button class="btn btn-pesquisa-bibliotecario" name="btn-excluir">Excluir Aluno</button>
@@ -320,14 +318,14 @@ session_start();
                             </div>
                             <div class="modal-body">
                                 <div class="cadastrar-livro">
-                                    <p>Deseja realmente excluir o livro <?php echo $dado['titulo'];?>?</p>
+                                    <p>Deseja realmente excluir o livro <?php echo $dados['titulo'];?>?</p>
                                     <div>
-                                        <form method="POST" action="../services/excluirAluno.php">
-                                            <input type="hidden" class="form-control" id="codigo_livro" name="codigo_pessoa" 
+                                        <form method="POST" action="../services/excluirLivro.php">
+                                            <input type="text" class="form-control" id="codigo_livro" name="codigo_livro" 
                                             value="<?php echo $dados['codigo_livro'];?>">
                                             
                                             <div type="button" class="btn-conclui-cadastro">
-                                                <button class="btn btn-pesquisa-bibliotecario" name="btn-excluir">Excluir Aluno</button>
+                                                <button class="btn btn-pesquisa-bibliotecario" name="btn-excluir">Excluir Livro</button>
                                             </div>                                         
                                         </form>
                                     </div>
@@ -344,7 +342,7 @@ session_start();
                                 <h5 class="modal-title" id="exampleModalLabel"><?php echo $dado['titulo'];?></h5>
                                 <button type="hidden" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
-                            <form action="../services/excluirLivro.php" method="POST">
+                            <form action="../services/editarLivro.php" method="POST">
                                 <div class="modal-body">
                                     <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
 

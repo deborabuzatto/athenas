@@ -1,6 +1,7 @@
 <?php 
-    ///session_start();
-    //$_SESSION['nome_aluno'];
+    include '../models/classAluno.php';
+    session_start();
+    $aluno = $_SESSION['nome_aluno'];
 ?>
 
 <!DOCTYPE html>
@@ -10,7 +11,7 @@
             include '../components/header.php';
         ?>
 
-        <title>Teste 1</title>
+        <title>PÁGINA INICIAL | HOME</title>
     </head>
     <body>
         <div class="tela">
@@ -34,20 +35,29 @@
             
             <div class="home-div-conteudo">
                 <div class="home-div">
+                    <?php
+                        $pessoa = new Aluno();
+                        $dados = $pessoa->find($aluno);
+                        if($dados){
+                    ?>
                     
                     <div class="home-opcoes">
                         <div><a href="livrosAluno.php"><i class="fa fa-book-open"></i></a></div>
                         <div><a href="rankingPage.php"><i class="fa fa-ranking-star"></i></a></div>
                         <div><a href="historicoAlunoPage.php"><i class="fa fa-address-book"></i></a></div>
-                        <div><a href="meuperfil.html"><i class="fa fa-user"></i></a></div>
+                        <div><a href="meuperfil.php"><i class="fa fa-user"></i></a></div>
                         <p class="sair"><a href="logout.php">Sair</a></p>
                     </div>
                     <div class="home-pessoa">
-                        <div><img src="/public/static/imagens/amoregelato.jpg"></div>
-                        <h4 >Bem vinda, Débora Buzatto</h4>
+                        <div><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>" style='width: 170px'></div>
+                        <h4 >Bem vindo(a), <?php echo $dados['username'];?></h4>
                         <p class="w-75 m-auto mt-5 pt-5">O instituto agredece sua matrícula, esperamos que esse site informativo, seja exatamente o que você procura para passar seu tempo, essa ferramenta foi excluxivamente pensada em você, faça bom uso!
                         </p>
                     </div>
+
+                    <?php
+                        }
+                    ?>
                 </div>
             </div>
 

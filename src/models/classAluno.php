@@ -12,6 +12,7 @@
         private $data_nasc;
         private $senha;
         private $username;
+        private $url_img;
 
         public function setNome($nome){
             $this->nome = $nome;
@@ -43,7 +44,13 @@
         public function getSenha(){
             return $this->senha;
         }
-        
+        public function setUrl_img($url_img){
+            $this->url_img = $url_img;
+        }
+        public function getUrl_img(){
+            return $this->url_img;
+        }
+
         public function login() {
             $sql = "SELECT * FROM pessoa WHERE email = :email and senha = :senha";
             $stmt = Database::prepare($sql);
@@ -79,10 +86,11 @@
         }
 
         public function update_perfil($id){
-            $sql="UPDATE pessoa SET username = :username, email = :email  WHERE codigo_pessoa = :id";
+            $sql="UPDATE pessoa SET username = :username, email = :email, img_perfil = :imagem WHERE codigo_pessoa = :id";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':username', $this->username);
             $stmt->bindParam(':email', $this->email);
+            $stmt->bindParam(':imagem', $this->url_img);
             $stmt->bindParam(':id', $id);
 
             return $stmt->execute();
@@ -90,7 +98,7 @@
 
         public function excluir($id){
 
-            $sql2="SELECT * FROM livro_pessoa_avalia WHERE fk_pessoa_codigo_pessoa = :id";
+            /*$sql2="SELECT * FROM livro_pessoa_avalia WHERE fk_pessoa_codigo_pessoa = :id";
 			$stmt2 = Database::prepare($sql2);	
 			$stmt2->bindParam(':id', $id, PDO::PARAM_INT);
 			$stmt2->execute();
@@ -119,7 +127,18 @@
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			return $stmt->execute();
+            
 		}
+
+        /*public function salvar_img($id){
+            $sql="UPDATE pessoa SET img_perfil = :imagem WHERE codigo_empresa = :id";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':imagem', $this->url_img);
+            $stmt->execute();
+
+            return $stmt->fetch(PDO::FETCH_BOTH);
+        }*/
+    }
 
     }
 ?>

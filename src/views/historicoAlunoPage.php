@@ -36,40 +36,103 @@
                 <?php
                     $historico = new Livro();
                     $busca = $historico->listarHistorico($aluno);
-                    if(count($busca)>0){
-                        foreach($busca as $dados){
+                    if(empty($busca)){
                 ?>
-
-                <div class="table-livro-aluno">
+                <div>
+                    <div class="erro-historico">
+                        <h2>você ainda leu nenhuma obra :(</h2>
+                        <p>Que tal começar agora? <a href="livrosAluno.php">Procurar Obras</a></p>
+                    </div>
+                </div>
+                <?php
+                }
+                
+                else{
+                    foreach($busca as $dados){
+                        $id = $dados['codigo_livro'];
+                        $todos = new Livro();
+                        $imprime = $todos->listarTodosDadosLivro($id);
+                        foreach($imprime as $dado){
+                ?>
+                    <div class="table-livro-aluno">
                     <div>
                         <div>
                             <img src="/public/static/imagens/amoregelato.jpg">
                         </div>
                         <div class="table-conteudo">
                             <h4><?php echo $dados['titulo'];?></h4>
-                            
-                            <p class="disponibilidade">Disponivel</p>
-                            <p class="categoria"><?php echo $dados['dsc_categoria'];?></p>
-
-                            <p class="sinopse" ><?php echo $dados['sinopse'];?></p>
+                            <?php
+                                $livro = new Livro();
+                                $codigo_livro = $dados['codigo_livro']; 
+                                $disponibilidade = $livro->disponibilidade($codigo_livro);
+                                if($disponibilidade['valor'] === "0"){
+                            ?>
+                                <p class="disponibilidade">Disponível</p>
+                            <?php
+                                } else{   
+                            ?>
+                                <p class="disponibilidade">Indisponível</p>
+                            <?php
+                            }
+                            ?>
+                            <p class="categoria"><?php echo $dados['categoria'];?></p>
+                            <p class="categoria"><?php 
+                                if(empty($dado['nota'])){
+                                    echo 'não avaliado';
+                                }else{
+                                    echo $dado['nota'];
+                                }
+                            ?></p>
+                            <p class="sinopse"><?php echo $dados['sinopse'];?></p>
+                            <button type="button" class="btn-comprido" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">Ver mais informacoes</button>
                         </div>
                     </div>                    
                 </div>
                 
-                <?php
-                }
-                }
-                else{
-                ?>
-                    <div>
-                        <div class="erro-historico">
-                            <h2>você ainda leu nenhuma obra :(</h2>
-                            <p>Que tal começar agora? <a href="livrosAlunos.php">Procurar Obras</a></p>
+
+                
+                
+                <div class="modal fade" id="informacoes<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel"><?php echo $dado['titulo'];?></h5>
+                                <button type="hidden" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="dados-livro-avaliar">
+                                    <div class="img-avaliar w-25">
+                                        <img src="/public/static/imagens/amoregelato.jpg">
+                                    </div>       
+                                    <div class="dados-avaliar w-75">
+                                    <p><span>Sinopse:</span><?php echo $dado['sinopse'];?></p>
+                                        <p><span>Autor:</span><?php echo $dado['titulo'];?></p>
+                                        <p><span>Editora:</span><?php echo $dado['editora'];?></p>
+                                        <p><span>Páginas:</span><?php echo $dado['qtd_paginas'];?></p>
+                                        <p><span>Nota:</span>
+                                        <?php 
+                                            if(empty($dado['nota'])){
+                                                echo 'não avaliado';
+                                            }else{
+                                                echo $dado['nota'];
+                                            }
+                                        ?>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer btn-conclui-cadastro" >
+                                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
+                                <form action="../views/avaliacoes.php" method="POST">
+                                    <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
+                                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes">Avaliações</button>
+                                </form>
+                            </div> 
                         </div>
-        
                     </div>
+                </div>
                 <?php 
-                }
+                }}}
                 ?>
             </div>
             

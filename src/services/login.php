@@ -11,7 +11,7 @@
             $cripto = md5($senha);
 
             $aluno->setEmail($email);
-            $aluno->setSenha($cripto);
+            $aluno->setSenha($senha);
 
             $consulta = $aluno->login();
             if ($consulta) {

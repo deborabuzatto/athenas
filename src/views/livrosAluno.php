@@ -51,6 +51,20 @@ session_start();
                                 endif;
                             ?>
                         </select>
+                        <br>
+                        
+                        <label for="disponibilidade"  class="form-label">Disponibilidade</label>
+                        <select class="form-select" name="disponibilidade" id="disponibilidade">
+                            <option name="categoria" value="0">Todos</option>
+                            <option name="categoria" value="1">Disponível</option>
+                            <option name="categoria" value="2">Indisponível</option>
+                        </select>
+                        <label for='notas'  class="form-label">Avaliações</label>
+                        <select class="form-select" name="notas" id="nota">
+                            <option name="categoria" value="0">Todos</option>
+                            <option name="categoria" value="1">melhores notas</option>
+                            <option name="categoria" value="2">piores notas</option>
+                        </select>
 
                         <span>
                             <button class="btn btn-pesquisa" name="btn-buscar">Pesquisar</button>

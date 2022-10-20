@@ -2,11 +2,6 @@
 //Classe de aluno
 include '../models/classLivro.php';
 
-//Iniciar  Sessão
-if (session_status() === PHP_SESSION_NONE) {
-	session_start();
-}
-
 if(isset($_POST['btn-cadastrar'])):
 	
 	$titulo = filter_var($_POST['titulo'], FILTER_SANITIZE_STRING);
@@ -15,7 +10,7 @@ if(isset($_POST['btn-cadastrar'])):
 	$ISBN = filter_var($_POST['ISBN'], FILTER_SANITIZE_STRING);
 	$autor = filter_var($_POST['autor'], FILTER_SANITIZE_EMAIL);
 	$nacionalidade = filter_var($_POST['nacionalidade'], FILTER_SANITIZE_NUMBER_INT);
-	$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_NUMBER_INT);
+	$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_STRING);
 	$categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_NUMBER_INT);
 	
 
@@ -31,14 +26,7 @@ if(isset($_POST['btn-cadastrar'])):
 	$livro->setnacionalidade($nacionalidade);
 
 	$insert = $livro->insert();
-	if($insert){
-		$_SESSION['mensagem'] = "Cadastrado com sucesso!";
-		header('Location: ../views/livroBibliotecario.php');
-	}
-	else{
-		$_SESSION['mensagem'] = "Erro ao cadastrar!";		
-		header('Location: ../views/livroBibliotecario.php');
-	}
+	header('Location: ../views/livrosBibliotecario.php');
 	
 endif;	
 

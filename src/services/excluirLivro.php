@@ -2,24 +2,20 @@
 //Classe de aluno
 include '../models/classLivro.php';
 
-//Iniciar  Sessão
-if (session_status() === PHP_SESSION_NONE) {
-	session_start();
-}
-
 if(isset($_POST['btn-excluir'])):
 	
-	$codigo_pessoa = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+	$codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_NUMBER_INT);
 
 	$livro = new Livro();
-    $excluir = $livro->excluir($codigo_pessoa);
-	
+    $excluir = $livro->excluir($codigo_livro);
+	print_r($codigo_livro);
+
 	if($excluir):
 		$_SESSION['mensagem'] = "Cadastro com sucesso!";
-		header('Location: ../views/alunosBibliotecario.php');
+		header('Location: ../views/livrosBibliotecario.php');
 	else:
 		$_SESSION['mensagem'] = "Erro ao cadastrar!";		
-		header('Location: alunosBibliotecario.php');
+		header('Location: ../views/livrosBibliotecario.php');
 	endif;
 endif;	
 

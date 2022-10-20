@@ -31,7 +31,7 @@
             
             
             <div class="cadastrar-livro">
-                <form method="post" action="../services/cadastrarLivro.php">
+                <form enctype="multipart/form-data" method="POST" action="../services/cadastrarLivro.php">
                     <div class="input-nomes">
                         <label for="titulo" class="form-label">Título:</label>
                         <input type="text" class="form-control" id="titulo" name="titulo">
@@ -42,7 +42,6 @@
                         <label for="senhaLogin" class="form-label">Data de publicação:</label>
                         <input type="date" class="form-control" id="senhaLogin" name="data_publicacao"> 
                         
-
                         <label for="senhaLogin" class="form-label">ISBN:</label>
                         <input type="text" class="form-control" id="senhaLogin" name="ISBN" > 
                     
@@ -74,9 +73,7 @@
                             <button class="btn btn-pesquisa-bibliotecario">Cadastrar categoria</button>
                         </span> 
                     </div>
-                    
-                    
-                    
+
                     <div class="input-selecionar ">
                         <label for="importar" class="form-label">Importar capa:</label>
                         <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="importar">
@@ -85,7 +82,7 @@
 
                     <div class="input-textarea">
                         <label for="sinopse" class="form-label">Sinopse:</label>
-                        <textarea type="email" class="form-control" id="sinopse" name="sinopse"></textarea>
+                        <textarea type="text" class="form-control" id="sinopse" name="sinopse"></textarea>
                     </div>
 
                     <div class="btn-conclui-cadastro">

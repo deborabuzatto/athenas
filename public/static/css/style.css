@@ -888,9 +888,9 @@ h4 span, .disponibilidade{
 }  
 
 .home-pessoa div > img {
-    width: 190px; 
-    height: 190px;
-    border-radius: 200px;
+    width: 170px; 
+    height: 170px;
+    border-radius: 50%;
 }
 
 .home-opcoes {
@@ -964,9 +964,6 @@ h4 span, .disponibilidade{
     display: inline;
     border: none;
 }
-
-
-
 
 
 
