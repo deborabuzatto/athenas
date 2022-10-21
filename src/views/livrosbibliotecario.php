@@ -339,7 +339,7 @@ session_start();
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel"><?php echo $dado['titulo'];?></h5>
+                                <h5 class="modal-title" id="exampleModalLabel"><?php echo $dados['titulo'];?></h5>
                                 <button type="hidden" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <form action="../services/editarLivro.php" method="POST">
@@ -363,8 +363,37 @@ session_start();
                                     <input type="text" class="form-control" id="nomeContato" name="autor" value='<?php echo $dado['autor'];?>'>
                             
                                     <label for="Nacionalidade" class="form-label">Nacionalidade do autor:</label>
-                                    <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade" value='<?php echo $dado['nacionalidade'];?>'>
+                                    <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade" value='<?php echo $dado['nacao'];?>'>
                                     
+                                    <div class="input-selecionar">
+                                        <label for="senhaLogin" class="form-label">Categoria:</label>
+                                        <select class="form-select" name="categoria" >
+                                            <?php
+                                                $livro = new Livro();
+                                                $imprimir = $livro->listarCategoria();
+                                                if(count($imprimir)>0):
+                                                    foreach($imprimir as $dados){
+                                            ?>
+                                            <option value="<?php echo $dados['codigo_categoria']?>"><?php echo $dados['dsc_categoria']?></option>
+
+                                            <?php
+                                                }
+                                                endif;
+                                            ?>
+                                        </select>
+                                    </div>
+
+                                    <div class="input-selecionar ">
+                                        <label for="importar" class="form-label">Importar capa:</label>
+                                        <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="importar">
+                                    </div>
+
+
+                                    <div class="input-textarea">
+                                        <label for="sinopse" class="form-label">Sinopse:</label>
+                                        <textarea type="text" class="form-control" id="sinopse" name="sinopse"></textarea>
+                                    </div>
+
                                 </div>
                                 <div class="modal-footer btn-conclui-cadastro" >
                                     <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>

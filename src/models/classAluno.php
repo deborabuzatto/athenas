@@ -98,7 +98,7 @@
 
         public function excluir($id){
 
-            /*$sql2="SELECT * FROM livro_pessoa_avalia WHERE fk_pessoa_codigo_pessoa = :id";
+            $sql2="SELECT * FROM livro_pessoa_avalia WHERE fk_pessoa_codigo_pessoa = :id";
 			$stmt2 = Database::prepare($sql2);	
 			$stmt2->bindParam(':id', $id, PDO::PARAM_INT);
 			$stmt2->execute();
@@ -130,14 +130,14 @@
             
 		}
 
-        /*public function salvar_img($id){
+        public function salvar_img($id){
             $sql="UPDATE pessoa SET img_perfil = :imagem WHERE codigo_empresa = :id";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':imagem', $this->url_img);
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_BOTH);
-        }*/
+        }
     }
 
     }

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Padrão -->
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Link font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="shortcut icon" href="/favicon/favicon.ico"/>
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;700&family=Radio+Canada:wght@300&family=Roboto+Mono:wght@200&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@700&display=swap" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Piazzolla:opsz,wght@8..30,200;8..30,300&display=swap" rel="stylesheet">
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
+
+        <!-- Css externo -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+       
+        <link rel="stylesheet" href="/public/static/css/style.css">
+
+        <!--<script src="js/api.js"></script>-->
+
+        <title>Teste 1</title>
+    </head>
+    <body>
+        <div class="tela">
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                informações dos livros
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Amor e gelato</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="dados-livro-avaliar">
+                                <div class="img-avaliar w-25">
+                                    <img src="/public/static/imagens/amoregelato.jpg">
+                                </div>
+                                <div class="dados-avaliar w-75">
+                                    <p><span>Sinopse:</span>Atendendo ao último desejo da mãe, Lina decide passar o último verão antes da faculdade em Roma, onde descobre o amor...</p>
+                                    <p><span>Autor:</span>Kiera Cass</p>
+                                    <p><span>Editora:</span>Letares</p>
+                                    <p><span>ISBN:</span>198890675-17</p>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="hidden" name="editarHidden" id="editarHidden" class="text-dark" value="">
+                        <div class="modal-footer btn-conclui-cadastro" >
+                            <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
+                            <button type="button" class="btn btn-pesquisa-bibliotecario">Avaliações</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+           
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal1">
+                Editar Alunos
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Alunos</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="cadastrar-livro">
+                                <form>
+                                    <div class="input-nomes">
+                                        <label for="nomeContato" class="form-label">Nome completo:</label>
+                                        <input type="text" class="form-control" id="nomeContato">
+
+                                        <label for="nomeContato" class="form-label">Nome de usuário:</label>
+                                        <input type="text" class="form-control" id="nomeContato">
+                                   
+                                        <label for="senhaLogin" class="form-label">Data de nascimento:</label>
+                                        <input type="date" class="form-control" id="senhaLogin" >
+
+                                        <label for="senhaLogin" class="form-label">E-mail:</label>
+                                        <input type="text" class="form-control" id="senhaLogin">
+                                       
+                                        <label for="nomeContato" class="form-label">Senha padrão:</label>
+                                        <input type="text" class="form-control mb-0" id="nomeContato" placeholder="biblioteca123" disabled>
+
+                                        <p class="text-danger mb-5">Apenas o usuário pode alterar essa senha</p>
+                                    </div>
+
+                                   
+                                </form>
+                            </div>
+                        </div>
+                        <div class="modal-footer btn-conclui-cadastro" >
+                            <div type="button" class="btn-conclui-cadastro">
+                                <button class="btn btn-pesquisa-bibliotecario">Concluir Edição do Aluno</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Button trigger modal -->
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal2">
+                Editar Livros
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="exampleModal2" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Editar Livro</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                                <form>
+                                    <div class="input-nomes">
+                                        <label for="nomeContato" class="form-label">Título:</label>
+                                        <input type="text" class="form-control" id="nomeContato">
+                                   
+                                        <label for="senhaLogin" class="form-label">Data de publicação:</label>
+                                        <input type="date" class="form-control" id="senhaLogin" >
+                                       
+                                    </div>
+                                   
+
+                                    <div class="input-selecionar w-100">
+                                        <label for="senhaLogin" class="form-label">Categoria:</label>
+                                        <select class="form-select w-50" name="Categoria" >
+                                            <option value="2">Romance</option>
+                                            <option value="3">Literatura estrangeira</option>
+                                            <option value="4">Fantasia</option>
+                                            <option value="5">Terror</option>
+                                            <option value="6">Suspense</option>
+                                            <option value="7">Clássico</option>
+                                            <option value="8">Poesia</option>
+                                        </select>
+
+                                        <span>
+                                            <button class="btn btn-pesquisa-bibliotecario w-25">Cadastrar categoria</button>
+                                        </span>
+                                    </div>
+                                   
+                                   
+                                    <div class="input-selecionar w-100">
+                                        <label for="senhaLogin" class="form-label">Autor:</label>
+                                        <select class="form-select w-50" name="Autor" >
+                                            <option selected>Autor</option>
+                                            <option value="2">Autor</option>
+                                            <option value="3">Autor</option>
+                                            <option value="4">Autor</option>
+                                            <option value="5">Autor</option>
+                                            <option value="6">Autor</option>
+                                            <option value="7">Autor</option>
+                                            <option value="8">Autor</option>
+                                        </select>
+
+                                        <span>
+                                            <button class="btn btn-pesquisa-bibliotecario w-25">Cadastrar Autor</button>
+                                        </span>
+                                    </div>
+                                   
+                                    <div class="input-selecionar w-100">
+                                        <label for="senhaLogin" class="form-label">Importar capa:</label>
+                                        <input type="file" class="form-control w-100" id="nomeContato" placeholder="Imagem da capa">
+                                    </div>
+                                   
+
+                                    <div class="input-textarea">
+                                        <label for="textArea" class="form-label">Sinopse:</label>
+                                        <textarea type="email" class="form-control" id="textArea"></textarea>
+                                    </div>
+
+                                   
+                                   
+                                </form>
+                        </div>
+                        <div class="modal-footer btn-conclui-cadastro" >
+                            <div type="button" class="btn-conclui-cadastro">
+                                <button class="btn btn-pesquisa-bibliotecario">Concluir Edição do Livro</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Script FontAwesome -->
+        <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
+
+        <!-- Script Boostrap-->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    </body>
+</html>

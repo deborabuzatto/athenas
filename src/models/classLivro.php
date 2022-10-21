@@ -356,5 +356,53 @@
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
 			$stmt->execute();
         }
+        
+        #########     FUNÇÃO DE EXCLUSÃO    ###########
+
+        public function update($id){
+            
+            //atualiza na tabela livro
+            $sql="UPDATE $this->table SET ISBN = :ISBN, data_publicacao = :data_publicacao, 
+            titulo = :titulo, sinopse = :sinopse WHERE codigo_livro = :id returning FK_EDITORA_codigo_edit";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':id', $id);
+            $stmt->bindParam(':ISBN', $this->ISBN);
+            $stmt->bindParam(':data_publicacao', $this->data_publicacao);
+            $stmt->bindParam(':titulo', $this->titulo);
+            $stmt->bindParam(':sinopse', $this->sinopse);
+            $stmt->execute();
+            $FK_EDITORA_codigo_edit = $stmt->fetch()["FK_EDITORA_codigo_edit"];
+
+            //atualiza editora
+            $sql3="UPDATE editora set editora = :nome WHERE codigo_edit = :FK_EDITORA_codigo_edit";
+            $stmt3 = Database::prepare($sql3);
+            $stmt3->bindParam(':nome', $this->editora);
+            $stmt3->bindParam(':FK_EDITORA_codigo_edit', $FK_EDITORA_codigo_edit);
+            $stmt3->execute();
+
+            //seleciona o autor ligado ao livro 
+            $FK_LIVRO_codigo_livro = $stmt->fetch()["codigo_livro"]; //id do livro inserido agora
+            $sql2="select * from livro_autor where FK_LIVRO_codigo_livro = :FK_LIVRO_codigo_livro";
+            $stmt2 = Database::prepare($sql2);
+            $stmt2->bindParam(':FK_LIVRO_codigo_livro', $FK_LIVRO_codigo_livro);        
+            $stmt2->execute();
+            $FK_LIVRO_codigo_autor = $stmt2->fetch()["FK_LIVRO_codigo_autor"]; //id do autor inserido agora
+
+            //insere autor na tabela autor
+            $sql1="UPDATE autor SET nome =  :nome,nacionalidade = :nacionalidade where codigo_autor = :FK_LIVRO_codigo_autor";
+            $stmt1 = Database::prepare($sql1);
+            $stmt1->bindParam(':nome', $this->autor);
+            $stmt1->bindParam(':nacionalidade', $this->nacionalidade);
+            $stmt1->bindParam(':FK_LIVRO_codigo_autor', $FK_LIVRO_codigo_autor);
+            $stmt1->execute();
+
+            //associar a categoria selecionada ao livro
+            $sql5="UPDATE livro_categoria SET FK_categoria_codigo_categoria = :FK_categoria_codigo_categoria, FK_livro_codigo_livro = :FK_livro_codigo_livro";
+            $stmt5 = Database::prepare($sql5);
+            $stmt5->bindParam(':FK_categoria_codigo_categoria', $this->categoria);
+            $stmt5->bindParam(':FK_LIVRO_codigo_livro', $FK_LIVRO_codigo_livro);
+            $stmt5->execute();
+        }
+
     }
 ?>
