@@ -344,7 +344,7 @@ session_start();
                             </div>
                             <form action="../services/editarLivro.php" method="POST">
                                 <div class="modal-body">
-                                    <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
+                                    <input  type="hidden" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>">
 
                                     <label for="titulo" class="form-label">Título:</label>
                                     <input type="text" class="form-control" id="titulo" name="titulo" value='<?php echo $dado['titulo'];?>'>
@@ -363,7 +363,8 @@ session_start();
                                     <input type="text" class="form-control" id="nomeContato" name="autor" value='<?php echo $dado['autor'];?>'>
                             
                                     <label for="Nacionalidade" class="form-label">Nacionalidade do autor:</label>
-                                    <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade" value='<?php echo $dado['nacao'];?>'>
+                                    <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade" 
+                                    value='<?php echo $dado['nacionalidade'];?>'>
                                     
                                     <div class="input-selecionar">
                                         <label for="senhaLogin" class="form-label">Categoria:</label>
@@ -391,7 +392,7 @@ session_start();
 
                                     <div class="input-textarea">
                                         <label for="sinopse" class="form-label">Sinopse:</label>
-                                        <textarea type="text" class="form-control" id="sinopse" name="sinopse"></textarea>
+                                        <textarea type="text" class="form-control" id="sinopse" name="sinopse" value='<?php echo $dado['sinopse']?>'></textarea>
                                     </div>
 
                                 </div>

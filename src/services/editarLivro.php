@@ -8,7 +8,7 @@ if(isset($_POST['btn-editar'])):
 	$editora = filter_var($_POST['editora'], FILTER_SANITIZE_STRING);
 	$data_publicacao = filter_var($_POST['data_publicacao'], FILTER_SANITIZE_STRING);
 	$ISBN = filter_var($_POST['ISBN'], FILTER_SANITIZE_STRING);
-	$autor = filter_var($_POST['autor'], FILTER_SANITIZE_EMAIL);
+	$autor = filter_var($_POST['autor'], FILTER_SANITIZE_STRING);
 	$nacionalidade = filter_var($_POST['nacionalidade'], FILTER_SANITIZE_NUMBER_INT);
 	$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_STRING);
 	$categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_NUMBER_INT);
@@ -26,7 +26,7 @@ if(isset($_POST['btn-editar'])):
 	$livro->setnacionalidade($nacionalidade);
 
 	$insert = $livro->update($codigo_livro);
-	//header('Location: ../views/livrosBibliotecario.php');
+	header('Location: ../views/livrosBibliotecario.php');
 	
 endif;	
 

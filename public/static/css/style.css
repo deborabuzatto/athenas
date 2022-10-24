@@ -965,6 +965,29 @@ h4 span, .disponibilidade{
     border: none;
 }
 
+.esquerda {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.centralizar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.centralizar-func {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.canvas-container {
+    width: 300px;
+    width: 300px;
+}
 
 
 
