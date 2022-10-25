@@ -25,4 +25,5 @@
 
 <!-- Css externo -->
 <link rel="stylesheet" href="/public/static/css/style.css">
+<link rel="stylesheet" href="/public/static/css/css.css">
 
