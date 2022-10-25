@@ -1,20 +1,16 @@
-sistema focado na experiência de dois usuários
-bibiotecario - que terá funções ativas no banco
+############## COMO USAR O SISTEMA? ################
 
-    - inserir aluno - ok
-    - inserir livro - ok
-    - excluir aluno - ok
-    - excluir livro - em andamento 
-    - editar aluno - ok
-    - editar livro - em andamento
-    - locação      - ok (precisando melhorar)
+O sistema possui dois focos, bibliotecários e alunos.
+Apesar da parte do aluno estar pronta, o crud está na parte do bibliotecario.
 
+############## PARA FAZER LOGIN BASTA DIGITAR OS DADOS: ##############
 
-aluno - que terá funções mais informativas e lógicas 
-    - filtros - ok (precisando melhorar)
-    - diponíveis ou nao - ok
-    - ranking de notas - ok
-    - ler avaliações e informações - ok
-    - ver meu histórico de leituras - ok (precisando melhorar)
-    - avaliar um livro  - ok 
+E-mail: deborabuzatto27@gmail.com
+Senha: biblioteca123
 
+############## PARA ACESSAR O CRUD, VÁ ATÉ: ##############
+
+localhost:8080/scr/views/cadastrarAluno.php - INSERIR
+localhost:8080/scr/views/alunosBibliotecario.php - EDITAR
+localhost:8080/scr/views/alunosBibliotecario.php - EXCLUIR
+localhost:8080/scr/views/alunosBibliotecario.php - CONSULTAR
