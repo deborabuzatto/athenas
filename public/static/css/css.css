@@ -7,7 +7,7 @@ body{
     --bs-nav-tabs-link-active-bg: rgb(29, 29, 29);
 }
 
-.nav-tabs .nav-link.active {
+.nav.nav-tabs .nav-link.active {
     border-color: rgb(29, 29, 29);
     border-bottom: 0.05rem solid white;
     color: aliceblue;
@@ -33,33 +33,7 @@ body{
 
 .nav-tabs .nav-link:hover {
     isolation: isolate;
-    border-color:rgb(29, 29, 29);
+    border-color:rgb(54, 53, 53);
+    border-radius: 0px;
 }
 
-.sub-nav .nav-link {
-    color: aliceblue;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.sub-nav .nav-link.active {
-    color: red;
-    font-size: 16px;
-    font-weight: 500;
-}
-
-.nav1{
-    margin-top: 30px;
-    width: 100%;
-    display: flex;
-    justify-content: start;
-    align-items: center;
-    background-color: rgb(54, 53, 53);
-    padding: 7px 20px;
-}
-
-.nav1 .nav-item{
-    width: 150px;
-    justify-content: start;
-    align-items: center;
-}

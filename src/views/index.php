@@ -11,14 +11,14 @@
     <title>TESTE DE LAYOUT</title>
 </head>
 <body>
-    <nav>
+    <!--<nav>
         <div class="nav-login">
             <div class="nav-login-menu">
                 <img src="/public/static/imagens/logolaranja.png">
                 <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
             </div>
         </div>
-    </nav>
+    </nav>-->
 
     <section class="tela">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -36,7 +36,7 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                 <div class="bars-info">
-                    <ul class="nav1 nav-tabs sub-nav" id="myTab" role="tablist">
+                    <ul class="nav1 nav nav-tabs" id="myTab" role="tablist">
                         <li class="nav-item" role="presentation">
                             <button class="nav-link active" id="data-tab" data-bs-toggle="tab" data-bs-target="#data" type="button" role="tab" aria-controls="data" aria-selected="true">Gerenciar</button>
                         </li>
