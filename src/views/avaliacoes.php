@@ -15,33 +15,19 @@
     </head>
     <body>
         <div class="tela">
-            
             <div class="nav-login">
-                <div class="nav-link-item">
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
-                </div>
-
-                <div class="page-info-name">
-                    <p>Você está na página:</p><a href="#">Avaliar Livro</a>
-                </div>
-
-                <div class="nav-login-menu">
-                    <img src="/public/static/imagens/logolaranja.png">
-                    <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
-                </div>
+                <div class="nav-link-item"><a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
+                <div class="page-info-name"><p>Você está na página:</p><a href="#">Avaliar Livro</a></div>
             </div>
-
 
             <?php 
                 if(isset($_POST['avaliacoes'])){
                     $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
-                
                     $livro = new Livro();
                     $busca = $livro->listarTodosDadosLivro($codigo_livro);
                     if(count($busca)>0):
                         foreach($busca as $dados){
             ?>
-
             
             <div class="cadastrar-livro">
                 <div class="dados-livro-avaliar">

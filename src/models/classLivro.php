@@ -182,13 +182,14 @@
             $FK_EDITORA_codigo_edit = $stmt3->fetch()["codigo_edit"];
             
             //insere na tabela livro
-            $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse, FK_EDITORA_codigo_edit) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse, :FK_EDITORA_codigo_edit) RETURNING codigo_livro";
+            $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse, FK_EDITORA_codigo_edit, img_capa) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse, :FK_EDITORA_codigo_edit, :img_capa) RETURNING codigo_livro";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':ISBN', $this->ISBN);
             $stmt->bindParam(':data_publicacao', $this->data_publicacao);
             $stmt->bindParam(':titulo', $this->titulo);
             $stmt->bindParam(':sinopse', $this->sinopse);
             $stmt->bindParam(':FK_EDITORA_codigo_edit', $FK_EDITORA_codigo_edit);
+            $stmt->bindParam(':img_capa', $img_capa);
             $stmt->execute();
 
             //insere autor na tabela autor
@@ -232,7 +233,6 @@
 
 			return true;
         }
-
 
         #########     FUNÇÕES DE ATUALIZAÇÃO DE DADOS     ###########
 

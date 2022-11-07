@@ -19,7 +19,7 @@
 <body>
     <nav class="navbar navbar-expand-lg ">
         <div class="navbar-brand div-nav">
-            <img src="/public/static/imagens/athenas.png">
+            <img src="/public/static/imagens/logo.png">
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
             <i class="fa-solid fa-bars-staggered"></i>

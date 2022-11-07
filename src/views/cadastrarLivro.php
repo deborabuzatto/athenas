@@ -78,7 +78,7 @@
 
                     <div class="input-selecionar ">
                         <label for="importar" class="form-label">Importar capa:</label>
-                        <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="importar">
+                        <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="img_capa">
                     </div>
                     
 
