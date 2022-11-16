@@ -21,110 +21,6 @@ body{
     box-shadow: 0 0 0 0;
 }
 
-/* conteudo index */
-.conteudo-index{
-    width: 100%;
-    height: 1000px;
-}
-
-.conteudo-index img{
-    width: 100%;
-    height: 100%;
-}
-
-.conteudo, .servico{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 80px;
-    background-color: #090614;
-}
-
-.servico{
-    background-color: #ffffff;
-    padding-bottom: 40px;
-
-}
-
-.conteudo h2{
-    color: #62248F;
-    font-size: 30px;
-    font-family: Poppins;
-    font-weight: 900;
-    width: 80%;
-    text-align: start;
-    padding-top: 50px;
-    letter-spacing: 0.5px;
-}
-
-.conteudo p{
-    color: #3c3c3c;
-    font-size: 24px;
-    font-family: Poppins;
-    width: 80%;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.servico span{
-    color:#4c0677;
-    font-weight: 900;
-
-}
-
-
-.acesso{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #f4f4f4;
-}
-
-.acesso .informes-login{
-    width: 45%;
-    border-right:0.05em solid rgb(181, 181, 181);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.acesso h2{
-    color: #62248F;
-    font-size: 36px;
-    font-family: Poppins;
-    font-weight: 900;
-    text-align: start;
-    padding: 0px;
-}
-
-.acesso p{
-    width: 80%;
-    color: #3c3c3c;
-    font-size: 20px;
-    font-family: Poppins;
-    padding-top: 50px;
-}
-
-.acesso .form-login{
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 60px;
-}
-
-.form-login button{
-    background-color: #7625c9;
-    border-color: #7625c9;
-}
-
-.form-acessar-login input{
-    width: 400px;
-}
-
 .links a{
     color: #3c3c3c;
     display: block;
@@ -612,8 +508,8 @@ h4 span, .disponibilidade{
 }
 
 .btn-pesquisa-bibliotecario{
-    border: 0.05rem solid #FA4D39;
-    background-color: #FA4D39; 
+    border: 0.05rem solid #a776d9;
+    background-color: #a776d9; 
     padding: 8px 12px;
     color: #ffffff;
     border-radius: 10px;
@@ -1059,37 +955,109 @@ h4 span, .disponibilidade{
     width: 100%;
     height: 100%;
     background-color: #fff;
-    justify-content: space-around;
-}
-
-.informacoes-avalia{
-    display: flex;
-    width: 50%;
     justify-content: center;
+    padding-top: 70px;
+}
+
+.avalia-livro-info{
+    width: 40%;
+    display: flex;
     flex-wrap: wrap;
-    padding-left: 100px;
-    padding-top: 50px;    
+    justify-content: center;
 }
-
-.informacoes-avalia img{
+.avalia-livro-info img{
     width: 30%;
-    height: 150px;
+    padding: 20px;
+}
+.avalia-livro-info div{
+    width: 50%;
+    margin-top: 20px;
+    padding: 10px;
+}
+.avalia-livro-form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+.avalia-livro-form input, .avalia-livro-form textarea{
+    outline: 0;
+    border: none;
+    width: 500px;
+    height: 40px;
+    font-size: 20px;
+    margin: 10px 0px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgb(236, 236, 236);
+    box-shadow: inset 0 0 0 transparent, 0 0 0.3em #a776d9;  
+}
+.avalia-livro-form textarea{
+    height: 100px;  
+    padding-top: 10px;
+}
+.avalia-div .botao{
+    width: 500px;
+    height: 50px;
+    margin: 15px 0px;
+    border-radius: 20px;
+    font-size: 20px;
+    letter-spacing: 1px;
 }
 
-.informacoes-avalia > div{
-    width: 70%;
-    padding-top: 40px;    
+.avaliacoes-livro{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    justify-content: center;
+    padding: 200px 0px 0px 70px;
+}
+.avaliacoes-livro h1{
+    width: 80%;
+    color:rgb(59, 7, 84)
+}
+.avaliacoes-livro-div{
+    width: 27%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: inset 0 0 0 transparent, 0 0 0.7em #a776d9; 
+    border-radius: 0px 30px;
+    margin: 50px;
+    margin-bottom: 50px;
+}
+.avaliacoes-livro-div .avaliacoes-img{
+    width: 20%;
+}
+.avaliacoes-img img{
+    width: 90px;
+    height: 90px;
+    border-radius: 200px;
+} 
+.avaliacoes-livro-div div{
+    width: 50%;
+    margin-top: 20px;
+    padding: 10px;
 }
 
-
-
-
-
-
-
-
-
-
+input, select, textarea{
+    outline: 0;
+    border: none;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgb(236, 236, 236);
+    box-shadow: inset 0 0 0 transparent, 0 0 0.3em #a776d9;  
+}
 
 
 
@@ -1171,6 +1139,9 @@ div .icon-footer {
     .table-conteudo .sinopse{
         font-size: 10px;
         margin-bottom: 3px;
+    }
+    .avaliacoes-livro-div{
+        width: 60%;
     }
 }
 
@@ -1257,6 +1228,9 @@ div .icon-footer {
         font-size: 18px;
         letter-spacing: 1px;
     }
+    .avaliacoes-livro-div{
+        width: 70%;
+    }
 }
 
 @media  (max-width: 500px) {
@@ -1275,5 +1249,42 @@ div .icon-footer {
         border-radius: 20px;
         font-size: 18px;
         letter-spacing: 1px;
+    }
+    .avaliacoes-livro-div{
+        width: 90%;
+        margin: 10px;
+    }
+    .avaliacoes-livro{
+        padding: 100px 0px 40px 0px;
+    }
+    .avalia-livro-info{
+        width: 80%;
+    }
+    .avalia-livro-form{
+        width: 80%;
+    }
+    .avalia-livro-form input, .avalia-livro-form textarea{
+        width: 300px;
+        height: 40px;
+        font-size: 16px;
+        margin: 10px 0px 0px 0px;
+    }
+    .avalia-livro-form textarea{
+        height: 100px;  
+        padding-top: 10px;
+    }
+    .avalia-div .botao{
+        width: 300px;
+        height: 50px;
+        border-radius: 20px;
+        font-size: 16px;
+    }
+    .avalia-livro-info img{
+        width: 50%;
+        padding: 20px;
+    }
+    .avalia-livro-info div{
+        width: 55%;
+        text-align: start;
     }
 }

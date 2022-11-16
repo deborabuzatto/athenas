@@ -23,7 +23,7 @@
                 </div>
 
                 <div class="nav-login-menu">
-                    <img src="/public/static/imagens/logolaranja.png">
+                    <img src="/public/static/imagens/logo.png">
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
@@ -34,24 +34,22 @@
                 <form enctype="multipart/form-data" method="POST" action="../services/cadastrarLivro.php">
                     <div class="input-nomes">
                         <label for="titulo" class="form-label">Título:</label>
-                        <input type="text" class="form-control" id="titulo" name="titulo">
+                        <input type="text" class="form-control" id="titulo" name="titulo" required>
 
                         <label for="editora" class="form-label">Editora:</label>
-                        <input type="text" class="form-control" id="editora" name="editora">
+                        <input type="text" class="form-control" id="editora" name="editora" required>
                     
                         <label for="senhaLogin" class="form-label">Data de publicação:</label>
-                        <input type="date" class="form-control" id="senhaLogin" name="data_publicacao"> 
+                        <input type="date" class="form-control" id="senhaLogin" name="data_publicacao" required> 
                         
                         <label for="senhaLogin" class="form-label">ISBN:</label>
-                        <input type="text" class="form-control" id="senhaLogin" name="ISBN" > 
+                        <input type="text" class="form-control" id="senhaLogin" name="ISBN" required> 
                     
                         <label for="nomeContato" class="form-label">Autor:</label>
-                        <input type="text" class="form-control" id="nomeContato" name="autor">
+                        <input type="text" class="form-control" id="nomeContato" name="autor" required>
                 
                         <label for="Nacionalidade" class="form-label">Nacionalidade do autor:</label>
-                        <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade">
-
-                        
+                        <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade" required>
                     </div>
 
                     <div class="input-selecionar">
@@ -70,21 +68,16 @@
                                 endif;
                             ?>
                         </select>
-
-                        <span>
-                            <button class="btn btn-pesquisa-bibliotecario">Cadastrar categoria</button>
-                        </span> 
                     </div>
 
                     <div class="input-selecionar ">
                         <label for="importar" class="form-label">Importar capa:</label>
-                        <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="img_capa">
+                        <input type="file" class="form-control" placeholder="Imagem da capa" name="file" required>
                     </div>
                     
-
                     <div class="input-textarea">
                         <label for="sinopse" class="form-label">Sinopse:</label>
-                        <textarea type="text" class="form-control" id="sinopse" name="sinopse"></textarea>
+                        <textarea type="text" class="form-control" id="sinopse" name="sinopse" required></textarea>
                     </div>
 
                     <div class="btn-conclui-cadastro">

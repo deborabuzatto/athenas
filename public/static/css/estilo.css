@@ -218,7 +218,7 @@
     flex-direction: column;
 }
 
-input[type=text], input[type=date], textarea {
+.input[type=text], .input[type=date], .textarea {
     width: calc(60% - 20px);
     padding: 10px;
     border: none;

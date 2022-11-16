@@ -13,28 +13,18 @@ $codigo_aluno = $_SESSION['nome_aluno'];
     </head>
     <body>
         <div class="tela">
-            
             <div class="nav-login">
-                <div class="nav-link-item">
-                    <a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
-                </div>
-
-                <div class="page-info-name">
-                    <p>Você está na página:</p><a href="#">Meu perfil</a>
-                </div>
-
+                <div class="nav-link-item"><a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
+                <div class="page-info-name"><p>Você está na página:</p><a href="#">Meu perfil</a></div>
                 <div class="nav-login-menu">
                     <img src="/public/static/imagens/logolaranja.png">
-                   
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
             <?php
-            
                 $aluno = new Aluno();
                 $imprimir = $aluno->find($codigo_aluno);
-                if($imprimir):
-                    
+                if($imprimir):   
             ?>
             <div class="cadastrar-livro">
                 <form enctype="multipart/form-data" method="POST" action="../services/meuperfil.php">

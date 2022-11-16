@@ -3,93 +3,85 @@
     session_start();
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php
-            include '../components/header.php';
-        ?>
-
-        <title>VER AVALIAÇÕES</title>
+        <?php include '../components/header.php'; ?>
+        <title>AVALIAÇÕES | COMENTÁRIOS</title>
     </head>
     <body>
         <div class="tela">
             <div class="nav-login">
-                <div class="nav-link-item"><a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
-                <div class="page-info-name"><p>Você está na página:</p><a href="#">Avaliar Livro</a></div>
+                <div class="nav-link-item"><a href="/index.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
+                <div class="page-info-name"><p>Você está na página:</p><a href="#">AVALIAÇÕES</a></div>
+                <div class="nav-login-menu">
+                    <img src="/public/static/imagens/logo.png">
+                    <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
+                </div>
             </div>
-
-            <?php 
-                if(isset($_POST['avaliacoes'])){
-                    $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
-                    $livro = new Livro();
-                    $busca = $livro->listarTodosDadosLivro($codigo_livro);
-                    if(count($busca)>0):
-                        foreach($busca as $dados){
-            ?>
             
-            <div class="cadastrar-livro">
-                <div class="dados-livro-avaliar">
-                    <div class="img-avaliar">
-                        <img src="/public/static/imagens/amoregelato.jpg">
-                    </div>
-                    <div class="dados-avaliar">
+            <div class="avalia-div">
+                <div class="avalia-livro-info">
+                <?php 
+                    if(isset($_POST['avaliacoes'])){
+                        $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+                        $livro = new Livro();
+                        $busca = $livro->listarTodosDadosLivro($codigo_livro);
+                        if(count($busca)>0):
+                            foreach($busca as $dados){
+                ?>
+                    <img src="/public/static/imagens/livroHistoria.jpg">
+                    <div class="dados-livro-avalia">
                         <h4><?php echo $dados['titulo'];?></h4>
-                        
                         <p><span>Autor:</span><?php echo $dados['autor'];?></p>
                         <p><span>Editora:</span><?php echo $dados['editora'];?></p>
                         <p><span>ISBN:</span><?php echo $dados['isbn'];?></p>
-                        <p><span>Sinopse:</span><?php echo $dados['sinopse'];?></p>
-
                     </div>
-                    
+                <?php 
+                    }
+                    endif; }
+                ?>
                 </div>
-            
+
+                <div class="avalia-livro-form">
+                    <h3>Faça sua avaliação</h3>
+                    <form>
+                        <input placeholder="nota" type="number" required>
+                        <textarea placeholder="Digite sua opinião" required></textarea>
+                        <div class="wrap"><button name="btn-login" class="botao button">Avaliar</button></div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="avaliacoes-livro">
+                <h1>Outros usuários avaliaram:</h1>
+                <?php 
+                    if(isset($_POST['avaliacoes'])){
+                        $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+                    
+                        $livro = new Livro();
+                        $busca = $livro->listarAvaliacoes($codigo_livro);
+                        if(count($busca)>0):
+                            foreach($busca as $dados){
+                ?>
+                <div class="avaliacoes-livro-div">
+                    <div class="avaliacoes-img"><img src="/public/static/imagens/livroHistoria.jpg"></div>
+                    <div class="dados-livro-avalia">
+                        <h3>Título</h3>
+                        <p>5.00</p>
+                        <p>Carla Meneguine</p>
+                    </div>
+                </div>
                 <?php 
                 }
-                endif; }
+                endif;}
                 ?>
 
-                <div class="link-avaliacoes">
-                    <a href="#avaliacoes">Ver outras Avaliações</a>
-                </div>             
-            </div>
-
-            <?php 
-                if(isset($_POST['avaliacoes'])){
-                    $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
-                
-                    $livro = new Livro();
-                    $busca = $livro->listarAvaliacoes($codigo_livro);
-                    if(count($busca)>0):
-                        foreach($busca as $dados){
-            ?>
-
-            <div class="avalia-livro" id="avaliacoes">
-                <div class="div-avaliacao">
-                    <div class="img-pessoa">
-                        <img src="/public/static/imagens/amoregelato.jpg" style="border-radius: 100px; width: 70px; height: 70px;">
-                    </div>
-                    <div class="div-dados-avaliar">
-                        <h4><?php echo $dados['pessoa'];?></h4>
-                        <p><span>Nota:</span><?php echo $dados['nota'];?></p>
-                        <p><span>Opinião:</span>aaaa</p>
-                    </div>
-                </div>
-            </div>
-
-            <?php 
-            }
-            endif;}
-            ?>
-
-            <?php
-                include '../components/footer.php'
-            ?>
-
             
+            </div>
         </div>
+
+        <?php include '../components/footer.php'; ?>
 
         <!-- Script FontAwesome -->
         <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>

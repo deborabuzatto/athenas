@@ -234,7 +234,7 @@ session_start();
                 <div class="table-livro-aluno">
                     <div>
                         <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
+                            <img src="../components/dinamic/<?php echo $dados['img_capa'];?>">
                         </div>
                         <div class="table-conteudo">
                             <h4><?php echo $dados['titulo'];?></h4>

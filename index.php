@@ -89,13 +89,13 @@
         <div class="inputs">
             <form method="post" action="/src/services/action.php">
                 <div>
-                    <input type="text" id="nome" name="nome" placeholder="Nome Completo" autocomplete="off" required>
+                    <input class="input" type="text" id="nome" name="nome" placeholder="Nome Completo" autocomplete="off" required>
                 </div>
                 <div>
-                    <input type="text" id="email" name="email" placeholder="E-mail" autocomplete="off" required>
+                    <input class="input" type="text" id="email" name="email" placeholder="E-mail" autocomplete="off" required>
                 </div>
                 <div>
-                    <textarea id="message" name="message" placeholder="Mensagem..." style="height: 180px;" required></textarea>
+                    <textarea class="textarea" id="message" name="message" placeholder="Mensagem..." style="height: 180px;" required></textarea>
                 </div>
                 <div class="wrap">
                     <button class="button">Enviar</button>

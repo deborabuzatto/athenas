@@ -19,7 +19,7 @@
                 </div>
 
                 <div class="nav-login-menu">
-                    <img src="/public/static/imagens/logolaranja.png">
+                    <img src="/public/static/imagens/logo.png">
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>

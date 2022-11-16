@@ -28,7 +28,6 @@
                         <div><input type="email" placeholder="E-MAIL" name="email" required></div>
                         <div>
                             <input type="password" placeholder="SENHA" name="senha" required> 
-                            <i class="fa fa-eye-slash"></i>
                         </div>
                         <div class="wrap"><button name="btn-login" class="btn-login button">ACESSAR</button></div>
                     </form>

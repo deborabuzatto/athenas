@@ -16,6 +16,7 @@
         private $nacionalidade;
         private $editora;
         private $categoria;
+        private $url_img;
 
         public function setISBN($ISBN){
             $this->ISBN = $ISBN;
@@ -77,6 +78,12 @@
         public function getcategoria(){
             return $this->categoria;
         }
+        public function seturl_img($url_img){
+            $this->url_img = $url_img;
+        }
+        public function geturl_img(){
+            return $this->url_img;
+        }
 
         
 
@@ -85,13 +92,12 @@
 
         public function findAllLivro(){
             //LISTAGEM PARA TABELA
-			$sql = "select codigo_livro, titulo, cat.dsc_categoria as categoria, trunc( AVG(lpa.qtd_estrelas),1) as nota,  SUBSTRING(sinopse from 1 for 100) as sinopse  
+			$sql = "select codigo_livro, titulo, cat.dsc_categoria as categoria, img_capa, trunc( AVG(lpa.qtd_estrelas),1) as nota,  SUBSTRING(sinopse from 1 for 100) as sinopse  
             FROM livro as li 
             full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
             full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
             full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
-            group by  codigo_livro,titulo,categoria,sinopse
-            ";
+            group by  codigo_livro,titulo,categoria,sinopse, img_capa";
 			$stmt = Database::prepare($sql);			
 			$stmt->execute();
 			//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
@@ -101,7 +107,7 @@
 
         public function listarTodosDadosLivro($id){
             //LISTAGEM ÚTIL
-			$sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
+			$sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, img_capa, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
             li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
             autor.nome as autor, cat.dsc_categoria as categoria, autor.nacionalidade from livro as li
             full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
@@ -111,7 +117,7 @@
             full outer join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
             full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
 			where codigo_livro = :codigo_livro
-            group by  editora,codigo,autor,categoria,nacionalidade";
+            group by  editora,codigo,autor,categoria,nacionalidade, img_capa";
 			$stmt = Database::prepare($sql);
             $stmt->bindParam(':codigo_livro', $id);		
 			$stmt->execute();
@@ -189,7 +195,7 @@
             $stmt->bindParam(':titulo', $this->titulo);
             $stmt->bindParam(':sinopse', $this->sinopse);
             $stmt->bindParam(':FK_EDITORA_codigo_edit', $FK_EDITORA_codigo_edit);
-            $stmt->bindParam(':img_capa', $img_capa);
+            $stmt->bindParam(':img_capa', $this->url_img);
             $stmt->execute();
 
             //insere autor na tabela autor
@@ -297,7 +303,7 @@
         }
 
         public function buscarLivro($pesquisar){
-			$sql="select codigo_livro, titulo, cat.dsc_categoria as categoria, trunc( AVG(lpa.qtd_estrelas),1) as nota,  SUBSTRING(sinopse from 1 for 100) as sinopse  
+			$sql="select codigo_livro, titulo, cat.dsc_categoria as categoria, img_capa, trunc( AVG(lpa.qtd_estrelas),1) as nota,  SUBSTRING(sinopse from 1 for 100) as sinopse  
             FROM livro as li 
             full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
             full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
@@ -364,13 +370,14 @@
             
             //atualiza na tabela livro
             $sql="UPDATE $this->table SET ISBN = :ISBN, data_publicacao = :data_publicacao, 
-            titulo = :titulo, sinopse = :sinopse WHERE codigo_livro = :id returning fk_editora_codigo_edit";
+            titulo = :titulo, sinopse = :sinopse, img_capa = :img_capa WHERE codigo_livro = :id returning fk_editora_codigo_edit";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':id', $id);
             $stmt->bindParam(':ISBN', $this->ISBN);
             $stmt->bindParam(':data_publicacao', $this->data_publicacao);
             $stmt->bindParam(':titulo', $this->titulo);
             $stmt->bindParam(':sinopse', $this->sinopse);
+            $stmt->bindParam(':img_capa', $this->img_capa);
             $stmt->execute();
             $fk_editora_codigo_edit = $stmt->fetch()["fk_editora_codigo_edit"];
 
