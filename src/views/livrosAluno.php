@@ -90,40 +90,48 @@ session_start();
                     
                         
                 ?>
-
-                <div class="table-livro-aluno">
-                    <div>
+                <div class="div-livro-externo">
+                    <div><img src="/public/static/imagens/amoregelato.jpg"></div>
+                    <div class="table-conteudo">
+                        <h4><?php echo $dados['titulo'];?></h4>
+                        <p class="sinopse"><?php echo $dados['sinopse'];?></p>
+                    </div>
+                    <div class="status">
                         <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
-                        </div>
-                        <div class="table-conteudo">
-                            <h4><?php echo $dados['titulo'];?></h4>
+                            <i class="fa fa-home"></i>
                             <?php
                                 $livro = new Livro();
                                 $codigo_livro = $dados['codigo_livro']; 
                                 $disponibilidade = $livro->disponibilidade($codigo_livro);
                                 if($disponibilidade['valor'] === "0"){
                             ?>
-                                <p class="disponibilidade">Disponível</p>
+                                <span>Disponível</span>
                             <?php
                                 } else{   
                             ?>
-                                <p class="disponibilidade">Indisponível</p>
+                                <span>Indisponível</span>
                             <?php
                             }
                             ?>
-                            <p class="categoria"><?php echo $dados['categoria'];?></p>
-                            <p class="categoria"><?php
+                        </div>
+                        <div>
+                            <i class="fa fa-home"></i>
+                            <span><?php echo $dados['categoria'];?></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-home"></i>
+                            <span>
+                                <?php
                                 if(empty($dado['nota'])){
                                     echo 'não avaliado';
                                 }else{
                                     echo $dado['nota'];
                                 }
-                            ?></p>
-                            <p class="sinopse"><?php echo $dados['sinopse'];?></p>
-                            <button type="button" class="btn-comprido" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">Ver mais informacoes</button>
+                                ?>
+                            </span>
                         </div>
-                    </div>                      
+                        <button type="button" class="btn-comprido" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">Ver mais informacoes</button>
+                    </div>
                 </div>
 
                 <div class="modal fade" id="informacoes<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
@@ -179,39 +187,48 @@ session_start();
                             foreach($imprime as $dado){
                 ?>
 
-                <div class="table-livro-aluno">
-                    <div>
+                <div class="div-livro-externo">
+                    <div><img src="/public/static/imagens/amoregelato.jpg"></div>
+                    <div class="table-conteudo">
+                        <h4><?php echo $dados['titulo'];?></h4>
+                        <p class="sinopse"><?php echo $dados['sinopse'];?></p>
+                    </div>
+                    <div class="status">
                         <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
-                        </div>
-                        <div class="table-conteudo">
-                            <h4><?php echo $dados['titulo'];?></h4>
+                            <i class="fa fa-home"></i>
                             <?php
                                 $livro = new Livro();
                                 $codigo_livro = $dados['codigo_livro']; 
                                 $disponibilidade = $livro->disponibilidade($codigo_livro);
                                 if($disponibilidade['valor'] === "0"){
                             ?>
-                                <p class="disponibilidade">Disponível</p>
+                                <span>Disponível</span>
                             <?php
                                 } else{   
                             ?>
-                                <p class="disponibilidade">Indisponível</p>
+                                <span>Indisponível</span>
                             <?php
                             }
                             ?>
-                            <p class="categoria"><?php echo $dados['categoria'];?></p>
-                            <p class="categoria"><?php 
+                        </div>
+                        <div>
+                            <i class="fa fa-home"></i>
+                            <span><?php echo $dados['categoria'];?></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-home"></i>
+                            <span>
+                                <?php
                                 if(empty($dado['nota'])){
                                     echo 'não avaliado';
                                 }else{
                                     echo $dado['nota'];
                                 }
-                            ?></p>
-                            <p class="sinopse"><?php echo $dados['sinopse'];?></p>
-                            <button type="button" class="btn-comprido" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">Ver mais informacoes</button>
+                                ?>
+                            </span>
                         </div>
-                    </div>                    
+                        <button type="button" class="btn-comprido" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">Ver mais informacoes</button>
+                    </div>
                 </div>
                 
 
@@ -256,31 +273,9 @@ session_start();
                         </div>
                     </div>
                 </div>
-
-
-
                 <?php
                 }}}}
                 ?>
-
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                          <span aria-hidden="true">&laquo;</span>
-                        </a>
-                      </li>
-                      <li class="page-item"><a class="page-link" href="#">1</a></li>
-                      <li class="page-item"><a class="page-link" href="#">2</a></li>
-                      <li class="page-item"><a class="page-link" href="#">3</a></li>
-                      <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                          <span aria-hidden="true">&raquo;</span>
-                        </a>
-                      </li>
-                    </ul>
-                </nav>
-
             </div>
             
             <?php 
