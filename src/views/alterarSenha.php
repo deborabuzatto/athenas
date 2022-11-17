@@ -16,12 +16,13 @@
                     <div><img  class="logo" src="/public/static/imagens/logo.png"></div>
                     <form method="POST" action="../services/login.php">
                         <?php if(isset($_SESSION['nao_autenticado'])): ?>
-                        <div><p class="text-center text-danger">Dados incorretos. Tente novamente!</p></div>
+                        <div><p class="text-center text-danger">Senha atual incorreta. Tente novamente!</p></div>
                         <?php unset($_SESSION["nao_autenticado"]); endif; ?>
                         
-                        <div><input type="email" placeholder="SENHA ATUAL" name="email" required></div>
-                        <div><input type="password" placeholder="NOVA SENHA" name="senha" required></div>
-                        <div><input type="password" placeholder="CONFIRMAR NOVA SENHA" name="senha" required></div>
+                        <div><input type="email" placeholder="SENHA ATUAL" name="senha_atual" id="senha_atual" required></div>
+                        <div><input type="password" placeholder="NOVA SENHA" name="nova_senha" id="nova_senha" required></div>
+                        <div><input type="password" placeholder="CONFIRMAR NOVA SENHA" name="confirma_senha" id="confirma_senha" required></div>
+                        <div><p class="text-center text-danger" style="display: none" id="nao_compativel">Senha atual incorreta. Tente novamente!</p></div>
                         <div class="wrap"><button name="btn-alterar" class="btn-login button">ALTERAR</button></div>
                     </form>
                 </div>
@@ -29,6 +30,18 @@
         </div>
 
         <?php include '../components/footer.php'; ?>
+
+        <script type="text/javascript">
+            function verificaSenha(){
+                let nova_senha = document.getElementByID("nova_senha");
+                let confirma_senha = document.getElementByID("confirma_senha");
+                if(nova_senha != confirma_senha){
+
+                }
+            }
+            
+        </script>
+
 
         <!-- Script FontAwesome -->
         <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>

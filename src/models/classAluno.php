@@ -73,6 +73,7 @@
             return $stmt->execute();
         }
         
+        // será usado pelo bibliotecário
         public function update($id){
             $sql="UPDATE pessoa SET nome = :nome, username = :username, data_nasc = :data_nasc, email = :email  WHERE codigo_pessoa = :id ";
             $stmt = Database::prepare($sql);
@@ -85,6 +86,7 @@
             return $stmt->execute();
         }
 
+        // será usado pelo aluno
         public function update_perfil($id){
             $sql="UPDATE pessoa SET username = :username, email = :email, img_perfil = :imagem WHERE codigo_pessoa = :id";
             $stmt = Database::prepare($sql);
@@ -126,8 +128,8 @@
 			$sql="DELETE FROM pessoa WHERE codigo_pessoa = :id";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+
 			return $stmt->execute();
-            
 		}
 
         public function salvar_img($id){
@@ -137,6 +139,17 @@
             $stmt->execute();
 
             return $stmt->fetch(PDO::FETCH_BOTH);
+        }
+
+        // será usado apenas pelo aluno
+        public function update_senha($id, $senha_atual){
+            $sql="UPDATE pessoa SET senha = :senha WHERE codigo_pessoa = :id and senha = :senha_atual";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':senha', $this->senha);
+            $stmt->bindParam(':senha_atual', $senha_atual);
+            $stmt->bindParam(':id', $id);
+
+            return $stmt->execute();
         }
     }
 ?>
