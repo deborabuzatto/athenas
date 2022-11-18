@@ -15,40 +15,39 @@ include_once '../models/classLivro.php';
                 $id = $dados['codigo_livro'];
                 $imprime = $livro->listarTodosDadosLivro($id);
                 foreach($imprime as $dado){
-        
-    
-        
 ?>
+
 <div class="div-livro-externo">
-    <div><img src="/public/static/imagens/amoregelato.jpg"></div>
+    <div><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
     <div class="table-conteudo">
         <h4><?php echo $dados['titulo'];?></h4>
-        <p class="sinopse"><?php echo $dados['sinopse'];?></p>
+        <p class="sinopse"><?php echo $dados['sinopse']; echo' . . . ';?></p>
     </div>
     <div class="status">
         <div>
-            <i class="fa fa-home"></i>
             <?php
                 $livro = new Livro();
                 $codigo_livro = $dados['codigo_livro']; 
                 $disponibilidade = $livro->disponibilidade($codigo_livro);
                 if($disponibilidade['valor'] === "0"){
             ?>
+                <i class="fa-regular fa-circle-check"></i>
                 <span>Disponível</span>
             <?php
                 } else{   
             ?>
+                <i class="fa-regular fa-circle-xmark"></i>
                 <span>Indisponível</span>
             <?php
             }
             ?>
         </div>
         <div>
-            <i class="fa fa-home"></i>
+            <i class="fa-regular fa-bookmark"></i>
             <span><?php echo $dados['categoria'];?></span>
         </div>
         <div>
-            <i class="fa fa-home"></i>
+            <i class="fa fa-ranking-star"></i>
             <span>
                 <?php
                 if(empty($dado['nota'])){
@@ -116,35 +115,36 @@ else{
 ?>
 
 <div class="div-livro-externo">
-    <div><img src="/public/static/imagens/amoregelato.jpg"></div>
+    <div><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
     <div class="table-conteudo">
         <h4><?php echo $dados['titulo'];?></h4>
-        <p class="sinopse"><?php echo $dados['sinopse'];?></p>
+        <p class="sinopse"><?php echo $dados['sinopse']; echo' . . . ';?></p>
     </div>
     <div class="status">
         <div>
-            <i class="fa fa-home"></i>
             <?php
                 $livro = new Livro();
                 $codigo_livro = $dados['codigo_livro']; 
                 $disponibilidade = $livro->disponibilidade($codigo_livro);
                 if($disponibilidade['valor'] === "0"){
             ?>
+                <i class="fa-regular fa-circle-check"></i>
                 <span>Disponível</span>
             <?php
                 } else{   
             ?>
+                <i class="fa-regular fa-circle-xmark"></i>
                 <span>Indisponível</span>
             <?php
             }
             ?>
         </div>
         <div>
-            <i class="fa fa-home"></i>
+            <i class="fa-regular fa-bookmark"></i>
             <span><?php echo $dados['categoria'];?></span>
         </div>
         <div>
-            <i class="fa fa-home"></i>
+            <i class="fa fa-ranking-star"></i>
             <span>
                 <?php
                 if(empty($dado['nota'])){

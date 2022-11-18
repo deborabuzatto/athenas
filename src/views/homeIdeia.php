@@ -43,38 +43,36 @@
 	        <div class="collapse navbar-collapse" id="barraNavegacao">
 	            <ul class="navbar-nav mb-2 mb-lg-0">
 	                <li class="nav-item dropdown">
-	                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	                    Informações
 	                  </a>
 	                  <ul class="dropdown-menu">
-	                    <li><a class="dropdown-item" href="#">Sobre o site</a></li>
-	                    <li><a class="dropdown-item" href="#">Sobre os livros</a></li>
-	                    <li><a class="dropdown-item" href="#">Sobre o instituto</a></li>
+	                    <li><a class="dropdown-item" href="infoSite.php">Sobre o site</a></li>
+	                    <li><a class="dropdown-item" href="infoLivros.php">Sobre os livros</a></li>
+	                    <li><a class="dropdown-item" href="infoInstuto.php">Sobre o instituto</a></li>
 	                  </ul>
 	                </li>
 	                <li class="nav-item dropdown">
-	                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
 	                    Minha Conta
 	                  </a>
 	                  <ul class="dropdown-menu">
-	                    <li><a class="dropdown-item" href="#">Alterar Dados</a></li>
-	                    <li><a class="dropdown-item" href="#">Alterar Senha</a></li>
-	                    <li><a class="dropdown-item" href="#">Sair</a></li>
+	                    <li><a class="dropdown-item" href="editarPerfilAluno.php">Alterar Dados</a></li>
+	                    <li><a class="dropdown-item" href="AlterarSenha.php">Alterar Senha</a></li>
+	                    <li><a class="dropdown-item" href="../services/logout.php">Sair</a></li>
 	                  </ul>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="#">Ajuda</a>
+	                    <a class="nav-link" href="ajuda.php">Ajuda</a>
 	                </li>
 	            </ul>
 	        </div>
-	        <a href="/src/views/login.php" class="btn-login btn grow_box" type="button">
-	            <i class="fa fa-chess-rook"></i> Meu Histórico
+	        <a href="locacao.php" class="btn-login btn grow_box" type="button">
+	            <i class="fa fa-chess-rook"></i> Locação
 	        </a>
 	    </nav>
 		<div class="menu2">
-            <div class="central-input">
-                <input type="text" name="" id="" placeholder="Procure seu livro aqui"><i class="fa-solid fa-magnifying-glass"></i>
-            </div>
+            
             <nav>
                 <div class='centralizar-filtro'>
                     <div class='filtro'>
@@ -82,54 +80,33 @@
                             <div class="text-center">
                                 <input class="radio-input " type="radio" value="0" id="todos" name="type" checked>
                                 <label class="radio-label " for="todos"><i class="fa-solid fa-square-caret-down"></i></label>
-                                <p id="p-company" class="title">Todos</p>
+                                <p id="p-company" class="title">Livros</p>
                             </div>
             
                             <div class="text-center">
                                 <input class="radio-input" type="radio" value="1" id="didatico" name="type">
                                 <label class="radio-label " for="didatico"><i class="fa-solid fa-globe"></i></label>
-                                <p id="p-person" class="title">Didáticos</p>
+                                <p id="p-person" class="title">Alunos</p>
                             </div>
             
                             <div class="text-center">
                                 <input class="radio-input "  type="radio" value="" id="classico" name="type">
                                 <label class="radio-label " for="classico"><i class="fa-solid fa-landmark"></i></label>
-                                <p id="p-licensed" class="title">Clássicos</p>
+                                <p id="p-licensed" class="title">Gráficos</p>
                             </div>
             
                             <div class="text-center">
                                 <input class="radio-input" type="radio" value="1" id="americana" name="type">
                                 <label class="radio-label " for="americana"><i class="fa-solid fa-flag-usa"></i></label>
-                                <p id="p-notLicensed" class="title">Americana</p>
-                            </div>
-            
-                            <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="romance" name="type">
-                                <label class="radio-label " for="romance"><i class="fa-solid fa-heart"></i></label>
-                                <p id="p-notLicensed" class="title">Romance</p>
-                            </div>
-            
-                            <div class="text-center">
-                                <input class="radio-input" type="radio" value="0" id="Policial" name="type">
-                                <label class="radio-label " for="Policial"><i class="fa-solid fa-shield-halved"></i></label>
-                                <p id="p-notLicensed" class="title">Policial</p>
-                            </div>
-            
-                            <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="ficcao" name="type">
-                                <label class="radio-label " for="ficcao"><i class="fa-solid fa-jedi"></i></label>
-                                <p id="p-notLicensed" class="title">Ficção</p>
-                            </div>
-            
-                            <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="ingles" name="type">
-                                <label class="radio-label " for="ingles"><i class="fa-regular fa-paper-plane"></i></label>
-                                <p id="p-notLicensed" class="title">Lin. Inglesa</p>
+                                <p id="p-notLicensed" class="title">Locações</p>
                             </div>
                         </div>
                     </div>   
                 </div>
             </nav>
+			<div class="central-input">
+                <input type="text" name="" id="" placeholder="Procure seu livro aqui"><i class="fa-solid fa-magnifying-glass"></i>
+            </div>
         </div>
 		<div class="centralizar-livros">
 			
@@ -137,6 +114,9 @@
 			include 'livros.php';
 		?>
 		</div>
+		<?php
+			include '../components/footer.php';
+		?>
     </div>
 
 

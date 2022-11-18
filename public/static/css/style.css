@@ -1082,7 +1082,6 @@ input, select, textarea{
     margin-right: auto;
     margin-top: 15px;
     margin-left: auto;
-
 }
 .central-input {
     display: flex;
@@ -1090,7 +1089,7 @@ input, select, textarea{
 }
 .central-input input{
     border-radius: 10px;
-    width: calc(30% - 10px);
+    width: calc(40% - 10px);
     margin-top: 30px;
     margin-bottom: 30px;
     padding: 10px 15px;
@@ -1098,34 +1097,29 @@ input, select, textarea{
     font-size: 16px;
     border: 2px solid #cdb1e9;
 }
-
 .central-input i {
     margin-top: 45px;
     margin-left: 20px;
+    color: #fff;
 }
 
 /* Div FIltro */
-
 .centralizar-filtro {
     display: flex;
     justify-content: center;
 }
-
 .filtro {
     margin-top: 30px;
     width: 60%;
 }
-
 .fast-filter
 {
     display: flex;
     justify-content: space-evenly;
 }
-
 .radio-input {
     display: none;
 }
-
 .radio-label {
     display: flex;
     justify-content: center;
@@ -1140,11 +1134,9 @@ input, select, textarea{
     color: #7E7B72;
     cursor: pointer;
 }
-
 .radio-label i {
     font-size: 30px;
 }
-
 .radio-input:checked ~ .radio-label
 {
     color: #000;
@@ -1154,14 +1146,12 @@ input, select, textarea{
 {
     color: #cdb1e9;
 }
-
 .text-center p{
     margin-top: 10px;
     font-size: 12px;
     text-align: center;
     color: rgb(255, 255, 255);
 }
-
 input[type="checkbox"]{
     display: none;
 }
@@ -1183,44 +1173,44 @@ input[type="checkbox"]{
     border: 0.05rem solid #ced4da;
     border-radius: 3px 30px;
     height: 150px;
-    margin: 15px auto;
+    margin: 30px auto;
 }
 .div-livro-externo img{
     width: 80px;
     height: 110px;
     margin-left: 40px;
 }
-
 .table-conteudo  p{
     font-size: 12px;
     margin: 2px;
     font-weight: 700;
 }
-
 .status{
     display: inline-flex;
     justify-content: space-around;
-    color:rgb(187, 186, 186);
-    font-size: 10px;
+    color:rgb(87, 87, 87);
+    font-size: 11px;
     width: 100%;
     padding-bottom: 5px;
 }
 .status div{
     width: 100%;
     text-align: center; 
+    font-weight: 600;
 }
 .sinopse{
     width: 90%;
-    font-size: 12px;
+    font-size: 10px;
     margin-top: 10px;
     margin-bottom: 20px;
     color: #212529;
 }
 .table-conteudo h4{
     color:#000;
-    font-weight: 500;
+    font-weight: 900;
     font-family: nunito;
     margin-bottom: 0px;
+    font-size: 16px;
 }
 
 
