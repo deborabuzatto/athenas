@@ -188,15 +188,114 @@ else{
                 </div>
             </div>
             <div class="modal-footer btn-conclui-cadastro" >
-                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
+                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal"><i class="fa fa-arrow-left"></i></button>
                 <form action="../views/avaliacoes.php" method="POST">
                     <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
-                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes">Avaliações</button>
+                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes"><i class="fa fa-star"></i></button>
                 </form>
+                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-toggle="modal" data-bs-target="#editar<?php echo $dados['codigo_livro'];?>"><i class="fa fa-pencil"></i></button>
+                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-toggle="modal" data-bs-target="#excluir<?php echo $dados['codigo_livro'];?>"><i class="fa fa-trash"></i></button>
             </div> 
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="excluir<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">excluir Livro</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="cadastrar-livro">
+                    <p>Deseja realmente excluir o livro <?php echo $dados['titulo'];?>?</p>
+                </div>
+            </div>
+            <div class="modal-footer btn-conclui-cadastro" >
+                <form method="POST" action="../services/excluirLivro.php">
+                    <input type="hidden" class="form-control" id="codigo_livro" name="codigo_livro" 
+                    value="<?php echo $dados['codigo_livro'];?>">
+                    
+                    <div type="button" class="btn-conclui-cadastro">
+                        <button class="btn btn-pesquisa-bibliotecario" name="btn-excluir">Excluir Livro</button>
+                    </div>                                         
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editar<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><?php echo $dados['titulo'];?></h5>
+                <button type="hidden" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="../services/editarLivro.php" method="POST">
+                <div class="modal-body">
+                    <input  type="hidden" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>">
+
+                    <label for="titulo" class="form-label">Título:</label>
+                    <input type="text" class="form-control" id="titulo" name="titulo" value='<?php echo $dado['titulo'];?>'>
+
+                    <label for="editora" class="form-label">Editora:</label>
+                    <input type="text" class="form-control" id="editora" name="editora" value='<?php echo $dado['editora'];?>'>
+                
+                    <label for="senhaLogin" class="form-label">Data de publicação:</label>
+                    <input type="date" class="form-control" id="senhaLogin" name="data_publicacao" value='<?php echo $dado['data_publicacao'];?>'> 
+                    
+
+                    <label for="senhaLogin" class="form-label">ISBN:</label>
+                    <input type="text" class="form-control" id="senhaLogin" name="ISBN" value='<?php echo $dado['isbn'];?>' > 
+                
+                    <label for="nomeContato" class="form-label">Autor:</label>
+                    <input type="text" class="form-control" id="nomeContato" name="autor" value='<?php echo $dado['autor'];?>'>
+            
+                    <label for="Nacionalidade" class="form-label">Nacionalidade do autor:</label>
+                    <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade" 
+                    value='<?php echo $dado['nacionalidade'];?>'>
+                    
+                    <div class="input-selecionar">
+                        <label for="senhaLogin" class="form-label">Categoria:</label>
+                        <select class="form-select" name="categoria" >
+                            <?php
+                                $livro = new Livro();
+                                $imprimir = $livro->listarCategoria();
+                                if(count($imprimir)>0):
+                                    foreach($imprimir as $dados){
+                            ?>
+                            <option value="<?php echo $dados['codigo_categoria']?>"><?php echo $dados['dsc_categoria']?></option>
+
+                            <?php
+                                }
+                                endif;
+                            ?>
+                        </select>
+                    </div>
+
+                    <div class="input-selecionar ">
+                        <label for="importar" class="form-label">Importar capa:</label>
+                        <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="importar">
+                    </div>
+
+
+                    <div class="input-textarea">
+                        <label for="sinopse" class="form-label">Sinopse:</label>
+                        <textarea type="text" class="form-control" id="sinopse" name="sinopse" value='<?php echo $dado['sinopse']?>'></textarea>
+                    </div>
+
+                </div>
+                <div class="modal-footer btn-conclui-cadastro" >
+                    <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="btn-editar">Editar livro</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <?php
 }}}}
 ?>

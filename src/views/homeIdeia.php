@@ -111,14 +111,13 @@
 		<div class="centralizar-livros">
 			
 		<?php
-			include 'livros.php';
+			include 'livrosBiblio.php';
 		?>
 		</div>
 		<?php
 			include '../components/footer.php';
 		?>
     </div>
-
 
 	<script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
