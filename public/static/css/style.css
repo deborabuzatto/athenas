@@ -1,116 +1,33 @@
 /*padrão*/
 body{
     overflow-x: hidden;
-}
-
-.tela{
     font-family: Poppins;
 }
-
-.form-control:focus {
-    color: #212529;
-    background-color: #fff;
-    border-color: #ced4da;
-    outline: 0;
-    box-shadow: 0 0 0 0;
-}
-
 .form-select:focus {
     border-color: #ced4da;
     outline: 0;
     box-shadow: 0 0 0 0;
 }
 
-.links a{
-    color: #3c3c3c;
-    display: block;
-    text-decoration: none;
-    padding-top: 12px;
-}
-
-.links i{
-    color: #7625c9;
-    padding-left: 6px;
-}
-
-.links i:hover{
-    padding-left: 15px;
-}
-
-.contato{
-    display: flex;
-    justify-content: start;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #f4f4f4;
-}
-
-.contato h2{
-    color: #62248F;
-    font-size: 30px;
-    font-family: Poppins;
-    font-weight: 900;
-    text-align: start;
-    padding: 0px 0px 50px 0px;
-}
-
-.contato .form-contato{
-    width: 50%;
-    padding-top: 60px;
-    margin-left: auto;
-    margin-right: 0px
-}
-
-.contato .img-form{
-    width: 40%;
-    height: 500px;
-}
-.img-form img{
-    width: 80%;
-    height: 100%;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.form-contato button{
-    background-color: #7625c9;
-    border-color: #7625c9;
-    color: #fff;
-}
-
-.form-contato button:hover{
-    background-color: #ffffff;
-    border-color: #7625c9;
-    color: #7625c9;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-}
-
 /*página de login*/
-
 .nav-login{
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
 }
-
 .nav-login .page-info-name, .nav-login .nav-link-item  {
     padding-top: 10px;
     padding-left: 20px;
     color:rgb(181, 181, 181);
     font-size: 22px;
 }
-
 .nav-login .page-info-name{
     margin-left: auto;
     margin-right: 50px;
     margin-top: 25px;
     text-transform: uppercase;
 }
-
 .page-info-name p{
     font-family: nunito;
     font-size:12px; 
@@ -118,12 +35,10 @@ body{
     display: inline; 
     padding-right: 20px;
 }
-
 .nav-login .page-info-name i, .nav-login .nav-link-item i{
     margin-right: 10px;
     margin-top: 20px;
 }
-
 .nav-login .page-info-name a, .nav-login .nav-link-item a{
     text-decoration: none;
     color: rgb(59, 7, 84);
@@ -131,35 +46,22 @@ body{
     font-weight: 800;
     font-family: nunito;
 }
-
 .nav-login-menu{
     width: 100%;
     text-align: center;
     font-size: 16px;
 }
-
 .nav-login-menu p{
     font-family: nunito;
     color: rgb(197, 197, 197);
     font-weight: 500px;
 }
-.gradiente{
-    font-family: nunito;
-    color: #000;
-    font-weight: 500px;
-    background-image: linear-gradient(to bottom, rgb(148, 93, 203), steelblue, rgb(24, 196, 179));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
 .nav-login-menu img{
     width: 120px;
     height: 100px;
     margin-top: 20px;
     margin-bottom: 15px;
 }
-
 .login{
     display: flex;
     justify-content: space-between;
@@ -169,7 +71,6 @@ body{
     padding-bottom: 30px;
     background-color: #ffffff;
 }
-
 .login h2{
     color: #7625c9;
     font-size: 36px;
@@ -178,7 +79,6 @@ body{
     text-align: center;
     padding: 0px 0px 50px 0px;
 }
-
 .login .form-login-page{
     width: 50%;
     margin-left: auto;
@@ -195,102 +95,20 @@ body{
     margin-left: auto;
     margin-top: 50px;
 }
-
 .login .img-login{
     width: 50%;
     height: 500px;
 }
-
 .img-login img{
     width: 100%;
     height: 100%
 }
-
 .form-login-page button{
     width: 100%;
     margin-top: 20px;
     background-color: #FA4D39;
     border-color: #FA4D39;
 }
-
-.footer-login{
-    width: 100%;
-    text-align: center;
-    text-transform: uppercase;
-    font-size: 12px;
-    padding-bottom: 20px;
-}
-
-/*home do aluno*/
-.conteudo-home{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 200px;
-}
-.conteudo-home a{
-    text-decoration: none;
-    color: #4f4f4f;
-}
-
-.conteudo-home div{
-    width: 200px;
-    border-radius: 10px;
-    border: 0.05em solid #dcdada;
-    padding: 10px;
-    margin: 3px;
-}
-
-.conteudo-home i{
-    font-size: 24px;
-    color: #4c0677;
-    margin-left: 78px;
-}
-
-.div-app{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #f4f4f4;
-    margin-bottom: 100px;
-}
-
-.div-app img{
-    width: 80%;
-}
-
-.div-app div:first-child{
-    width: 50%;
-}
-
-.div-app h1{
-    text-align: center;
-    color:rgb(59, 7, 84);
-    font-weight: 900;
-    margin-bottom: 40px;
-    width: 100%;
-}
-
-.div-app p{
-    font-size: 22px;
-    width: 100%;
-    text-align: center;
-}
-
-.img-home-aluno{
-    width: 100%;
-}
-
-.img-home-aluno img{
-    width: 100%;
-}
-
 
 /*página livros aluno*/
 
@@ -302,19 +120,6 @@ body{
     padding-top: 50px;
     padding-bottom: 150px;
 }
-
-.titulo-livro-page{
-    width: 100%;
-    text-align: center;
-}
-
-.titulo-livro-page h2{
-    color: #4c0677;
-    font-weight: 900;
-    font-size: 36px;
-    text-transform: uppercase;
-}
-
 .busca-livro-page{
     width: 100%;
     display: flex;
@@ -370,8 +175,7 @@ body{
     width: 40%;
     min-width: 200px;
     height: 150px;
-    margin: 20px auto 0px auto;
-    
+    margin: 20px auto 0px auto;   
 }
 .table-livro-aluno img{
     width: 80px;
@@ -388,7 +192,7 @@ body{
     font-family: nunito;
     margin-bottom: 0px;
 }
-h4 span, .disponibilidade{
+h4 span{
     max-width: 77px;
     background-color: #7625c9;
     color: #ffffff;
@@ -398,36 +202,11 @@ h4 span, .disponibilidade{
     letter-spacing: 0.5px;
     display: inline;
 }
-.categoria{
-    max-width: 77px;
-    background-color: #FA4D39;
-    color: #ffffff;
-    padding: 2px 7px;
-    font-size: 11px;
-    border-radius: 12px;
-    letter-spacing: 0.5px;
-    display: inline;
-}
-
-.indisponibilidade{
-    max-width: 77px;
-    color: #ffffff;
-    padding: 2px 7px;
-    font-size: 11px;
-    border-radius: 12px;
-    letter-spacing: 0.5px;
-    display: inline;
-    background-color: #5f6c9e;
-}
-.disponibilidade, .indisponibilidade{
-    margin: 2px 60px;
-}
 .table-conteudo  p{
     font-size: 12px;
     margin: 2px;
     font-weight: 700;
 }
-
 .sinopse{
     width: 90%;
     font-size: 12px;
@@ -435,43 +214,14 @@ h4 span, .disponibilidade{
     margin-bottom: 20px;
     color: #212529;
 }
-
 .page-link{
     color: #4c0677;
     font-weight: 700;
     margin-top: 50px;
 }
-
 .page-link:hover{
     color: #4c0677;
 }
-
-/*historico*/
-.navbar-historico{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 100%;
-}
-
-.navbar-historico button{
-    color:#4c0677;
-    border: none;
-    text-decoration: none;
-    color: rgb(59, 7, 84);
-    font-size: 18px;
-    font-weight: 800;
-    margin-right: 20px;
-}
-
-.navbar-historico a{
-    text-decoration: none;
-    color: rgb(59, 7, 84);
-    font-size: 18px;
-    font-weight: 800;
-    margin-right: 50px;
-}
-
 
 
 /*div historico vazio*/
@@ -492,21 +242,6 @@ h4 span, .disponibilidade{
 }
 
 /*páginas cadastrar livro*/
-.button-plus {
-    border: 0.05rem solid #4c0677;
-    background-color: #4c0677; 
-    padding: 8px 12px;
-    color: #ffffff;
-    border-radius: 10px;
-    margin: 3px;
-}
-
-.button-plus:hover {
-    background-color: #ffffff; 
-    color:#4c0677;
-    border: 0.05rem solid #4c0677;
-}
-
 .btn-pesquisa-bibliotecario{
     border: 0.05rem solid #a776d9;
     background-color: #a776d9; 
@@ -522,15 +257,9 @@ h4 span, .disponibilidade{
     border: 0.05rem solid #4c0677;
     color: #4c0677;
 }
-.icones-table p{
-    margin-top: 15px;
-    margin-bottom: 20px;
-}
-
 .btn-conclui-cadastro{
     text-align: end;
 }
-
 .cadastrar-livro{
     display: flex;
     justify-content: center;
@@ -540,7 +269,6 @@ h4 span, .disponibilidade{
     padding-bottom: 100px;
     background-color: #ffffff;
 }
-
 .input-nomes{
     width: 100%;
     min-width: 300px;
@@ -1212,6 +940,51 @@ input[type="checkbox"]{
     margin-bottom: 0px;
     font-size: 16px;
 }
+.centralizar-livro {
+    width: 70%;
+    margin-left: 0px;
+    display: flex;
+    justify-content: start;
+    flex-wrap: wrap;
+    padding-left: 20px;
+}
+.centralizar-livro .titulo{
+    width: 100%; 
+    margin-top: 30px;
+}
+.div-livro-locacao{
+    width: 44%;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 0.05rem solid #ced4da;
+    border-radius: 3px 30px;
+    height: 160px;
+    margin: 30px 0px;
+}
+.div-livro-locacao img{
+    width: 80px;
+    height: 110px;
+    margin-left: 40px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

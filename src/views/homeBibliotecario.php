@@ -84,7 +84,6 @@
             </div>
         </div>
 		<div class="centralizar-livros">
-			
 		<?php
 			include 'livrosBiblio.php';
 		?>

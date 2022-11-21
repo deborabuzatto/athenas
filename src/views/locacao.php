@@ -1,55 +1,67 @@
-<!DOCTYPE html>
-<?php 
-    include_once '../models/classAluno.php';
+<?php
+    include '../models/classLivro.php';
+    //session_start();
 ?>
+<!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php
-            include '../components/header.php';
-        ?>
-
-        <title>Teste 1</title>
+        <?php include '../components/header.php'; ?>
+        <title>LOCAÇÃO | REGISTROS</title>
     </head>
     <body>
         <div class="tela">
-            
             <div class="nav-login">
-                <div class="nav-link-item">
-                    <a href="homeBibliotecario.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
-                </div>
-
-                <div class="page-info-name">
-                    <p>Você está na página:</p><a href="#">Registro de locações</a>
-                </div>
-
+                <div class="nav-link-item"><a href="/index.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
+                <div class="page-info-name"><p>Você está na página:</p><a href="#">LOCAÇÕES</a></div>
                 <div class="nav-login-menu">
                     <img src="/public/static/imagens/athenas.png">
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
-
-            <form action="../services/locacao.php" method="POST">
-                <input name="codigo_livro" value="4">
-                <!--<input name="codigo_pessoa" value="4">-->
-                <button name="btn-locar">enviar</button>
-            </form>
-            <div class="centralizar-livros">
-			
-		<?php
-			include 'livrosBiblio.php';
-		?>
-		</div>
-
+            
             <?php 
-                include '../components/footer.php';
+                if(isset($_POST['locacoes'])){
+                    $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+                    $livro = new Livro();
+                    $busca = $livro->listarTodosDadosLivro($codigo_livro);
+                    if(count($busca)>0):
+                        foreach($busca as $dados){
+            ?>
+            <div class="centralizar-livro">
+                <div class="titulo"><h2>Você selecionou o livro:</h2></div>
+                <div class="div-livro-locacao livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
+                    <div><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
+                    <div class="table-conteudo">
+                        <h4><?php echo $dados['titulo'];?></h4>
+                        <p class="sinopse"><?php echo $dados['sinopse']; echo' . . . ';?></p>
+                    </div>
+                    <div class="status">
+                        <div>
+                            <i class="fa-regular fa-bookmark"></i>
+                            <span><?php echo $dados['categoria'];?></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-ranking-star"></i>
+                            <span>
+                                <?php
+                                if(empty($dado['nota'])){
+                                    echo 'não avaliado';
+                                }else{
+                                    echo $dado['nota'];
+                                }
+                                ?>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <?php 
+                }
+                endif; }
             ?>
         </div>
 
-        <!-- Script FontAwesome -->
-        <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
-
-        <!-- Script Boostrap-->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+        <?php include '../components/footer.php'; ?>
+        <?php include '../components/scriptsBody.php'; ?>
     </body>
 </html>
