@@ -188,13 +188,17 @@ else{
                 </div>
             </div>
             <div class="modal-footer btn-conclui-cadastro" >
-                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal"><i class="fa fa-arrow-left"></i></button>
+                <button class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal" title="Voltar"><i class="fa fa-arrow-left"></i></button>
                 <form action="../views/avaliacoes.php" method="POST">
                     <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
-                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes"><i class="fa fa-star"></i></button>
+                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes" title="Avaliações"><i class="fa fa-star"></i></button>
                 </form>
-                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-toggle="modal" data-bs-target="#editar<?php echo $dados['codigo_livro'];?>"><i class="fa fa-pencil"></i></button>
-                <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-toggle="modal" data-bs-target="#excluir<?php echo $dados['codigo_livro'];?>"><i class="fa fa-trash"></i></button>
+                <form action="../views/locacao.php" method="POST">
+                    <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
+                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="locacao" title="Registrar locação"><i class="fa fa-book-open-reader"></i></i></button>
+                </form>
+                <button class="btn btn-pesquisa-bibliotecario" title="Editar livro" data-bs-toggle="modal" data-bs-target="#editar<?php echo $dados['codigo_livro'];?>"><i class="fa fa-pencil"></i></button>
+                <button class="btn btn-pesquisa-bibliotecario" title="Excluir livro"data-bs-toggle="modal" data-bs-target="#excluir<?php echo $dados['codigo_livro'];?>"><i class="fa fa-trash"></i></button>
             </div> 
         </div>
     </div>
