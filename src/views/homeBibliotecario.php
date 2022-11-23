@@ -70,11 +70,6 @@
                                 <a href="graficos.php" class="radio-label"><i class="fa-solid fa-landmark"></i></a>
                                 <p id="p-licensed" class="title">Gráficos</p>
                             </div>
-            
-                            <div class="text-center">
-								<a href="locacao.php" class="radio-label"><i class="fa-solid fa-flag-usa"></i></a>
-                                <p id="p-notLicensed" class="title">Locações</p>
-                            </div>
                         </div>
                     </div>   
                 </div>
@@ -84,27 +79,9 @@
             </div>
         </div>
 		<div class="centralizar-livros">
-		<?php
-			include 'livrosBiblio.php';
-		?>
+			<?php include 'livrosBiblio.php'; ?>
 		</div>
-		<?php
-			include '../components/footer.php';
-		?>
-    </div>
-
-    <!-- <script>
-        var livros = document.getElementById("livros");
-        livros.onclick = function(){
-            window.location.assing("homeBibliotecario.php")
-        }
-        var alunos = document.getElementById("alunos");
-        alunos.checked = function(){
-            window.location.assing("alunosBibliotecario.php")
-        }
-    </script> -->
-
-	<script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+		<?php include '../components/footer.php'; ?>
+		<?php include '../components/scriptsBody.php'; ?>
 	</body>
 </html>

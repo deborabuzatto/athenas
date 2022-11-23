@@ -969,6 +969,27 @@ input[type="checkbox"]{
     margin-left: 40px;
 }
 
+/*hover categorias*/
+.red{
+    background-color:#FA4145;
+    color: #fff;
+}
+.azul{
+    background-color:#3770AD;
+    color: #fff;
+}
+.verde{
+    background-color: #3BA04C;
+    color: #fff;
+}
+.rosa{
+    background-color:#FF375D;
+    color: #fff;
+}
+.amarelo{
+    background-color:#FFD600;
+    color: #fff;
+}
 
 
 
@@ -1058,6 +1079,14 @@ div .icon-footer {
     }
     .avaliacoes-livro-div{
         width: 60%;
+    }
+    .div-livro-externo{
+        width: 45%;
+        margin-right: 30px;
+    }
+    .div-livro-externo img{
+        margin-bottom: 7px;
+        margin-top: 10px;
     }
 }
 

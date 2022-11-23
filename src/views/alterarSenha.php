@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+    $aluno = $_SESSION['nome_aluno'];
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -14,15 +18,15 @@
             <div class="login-div">
                 <div class="form-login">
                     <div><img  class="logo" src="/public/static/imagens/logo.png"></div>
-                    <form method="POST" action="../services/login.php">
+                    <form method="POST" action="../services/alterarSenha.php">
                         <?php if(isset($_SESSION['nao_autenticado'])): ?>
                         <div><p class="text-center text-danger">Senha atual incorreta. Tente novamente!</p></div>
                         <?php unset($_SESSION["nao_autenticado"]); endif; ?>
                         
-                        <div><input type="email" placeholder="SENHA ATUAL" name="senha_atual" id="senha_atual" required></div>
-                        <div><input type="password" placeholder="NOVA SENHA" name="nova_senha" id="nova_senha" required></div>
-                        <div><input type="password" placeholder="CONFIRMAR NOVA SENHA" name="confirma_senha" id="confirma_senha" required></div>
-                        <div><p class="text-center text-danger" style="display: none" id="nao_compativel">Senha atual incorreta. Tente novamente!</p></div>
+                        <div><input type="text" placeholder="Senha Atual" name="senha_atual" id="senha_atual" required></div>
+                        <div><input type="password" placeholder="Nova Senha" name="nova_senha" id="nova_senha" required></div>
+                        <div><input type="password" placeholder="Confirmar Nova Senha" name="confirma_senha" id="confirma_senha" required></div>
+                        <div><input type="hidden" name="codigo_pessoa" value="<?php echo $aluno ?>" required></div>
                         <div class="wrap"><button name="btn-alterar" class="btn-login button">ALTERAR</button></div>
                     </form>
                 </div>
@@ -30,23 +34,6 @@
         </div>
 
         <?php include '../components/footer.php'; ?>
-
-        <script type="text/javascript">
-            function verificaSenha(){
-                let nova_senha = document.getElementByID("nova_senha");
-                let confirma_senha = document.getElementByID("confirma_senha");
-                if(nova_senha != confirma_senha){
-
-                }
-            }
-            
-        </script>
-
-
-        <!-- Script FontAwesome -->
-        <script src="https://kit.fontawesome.com/a9ac96b7ba.js" crossorigin="anonymous"></script>
-        <!-- Script Boostrap-->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+        <?php include '../components/scriptsBody.php'; ?>                   
     </body>
 </html>
