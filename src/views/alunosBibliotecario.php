@@ -126,7 +126,7 @@ session_start();
             ?>
             <div class="centralizar-livro">
                 <div class="div-livro-locacao livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
-                    <div class="img-pessoa1"><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
+                    <div class="img-pessoa1"><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>"></div>
                     <div class="table-conteudo">
                         <h4><?php echo $dados['nome'];?></h4>
                         <p><span>Username:</span><?php echo $dados['username'];?></p>

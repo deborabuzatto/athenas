@@ -42,7 +42,7 @@
             
                             <div class="text-center">
                                 <input class="radio-input" type="radio" value="1" id="americana" name="type">
-                                <label class="radio-label verde" for="americana"><i class="fa-regular fa-paper-plane"></label>
+                                <label class="radio-label verde" for="americana"><i class="fa-solid fa-flag-usa"></i></label>
                                 <p id="p-notLicensed" class="title">Americana</p>
                             </div>
             
@@ -66,7 +66,7 @@
             
                             <div class="text-center">
                                 <input class="radio-input" type="radio" value="1" id="ingles" name="type">
-                                <label class="radio-label verde" for="ingles"><i class="fa-solid fa-flag-usa"></i></label>
+                                <label class="radio-label verde" for="ingles"><i class="fa-regular fa-paper-plane"></i></label>
                                 <p id="p-notLicensed" class="title">Lin. Inglesa</p>
                             </div>
                         </div>

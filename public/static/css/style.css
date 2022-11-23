@@ -123,9 +123,8 @@ body{
 .busca-livro-page{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
-    padding-left: 10px;
 }
 
 .busca-livro-page input{
@@ -432,9 +431,9 @@ h4 span{
     margin-right: 18px;
 }
 .img-pessoa1 img{
-    width: 70px; 
-    height:70px;
-    border-radius: 200px
+    width: 90px; 
+    height: 90px;
+    border-radius: 300px;
 }
 
 /*home aluno*/
@@ -962,11 +961,13 @@ input[type="checkbox"]{
     border-radius: 3px 30px;
     height: 160px;
     margin: 30px 0px;
+    padding-top: 5px;
 }
-.div-livro-locacao img{
+
+.div-livro-locacao .img{
     width: 80px;
     height: 110px;
-    margin-left: 40px;
+    margin-left: 30px;
 }
 
 /*hover categorias*/

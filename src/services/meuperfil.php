@@ -17,10 +17,10 @@ if(isset($_POST['btn-editar'])):
 	$aluno->setUrl_img($nome_img);
 	
 	// Recebendo nome do arquivo imagem, conferindo se o repositório onde ficará guardado existe
-    $uploaddir  = '/public/dinamic/';
+    $uploaddir  = '../components/dinamic/';
     $uploadfile  = $uploaddir . basename($_FILES['file']['name']);
     
-    if (file_exists('/public/dinamic/') ) {
+    if (file_exists('../components/dinamic/') ) {
         // Verificando o tipo da imagem, caso seja jpg está liberada
         try {
             if ($extensao === 'jpg') {

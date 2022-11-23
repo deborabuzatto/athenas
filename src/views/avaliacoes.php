@@ -30,7 +30,7 @@
                         if(count($busca)>0):
                             foreach($busca as $dados){
                 ?>
-                    <img src="/public/static/imagens/livroHistoria.jpg">
+                    <img src="../components/dinamic/<?php echo $dados['img_capa'];?>">
                     <div class="dados-livro-avalia">
                         <h4><?php echo $dados['titulo'];?></h4>
                         <p><span>Autor:</span><?php echo $dados['autor'];?></p>
@@ -54,7 +54,6 @@
             </div>
 
             <div class="avaliacoes-livro">
-                <h1>Outros usuários avaliaram:</h1>
                 <?php 
                     if(isset($_POST['avaliacoes'])){
                         $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
@@ -64,6 +63,7 @@
                         if(count($busca)>0):
                             foreach($busca as $dados){
                 ?>
+                <h1>Outros usuários avaliaram:</h1>
                 <div class="avaliacoes-livro-div">
                     <div class="avaliacoes-img"><img src="/public/static/imagens/livroHistoria.jpg"></div>
                     <div class="dados-livro-avalia">
@@ -72,12 +72,7 @@
                         <p>Carla Meneguine</p>
                     </div>
                 </div>
-                <?php 
-                }
-                endif;}
-                ?>
-
-            
+                <?php }endif;} ?>
             </div>
         </div>
 

@@ -118,6 +118,7 @@ else{
     </div>
 </div>
 
+<!-- INFORMAÇÕES LIVRO -->
 <div class="modal fade" id="informacoes<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -153,17 +154,15 @@ else{
                     <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
                     <button type="submit" class="btn btn-pesquisa-bibliotecario" name="avaliacoes" title="Avaliações"><i class="fa fa-star"></i></button>
                 </form>
-                <form action="../views/locacao.php" method="POST">
-                    <input  type="hidden" name="codigo_livro" value="<?php echo $dado['codigo'];?>">
-                    <button type="submit" name="locacoes" class="btn btn-pesquisa-bibliotecario" title="Registrar locação"><i class="fa fa-book-open-reader"></i></i></button>
-                </form>
+                <button class="btn btn-pesquisa-bibliotecario" title="Registrar Locação" data-bs-toggle="modal" data-bs-target="#locar<?php echo $dados['codigo_livro'];?>"><i class="fa fa-book-open-reader"></i></button>
                 <button class="btn btn-pesquisa-bibliotecario" title="Editar livro" data-bs-toggle="modal" data-bs-target="#editar<?php echo $dados['codigo_livro'];?>"><i class="fa fa-pencil"></i></button>
-                <button class="btn btn-pesquisa-bibliotecario" title="Excluir livro"data-bs-toggle="modal" data-bs-target="#excluir<?php echo $dados['codigo_livro'];?>"><i class="fa fa-trash"></i></button>
+                <button class="btn btn-pesquisa-bibliotecario" title="Excluir livro" data-bs-toggle="modal" data-bs-target="#excluir<?php echo $dados['codigo_livro'];?>"><i class="fa fa-trash"></i></button>
             </div> 
         </div>
     </div>
 </div>
 
+<!-- EXCLUIR LIVRO -->
 <div class="modal fade" id="excluir<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -190,6 +189,30 @@ else{
     </div>
 </div>
 
+<!-- LOCAR LIVRO -->
+<div class="modal fade" id="locar<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Você selecionou o livro: <?php echo $dados['titulo'];?></h5>
+                <button type="hidden" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="../views/locacao.php" method="POST">
+                <div class="modal-body">
+                    <input  type="hidden" name="codigo_livro" value="<?php echo $dados['codigo_livro'];?>">
+                    <label for="nomes" class="form-label">Digite o nome do aluno para continuar:</label>
+                    <input type="text" id="nomes" class="form-control" name="pesquisar">
+                </div>
+                <div class="modal-footer btn-conclui-cadastro" >
+                    <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>
+                    <button type="submit" class="btn btn-pesquisa-bibliotecario" name="btn-locacao">Locar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- EDITAR LIVRO -->
 <div class="modal fade" id="editar<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -209,11 +232,10 @@ else{
                 
                     <label for="senhaLogin" class="form-label">Data de publicação:</label>
                     <input type="date" class="form-control" id="senhaLogin" name="data_publicacao" value='<?php echo $dado['data_publicacao'];?>'> 
-                    
 
                     <label for="senhaLogin" class="form-label">ISBN:</label>
                     <input type="text" class="form-control" id="senhaLogin" name="ISBN" value='<?php echo $dado['isbn'];?>' > 
-                
+
                     <label for="nomeContato" class="form-label">Autor:</label>
                     <input type="text" class="form-control" id="nomeContato" name="autor" value='<?php echo $dado['autor'];?>'>
             
@@ -239,17 +261,15 @@ else{
                         </select>
                     </div>
 
-                    <div class="input-selecionar ">
+                    <div class="input-selecionar">
                         <label for="importar" class="form-label">Importar capa:</label>
                         <input type="file" class="form-control" id="importar" placeholder="Imagem da capa" name="importar">
                     </div>
-
 
                     <div class="input-textarea">
                         <label for="sinopse" class="form-label">Sinopse:</label>
                         <textarea type="text" class="form-control" id="sinopse" name="sinopse" value='<?php echo $dado['sinopse']?>'></textarea>
                     </div>
-
                 </div>
                 <div class="modal-footer btn-conclui-cadastro" >
                     <button type="button" class="btn btn-pesquisa-bibliotecario" data-bs-dismiss="modal">Voltar</button>

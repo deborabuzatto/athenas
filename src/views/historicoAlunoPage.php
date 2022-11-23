@@ -25,7 +25,7 @@
                 </div>
 
                 <div class="nav-login-menu">
-                    <img src="/public/static/imagens/logolaranja.png">
+                    <img src="/public/static/imagens/athenas.png">
                     <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
                 </div>
             </div>
@@ -54,44 +54,50 @@
                         $imprime = $todos->listarTodosDadosLivro($id);
                         foreach($imprime as $dado){
                 ?>
-                    <div class="table-livro-aluno">
-                    <div>
+                <div class="div-livro-externo livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
+                    <div><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
+                    <div class="table-conteudo">
+                        <h4><?php echo $dados['titulo'];?></h4>
+                        <p class="sinopse"><?php echo $dados['sinopse']; echo' . . . ';?></p>
+                    </div>
+                    <div class="status">
                         <div>
-                            <img src="/public/static/imagens/amoregelato.jpg">
-                        </div>
-                        <div class="table-conteudo">
-                            <h4><?php echo $dados['titulo'];?></h4>
                             <?php
                                 $livro = new Livro();
                                 $codigo_livro = $dados['codigo_livro']; 
                                 $disponibilidade = $livro->disponibilidade($codigo_livro);
                                 if($disponibilidade['valor'] === "0"){
                             ?>
-                                <p class="disponibilidade">Disponível</p>
+                                <i class="fa-regular fa-circle-check"></i>
+                                <span>Disponível</span>
                             <?php
                                 } else{   
                             ?>
-                                <p class="disponibilidade">Indisponível</p>
+                                <i class="fa-regular fa-circle-xmark"></i>
+                                <span>Indisponível</span>
                             <?php
                             }
                             ?>
-                            <p class="categoria"><?php echo $dados['categoria'];?></p>
-                            <p class="categoria"><?php 
+                        </div>
+                        <div>
+                            <i class="fa-regular fa-bookmark"></i>
+                            <span><?php echo $dados['categoria'];?></span>
+                        </div>
+                        <div>
+                            <i class="fa fa-ranking-star"></i>
+                            <span>
+                                <?php
                                 if(empty($dado['nota'])){
                                     echo 'não avaliado';
                                 }else{
                                     echo $dado['nota'];
                                 }
-                            ?></p>
-                            <p class="sinopse"><?php echo $dados['sinopse'];?></p>
-                            <button type="button" class="btn-comprido" data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">Ver mais informacoes</button>
+                                ?>
+                            </span>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
-                
-
-                
-                
+                                
                 <div class="modal fade" id="informacoes<?php echo $dados['codigo_livro'];?>" tabindex="-1" aria-hidden="true">
                     <div class="modal-dialog modal-lg">
                         <div class="modal-content">

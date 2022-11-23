@@ -41,7 +41,6 @@
                     $_SESSION['nome_aluno'] = $id;
                     header("Location: ../views/homeAlunos.php");
                     exit();
-
                 }
       
             }else{
