@@ -19,7 +19,9 @@
             </div>
         </div>
         
-        <?php 
+        <div class="centralizar-livro">
+            <div class="titulo"><h2>Você selecionou o livro:</h2></div>
+            <?php 
             if(isset($_POST['btn-locacao'])){
                 $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
                 $pesquisar = filter_var($_POST['pesquisar'], FILTER_SANITIZE_STRING);
@@ -34,10 +36,8 @@
                     foreach($busca as $dados){
                         if(count($buscar)>0){
                             foreach($buscar as $info){
-        ?>
-        <div class="centralizar-livro">
-            <div class="titulo"><h2>Você selecionou o livro:</h2></div>
-            <div class="div-livro-locacao livro">
+            ?>
+            <div class="div-livro-locacao">
                 <div><img class="img" src="../components/dinamic/<?php echo $info['img_capa'];?>"></div>
                 <div class="table-conteudo">
                     <h4><?php echo $info['titulo'];?></h4>
@@ -81,19 +81,28 @@
                 </div>
             </div>
             <div class="titulo"><h2>Você selecionou o Aluno:</h2></div>
-            <div class="div-livro-locacao livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
+            <div class="div-livro-locacao livro">
                 <div class="img-pessoa1"><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>"></div>
                 <div class="table-conteudo">
                     <h4><?php echo $dados['nome'];?></h4>
-                    <p><span>Username:</span><?php echo $dados['username'];?></p>
-                    <p><span>Data de nascimento:</span><?php echo $dados['data_nasc'];?></p>
-                    <p><span>E-mail:</span><?php echo $dados['email'];?></p>
+                    <p><span>Username: </span><?php echo $dados['username'];?></p>
+                    <p><span>Data de nascimento: </span><?php echo $dados['data_nasc'];?></p>
+                    <p><span>E-mail: </span><?php echo $dados['email'];?></p>
                 </div>
             </div>
+            <div class="form-loc">
+                <form action="../services/locacao.php" method="POST">
+                    <input type="hidden" name="codigo_pessoa" value="<?php echo $dados['codigo_pessoa'];?>">
+                    <input type="hidden" name="codigo_livro" value="<?php echo $info['codigo'];?>">
+                    <button name="btn-locar" class="btn btn-pesquisa-bibliotecario">Locar/Devolver</button>
+                </form>
+            </div>
+
+            <?php }}}}} ?>
+            
         </div>
-        <?php }}}}} ?>
+
         
-        </div>
 
         <?php include '../components/footer.php'; ?>
         <?php include '../components/scriptsBody.php'; ?>

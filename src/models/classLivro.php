@@ -240,7 +240,7 @@
         #########     FUNÇÕES DE ATUALIZAÇÃO DE DADOS     ###########
 
         
-        public function locacao($codigo_livro, $codigo_pessoa){
+        public function locacao($codigo_livro, $codigo_pessoa, $data_locacao, $data_entrega){
             //exibe se o livro está disponível ou não
             $sql="select count(*) as valor from (select livro.codigo_livro,livro.titulo,pessoa.nome,status_loca.codigo_status,
             lpl.data_locacao,lpl.data_entrega from livro_pessoa_loca lpl
@@ -255,27 +255,30 @@
 
             if($dados['valor'] === "0"){//disponivel, possivel locar, cria a locacao com status locado:
                 $sql1 = 'insert into livro_pessoa_loca 
-                (fk_livro_codigo_livro, fk_pessoa_codigo_pessoa, fk_status_loca_codigo_status)
-                values (:codigo_livro, :codigo_pessoa, 1)';
+                (fk_livro_codigo_livro, fk_pessoa_codigo_pessoa, fk_status_loca_codigo_status, data_locacao)
+                values (:codigo_livro, :codigo_pessoa, 1, :data_locacao)';
                 $stmt1 = Database::prepare($sql1);	
                 $stmt1->bindParam(':codigo_livro', $codigo_livro);
                 $stmt1->bindParam(':codigo_pessoa', $codigo_pessoa);
+                $stmt1->bindParam(':data_locacao', $data_locacao);
                 $stmt1->execute();
 
                 return true;
             }
             else{//se estiver locado, só é possível devolver, então muda o status para disponivel
                 $sql2 = 'update livro_pessoa_loca 
-                set fk_status_loca_codigo_status = 2
+                set fk_status_loca_codigo_status = 2, data_entrega = :data_entrega
                 where fk_livro_codigo_livro = :codigo_livro 
                 and fk_pessoa_codigo_pessoa = :codigo_pessoa;';
                 $stmt2 = Database::prepare($sql2);	
                 $stmt2->bindParam(':codigo_livro', $codigo_livro);
                 $stmt2->bindParam(':codigo_pessoa', $codigo_pessoa);
+                $stmt2->bindParam(':data_entrega', $data_entrega);
                 $stmt2->execute();
 
                 return true;
             }
+            
         }
 
 
@@ -401,6 +404,16 @@
             $stmt5->bindParam(':fk_categoria_codigo_categoria', $this->categoria);
             $stmt5->bindParam(':fk_livro_codigo_livro', $id);
             $stmt5->execute();
+        }
+
+        // FUNÇÃO DE RELATÓRIO
+        public function relatorio(){
+            $sql="select * from livro_pessoa_loca lpl
+            join pessoa ps on(lpl.fk_pessoa_codigo_pessoa = ps.codigo_pessoa)
+            join livro li on(lpl.fk_livro_codigo_livro = li.codigo_livro)";
+            $stmt = Database::prepare($sql);
+            $stmt->execute();
+            return $stmt->fetchAll();
         }
     }
 ?>
