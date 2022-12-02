@@ -17,7 +17,7 @@
             
             <div class="login-div">
                 <div class="form-login">
-                    <div><img  class="logo" src="/public/static/imagens/logo.png"></div>
+                    <div><img  class="logo" src="/public/static/imagens/athenas.png"></div>
                     <form method="POST" action="../services/alterarSenha.php">
                         <?php if(isset($_SESSION['nao_autenticado'])): ?>
                         <div><p class="text-center text-danger">Senha atual incorreta. Tente novamente!</p></div>

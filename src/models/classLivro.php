@@ -262,10 +262,9 @@
                 $stmt1->bindParam(':codigo_pessoa', $codigo_pessoa);
                 $stmt1->bindParam(':data_locacao', $data_locacao);
                 $stmt1->execute();
-
-                return true;
+                return 'locado';
             }
-            else{//se estiver locado, só é possível devolver, então muda o status para disponivel
+            else{//se estiver locado, só é possível devolver
                 $sql2 = 'update livro_pessoa_loca 
                 set fk_status_loca_codigo_status = 2, data_entrega = :data_entrega
                 where fk_livro_codigo_livro = :codigo_livro 
@@ -275,10 +274,9 @@
                 $stmt2->bindParam(':codigo_pessoa', $codigo_pessoa);
                 $stmt2->bindParam(':data_entrega', $data_entrega);
                 $stmt2->execute();
-
-                return true;
+                $resultado = 0;
+                return 'devolvido';
             }
-            
         }
 
 

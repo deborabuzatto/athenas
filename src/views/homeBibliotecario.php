@@ -46,8 +46,8 @@
 	                </li>
 	            </ul>
 	        </div>
-	        <a href="locacao.php" class="btn-login btn grow_box" type="button">
-	            <i class="fa fa-chess-rook"></i> Locação
+	        <a href="relatorio.php" class="btn-login btn grow_box btn-nav-biblio" type="button">
+	            <i class="fa fa-chess-rook"></i> Obter Relatório
 	        </a>
 	    </nav>
 		<div class="menu2">
@@ -57,17 +57,17 @@
                     <div class='filtro'>
                         <div class="fast-filter">
                             <div class="text-center">
-                                <a href="#" class="radio-label"><i class="fa-solid fa-square-caret-down"></i></a>
+                                <a href="homeBibliotecario.php" class="radio-label  red"><i class="fa-solid fa-square-caret-down"></i></a>
                                 <p id="p-company" class="title">Livros</p>
                             </div>
             
                             <div class="text-center">
-                                <a href="alunosBibliotecario.php" class="radio-label"><i class="fa-solid fa-globe"></i></a>
+                                <a href="alunosBibliotecario.php" class="radio-label amarelo"><i class="fa-solid fa-globe"></i></a>
                                 <p id="p-person" class="title">Alunos</p>
                             </div>
             
-                            <div class="text-center">
-                                <a href="graficos.php" class="radio-label"><i class="fa-solid fa-landmark"></i></a>
+                            <div class="text-center ">
+                                <a href="graficos.php" class="radio-label azul"><i class="fa-solid fa-landmark"></i></a>
                                 <p id="p-licensed" class="title">Gráficos</p>
                             </div>
                         </div>

@@ -1,229 +1,85 @@
 <?php 
-//Classe Aluno
-include_once '../models/classAluno.php';
-session_start();
-
-
+    session_start();
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>
+<head>
         <?php
-            include '../components/header.php';
-        ?>
-        <title>Todos os Alunos</title>
+			include '../components/header.php';
+		?>
+        <title>PÁGINA INICIAL | HOME</title>
     </head>
-    <body>
-        <div class="nav-login">
-            <div class="nav-link-item">
-                <a href="homeBibliotecario.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a>
-            </div>
-
-            <div class="page-info-name">
-                <p>Você está na página:</p><a href="#">Consultar Alunos</a>
-            </div>
-
-            <div class="nav-login-menu">
-                <img src="/public/static/imagens/logolaranja.png">
-                <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
+	<body>
+		<nav class="navbar navbar-expand-lg ">
+	        <div class="navbar-brand div-nav">
+	            <img src="/public/static/imagens/athenas.png">
+	        </div>
+	        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
+	            <i class="fa-solid fa-bars-staggered"></i>
+	        </button>
+	        <div class="collapse navbar-collapse" id="barraNavegacao">
+	            <ul class="navbar-nav mb-2 mb-lg-0">
+	                <li class="nav-item dropdown">
+	                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	                    Informações
+	                  </a>
+	                  <ul class="dropdown-menu">
+	                    <li><a class="dropdown-item" href="infoSite.php">Sobre o site</a></li>
+	                    <li><a class="dropdown-item" href="infoLivros.php">Sobre os livros</a></li>
+	                    <li><a class="dropdown-item" href="infoInstuto.php">Sobre o instituto</a></li>
+	                  </ul>
+	                </li>
+	                <li class="nav-item dropdown">
+	                  <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+	                    Minha Conta
+	                  </a>
+	                  <ul class="dropdown-menu">
+	                    <li><a class="dropdown-item" href="editarPerfilAluno.php">Alterar Dados</a></li>
+	                    <li><a class="dropdown-item" href="AlterarSenha.php">Alterar Senha</a></li>
+	                    <li><a class="dropdown-item" href="../services/logout.php">Sair</a></li>
+	                  </ul>
+	                </li>
+	                <li class="nav-item">
+	                    <a class="nav-link" href="ajuda.php">Ajuda</a>
+	                </li>
+	            </ul>
+	        </div>
+	        <a href="relatorio.php" class="btn-login btn grow_box btn-nav-biblio" type="button">
+	            <i class="fa fa-chess-rook"></i> Obter Relatório
+	        </a>
+	    </nav>
+		<div class="menu2">
+            
+            <nav>
+                <div class='centralizar-filtro'>
+                    <div class='filtro'>
+                        <div class="fast-filter">
+                            <div class="text-center">
+                                <a href="homeBibliotecario.php" class="radio-label  red"><i class="fa-solid fa-square-caret-down"></i></a>
+                                <p id="p-company" class="title">Livros</p>
+                            </div>
+            
+                            <div class="text-center">
+                                <a href="alunosBibliotecario.php" class="radio-label amarelo"><i class="fa-solid fa-globe"></i></a>
+                                <p id="p-person" class="title">Alunos</p>
+                            </div>
+            
+                            <div class="text-center ">
+                                <a href="graficos.php" class="radio-label azul"><i class="fa-solid fa-landmark"></i></a>
+                                <p id="p-licensed" class="title">Gráficos</p>
+                            </div>
+                        </div>
+                    </div>   
+                </div>
+            </nav>
+			<div class="central-input">
+                <input type="text" name="" id="" placeholder="Procure seu livro aqui"><i class="fa-solid fa-magnifying-glass"></i>
             </div>
         </div>
-        
-        
-
-        <div class="conteudo-livro-page">
-            <div class="busca-livro-page">
-                <form method="POST" action="#">
-                    <input name="pesquisar" type="text" class="form-control" id="input-pesquisa" placeholder="Busque pelo nome completo" autocomplete="off">
-                    <span>
-                        <button type="submit" name="btn-buscar" class="btn btn-pesquisa">Buscar</button>
-                    </span>
-                    <span>
-                        <button class="btn btn-pesquisa" name="btn-adicionar">Adicionar Aluno <i class="fa fa-plus"></i></button>
-                    </span>
-                </form>
-                
-            </div>
-
-            <?php
-                if(isset($_POST['btn-adicionar'])){
-                    header('Location: cadastrarAluno.php');
-                }
-
-                if(isset($_POST['btn-buscar'])):
-                    $pesquisar = $_POST['pesquisar'];
-                    $palavra = '%' . $pesquisar. '%';
-                
-                    $aluno = new Aluno();
-                    $busca = $aluno->busca($palavra);
-                    if(count($busca)>0):
-                        foreach($busca as $dados){
-                    
-                
-            ?>
-
-            <div class="centralizar-livro">
-                <div class="div-livro-locacao livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
-                    <div class="img-pessoa1"><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
-                    <div class="table-conteudo">
-                        <h4><?php echo $dados['nome'];?></h4>
-                        <p><span>Username:</span><?php echo $dados['username'];?></p>
-                        <p><span>Data de nascimento:</span><?php echo $dados['data_nasc'];?></p>
-                        <p><span>E-mail:</span><?php echo $dados['email'];?></p>
-                    </div>
-                    <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#editar<?php echo $dados['codigo_pessoa'];?>"><i class="fa fa-pencil"></i></button>
-                </div>
-            </div>
-
-            <!-- Modal -->
-            <div class="modal fade" id="editar<?php echo $dados['codigo_pessoa'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar Livro</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="cadastrar-livro">
-                                    <form method="POST" action="../services/editarAluno.php">
-                                        <div class="input-nomes">
-                                            <input type="hidden" class="form-control" id="codigo_pessoa" name="codigo_pessoa" value="<?php echo $dados['codigo_pessoa'];?>">
-
-                                            <label for="nomeContato" class="form-label">Nome completo:</label>
-                                            <input type="text" class="form-control" id="nomeContato" name="nome" value="<?php echo $dados['nome'];?>">
-
-                                            <label for="nomeContato" class="form-label">Nome de usuário:</label>
-                                            <input type="text" class="form-control" id="nomeContato" name="username" value="<?php echo $dados['username'];?>">
-                                        
-                                            <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                                            <input type="date" class="form-control" id="senhaLogin" name="data_nasc" value="<?php echo $dados['data_nasc'];?>"> 
-
-                                            <label for="email" class="form-label">E-mail:</label>
-                                            <input type="text" class="form-control" id="email" name="email" value="<?php echo $dados['email'];?>">
-                                        </div>
-                                        <div class="modal-footer btn-conclui-cadastro" >
-                                            <div type="button" class="btn-conclui-cadastro">
-                                                <button class="btn btn-pesquisa-bibliotecario" name="btn-editar">Concluir Edição do Livro</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-
-
-            <?php
-            }
-            endif;
-            else:
-                $aluno = new Aluno();
-                $imprimir = $aluno->findAll();
-                if(count($imprimir)>0):
-                    foreach($imprimir as $dados){
-            ?>
-            <div class="centralizar-livro">
-                <div class="div-livro-locacao livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
-                    <div class="img-pessoa1"><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>"></div>
-                    <div class="table-conteudo">
-                        <h4><?php echo $dados['nome'];?></h4>
-                        <p><span>Username:</span><?php echo $dados['username'];?></p>
-                        <p><span>Data de nascimento:</span><?php echo $dados['data_nasc'];?></p>
-                        <p><span>E-mail:</span><?php echo $dados['email'];?></p>
-                    </div>
-                    <div class="status">
-                        <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#editar<?php echo $dados['codigo_pessoa'];?>"><i class="fa fa-pencil"></i></button>
-                        <button type="button" class="btn btn-plus" data-bs-toggle="modal" data-bs-target="#excluir<?php echo $dados['codigo_pessoa'];?>"><i class="fa fa-trash"></i></button>
-                    </div>
-                </div>
-            </div>
-
-                <!-- Modal -->
-                <div class="modal fade" id="editar<?php echo $dados['codigo_pessoa'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Editar Livro</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="cadastrar-livro">
-                                    <form method="POST" action="../services/editarAluno.php">
-                                        <div class="input-nomes">
-                                            <input type="hidden" class="form-control" id="codigo_pessoa" name="codigo_pessoa" value="<?php echo $dados['codigo_pessoa'];?>">
-
-                                            <label for="nomeContato" class="form-label">Nome completo:</label>
-                                            <input type="text" class="form-control" id="nomeContato" name="nome" value="<?php echo $dados['nome'];?>">
-
-                                            <label for="nomeContato" class="form-label">Nome de usuário:</label>
-                                            <input type="text" class="form-control" id="nomeContato" name="username" value="<?php echo $dados['username'];?>">
-                                        
-                                            <label for="senhaLogin" class="form-label">Data de nascimento:</label>
-                                            <input type="date" class="form-control" id="senhaLogin" name="data_nasc" value="<?php echo $dados['data_nasc'];?>"> 
-
-                                            <label for="email" class="form-label">E-mail:</label>
-                                            <input type="text" class="form-control" id="email" name="email" value="<?php echo $dados['email'];?>">
-                                        </div>
-                                        <div class="modal-footer btn-conclui-cadastro" >
-                                            <div type="button" class="btn-conclui-cadastro">
-                                                <button class="btn btn-pesquisa-bibliotecario" name="btn-editar">Concluir Edição do Livro</button>
-                                            </div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <!-- Modal -->
-                <div class="modal fade" id="excluir<?php echo $dados['codigo_pessoa'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">excluir Livro</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                
-                                <div class="cadastrar-livro">
-                                    
-                                    <p>Deseja realmente excluir o usuario <?php echo $dados['nome'];?>?</p>
-                                    <div>
-                                    <form method="POST" action="../services/excluirAluno.php">
-                                        
-                                        <input type="hidden" class="form-control" id="codigo_pessoa" name="codigo_pessoa" 
-                                        value="<?php echo $dados['codigo_pessoa'];?>">
-                                        
-                                        <div type="button" class="btn-conclui-cadastro">
-                                            <button class="btn btn-pesquisa-bibliotecario" name="btn-excluir">Excluir Aluno</button>
-                                        </div>
-                                        
-                                    </form>
-                        </div>
-                                </div>
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            
-            
-            <?php
-            }
-            endif;
-            endif;
-            ?>
-            
-        </div>
-        
-        <?php 
-            include '../components/footer.php';
-        ?>
-        <?php 
-            include '../components/scriptsBody.php';
-        ?>
+		<div class="centralizar-livros">
+			<?php include 'alunosBiblio.php'; ?>
+		</div>
+		<?php include '../components/footer.php'; ?>
+		<?php include '../components/scriptsBody.php'; ?>
     </body>
 </html>

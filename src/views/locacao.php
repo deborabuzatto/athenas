@@ -1,7 +1,10 @@
 <?php
     include '../models/classLivro.php';
     include '../models/classAluno.php';
-    //session_start();
+    session_start();
+    if (isset($_SESSION['resultado'])) {
+        session_destroy();
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +23,6 @@
         </div>
         
         <div class="centralizar-livro">
-            <div class="titulo"><h2>Você selecionou o livro:</h2></div>
             <?php 
             if(isset($_POST['btn-locacao'])){
                 $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
@@ -37,6 +39,8 @@
                         if(count($buscar)>0){
                             foreach($buscar as $info){
             ?>
+            <div class="titulo"><h2>Você selecionou o livro:</h2></div>
+
             <div class="div-livro-locacao">
                 <div><img class="img" src="../components/dinamic/<?php echo $info['img_capa'];?>"></div>
                 <div class="table-conteudo">
@@ -90,6 +94,9 @@
                     <p><span>E-mail: </span><?php echo $dados['email'];?></p>
                 </div>
             </div>
+
+                    
+                
             <div class="form-loc">
                 <form action="../services/locacao.php" method="POST">
                     <input type="hidden" name="codigo_pessoa" value="<?php echo $dados['codigo_pessoa'];?>">
@@ -99,6 +106,18 @@
             </div>
 
             <?php }}}}} ?>
+
+            <?php if(isset($_SESSION['sucesso'])): ?>
+                <div  class="text-center div-sucesso">
+                    <p> 
+                        <?php 
+                            $resultado = $_SESSION['sucesso'];
+                            echo 'O livro foi ' .$resultado. ' com sucesso'; 
+                        ?> 
+                        <a href="homeBibliotecario.php">Voltar ao inicio</a>
+                    </p>
+                </div>
+            <?php unset($_SESSION["sucesso"]); endif; ?>
             
         </div>
 

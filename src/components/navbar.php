@@ -22,9 +22,9 @@
 	                    Minha Conta
 	                  </a>
 	                  <ul class="dropdown-menu">
-	                    <li><a class="dropdown-item" href="editarPerfilAluno.php">Alterar Dados</a></li>
+	                    <li><a class="dropdown-item" href="meuPerfil.php">Alterar Dados</a></li>
 	                    <li><a class="dropdown-item" href="AlterarSenha.php">Alterar Senha</a></li>
-	                    <li><a class="dropdown-item" href="../services/logout.php">Sair</a></li>
+	                    <li><a class="dropdown-item" href="login.php">Sair</a></li>
 	                  </ul>
 	                </li>
 	                <li class="nav-item">

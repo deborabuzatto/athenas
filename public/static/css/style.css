@@ -435,6 +435,13 @@ h4 span{
     height: 90px;
     border-radius: 300px;
 }
+.img-pessoa2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; 
+    width: 100px;
+}
 
 /*home aluno*/
 
@@ -879,6 +886,14 @@ input, select, textarea{
     text-align: center;
     color: rgb(255, 255, 255);
 }
+
+.text-center a{
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
 input[type="checkbox"]{
     display: none;
 }
@@ -1003,10 +1018,35 @@ input[type="checkbox"]{
     color: #fff;
 }
 
+.div-sucesso{
+    width: 100%;
+    padding: 30px;
+    font-weight: 900;
+    font-size: 72px;
+    background-color: #3BA04C;
+    margin: 150px 30px;
+}
+.div-sucesso p, .div-erro p{
+    font-weight: 900;
+    font-size: 24px;
+}
+.div-erro{
+    width: 100%;
+    padding: 30px;
+    font-weight: 900;
+    font-size: 72px;
+    margin: 150px 30px;
+    background-color: #FA4145;
+}
+.btn-nav-biblio{
+    font-size: 14px;
+}
 
-
-
-
+.livro img{
+    border-radius: 200px;
+    width: 90px;
+    height: 90px;
+}
 
 
 
