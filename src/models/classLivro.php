@@ -314,8 +314,7 @@
 
 			return $stmt->fetchAll(PDO::FETCH_BOTH );
 		}
-
-
+        
         public function disponibilidade($codigo_livro){
             //exibe se o livro está disponível ou não
             $sql="select count(*) as valor from (select livro.codigo_livro,livro.titulo,pessoa.nome,status_loca.codigo_status,

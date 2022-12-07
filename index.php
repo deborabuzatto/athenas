@@ -1,25 +1,13 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;500;600;700&display=swap" rel="stylesheet">
-    <!-- Css externo -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-        
-    <link rel="stylesheet" href="/public/static/css/estilo.css">
-    <link rel="stylesheet" href="/public/static/css/style.css">
-
+    <?php include '/src/components/header.php'; ?>
     <title>Athenas</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg ">
         <div class="navbar-brand div-nav">
-            <img src="/public/static/imagens/logo.png">
+            <img src="/public/static/imagens/athenas.png">
         </div>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#barraNavegacao" aria-expanded="false" >
             <i class="fa-solid fa-bars-staggered"></i>
@@ -27,7 +15,7 @@
         <div class="collapse navbar-collapse" id="barraNavegacao">
             <ul class="navbar-nav mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link" href="">Docs</a>
+                    <a class="nav-link" href="https://github.com/Jordana-Santos/Projeto-Integrador" target="_blank">Docs</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#projeto">Projeto</a>
@@ -42,26 +30,26 @@
         </a>
     </nav>
 
-      <div class="centralizar-txt">
-        <p class="ball"></p>
-        <h1>Serviço bibliotecário gratuito para instituições sem fins lucrativos</h1>
-        <p class="shadow"></p>
-      </div>
+    <div class="centralizar-txt">
+    <p class="ball"></p>
+    <h1>Serviço bibliotecário gratuito para instituições sem fins lucrativos</h1>
+    <p class="shadow"></p>
+    </div>
 
-      <div class="img-bg">
-        <img src="/public/static/imagens/multidao-de-pessoas-de-diferentes-idades-e-racas_74855-5235-removebg-preview.png" alt="Pessoas">
-      </div>
+    <div class="img-bg">
+    <img src="/public/static/imagens/multidao-de-pessoas-de-diferentes-idades-e-racas_74855-5235-removebg-preview.png" alt="Pessoas">
+    </div>
 
-      <div class="conteudo-2 centralizar-txt">
+    <div class="conteudo-2 centralizar-txt">
         <h1 style="color: #7625C9;">Primeiro acesso? - Alunos</h1>
         <div class="alinhar-p">
             <p>Passo 1 - Vá até a biblioteca da sua instuição, faça seu cadastro e receba sua senha padrão.</p>
-            <p>Passo 2 - Faça login através do formulário ao lado, será usado seu nome, e-mail e a senha padrão.</p>
-            <p>Passo 3 - Assim que acessar o sistema, troque sua senha para alguma senha de sua escolha e aproveite.</p>
+            <p>Passo 2 - Faça login utilizando seu e-mail cadastrado e a senha padrão recebida na biblioteca.</p>
+            <p>Passo 3 - Ao acessar o sistema, troque sua senha para alguma senha de sua escolha e aproveite.</p>
         </div>
-      </div>
+    </div>
 
-      <div class="cartoes" id="projeto">
+    <div class="cartoes" id="projeto">
         <div class="cartao amarelo">
             <h1>Proposta - Athenas</h1>
             <p>Prestar um serviço de biblioteca gratuito para instituições sem fins lucrativos, com inteface dinâmica para usuários e bibliotecarios. 
@@ -82,9 +70,9 @@
                 o projeto levou 10 meses para ser completamente pensado e executado, afim de fornecer para você uma experiência personalizada e memorável.
             </p>
         </div>
-      </div>
+    </div>
 
-      <div class="conteudo-3 centralizar-txt" id="contato">
+    <div class="conteudo-3 centralizar-txt" id="contato">
         <h1 style="color: #7625C9; margin-bottom: 40px;">Contato com os desenvolvdedores</h1>
         <div class="inputs">
             <form method="post" action="/src/services/action.php">
@@ -100,22 +88,18 @@
                 <div class="wrap">
                     <button class="button">Enviar</button>
                 </div>
-              </form>
+            </form>
         </div>
-      </div>
+    </div>
 
-      <div class="align-solicitar">
+    <div class="align-solicitar">
         <div class="solicitar">
             <p>Para implementar o sistema, entre em contato com os desenvolvedores através do formulário acima, informe o nome e o e-mail da instituição, assim como o motivo o papel social da instituição e aguarde contato.</p>
         </div>
-      </div>
+    </div>
 
-      <?php
-        include '/src/components/footer.php';
-      ?>
-
-    <script src="https://kit.fontawesome.com/a9ac96b7ba.js"
-    crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+    <?php include '/src/components/footer.php'; ?>
+    <?php include '/src/components/scriptsBody.php'; ?>
+        
 </body>
 </html>

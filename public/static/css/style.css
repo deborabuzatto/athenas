@@ -85,7 +85,6 @@ body{
     margin-right: auto;
     padding: 30px;
 }
-
 .form-login-page form{
     color: #000;
     font-weight: 500;
@@ -500,82 +499,6 @@ h4 span{
     border-radius: 5px;
 }
 
-.home-pessoa {
-    width: 70%;
-    text-align: center;
-    margin-left: auto;
-    margin-right: auto;
-    color:rgb(197, 197, 197);
-}
-
-.home-pessoa div {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 300px; width: 100%;
-    padding: 10px;
-    margin-right: 18px;
-}  
-
-.home-pessoa div > img {
-    width: 170px; 
-    height: 170px;
-    border-radius: 50%;
-}
-
-.home-opcoes {
-    padding-top: 50px;
-    width: 10%;
-    display: block;
-    justify-content: center;
-    border-right: 0.05rem solid rgb(197, 197, 197);
-    
-}
-.home-opcoes .sair {
-    width: 100%;
-    text-align: center;
-    color:#4c0677;
-    text-decoration: underline;
-    letter-spacing: 0.9px;
-    font-weight: 600;
-    margin-top: 70px;
-    transition: all 0.2s ease-in-out;
-}
-
-.home-opcoes div {
-    text-align: center;
-    width: 90%;
-    margin-left: 5px;
-    margin-right: 5px;
-    padding: 15px 7px 15px 7px;
-    font-size: 24px;
-    margin-top: 30px;
-    transition: all 0.3s ease-in-out;
-    transform: scale(0.9);
-}
-
-.home-opcoes div:hover {
-    transform: scale(1);
-    font-family: nunito;
-    color: #000;
-    font-weight: 500px;
-    background-image: linear-gradient(to bottom, rgb(129, 22, 237), rgb(32, 136, 221), rgb(24, 196, 179));
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    transition: all 0.5s ease-in-out;
-}
-
-.home-opcoes div a, .home-opcoes p a {
-    text-decoration: none;
-    color: #731ec7;
-}
-
-.home-opcoes div a:hover {
-    text-decoration: none;
-    color: #991de7;
-}
-
 /*página modal*/
 .modal-title{
     font-family: nunito;
@@ -630,15 +553,13 @@ h4 span{
     background-color: #fff;
     justify-content: center;
 }
-
 .logo {
-    width: 230px;
-    height: 230px;
+    width: 160px;
+    height: 160px;
     padding-top: 50px;
     padding-right: 20px;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
 }
-
 .form-login{
     display: flex;
     align-items: center;
@@ -650,13 +571,12 @@ h4 span{
     padding-top: 50px;
     padding-bottom: 300px;
 }
-
 .form-login input{
     outline: 0;
     border: none;
     width: 500px;
     height: 40px;
-    font-size: 20px;
+    font-size: 15px;
     margin: 10px 0px;
     padding-left: 20px;
     letter-spacing: 1px;
@@ -665,7 +585,6 @@ h4 span{
     background-color: rgb(236, 236, 236);
     box-shadow: inset 0 0 0 transparent, 0 0 0.3em #a776d9;  
 }
-
 .form-login input:focus-visible{
     outline: 0;
 }
@@ -676,7 +595,7 @@ h4 span{
 .form-login .btn-login{
     width: 500px;
     height: 50px;
-    margin: 15px 0px;
+    margin: 25px 0px;
     border-radius: 20px;
     font-size: 20px;
     letter-spacing: 1px;
@@ -803,19 +722,13 @@ input, select, textarea{
 
 /* Menu superior */
 
-.dimensao {
-    display: flex;
-    justify-content: end;
-}
 .menu2 {
     width: 80%;
     height: 100%;
     background-image: linear-gradient(to right, #4d3bcb,#2b1396);
     padding-bottom: 20px;
     border-radius: 20px;
-    margin-right: auto;
-    margin-top: 15px;
-    margin-left: auto;
+    margin: 15px auto 50px auto;
 }
 .central-input {
     display: flex;
@@ -828,13 +741,19 @@ input, select, textarea{
     margin-bottom: 30px;
     padding: 10px 15px;
     outline: none;
-    font-size: 16px;
-    border: 2px solid #cdb1e9;
+    font-size: 15px;
+    border: 4px solid #cdb1e9;
 }
-.central-input i {
-    margin-top: 45px;
+.central-input button {
+    margin-top: 28px;
     margin-left: 20px;
-    color: #fff;
+    color: rgb(255, 255, 255);
+    border: 3px solid #cdb1e9;
+    padding: 8px;
+    background-color: transparent;
+    border-radius: 10px;
+    height: 42px;
+
 }
 
 /* Div FIltro */
@@ -1048,16 +967,6 @@ input[type="checkbox"]{
     height: 90px;
 }
 
-
-
-
-
-
-
-
-
-
-
 table{
     font-weight: 600;
     font-size: 12px;
@@ -1084,7 +993,7 @@ td{
     display: flex;
     justify-content: center;
     padding: 80px 0px 50px 0px;
-
+    margin-top: 80px;
 }
 
 .footer .div-footer{
@@ -1169,17 +1078,6 @@ div .icon-footer {
     .table-conteudo h3{
         font-size: 18px;
         padding-top: 20px;
-    }
-    .conteudo h2, .contato h2{
-        font-size: 24px;
-    }
-    .conteudo p{
-        font-size: 20px;
-    }
-    .contato .img-form{
-        width: 60%;
-        margin-left: auto;
-        margin-right: auto;
     }
     .img-form img{
         width: 100%;

@@ -2,20 +2,13 @@
     include_once '../models/classLivro.php';
 
     $livro = new Livro();
+    if(isset($_POST['btn-ranking'])){
+        $imprimir = $livro->rankingNota();
+    }
     if(isset($_POST['btn-buscar'])){
         $pesquisar = $_POST['pesquisar'];
-        $palavra = '%' . $pesquisar. '%'; 
+        $palavra = '%' .$pesquisar. '%'; 
         $imprimir = $livro->buscarLivro($palavra);
-    }
-    if(isset($_POST['btn-categoria'])){
-        $pesquisar = $_POST['type'];
-        var_dump($pesquisar);
-        if($pesquisar == 'ranking'){
-            $imprimir = $livro->rankingNota();
-        }else{
-            $palavra = '%rainha%'; 
-            $imprimir = $livro->buscarLivro($palavra);
-        }
     }
     else{
         $imprimir = $livro->findAllLivro();
