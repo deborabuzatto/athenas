@@ -1058,8 +1058,24 @@ input[type="checkbox"]{
 
 
 
-
-
+table{
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+}
+td{
+    padding: 12px;
+}
+.cabecalho{
+    border-style: double; 
+    border-left: none; 
+    border-right: none; 
+    border-color: black; 
+    border-bottom-width: 4px;
+    border-top-width: 4px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 
 /*footer*/

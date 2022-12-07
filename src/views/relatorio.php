@@ -2,25 +2,24 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php include '../components/header.php'; ?>
     <title>RELATÓRIO ATHENAS</title>
 </head>
 <body>
-    <div id="relatorio">
-        
-        <table class="table table-striped">
+    <?php include '../components/navbar.php'; ?>
+
+    <div id="relatorio" class="centralizar-livros">
+        <button class="btn-login button mt-5" type="button" onclick="printJS({ printable: 'relatorio', type: 'html', css: '/public/static/css/style.css'})">Imprimir</button>
+        <table class="table table-striped table-hover mb-5">
             <thead>
                 <tr>
-                    <th colspan="7" style="border-style: double; border-left: none; border-right: none; border-color: black;"><h3>Relatório mensal da circulação de obras literárias</th>
+                    <th colspan="7" class="cabecalho"><h3>Relatório mensal da circulação de obras literárias</th>
                 </tr>
             </thead>
             <thead>
-                <tr>
-                    <th>Locação</th>
+                <tr class="cabecalho">
                     <th>Nome do aluno</th>
-                    <th colspan="2" style="padding-right: 10px">Nome da obra locada</th>
+                    <th>Nome da obra locada</th>
                     <th>Data de recebimento</th>
                     <th>Data de entrega</th>
                     <th>Descrição</th>
@@ -34,21 +33,47 @@
                         foreach($busca as $dados){
                 ?>
                 <tr>
-                    <td></td>
-                    <td style="padding-right: 10px"><?php echo $dados['nome'];?></td>
-                    <td colspan="2" style="padding-right: 10px"><?php echo $dados['titulo'];?></td>
-                    <th style="padding-right: 10px"><?php echo $dados['data_locacao'];?></th>
-                    <td style="padding-right: 10px"><?php echo $dados['data_entrega'];?></td>
-                    <td style="padding-right: 10px; color: orange">Entregue com Atraso</td>
+                    <td class="text-start"><?php echo $dados['nome'];?></td>
+                    <td class="text-start"><?php echo $dados['titulo'];?></td>
+                    <td ><?php echo $dados['data_locacao'];?></td>
+                    <td ><?php echo $dados['data_entrega'];?></td>
+                    <?php
+                        $locacao = $dados['data_locacao'];
+                        $entrega = $dados['data_entrega'];
+                        if(empty($entrega)){
+                            $entrega = '0000-00-00';
+                        }
+                        
+                        $dia_entrega = substr($entrega, 8, 2);  // abcd
+                        $dia_locacao = substr($locacao, 8, 2);  // abcd
+                        $ent = intval($dia_entrega); $loc = intval($dia_locacao);
+                        $resultado =  $ent - $loc;
+                        if($resultado < 0 && $resultado > -7){
+                            $imprimir = 'livro em leitura';
+                        }
+                        if($resultado < 0 && $resultado < -7){
+                            $imprimir = 'livro não entregue';
+                        }
+                        if($resultado >= 0 && $resultado < 7){
+                            $imprimir = 'livro entregue no prazo';
+                        }
+                        if($resultado > 0 && $resultado > 7){
+                            $imprimir = 'livro entregue fora do prazo';
+                        }                        
+                    ?>
+                    
+                    <td class="text-start"><?php echo $imprimir;?></td>
                 </tr>
                 <?php }} ?>
             </tbody>
         </table>
-
     </div>
-    <button type="button" onclick="printJS({ printable: 'relatorio', type: 'html'})">Imprimir</button>
+    
     <script src="print.js"></script>
     <script src="https://printjs-4de6.kxcdn.com/print.min.js"></script>
     <script src="https://printjs-4de6.kxcdn.com/print.min.css"></script>
+    <?php include '../components/footer.php'; ?>
+	<?php include '../components/scriptsBody.php'; ?>
+
 </body>
 </html>
