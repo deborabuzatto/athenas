@@ -1,72 +1,74 @@
-<?php 
-    //session_start();
-    //$aluno = $_SESSION['nome_aluno'];
-?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php
-			include '../components/header.php';
-		?>
+        <?php include '../components/header.php'; ?>
         <title>PÁGINA INICIAL | HOME</title>
     </head>
 	<body>
-        <?php
-			include '../components/navbar.php';
-		?>
+        <?php include '../components/navbar.php'; ?>
 		<div class="menu2">
             <div class="central-input">
-                <input type="text" name="" id="" placeholder="Procure seu livro aqui"><i class="fa-solid fa-magnifying-glass"></i>
+                <form action="" method="POST">
+                    <input type="text" name="pesquisar" placeholder="Procure seu livro aqui">
+                    <button name="btn-buscar" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
             </div>
             <nav>
                 <div class='centralizar-filtro'>
                     <div class='filtro'>
                         <div class="fast-filter">
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="0" id="todos" name="type" checked>
-                                <label class="radio-label amarelo" for="todos"><i class="fa-solid fa-square-caret-down"></i></label>
+                                <a href="homeAlunos.php" class="radio-label amarelo"><i class="fa-solid fa-square-caret-down"></i></a>
                                 <p id="p-company" class="title">Todos</p>
+                            </div>
+
+                            <div class="text-center">
+                                <form action="" method="POST">
+                                    <input class="radio-input" type="radio" value="ranking" name="type">
+                                    <button class="radio-label azul" name="btn-categoria"><i class="fa-solid fa-square-caret-down"></i></button>
+                                    <p id="p-company" class="title">Ranking</p>
+                                </form>
                             </div>
             
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="didatico" name="type">
-                                <label class="radio-label red" for="didatico"><i class="fa-solid fa-globe"></i></label>
+                                <input class="radio-input" type="radio" value="didatico" name="type">
+                                <button class="radio-label red"><i class="fa-solid fa-globe"></i></button>
                                 <p id="p-person" class="title">Didáticos</p>
                             </div>
             
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="" id="classico" name="type">
-                                <label class="radio-label azul" for="classico"><i class="fa-solid fa-landmark"></i></label>
+                                <input class="radio-input" type="radio" value="classico" name="type">
+                                <button class="radio-label azul"><i class="fa-solid fa-landmark"></i></button>
                                 <p id="p-licensed" class="title">Clássicos</p>
                             </div>
             
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="americana" name="type">
-                                <label class="radio-label verde" for="americana"><i class="fa-solid fa-flag-usa"></i></label>
+                                <input class="radio-input" type="radio" value="americana" name="type">
+                                <button class="radio-label verde"><i class="fa-solid fa-flag-usa"></i></button>
                                 <p id="p-notLicensed" class="title">Americana</p>
                             </div>
             
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="romance" name="type">
-                                <label class="radio-label rosa" for="romance"><i class="fa-solid fa-heart"></i></label>
+                                <input class="radio-input" type="radio" value="romance" name="type">
+                                <button class="radio-label rosa"><i class="fa-solid fa-heart"></i></button>
                                 <p id="p-notLicensed" class="title">Romance</p>
                             </div>
             
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="0" id="Policial" name="type">
-                                <label class="radio-label amarelo" for="Policial"><i class="fa-solid fa-shield-halved"></i></label>
+                                <input class="radio-input" type="radio" value="Policial" name="type">
+                                <button class="radio-label amarelo" ><i class="fa-solid fa-shield-halved"></i></button>
                                 <p id="p-notLicensed" class="title">Policial</p>
                             </div>
             
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="ficcao" name="type">
-                                <label class="radio-label azul" for="ficcao"><i class="fa-solid fa-jedi"></i></label>
+                                <input class="radio-input" type="radio" value="ficcao" name="type">
+                                <button class="radio-label azul"><i class="fa-solid fa-jedi"></i></button>
                                 <p id="p-notLicensed" class="title">Ficção</p>
                             </div>
             
                             <div class="text-center">
-                                <input class="radio-input" type="radio" value="1" id="ingles" name="type">
-                                <label class="radio-label verde" for="ingles"><i class="fa-regular fa-paper-plane"></i></label>
+                                <input class="radio-input" type="radio" value="ingles" name="type">
+                                <button class="radio-label verde"><i class="fa-regular fa-paper-plane"></i></button>
                                 <p id="p-notLicensed" class="title">Lin. Inglesa</p>
                             </div>
                         </div>
@@ -78,7 +80,6 @@
             <?php include 'livros.php';?>
 		</div>
 		<?php include '../components/footer.php'; ?>
-    </div>
 	    <?php include '../components/scriptsBody.php'; ?>
 	</body>
 </html>
