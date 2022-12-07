@@ -284,7 +284,7 @@
 
         public function rankingNota(){
             //ranking de avaliações
-            $sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, li.codigo_livro as codigo, li.titulo, SUBSTRING(li.sinopse from 1 for 100) as sinopse, 
+            $sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, img_capa, li.codigo_livro as codigo_livro, li.titulo, SUBSTRING(li.sinopse from 1 for 100) as sinopse, 
             li.ISBN, li.data_publicacao, li.volume, li.qtd_paginas, ed.nome as editora,
             autor.nome as autor, cat.dsc_categoria as categoria, autor.nacionalidade as nacao from livro as li
             full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
@@ -293,7 +293,7 @@
             full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
             full outer join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
             full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
-            group by  editora,codigo,autor,categoria,nacao order by nota desc nulls last";
+            group by  editora,codigo_livro,autor,categoria,nacao, img_capa order by nota desc nulls last";
             $stmt = Database::prepare($sql);			
             $stmt->execute();
             

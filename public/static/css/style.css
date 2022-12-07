@@ -866,6 +866,7 @@ input, select, textarea{
     -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.47);
     -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.47);
     color: #7E7B72;
+    border-color: transparent;
     cursor: pointer;
 }
 .radio-label i {
@@ -888,7 +889,6 @@ input, select, textarea{
 }
 
 .text-center a{
-    margin-top: 10px;
     font-size: 12px;
     text-align: center;
     color: rgb(255, 255, 255);

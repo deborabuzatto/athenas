@@ -2,36 +2,16 @@
 //Classe Aluno
 include_once '../models/classAluno.php';
 
-if(isset($_POST['btn-buscar'])){
-    $pesquisar = $_POST['pesquisar'];
-    $palavra = '%' . $pesquisar. '%';
-
     $aluno = new Aluno();
-    $busca = $aluno->busca($palavra);
+    if(isset($_POST['btn-buscar'])){
+        $pesquisar = $_POST['pesquisar'];
+        $palavra = '%' . $pesquisar. '%';
+        $busca = $aluno->busca($palavra);}
+    else{
+        $busca = $aluno->findAll();
+    }
     if(count($busca)>0){
         foreach($busca as $dados){
-?>
-
-<div class="centralizar-livro">
-    <div class="div-livro-locacao livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_pessoa'];?>">
-        <div class="img-pessoa1"><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>"></div>
-        <div class="table-conteudo">
-            <h4><?php echo $dados['nome'];?></h4>
-            <p><span>Username:</span><?php echo $dados['username'];?></p>
-            <p><span>Data de nascimento:</span><?php echo $dados['data_nasc'];?></p>
-            <p><span>E-mail:</span><?php echo $dados['email'];?></p>
-        </div>
-    </div>
-</div>
-
-
-<?php
-}}}
-else{
-    $aluno = new Aluno();
-    $imprimir = $aluno->findAll();
-    if(count($imprimir)>0){
-        foreach($imprimir as $dados){
 ?>
 
 <div class="div-livro-externo livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_pessoa'];?>">
@@ -142,5 +122,5 @@ else{
 </div>
 
 <?php
-}}}
+}}
 ?>

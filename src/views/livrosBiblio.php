@@ -1,79 +1,20 @@
 <?php 
-//Classe Aluno
-include_once '../models/classLivro.php';
+    include_once '../models/classLivro.php';
 
-if(isset($_POST['btn-buscar'])){
-    $pesquisar = $_POST['pesquisar'];
-    if(empty($pesquisar)){
-        $pesquisar = $_POST['categoria'];
+    $livro = new Livro();
+    if(isset($_POST['btn-buscar'])){
+        $pesquisar = $_POST['pesquisar'];
+        $palavra = '%' . $pesquisar. '%'; 
+        $imprimir = $livro->buscarLivro($palavra);
+    }else{
+        $imprimir = $livro->findAllLivro();
     }
-    $palavra = '%' . $pesquisar. '%';
-    $livro = new Livro();
-    $busca = $livro->buscarLivro($palavra);
-    if(count($busca)>0){
-        foreach($busca as $dados){
-            $id = $dados['codigo_livro'];
-            $imprime = $livro->listarTodosDadosLivro($id);
-            foreach($imprime as $dado){
-?>
-
-<div class="div-livro-externo">
-    <div><img src="/public/static/imagens/amoregelato.jgp"></div>
-    <div class="table-conteudo">
-        <h4><?php echo $dados['titulo'];?></h4>
-        <p class="sinopse"><?php echo $dados['sinopse']; echo' . . . ';?></p>
-    </div>
-    <div class="status">
-        <div>
-            <?php
-                $livro = new Livro();
-                $codigo_livro = $dados['codigo_livro']; 
-                $disponibilidade = $livro->disponibilidade($codigo_livro);
-                if($disponibilidade['valor'] === "0"){
-            ?>
-                <i class="fa-regular fa-circle-check"></i>
-                <span>Disponível</span>
-            <?php
-                } else{   
-            ?>
-                <i class="fa-regular fa-circle-xmark"></i>
-                <span>Indisponível</span>
-            <?php
-            }
-            ?>
-        </div>
-        <div>
-            <i class="fa-regular fa-bookmark"></i>
-            <span><?php echo $dados['categoria'];?></span>
-        </div>
-        <div>
-            <i class="fa fa-ranking-star"></i>
-            <span>
-                <?php
-                if(empty($dado['nota'])){
-                    echo 'não avaliado';
-                }else{
-                    echo $dado['nota'];
-                }
-                ?>
-            </span>
-        </div>
-    </div>
-</div>
-
-
-<?php
-}}}}
-else{
-    $livro = new Livro();
-    $imprimir = $livro->findAllLivro();
     if(count($imprimir)>0){
         foreach($imprimir as $dados){
             $id = $dados['codigo_livro'];
             $imprime = $livro->listarTodosDadosLivro($id);
             foreach($imprime as $dado){
 ?>
-
 <div class="div-livro-externo livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
     <div><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
     <div class="table-conteudo">
@@ -279,7 +220,4 @@ else{
         </div>
     </div>
 </div>
-
-<?php
-}}}}
-?>
+<?php }}} ?>
