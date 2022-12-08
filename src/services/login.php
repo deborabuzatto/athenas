@@ -11,18 +11,18 @@
             $aluno->setSenha($cripto);
 
             $consulta = $aluno->login();
-            if ($consulta) {
+            if ($consulta){
                 $id = $consulta["codigo_pessoa"];
                 $email = $consulta["email"];
                 $password = $consulta["senha"];
                 $tipo = $consulta["fk_tipo_pessoa_codigo_tipo"];
-
-                if($tipo = 1){
+                
+                if($tipo != 1){
+                    $_SESSION['aluno'] = $id;
+                    header("Location: ../views/homeAlunos.php");
+                }else{
                     $_SESSION['bibliotecario'] = true;
                     header("Location: ../views/homeBibliotecario.php");
-                }else{
-                    $_SESSION['nome_aluno'] = $id;
-                    header("Location: ../views/homeAlunos.php");
                 }
             }else{
                 $_SESSION['nao_autenticado'] = true;

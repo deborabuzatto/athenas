@@ -1,6 +1,8 @@
 <?php 
     session_start();
-    $aluno = $_SESSION['nome_aluno'];
+    if(isset($_SESSION['aluno'])){
+        $aluno = $_SESSION['aluno'];
+    }else{ header("Location: ../views/login.php"); }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +13,7 @@
     <body>
         <div class="tela">
             <div class="nav-login">
-                <div class="nav-link-item"><a href="/index.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
+                <div class="nav-link-item"><a href="../views/homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
                 <div class="page-info-name"><p>Você está na página:</p><a href="#">ALTERAR MINHA SENHA</a></div>
             </div>
             
@@ -23,10 +25,9 @@
                         <div><p class="text-center text-danger">Senha atual incorreta. Tente novamente!</p></div>
                         <?php unset($_SESSION["nao_autenticado"]); endif; ?>
                         
-                        <div><input type="text" placeholder="Senha Atual" name="senha_atual" id="senha_atual" required></div>
+                        <div><input type="password" placeholder="Senha Atual" name="senha_atual" id="senha_atual" required></div>
                         <div><input type="password" placeholder="Nova Senha" name="nova_senha" id="nova_senha" required></div>
-                        <div><input type="password" placeholder="Confirmar Nova Senha" name="confirma_senha" id="confirma_senha" required></div>
-                        <div><input type="hidden" name="codigo_pessoa" value="<?php echo $aluno ?>" required></div>
+                        <div><input type="hidden" name="codigo_pessoa" value="<?php echo $aluno;?>" required></div>
                         <div class="wrap"><button name="btn-alterar" class="btn-login button">ALTERAR</button></div>
                     </form>
                 </div>

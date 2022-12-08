@@ -143,13 +143,21 @@
 
         // será usado apenas pelo aluno
         public function update_senha($id, $senha_nova){
-            $sql="UPDATE pessoa SET senha = :senha WHERE codigo_pessoa = :id and senha = :senha_atual";
+            $sql= "UPDATE pessoa SET senha = :senha WHERE codigo_pessoa = :id";
             $stmt = Database::prepare($sql);
-            $stmt->bindParam(':senha_atual', $this->senha);
             $stmt->bindParam(':senha', $senha_nova);
             $stmt->bindParam(':id', $id);
-
             return $stmt->execute();
+        }
+
+        public function select_senha($id, $senha_atual){
+            $sql= "SELECT * FROM pessoa WHERE codigo_pessoa = :id and senha = :senha";
+            $stmt = Database::prepare($sql);
+            $stmt->bindParam(':senha', $senha_atual);
+            $stmt->bindParam(':id', $id);
+            $stmt->execute();
+
+            return $stmt->fetch();
         }
     }
 ?>

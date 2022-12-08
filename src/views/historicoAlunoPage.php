@@ -1,7 +1,7 @@
 <?php
     include '../models/classLivro.php';
     session_start();
-    $aluno = $_SESSION['nome_aluno'];
+    $aluno = $_SESSION['aluno'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
