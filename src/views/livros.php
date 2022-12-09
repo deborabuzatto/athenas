@@ -77,7 +77,7 @@
                     </div>       
                     <div class="dados-avaliar w-75">
                     <p><span>Sinopse:</span><?php echo $dado['sinopse'];?></p>
-                        <p><span>Autor:</span><?php echo $dado['titulo'];?></p>
+                        <p><span>Autor:</span><?php echo $dado['escritor'];?></p>
                         <p><span>Editora:</span><?php echo $dado['editora'];?></p>
                         <p><span>Páginas:</span><?php echo $dado['qtd_paginas'];?></p>
                         <p><span>Nota:</span>

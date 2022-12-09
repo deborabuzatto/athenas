@@ -106,7 +106,7 @@
             //LISTAGEM ÚTIL
 			$sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, img_capa, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
             li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
-            autor.nome as autor, cat.dsc_categoria as categoria, autor.nacionalidade from livro as li
+            autor.nome as escritor, cat.dsc_categoria as categoria, autor.nacionalidade from livro as li
             full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
             full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
             full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
@@ -114,7 +114,7 @@
             full outer join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
             full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
 			where codigo_livro = :codigo_livro
-            group by  editora,codigo,autor,categoria,nacionalidade, img_capa";
+            group by  editora,codigo,escritor,categoria,nacionalidade, img_capa";
 			$stmt = Database::prepare($sql);
             $stmt->bindParam(':codigo_livro', $id);		
 			$stmt->execute();

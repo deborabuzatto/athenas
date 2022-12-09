@@ -181,7 +181,7 @@ body{
     margin-left: 40px;
 }
 .table-conteudo{
-    margin-left: 50px;
+    margin-left: 30px;
     width: 60%;
 }
 .table-conteudo h4{
@@ -269,19 +269,18 @@ h4 span{
 }
 .input-nomes{
     width: 100%;
-    min-width: 300px;
     margin-bottom: 10px;
     font-family: nunito;
     font-weight: 500;
 }
 .input-nomes input{
+    width: 100%;
     margin: 0px 0px 30px 0px;
 }
 .input-selecionar{
     margin-top: 20px;
-    width: 900px;
+    width: 100%;
     margin-bottom: 30px;
-    min-width: 300px;
 }
 .input-selecionar select{
     width: 70%;
@@ -768,6 +767,7 @@ input, select, textarea{
 {
     display: flex;
     justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 .radio-input {
     display: none;
@@ -1113,7 +1113,7 @@ div .icon-footer {
 
 
 
-@media  (max-width: 1500px) {
+@media  (max-width: 1500px) and (min-width: 1300px){
     .table-conteudo .sinopse{
         font-size: 12px;
         margin-top: 10px;
@@ -1132,9 +1132,45 @@ div .icon-footer {
     .avaliacoes-livro-div{
         width: 60%;
     }
+    .div-livro-externo{
+        width: 45%;
+    }
+}
+@media  (max-width: 1300px) and (min-width: 1000px){
+    .table-conteudo .sinopse{
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    .table-conteudo h3{
+        font-size: 22px;
+    }
+    .table-livro-aluno > div{
+        width: 60%;
+        min-width: 500px;
+    }
+    .table-conteudo .sinopse{
+        font-size: 10px;
+        margin-bottom: 3px;
+    }
+    .avaliacoes-livro-div{
+        width: 60%;
+    }
+    .div-livro-externo{
+        width: 48%;
+        margin-right: 10px;
+    }
+    .div-livro-externo img{
+        width: 70px;
+        height: 100px;
+        margin-left: 15px;
+    }
+    .sinopse{
+        width: 65%;
+        font-size: 15px;
+    }
 }
 
-@media  (max-width: 1000px) {
+@media  (max-width: 1000px) and (min-width: 700px){
     .table-livro-aluno > div{
         width: 70%;
         min-width: 500px;
@@ -1178,33 +1214,25 @@ div .icon-footer {
     .page-info-name{
         display: none;
     }
-
     .table-conteudo .sinopse{
        font-size: 10px;
        margin-bottom: 3px;
     }
-
     .div-nav{
         display: none;
     }
-
     .form-login input{
-        outline: 0;
-        border: none;
         width: 400px;
         height: 40px;
         font-size: 16px;
         margin-left: 70px;
         margin-right: 70px;
     }
-
     .form-login .btn-login{
         width: 400px;
         height: 50px;
         margin-top: 15px;
-        border-radius: 20px;
         font-size: 18px;
-        letter-spacing: 1px;
     }
     .avaliacoes-livro-div{
         width: 70%;
@@ -1231,9 +1259,21 @@ div .icon-footer {
         height: 100%;
         margin: auto;
     }
+    .div-livro-externo{
+        width: 80%;
+    }
+    .div-livro-externo img{
+        width: 70px;
+        height: 100px;
+        margin-left: 15px;
+    }
+    .sinopse{
+        width: 60%;
+        font-size: 15px;
+    }
 }
 
-@media  (max-width: 500px) {
+@media  (max-width: 700px) and (min-width: 400px) {
     .form-login input{
         outline: 0;
         border: none;
@@ -1245,7 +1285,6 @@ div .icon-footer {
         width: 300px;
         height: 45px;
         margin-top: 15px ;
-        border-radius: 20px;
         font-size: 18px;
         letter-spacing: 1px;
     }
@@ -1285,5 +1324,40 @@ div .icon-footer {
     .avalia-livro-info div{
         width: 55%;
         text-align: start;
+    }
+    .div-livro-externo{
+        width: 100%;
+        height: 180px;
+    }
+    .div-livro-externo img{
+        width: 55px;
+        height: 100px;
+        margin-left: 10px;
+    }
+    .sinopse{
+        width: 70%;
+        font-size: 9px;
+    }
+    .page-info-name{
+        display: none;
+    }
+}
+
+@media  (max-width: 400px) and (min-width: 100px) {
+    .div-livro-externo{
+        width: 100%;
+        height: 250px;
+    }
+    .div-livro-externo img{
+        width: 55px;
+        height: 90px;
+        margin-left: 7px;
+    }
+    .sinopse{
+        width: 50%;
+        font-size: 8px;
+    }
+    .page-info-name{
+        display: none;
     }
 }

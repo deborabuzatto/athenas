@@ -15,7 +15,7 @@
             $imprime = $livro->listarTodosDadosLivro($id);
             foreach($imprime as $dado){
 ?>
-<div class="div-livro-externo livro"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
+<div class="div-livro-externo"  data-bs-toggle="modal" data-bs-target="#informacoes<?php echo $dados['codigo_livro'];?>">
     <div><img src="../components/dinamic/<?php echo $dados['img_capa'];?>"></div>
     <div class="table-conteudo">
         <h4><?php echo $dados['titulo'];?></h4>
@@ -74,7 +74,7 @@
                     </div>       
                     <div class="dados-avaliar w-75">
                     <p><span>Sinopse:</span><?php echo $dado['sinopse'];?></p>
-                        <p><span>Autor:</span><?php echo $dado['titulo'];?></p>
+                        <p><span>Autor:</span><?php echo $dado['escritor'];?></p>
                         <p><span>Editora:</span><?php echo $dado['editora'];?></p>
                         <p><span>Páginas:</span><?php echo $dado['qtd_paginas'];?></p>
                         <p><span>Nota:</span>
@@ -178,7 +178,7 @@
                     <input type="text" class="form-control" id="senhaLogin" name="ISBN" value='<?php echo $dado['isbn'];?>' > 
 
                     <label for="nomeContato" class="form-label">Autor:</label>
-                    <input type="text" class="form-control" id="nomeContato" name="autor" value='<?php echo $dado['autor'];?>'>
+                    <input type="text" class="form-control" id="nomeContato" name="autor" value='<?php echo $dado['escritor'];?>'>
             
                     <label for="Nacionalidade" class="form-label">Nacionalidade do autor:</label>
                     <input type="text" class="form-control " id="Nacionalidade" name="nacionalidade" 
