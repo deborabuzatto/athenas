@@ -209,7 +209,7 @@
 
                     <div class="input-textarea">
                         <label for="sinopse" class="form-label">Sinopse:</label>
-                        <textarea type="text" class="form-control" id="sinopse" name="sinopse" value='<?php echo $dado['sinopse']?>'></textarea>
+                        <textarea class="form-control" id="sinopse" name="sinopse" value="<?php echo $dado['sinopse'];?>"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer btn-conclui-cadastro" >

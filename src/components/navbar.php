@@ -20,9 +20,6 @@
 			<li class="nav-item">
 				<a class="nav-link" href="informacoes.php">Informacoes</a>
 			</li>
-			<li class="nav-item">
-				<a class="nav-link" href="ajuda.php">Ajuda</a>
-			</li>
 		</ul>
 	</div>
 	<a href="historicoAlunoPage.php" class="btn-login btn grow_box" type="button">

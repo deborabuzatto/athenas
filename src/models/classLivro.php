@@ -121,7 +121,7 @@
             //LISTAGEM ÚTIL
 			$sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, img_capa, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
             li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
-            autor.nome as escritor, cat.dsc_categoria as categoria, autor.nacionalidade from livro as li
+            autor.nome as escritor, cat.dsc_categoria as categoria, autor.nacionalidade, li.sinopse from livro as li
             full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
             full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
             full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
@@ -129,7 +129,7 @@
             full outer join livro_autor as la                  on (li.codigo_livro = la.FK_livro_codigo_livro)
             full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
 			where codigo_livro = :codigo_livro
-            group by  editora,codigo,escritor,categoria,nacionalidade, img_capa";
+            group by  editora,codigo,escritor,categoria,nacionalidade, img_capa, sinopse";
 			$stmt = Database::prepare($sql);
             $stmt->bindParam(':codigo_livro', $id);		
 			$stmt->execute();
@@ -373,7 +373,7 @@
             $stmt->bindParam(':data_publicacao', $this->data_publicacao);
             $stmt->bindParam(':titulo', $this->titulo);
             $stmt->bindParam(':sinopse', $this->sinopse);
-            $stmt->bindParam(':img_capa', $this->img_capa);
+            $stmt->bindParam(':img_capa', $this->url_img);
             $stmt->execute();
             $fk_editora_codigo_edit = $stmt->fetch()["fk_editora_codigo_edit"];
 

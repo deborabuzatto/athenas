@@ -7,9 +7,10 @@
 </head>
 <body>
     <?php include '../components/navbar.php'; ?>
-
-    <div id="relatorio" class="centralizar-livros">
+    <div class="centralizar-livros ">
         <button class="btn-login button mt-5" type="button" onclick="printJS({ printable: 'relatorio', type: 'html', css: '/public/static/css/style.css'})">Imprimir</button>
+    </div>
+    <div id="relatorio" class="centralizar-livros mt-5 mb-5">
         <table class="table table-striped table-hover mb-5">
             <thead>
                 <tr>
@@ -29,7 +30,7 @@
                 <?php 
                     $dados = new Livro();
                     $busca = $dados->relatorio();
-                    if(count($busca)>0){
+                    if(!empty($busca)){
                         foreach($busca as $dados){
                 ?>
                 <tr>

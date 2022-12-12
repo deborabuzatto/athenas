@@ -18,6 +18,15 @@
 
 			return $stmt->fetch(PDO::FETCH_BOTH);
 		}
+
+		public function  find_l($id){
+			$sql = "SELECT * FROM $this->table WHERE codigo_livro = :id";
+			$stmt = Database::prepare($sql);
+			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt->execute();
+
+			return $stmt->fetch(PDO::FETCH_BOTH);
+		}
 		
 		public function  findAll(){
 			$sql = "SELECT * FROM $this->table ";

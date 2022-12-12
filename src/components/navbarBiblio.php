@@ -13,13 +13,10 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false"> Minha Conta</a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="editarPerfilAluno.php">Alterar Dados</a></li>
-                    <li><a class="dropdown-item" href="AlterarSenha.php">Alterar Senha</a></li>
+                    <li><a class="dropdown-item" href="meuperfilbiblio.php">Alterar Dados</a></li>
+                    <li><a class="dropdown-item" href="alterarSenhabiblio.php">Alterar Senha</a></li>
                     <li><a class="dropdown-item" href="login.php">Sair</a></li>
                 </ul>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="ajuda.php">Ajuda</a>
             </li>
         </ul>
     </div>
