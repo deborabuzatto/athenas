@@ -62,7 +62,8 @@ if(isset($_POST['btn-cadastrar'])):
     
 
 	$insert = $livro->insert();
-	header('Location: ../views/livrosBibliotecario.php');
+    $_SESSION['sucesso'] = 'adicionado';
+	header('Location: ../views/homeBibliotecario.php');
 	
 endif;	
 

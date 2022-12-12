@@ -196,10 +196,10 @@
             $stmt->execute();
 
             //insere autor na tabela autor
-            $sql1="INSERT INTO autor (nome, nacionalidade) VALUES (:nome, :nacionalidade) returning codigo_autor";
+            $sql1="INSERT INTO autor (nome, nacionalidade) VALUES (:nome_autor, :nacionalidade_autor) returning codigo_autor";
             $stmt1 = Database::prepare($sql1);
-            $stmt1->bindParam(':nome', $this->autor);
-            $stmt1->bindParam(':nacionalidade', $this->nacionalidade);
+            $stmt1->bindParam(':nome_autor', $this->autor);
+            $stmt1->bindParam(':nacionalidade_autor', $this->nacionalidade);
             $stmt1->execute();
 
             //associa o autor ao livro
