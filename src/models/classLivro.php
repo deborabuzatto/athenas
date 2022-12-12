@@ -132,18 +132,14 @@
         }
 
         public function listarAvaliacoes($id){
-            $sql="select trunc( AVG(lpa.qtd_estrelas),0) as nota, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
-            li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, pes.nome as pessoa,
-            autor.nome as autor, cat.dsc_categoria as categoria, autor.nacionalidade as nacao from livro as li
-            full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
-            join livro_pessoa_avalia as lpa                    on (lpa.FK_livro_codigo_livro = li.codigo_livro)
-            full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
-            full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
-            full outer join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
-            full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
-            full outer join pessoa as pes                      on (lpa.FK_pessoa_codigo_pessoa = pes.codigo_pessoa)
-			where lpa.FK_livro_codigo_livro = :codigo_livro
-            group by  editora,codigo,autor,categoria,nacao,pessoa";
+            $sql="select * from livro li
+            full outer join livro_pessoa_avalia lpa
+            on (li.codigo_livro = lpa.fk_livro_codigo_livro)
+            full outer join comentario cmt
+            on (lpa.fk_comentario_codigo_avaliacao_comentario = cmt.codigo_comentario)
+            full outer join pessoa as pes                      
+            on (lpa.FK_pessoa_codigo_pessoa = pes.codigo_pessoa)
+            where lpa.FK_livro_codigo_livro = :codigo_livro";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':codigo_livro', $id);
 			$stmt->execute();
@@ -210,17 +206,20 @@
 
 
         public function inserirAvaliacoes($codigo_livro, $codigo_pessoa,  $nota, $dsc_comentario){
-            $sql = "INSERT INTO livro_pessoa_avalia (FK_pessoa_codigo_pessoa, FK_livro_codigo_livro, qtd_estrelas) VALUES (:codigo_pessoa,:codigo_livro,:nota);";
+            $sql1 = "INSERT INTO comentario (dsc_comentario) VALUES (:dsc_comentario) returning codigo_comentario";
+			$stmt1 = Database::prepare($sql1);
+            $stmt1->bindParam(':dsc_comentario', $dsc_comentario);
+			$stmt1->execute();
+
+            $id_comentario = $stmt1->fetch()["codigo_comentario"];
+
+            $sql = "INSERT INTO livro_pessoa_avalia (FK_pessoa_codigo_pessoa, FK_livro_codigo_livro, qtd_estrelas, FK_comentario_codigo_avaliacao_comentario) VALUES (:codigo_pessoa,:codigo_livro,:nota, :id_comentario);";
 			$stmt = Database::prepare($sql);	
             $stmt->bindParam(':codigo_pessoa', $codigo_pessoa);
 			$stmt->bindParam(':codigo_livro', $codigo_livro);
             $stmt->bindParam(':nota', $nota);
+            $stmt->bindParam(':id_comentario', $id_comentario);
 			$stmt->execute();
-
-            $sql1 = "INSERT INTO comentario (dsc_comentario) VALUES (:dsc_comentario)";
-			$stmt1 = Database::prepare($sql1);
-            $stmt1->bindParam(':dsc_comentario', $dsc_comentario);
-			$stmt1->execute();
 
 			return true;
         }

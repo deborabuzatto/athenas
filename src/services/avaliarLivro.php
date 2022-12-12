@@ -1,23 +1,22 @@
 <?php
-//Classe de aluno
-include '../models/classLivro.php';
-
 session_start();
-$aluno = $_SESSION['nome_aluno'];
-if(isset($_POST['btn_avalia'])):
+include '../models/classLivro.php';
+$aluno = $_SESSION['aluno'];
+
+if(isset($_POST['btn-avalia'])){
+	echo 'data';
+	$livro = new Livro();
 	$nota = filter_var($_POST['nota'], FILTER_SANITIZE_STRING);
-	$dsc_comentario = filter_var($_POST['dsc_comentario'], FILTER_SANITIZE_EMAIL);
+	$codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
+	$dsc_comentario = filter_var($_POST['dsc_comentario'], FILTER_SANITIZE_STRING);
 
-	// inserindo os dados do livro na tabela livro
-	$livro = new Livro();	
 	$inserir = $livro->inserirAvaliacoes($codigo_livro, $aluno, $nota, $dsc_comentario);
-	
 	if($inserir){
-		$_SESSION['mensagem'] = "Cadastro com sucesso!";
-		header('Location: ../views/livros.php');
+		$_SESSION['sucesso'] = "Livro avaliado com sucesso!";
+		header('Location: ../views/homeAlunos.php');
 	}else{
-		$_SESSION['mensagem'] = "Erro ao executar função";
+		$_SESSION['sucesso'] = "Erro ao executar função";
+		header('Location: ../views/homeAlunos.php');
 	}
-endif;	
-
+}
 ?>
