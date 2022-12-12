@@ -1,7 +1,7 @@
 <?php
 //Classe de aluno
 include '../models/classLivro.php';
-
+session_start();
 if(isset($_POST['btn-editar'])):
 	$codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_NUMBER_INT);
 	$titulo = filter_var($_POST['titulo'], FILTER_SANITIZE_STRING);
@@ -9,9 +9,9 @@ if(isset($_POST['btn-editar'])):
 	$data_publicacao = filter_var($_POST['data_publicacao'], FILTER_SANITIZE_STRING);
 	$ISBN = filter_var($_POST['ISBN'], FILTER_SANITIZE_STRING);
 	$autor = filter_var($_POST['autor'], FILTER_SANITIZE_STRING);
-	$nacionalidade = filter_var($_POST['nacionalidade'], FILTER_SANITIZE_NUMBER_INT);
+	$nacionalidade = filter_var($_POST['nacionalidade'], FILTER_SANITIZE_STRING);
 	$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_STRING);
-	$categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_NUMBER_INT);
+	$categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_STRING);
 	
 
 	// inserindo os dados do livro na tabela livro
@@ -26,7 +26,8 @@ if(isset($_POST['btn-editar'])):
 	$livro->setnacionalidade($nacionalidade);
 
 	$insert = $livro->update($codigo_livro);
-	header('Location: ../views/livrosBibliotecario.php');
+	$_SESSION['sucesso'] = 'Sucesso ao editar livro';
+	header('Location: ../views/homeBibliotecario.php');
 	
 endif;	
 

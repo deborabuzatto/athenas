@@ -1,12 +1,7 @@
 <?php
 //Classe de aluno
 include '../models/classAluno.php';
-
-//Iniciar  Sessão
-if (session_status() === PHP_SESSION_NONE) {
-	session_start();
-}
-
+session_start();
 if(isset($_POST['btn-cadastrar'])):
 	
 	$nome = filter_var($_POST['nome'], FILTER_SANITIZE_STRING);
@@ -24,10 +19,10 @@ if(isset($_POST['btn-cadastrar'])):
 	$aluno->setSenha($senha);
 	
 	if($aluno->insert()):
-		$_SESSION['mensagem'] = "Cadastro com sucesso!";
+		$_SESSION['sucesso'] = "Aluno cadastrado com sucesso!";
 		header('Location: ../views/alunosBibliotecario.php');
 	else:
-		$_SESSION['mensagem'] = "Erro ao cadastrar!";		
+		$_SESSION['mensagem'] = "Erro ao cadastrar aluno!";		
 		header('Location: alunosBibliotecario.php');
 	endif;
 endif;	

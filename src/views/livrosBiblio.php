@@ -9,7 +9,7 @@
     }else{
         $imprimir = $livro->findAllLivro();
     }
-    if(count($imprimir)>0){
+    if(!empty($imprimir)){
         foreach($imprimir as $dados){
             $id = $dados['codigo_livro'];
             $imprime = $livro->listarTodosDadosLivro($id);
@@ -42,7 +42,7 @@
         </div>
         <div>
             <i class="fa-regular fa-bookmark"></i>
-            <span><?php echo $dados['categoria'];?></span>
+            <span><?php echo $dado['categoria'];?></span>
         </div>
         <div>
             <i class="fa fa-ranking-star"></i>
@@ -73,7 +73,7 @@
                         <img src="../components/dinamic/<?php echo $dados['img_capa'];?>">
                     </div>       
                     <div class="dados-avaliar w-75">
-                    <p><span>Sinopse:</span><?php echo $dado['sinopse'];?></p>
+                        <p><span>Sinopse:</span><?php echo $dado['sinopse'];?></p>
                         <p><span>Autor:</span><?php echo $dado['escritor'];?></p>
                         <p><span>Editora:</span><?php echo $dado['editora'];?></p>
                         <p><span>Páginas:</span><?php echo $dado['qtd_paginas'];?></p>
@@ -220,4 +220,4 @@
         </div>
     </div>
 </div>
-<?php }}} ?>
+<?php }}} else{ echo '<h1 class="text-danger mt-5 mb-5">Nenhum livro encontrado.</h1>'; } ?>

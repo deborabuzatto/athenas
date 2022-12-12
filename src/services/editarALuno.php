@@ -1,7 +1,7 @@
 <?php
 //Classe de cliente
 include_once '../models/classAluno.php';
-
+session_start();
 if(isset($_POST['btn-editar'])):
 	$codigo_pessoa = filter_var($_POST['codigo_pessoa'], FILTER_SANITIZE_STRING);
 	$nome = filter_var($_POST['nome'], FILTER_SANITIZE_STRING);
@@ -17,10 +17,10 @@ if(isset($_POST['btn-editar'])):
 	print_r($codigo_pessoa);
 
 	if($aluno->update($codigo_pessoa)):
-		$_SESSION['mensagem'] = "Atualizado com sucesso!";
+		$_SESSION['sucesso'] = "Aluno atualizado com sucesso!";
 		header('Location: ../views/alunosBibliotecario.php');
 	else:
-		$_SESSION['mensagem'] = "Erro ao atualizar!";
+		$_SESSION['erro'] = "Erro ao atualizar aluno!";
 		header('Location: ../views/alunoBibliotecario.php');
 	endif;
 endif;	

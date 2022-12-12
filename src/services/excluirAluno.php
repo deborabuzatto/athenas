@@ -1,24 +1,18 @@
 <?php
 //Classe de aluno
 include '../models/classAluno.php';
-
-//Iniciar  Sessão
-if (session_status() === PHP_SESSION_NONE) {
-	session_start();
-}
+session_start();
 
 if(isset($_POST['btn-excluir'])):
-	
-	$codigo_pessoa = filter_var($_POST['codigo_pessoa'], FILTER_SANITIZE_STRING);
-
 	$aluno = new Aluno();
+	$codigo_pessoa = filter_var($_POST['codigo_pessoa'], FILTER_SANITIZE_STRING);
     $excluir = $aluno->excluir($codigo_pessoa);
 	
 	if($excluir):
-		$_SESSION['mensagem'] = "Cadastro com sucesso!";
+		$_SESSION['sucesso'] = "Aluno cadastrado com sucesso";
 		header('Location: ../views/alunosBibliotecario.php');
 	else:
-		$_SESSION['mensagem'] = "Erro ao cadastrar!";		
+		$_SESSION['erro'] = "Erro ao cadastrar aluno";		
 		header('Location: alunosBibliotecario.php');
 	endif;
 endif;	

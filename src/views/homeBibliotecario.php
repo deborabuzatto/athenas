@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <?php include '../components/header.php'; ?>
+        <?php session_start(); include '../components/header.php'; ?>
         <title>PÁGINA INICIAL | HOME</title>
     </head>
 	<body>
@@ -42,6 +42,12 @@
                 </div>
             </form>
         </div>
+        <?php if(isset($_SESSION['sucesso'])): ?>
+        <div style="float: right; position: fixed; bottom: 10px; right: 10px; background-color: green; padding: 10px; border-radius: 10px">
+            <p><?php echo $_SESSION['sucesso']?></p>
+        </div>
+        <?php unset($_SESSION["sucesso"]); endif; ?>
+        
 		<div class="centralizar-livros">
 			<?php include 'livrosBiblio.php'; ?>
 		</div>

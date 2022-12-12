@@ -102,5 +102,5 @@
         </div>
     </div>
 </div>
-<?php }}} ?>
+<?php }}} else{ echo '<h1 class="text-danger mt-5 mb-5">Nenhum livro encontrado.</h1>'; } ?>
 

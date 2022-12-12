@@ -55,11 +55,7 @@
                                 foreach($imprimir as $dados){
                         ?>
                         <option value="<?php echo $dados['codigo_categoria']?>"><?php echo $dados['dsc_categoria']?></option>
-
-                        <?php
-                            }
-                            endif;
-                        ?>
+                        <?php } endif; ?>
                     </select>
                 </div>
 

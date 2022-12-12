@@ -111,7 +111,7 @@
             full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
             full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
             full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
-            full outer join livro_autor as la                  on (li.codigo_livro = la.FK_autor_codigo_autor)
+            full outer join livro_autor as la                  on (li.codigo_livro = la.FK_livro_codigo_livro)
             full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
 			where codigo_livro = :codigo_livro
             group by  editora,codigo,escritor,categoria,nacionalidade, img_capa";
@@ -152,17 +152,10 @@
         }
 
         public function listarHistorico($id){
-            $sql="select distinct li.titulo, li.codigo_livro, SUBSTRING(li.sinopse from 1 for 100) as sinopse, li.ISBN, li.data_publicacao, li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, autor.nome, cat.dsc_categoria as categoria, autor.nacionalidade, lpa.qtd_estrelas, pes.nome as aluno, locado.data_entrega
-            from livro_pessoa_loca as locado
-            full outer join livro as li                    on (li.codigo_livro = locado.FK_LIVRO_codigo_livro)
-            full outer join pessoa as pes                  on (pes.codigo_pessoa = locado.FK_pessoa_codigo_pessoa)
-            full outer join editora as ed                  on (li.FK_editora_codigo_edit = ed.codigo_edit)
-            full outer join livro_pessoa_avalia as lpa     on (lpa.FK_livro_codigo_livro = li.codigo_livro)
-            full outer join livro_categoria as lc          on (li.codigo_livro = lc.FK_livro_codigo_livro)
-            full outer join categoria as cat               on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
-            full outer join livro_autor as la              on (li.codigo_livro = la.FK_autor_codigo_autor)
-            full outer join autor                          on (la.FK_autor_codigo_autor = autor.codigo_autor)
-            where pes.codigo_pessoa = :codigo_pessoa";
+            $sql="select * from livro_pessoa_loca lpl
+            join pessoa ps on(lpl.fk_pessoa_codigo_pessoa = ps.codigo_pessoa)
+            join livro li on(lpl.fk_livro_codigo_livro = li.codigo_livro)
+            where codigo_pessoa = :codigo_pessoa";
 			$stmt = Database::prepare($sql);	
 			$stmt->bindParam(':codigo_pessoa', $id);
 			$stmt->execute();
@@ -170,12 +163,7 @@
 			return $stmt->fetchAll(PDO::FETCH_BOTH );
         }
 
-
-
-
         #########     FUNÇÕES DE INSERÇÃO DE DADOS     ###########
-
-
         public function insert(){
             //insere editora
             $sql3="INSERT INTO editora (nome) VALUES (:nome) RETURNING codigo_edit";
@@ -238,8 +226,6 @@
         }
 
         #########     FUNÇÕES DE ATUALIZAÇÃO DE DADOS     ###########
-
-        
         public function locacao($codigo_livro, $codigo_pessoa, $data_locacao, $data_entrega){
             //exibe se o livro está disponível ou não
             $sql="select count(*) as valor from (select livro.codigo_livro,livro.titulo,pessoa.nome,status_loca.codigo_status,
