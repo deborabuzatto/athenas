@@ -11,7 +11,7 @@
     <body>
         <div class="tela">
             <div class="nav-login">
-                <div class="nav-link-item"><a href="/index.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
+                <div class="nav-link-item"><a href="homeAlunos.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
                 <div class="page-info-name"><p>Você está na página:</p><a href="#">AVALIAÇÕES</a></div>
                 <div class="nav-login-menu">
                     <img src="/public/static/imagens/logo.png">
@@ -52,27 +52,27 @@
                 </div>
             </div>
             <?php }}} ?>
-            
+            <div class="avaliacoes-livro">
             <?php 
                 if(isset($_POST['avaliacoes'])){
                     $codigo_livro = filter_var($_POST['codigo_livro'], FILTER_SANITIZE_STRING);
                     $livro = new Livro();
                     $busca = $livro->listarAvaliacoes($codigo_livro);
                     if(!empty($busca)){
-                        echo '<h3 class="mt-5 pt-5 text-center">Outros usuários avaliaram:</h3>';
+                        echo '<h3 class="titulo-avaliacoes">Outros usuários avaliaram:</h3>';
                         foreach($busca as $dados){
             ?>
-            <div class="avaliacoes-livro">
-                <div class="avaliacoes-livro-div">
-                    <div class="avaliacoes-img"><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>"></div>
-                    <div class="dados-livro-avalia">
-                        <h3><?php echo $dados['nome'];?></h3>
-                        <p>Nota: <?php echo $dados['qtd_estrelas'];?></p>
-                        <p>Comentário: <?php echo $dados['dsc_comentario'];?></p>
-                    </div>
+            <div class="avaliacoes-livro-div">
+                <div class="avaliacoes-img"><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>"></div>
+                <div class="dados-livro-avalia">
+                    <h5><?php echo $dados['nome'];?></h5>
+                    <p>Nota: <?php echo $dados['qtd_estrelas'];?></p>
+                    <p>Comentário: <?php echo $dados['dsc_comentario'];?></p>
                 </div>
             </div>
+            
             <?php }}} ?>
+            </div>
         </div>
 
         <?php include '../components/footer.php'; ?>

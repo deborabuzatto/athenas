@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <?php include '../components/header.php'; ?>
+        <?php session_start(); include '../components/header.php'; ?>
         <title>CADASTRO DE ALUNOS</title>
     </head>
     <body>
@@ -46,7 +46,18 @@
                 </div> 
             </form>
         </div>
-        <?php include '../components/footer.php'; ?>
-        <?php include '../components/scriptsBody.php'; ?>
+        <?php if(isset($_SESSION['sucesso'])): ?>
+            <div id="mensagem" style="float: right; position: fixed; bottom: 10px; right: 10px; background-color: green; padding: 10px; border-radius: 10px">
+                <p><?php echo $_SESSION['sucesso']?></p>
+            </div>
+        <?php unset($_SESSION["sucesso"]); endif; ?>
+        
+        <script>
+            setTimeout(function() {
+                if(document.getElementById('mensagem')){
+                    document.getElementById('mensagem').style.display = 'none'
+                }
+            }, 3000)
+        </script>
     </body>
 </html>

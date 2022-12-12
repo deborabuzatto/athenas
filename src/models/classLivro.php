@@ -16,8 +16,21 @@
         private $nacionalidade;
         private $editora;
         private $categoria;
+        private $volume;
+        private $edicao;
+        private $qtd_pag;
         private $url_img;
+        private $url_img_64;
 
+        public function setvolume($volume){
+            $this->volume = $volume;
+        } 
+        public function setedicao($edicao){
+            $this->edicao = $edicao;
+        } 
+        public function setqtd_pag($qtd_pag){
+            $this->qtd_pag = $qtd_pag;
+        }
         public function setISBN($ISBN){
             $this->ISBN = $ISBN;
         }
@@ -84,7 +97,9 @@
         public function geturl_img(){
             return $this->url_img;
         }
-
+        public function seturl_img_64($url_img_64){
+            $this->url_img_64 = $url_img_64;
+        }
         
 
         // FUNÇÕES DE LISTAGEM DE DADOS
@@ -169,7 +184,7 @@
             $FK_EDITORA_codigo_edit = $stmt3->fetch()["codigo_edit"];
             
             //insere na tabela livro
-            $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse, FK_EDITORA_codigo_edit, img_capa) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse, :FK_EDITORA_codigo_edit, :img_capa) RETURNING codigo_livro";
+            $sql="INSERT INTO $this->table (ISBN, data_publicacao, titulo, sinopse, FK_EDITORA_codigo_edit, img_capa, volume, edicao, qtd_paginas, img_capa_base64) VALUES (:ISBN,:data_publicacao,:titulo, :sinopse, :FK_EDITORA_codigo_edit, :img_capa, :volume, :edicao, :qtd_paginas, :img_capa_base64) RETURNING codigo_livro";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':ISBN', $this->ISBN);
             $stmt->bindParam(':data_publicacao', $this->data_publicacao);
@@ -177,6 +192,10 @@
             $stmt->bindParam(':sinopse', $this->sinopse);
             $stmt->bindParam(':FK_EDITORA_codigo_edit', $FK_EDITORA_codigo_edit);
             $stmt->bindParam(':img_capa', $this->url_img);
+            $stmt->bindParam(':volume', $this->volume);
+            $stmt->bindParam(':edicao', $this->edicao);
+            $stmt->bindParam(':qtd_paginas', $this->qtd_pag);
+            $stmt->bindParam(':img_capa_base64', $this->url_img_64);
             $stmt->execute();
 
             //insere autor na tabela autor
@@ -396,6 +415,20 @@
             $stmt = Database::prepare($sql);
             $stmt->execute();
             return $stmt->fetchAll();
+        }
+
+        public static function getImageDataFromUrl($url){
+            $urlParts = pathinfo($url);
+            $extension = $urlParts['extension'];
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, $url);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            curl_setopt($ch, CURLOPT_HEADER, 0);
+            $response = curl_exec($ch);
+            curl_close($ch);
+            $base64 = 'data:image/' . $extension . ';base64,' . base64_encode($response);
+            return $base64;
         }
     }
 ?>

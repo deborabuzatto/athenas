@@ -1,6 +1,4 @@
-<?php 
-    include_once '../models/classLivro.php';
-?>
+<?php session_start(); include_once '../models/classLivro.php'; ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -22,10 +20,10 @@
                 <p>"A leitura desenvolve a mente. O pensamento a alma."</p>
             </div>
         </div> 
-            
-        <div class="cadastrar-livro">
+             
+        <div class="cadastrar-livro w-100">
             <form enctype="multipart/form-data" method="POST" action="../services/cadastrarLivro.php">
-                <div class="input-nomes">
+                <div class="input-nomes w-100">
                     <label for="titulo" class="form-label">Título:</label>
                     <input type="text" class="form-control" id="titulo" name="titulo" required>
 
@@ -34,6 +32,15 @@
                 
                     <label for="senhaLogin" class="form-label">Data de publicação:</label>
                     <input type="date" class="form-control" id="senhaLogin" name="data_publicacao" required> 
+
+                    <label for="volume" class="form-label">Volume:</label>
+                    <input type="number" class="form-control w-50" id="volume" name="volume" required>
+
+                    <label for="edicao" class="form-label">Edicao:</label>
+                    <input type="number" class="form-control w-50" id="edicao" name="edicao" required>
+                    
+                    <label for="qtd_pag" class="form-label">Quantidade de páginas:</label>
+                    <input type="number" class="form-control w-50" id="qtd_pag" name="qtd_pag" required>
                     
                     <label for="senhaLogin" class="form-label">ISBN:</label>
                     <input type="text" class="form-control" id="senhaLogin" name="ISBN" required> 
@@ -72,11 +79,24 @@
                 <div class="btn-conclui-cadastro">
                     <button class="btn btn-pesquisa-bibliotecario" name="btn-cadastrar">Concluir Cadastro do Livro</button>
                 </div> 
-                
             </form>
+
+            <?php if(isset($_SESSION['sucesso'])): ?>
+                <div id="mensagem" style="float: right; position: fixed; bottom: 10px; right: 10px; background-color: green; padding: 10px; border-radius: 10px">
+                    <p><?php echo $_SESSION['sucesso']?></p>
+                </div>
+            <?php unset($_SESSION["sucesso"]); endif; ?>
         </div>
         
         <?php include '../components/footer.php'; ?>
         <?php include '../components/scriptsBody.php';?>
+
+        <script>
+            setTimeout(function() {
+                if(document.getElementById('mensagem')){
+                    document.getElementById('mensagem').style.display = 'none'
+                }
+            }, 3000)
+        </script>
     </body>
 </html>

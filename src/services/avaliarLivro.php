@@ -15,7 +15,7 @@ if(isset($_POST['btn-avalia'])){
 		$_SESSION['sucesso'] = "Livro avaliado com sucesso!";
 		header('Location: ../views/homeAlunos.php');
 	}else{
-		$_SESSION['sucesso'] = "Erro ao executar função";
+		$_SESSION['erro'] = "Erro ao executar função";
 		header('Location: ../views/homeAlunos.php');
 	}
 }

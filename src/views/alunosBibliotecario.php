@@ -31,10 +31,6 @@
                                 <a href="cadastrarAluno.php" class="radio-label azul"><i class="fa-solid fa-landmark"></i></a>
                                 <p id="p-licensed" class="title">Add Alunos</p>
                             </div>
-                            <div class="text-center ">
-                                <a href="graficos.php" class="radio-label rosa"><i class="fa-solid fa-landmark"></i></a>
-                                <p id="p-licensed" class="title">Gráficos</p>
-                            </div>
                         </div>
                     </div>   
                 </div>

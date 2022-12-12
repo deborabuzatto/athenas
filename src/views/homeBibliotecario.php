@@ -27,25 +27,21 @@
                                 <a href="cadastrarAluno.php" class="radio-label azul"><i class="fa-solid fa-landmark"></i></a>
                                 <p id="p-licensed" class="title">Add Alunos</p>
                             </div>
-                            <div class="text-center ">
-                                <a href="graficos.php" class="radio-label rosa"><i class="fa-solid fa-landmark"></i></a>
-                                <p id="p-licensed" class="title">Gráficos</p>
-                            </div>
                         </div>
                     </div>   
                 </div>
             </nav>
 			<form action="" method="POST">
 			    <div class="central-input">
-                	<input type="text" name="pesquisar" id="" placeholder="Pesquise por um Livro">
+                	<input name="pesquisar" placeholder="Pesquise por um Livro">
 					<button type="submit" name="btn-buscar"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </form>
         </div>
         <?php if(isset($_SESSION['sucesso'])): ?>
-        <div style="float: right; position: fixed; bottom: 10px; right: 10px; background-color: green; padding: 10px; border-radius: 10px">
-            <p><?php echo $_SESSION['sucesso']?></p>
-        </div>
+            <div id="mensagem" style="float: right; position: fixed; bottom: 10px; right: 10px; background-color: green; padding: 10px; border-radius: 10px">
+                <p><?php echo $_SESSION['sucesso']?></p>
+            </div>
         <?php unset($_SESSION["sucesso"]); endif; ?>
         
 		<div class="centralizar-livros">
@@ -53,5 +49,12 @@
 		</div>
 		<?php include '../components/footer.php'; ?>
 		<?php include '../components/scriptsBody.php'; ?>
+        <script>
+            setTimeout(function() {
+                if(document.getElementById('mensagem')){
+                    document.getElementById('mensagem').style.display = 'none'
+                }
+            }, 3000)
+        </script>
 	</body>
 </html>

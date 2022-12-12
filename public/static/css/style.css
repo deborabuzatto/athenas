@@ -316,103 +316,7 @@ h4 span{
     font-family: nunito;
     font-weight: 500;
 }
-
-/*alterar senha*/
-.alterar-senha{
-    margin-bottom: 100px;
-    margin-top: 30px;
-}
-
-/*página avaliar*/
-.dados-livro-avaliar{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: nunito;
-}
-.dados-livro-avaliar p span{
-    font-weight: 600;
-    padding: 0px 5px 0px 0px;
-    margin: 0px;
-}
-.img-avaliar{
-    width: 38%;
-    text-align: end;
-    padding-right: 50px;
-    height: 150px;
-}
-.img-avaliar img{
-    width: 120px;
-    height: 100%;
-}
-.dados-avaliar{
-    width: 40%;
-    text-align: start;
-}
-.form-avalia{
-    margin-top: 50px;
-    width: 30%
-}
-.link-avaliacoes{
-    width: 100%;
-    text-align: center;
-    margin-top: 40px;
-}
-.link-avaliacoes a{
-    color:#4c0677;
-    font-family: nunito;
-    font-weight: 500;
-    text-decoration: none;
-    border-bottom: 7px double #4c0677;
-}
-
-.avalia-livro{
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: nunito;
-}
-
-.avalia-livro p span{
-    font-weight: 600;
-    padding: 0px 5px 0px 0px;
-    margin: 0px;
-}
-.img-pessoa{
-    width: 25%;
-    text-align: end;
-    padding-right: 50px;
-    height: 150px;
-}
-.img-pessoa img{
-    width: 120px;
-    height: 100%;
-}
-
-.dados-avaliar{
-    width: 50%;
-    text-align: start;
-}
-.form-avalia{
-    margin-top: 50px;
-    width: 30%
-}
-.div-dados-avaliar{
-    text-align: start;
-}
-.div-avaliacao{
-    display: flex;
-    flex-wrap: wrap;
-    font-family: nunito;
-    border-top: 0.05rem solid #c4c4c4;
-    width: 50%;
-    padding-top: 40px;
-}
-
 /*página consulta de alunos*/
-
 .div-dados-aluno{
     width: 60%;
 }
@@ -660,29 +564,30 @@ h4 span{
     font-size: 20px;
     letter-spacing: 1px;
 }
-
+.titulo-avaliacoes{
+    margin: 100px 0px;
+    width: 100%;
+    text-align: center;
+}
 .avaliacoes-livro{
     display: flex;
     flex-wrap: wrap;
-    width: 100%;
-    height: 100%;
-    background-color: #fff;
     justify-content: center;
-    padding: 200px 0px 0px 70px;
+    width: 100%;
 }
 .avaliacoes-livro h1{
-    width: 80%;
+    width: 100%;
     color:rgb(59, 7, 84)
 }
 .avaliacoes-livro-div{
-    width: 27%;
+    width: 28%;
+    height: 180px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    box-shadow: inset 0 0 0 transparent, 0 0 0.7em #a776d9; 
-    border-radius: 0px 30px;
-    margin: 50px;
-    margin-bottom: 50px;
+    box-shadow: 4px 4px 9px 0px rgba(50, 50, 50, 0.22);
+    margin: 0px 120px 10px 120px;
+    border-radius: 20px;
 }
 .avaliacoes-livro-div .avaliacoes-img{
     width: 20%;
@@ -696,6 +601,11 @@ h4 span{
     width: 50%;
     margin-top: 20px;
     padding: 10px;
+}
+.dados-livro-avalia{
+    font-size: 14px;
+    font-family: nunito;
+    font-weight: 700;
 }
 
 input, select, textarea{
@@ -1088,6 +998,9 @@ div .icon-footer {
     padding-left: 26px;
 }                                                                                                                         
 
+.ipt_pqn{
+    width: 100px;
+}
 
 
 

@@ -10,7 +10,7 @@ include_once '../models/classAluno.php';
     else{
         $busca = $aluno->findAll();
     }
-    if(count($busca)>0){
+    if(!empty($busca)){
         foreach($busca as $dados){
 ?>
 
@@ -121,6 +121,4 @@ include_once '../models/classAluno.php';
     </div>
 </div>
 
-<?php
-}}
-?>
+<?php }} else{ echo '<h1 class="text-danger mt-5 mb-5">Nenhum aluno encontrado.</h1>'; } ?>

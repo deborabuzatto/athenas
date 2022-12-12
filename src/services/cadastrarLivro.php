@@ -11,7 +11,10 @@ if(isset($_POST['btn-cadastrar'])):
 	$autor = filter_var($_POST['autor'], FILTER_SANITIZE_STRING);
 	$nacionalidade = filter_var($_POST['nacionalidade'], FILTER_SANITIZE_STRING);
 	$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_STRING);
-	$categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_STRING);
+    $categoria = filter_var($_POST['categoria'], FILTER_SANITIZE_STRING);
+    $volume = filter_var($_POST['volume'], FILTER_SANITIZE_STRING);
+    $edicao = filter_var($_POST['edicao'], FILTER_SANITIZE_STRING);
+    $qtd_pag = filter_var($_POST['qtd_pag'], FILTER_SANITIZE_STRING);
 	$nome_img = $_FILES['file']['name'];
 	
 	// inserindo os dados do livro na tabela livro
@@ -24,7 +27,10 @@ if(isset($_POST['btn-cadastrar'])):
 	$livro->setcategoria($categoria);
 	$livro->seteditora($editora);
 	$livro->setnacionalidade($nacionalidade);
-	$livro->seturl_img($nome_img);
+	$livro->setvolume($volume);
+    $livro->setedicao($edicao);
+    $livro->setqtd_pag($qtd_pag);
+    $livro->seturl_img($nome_img);
     $extensao = pathinfo($nome_img, PATHINFO_EXTENSION);
 	
 	// Recebendo nome do arquivo imagem, conferindo se o repositório onde ficará guardado existe
@@ -56,13 +62,15 @@ if(isset($_POST['btn-cadastrar'])):
         }
     }
 
-    echo ' - Informacoes para debug: ';
-    print_r($_FILES);
-    
+    $caminho = $uploaddir.$nome_img;
+    $teste = file_get_contents($caminho);
+    $data = base64_encode($teste);
+    $livro->seturl_img_64($data);
+
 
 	$insert = $livro->insert();
     $_SESSION['sucesso'] = 'Livro adicionado com sucesso';
-	header('Location: ../views/homeBibliotecario.php');
+	header('Location: ../views/cadastrarLivro.php');
 	
 endif;	
 

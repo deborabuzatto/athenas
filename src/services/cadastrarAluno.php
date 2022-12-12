@@ -20,10 +20,10 @@ if(isset($_POST['btn-cadastrar'])):
 	
 	if($aluno->insert()):
 		$_SESSION['sucesso'] = "Aluno cadastrado com sucesso!";
-		header('Location: ../views/alunosBibliotecario.php');
+		header('Location: ../views/cadastrarAluno.php');
 	else:
 		$_SESSION['mensagem'] = "Erro ao cadastrar aluno!";		
-		header('Location: alunosBibliotecario.php');
+		header('Location: ../views/cadastrarAluno.php');
 	endif;
 endif;	
 
