@@ -1,337 +1,76 @@
 /*padrão*/
 body{
     overflow-x: hidden;
-}
-
-.tela{
     font-family: Poppins;
 }
-
-.form-control:focus {
-    color: #212529;
-    background-color: #fff;
-    border-color: #ced4da;
-    outline: 0;
-    box-shadow: 0 0 0 0;
-}
-
 .form-select:focus {
     border-color: #ced4da;
     outline: 0;
     box-shadow: 0 0 0 0;
 }
 
-/*barra de navegação*/
-.div-nav{
-    width: 6%;
-    padding: 15px 0px 0px 20px;
-}
-
-.div-nav img{
-    width: 80px;
-    height: 70px;
-    margin-left: 50px;
-}
-
-.active{
-    border-bottom: 2px solid #5f6c9e
-}
-
-.navbar{
-    --bs-navbar-padding-y: 0rem;
-}
-
-.navbar-nav{
+/*página de login*/
+.nav-login{
     display: flex;
-    width: 40%;
-    padding-left: 80px;
-
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 100%;
 }
-
-.navbar-nav a{
+.nav-login .page-info-name, .nav-login .nav-link-item  {
+    padding-top: 10px;
+    padding-left: 20px;
+    color:rgb(181, 181, 181);
+    font-size: 22px;
+}
+.nav-login .page-info-name{
+    margin-left: auto;
+    margin-right: 50px;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+.page-info-name p{
+    font-family: nunito;
+    font-size:12px; 
+    color: #c3c3c3; 
+    display: inline; 
+    padding-right: 20px;
+}
+.nav-login .page-info-name i, .nav-login .nav-link-item i{
+    margin-right: 10px;
+    margin-top: 20px;
+}
+.nav-login .page-info-name a, .nav-login .nav-link-item a{
     text-decoration: none;
     color: rgb(59, 7, 84);
     font-size: 18px;
     font-weight: 800;
-    margin: 10px;
+    font-family: nunito;
 }
-
-.btn-login {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 300px;
-    height: 91px;
-    margin-left: auto;
-    margin-right: 0px;
-    background-color: #7625c9;
-    border: 0.05em solid #7625c9;
-    animation-name: btnlogin;
-    animation-duration: 0.7s;
-    animation-delay: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: unset;
-}
-
-.btn-login a {
-    font-size: 36px;
-    font-family: Arial, Helvetica, sans-serif;
-    letter-spacing: 1px;
-    color: #e8e8e8;
-    text-decoration: none;
-    text-transform: uppercase;
-    display: flex;
-    animation-name: btnlogin1;
-    animation-duration: 0.7s;
-    animation-delay: 0.8s;
-    animation-timing-function: linear;
-    animation-iteration-count: unset;
-    width: 90px;
-}
-
-@keyframes btnlogin1{
-    0%{
-        width: 0px;
-    }
-
-    100%{
-        width: 90px;
-    }
-}
-
-@keyframes btnlogin{
-    0%{
-        width: 0px;
-    }
-
-    100%{
-        width: 300px;
-    }
-}
-
-.form-check-input:checked {
-    background-color: #7625c9;
-    border-color: #7625c9;
-}
-
-.form-check-input:focus {
-    border-color: #7625c9;
-    outline: 0;
-    box-shadow: 0 0 0 0;
-}
-
-.navbar{
-    box-shadow: 0 0 0.05em #000;
-}
-
-.navbar-toggler{
-    margin-left: auto;
-    margin-right: 50px;
-}
-
-/* conteudo index */
-.conteudo-index{
-    width: 100%;
-}
-
-.conteudo-index img{
-    width: 100%;
-    height: 80%;
-}
-
-.conteudo{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 80px;
-    background-color: #ffffff;
-}
-
-.conteudo h2{
-    color: #7625c9;
-    font-size: 30px;
-    font-family: Poppins;
-    font-weight: 900;
-    width: 80%;
-    text-align: start;
-    padding-top: 50px;
-    letter-spacing: 0.5px;
-}
-
-.conteudo p{
-    color: #3c3c3c;
-    font-size: 24px;
-    font-family: Poppins;
-    width: 80%;
-    padding-top: 30px;
-    padding-bottom: 30px;
-}
-
-.conteudo span{
-    color:#4c0677;
-    font-weight: 900;
-
-}
-
-
-.acesso{
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #f4f4f4;
-}
-
-.acesso .informes-login{
-    width: 45%;
-    border-right:0.05em solid rgb(181, 181, 181);
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.acesso h2{
-    color: #7625c9;
-    font-size: 36px;
-    font-family: Poppins;
-    font-weight: 900;
-    text-align: start;
-    padding: 0px;
-}
-
-.acesso p{
-    width: 80%;
-    color: #3c3c3c;
-    font-size: 20px;
-    font-family: Poppins;
-    padding-top: 50px;
-}
-
-.acesso .form-login{
-    width: 30%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 60px;
-}
-
-.form-login button{
-    background-color: #7625c9;
-    border-color: #7625c9;
-}
-
-.form-acessar-login input{
-    width: 400px;
-}
-
-.links a{
-    color: #3c3c3c;
-    display: block;
-    text-decoration: none;
-    padding-top: 12px;
-}
-
-.links i{
-    color: #7625c9;
-    padding-left: 6px;
-}
-
-.links i:hover{
-    padding-left: 15px;
-}
-
-.contato{
-    display: flex;
-    justify-content: start;
-    flex-wrap: wrap;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #f4f4f4;
-}
-
-.contato h2{
-    color: #7625c9;
-    font-size: 30px;
-    font-family: Poppins;
-    font-weight: 900;
-    text-align: start;
-    padding: 0px 0px 50px 0px;
-}
-
-.contato .form-contato{
-    width: 50%;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: 60px;
-}
-
-.form-contato button{
-    background-color: #7625c9;
-    border-color: #7625c9;
-    color: #fff;
-}
-
-.form-contato button:hover{
-    background-color: #ffffff;
-    border-color: #7625c9;
-    color: #7625c9;
-    font-weight: 600;
-    letter-spacing: 0.8px;
-}
-
-/*página de login*/
-
-.nav-login{
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    width: 100%;
-}
-.nav-login > div{
-    width: 100%;
-    padding-top: 10px;
-    padding-left: 20px;
-}
-
-.nav-login > div i{
-    margin-right: 10px;
-    margin-top: 20px;
-}
-
-.nav-login > div a{
-    text-decoration: none;
-    color: rgb(59, 7, 84);
-    font-size: 20px;
-    font-weight: 600;
-}
-
 .nav-login-menu{
+    width: 100%;
     text-align: center;
     font-size: 16px;
 }
-
+.nav-login-menu p{
+    font-family: nunito;
+    color: rgb(197, 197, 197);
+    font-weight: 500px;
+}
 .nav-login-menu img{
-    width: 140px;
+    width: 120px;
     height: 100px;
     margin-top: 20px;
     margin-bottom: 15px;
 }
-
-
-
 .login{
     display: flex;
-    justify-content: start;
+    justify-content: space-between;
     flex-wrap: wrap;
     width: 100%;
     padding-top: 30px;
-    padding-bottom: 220px;
+    padding-bottom: 30px;
     background-color: #ffffff;
 }
-
 .login h2{
     color: #7625c9;
     font-size: 36px;
@@ -340,92 +79,35 @@ body{
     text-align: center;
     padding: 0px 0px 50px 0px;
 }
-
 .login .form-login-page{
-    width: 400px;
+    width: 50%;
     margin-left: auto;
     margin-right: auto;
     padding: 30px;
 }
-
-
+.form-login-page form{
+    color: #000;
+    font-weight: 500;
+    font-family: nunito;
+    width: 60%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 50px;
+}
+.login .img-login{
+    width: 50%;
+    height: 500px;
+}
+.img-login img{
+    width: 100%;
+    height: 100%
+}
 .form-login-page button{
     width: 100%;
     margin-top: 20px;
-    background-color: #4c0677;
-    border-color: #4c0677;
+    background-color: #FA4D39;
+    border-color: #FA4D39;
 }
-
-/*home do aluno*/
-.conteudo-home{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    width: 100%;
-    margin-top: 20px;
-    margin-bottom: 200px;
-}
-.conteudo-home a{
-    text-decoration: none;
-    color: #4f4f4f;
-}
-
-.conteudo-home div{
-    width: 200px;
-    border-radius: 10px;
-    border: 0.05em solid #dcdada;
-    padding: 10px;
-    margin: 3px;
-}
-
-.conteudo-home i{
-    font-size: 24px;
-    color: #4c0677;
-    margin-left: 78px;
-}
-
-.div-app{
-    display: flex;
-    justify-content: space-evenly;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 100%;
-    padding-top: 100px;
-    padding-bottom: 100px;
-    background-color: #f4f4f4;
-    margin-bottom: 100px;
-}
-
-.div-app img{
-    width: 80%;
-}
-
-.div-app div:first-child{
-    width: 50%;
-}
-
-.div-app h1{
-    text-align: center;
-    color:rgb(59, 7, 84);
-    font-weight: 900;
-    margin-bottom: 40px;
-    width: 100%;
-}
-
-.div-app p{
-    font-size: 22px;
-    width: 100%;
-    text-align: center;
-}
-
-.img-home-aluno{
-    width: 100%;
-}
-
-.img-home-aluno img{
-    width: 100%;
-}
-
 
 /*página livros aluno*/
 
@@ -437,31 +119,11 @@ body{
     padding-top: 50px;
     padding-bottom: 150px;
 }
-
-.p-autor{
-    font-size: 14px;
-    text-align: center;
-}
-
-.titulo-livro-page{
-    width: 100%;
-    text-align: center;
-}
-
-.titulo-livro-page h2{
-    color: #4c0677;
-    font-weight: 900;
-    font-size: 36px;
-    text-transform: uppercase;
-}
-
 .busca-livro-page{
-    margin-top: 100px;
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     flex-wrap: wrap;
-    padding-left: 10px;
 }
 
 .busca-livro-page input{
@@ -486,15 +148,14 @@ body{
 }
 
 .btn-pesquisa{
-    border: 0.05rem solid #4c0677;
-    background-color: #4c0677;
+    border: 0.05rem solid #FA4D39;
+    background-color: #FA4D39;
     color: #ffffff;
 }
 
 .btn-pesquisa:hover{
-    border-color: #4c0677;
+    border-color: #FA4D39;
     color: #000;
-    
 }
 
 .table-livro-aluno{
@@ -507,34 +168,29 @@ body{
 .table-livro-aluno > div{
     display: flex; 
     align-items: center;
-    border: 0.2rem solid #f4f4f4;
-    border-radius: 30px 3px;
-    width: 60%;
-    min-width: 500px;
+    border: 0.05rem solid #ced4da;
+    border-radius: 3px 30px;
+    width: 40%;
+    min-width: 200px;
     height: 150px;
-    margin-top: 20px;
+    margin: 20px auto 0px auto;   
 }
-
-
 .table-livro-aluno img{
-    width: 90px;
-    height: 120px;
-    margin-left: 20px;
+    width: 80px;
+    height: 110px;
+    margin-left: 40px;
 }
-
-.table-livro-aluno .table-conteudo{
-    margin-left: 50px;
-    
+.table-conteudo{
+    margin-left: 30px;
+    width: 60%;
 }
-
-.table-conteudo h3{
-    color:rgb(59, 7, 84);
-    font-weight: 700;
-    font-size: 22px;
-    padding-top: 20px;
+.table-conteudo h4{
+    color:#000;
+    font-weight: 500;
+    font-family: nunito;
+    margin-bottom: 0px;
 }
-
-h3 span, .disponibilidade{
+h4 span{
     max-width: 77px;
     background-color: #7625c9;
     color: #ffffff;
@@ -542,73 +198,28 @@ h3 span, .disponibilidade{
     font-size: 11px;
     border-radius: 12px;
     letter-spacing: 0.5px;
+    display: inline;
 }
-
-.indisponibilidade{
-    max-width: 77px;
-    background-color: #5f6c9e;
-    color: #ffffff;
-    padding: 2px 7px;
-    font-size: 11px;
-    border-radius: 12px;
-    letter-spacing: 0.5px;
-}
-
-.disponibilidade, .indisponibilidade{
-    margin: 2px 60px;
-}
-
-
 .table-conteudo  p{
     font-size: 12px;
     margin: 2px;
     font-weight: 700;
 }
-
-.table-conteudo .sinopse{
-    width: 70%;
-    font-size: 14px;
-    font-weight: none;
-    margin-top: 20px;
+.sinopse{
+    width: 90%;
+    font-size: 12px;
+    margin-top: 10px;
     margin-bottom: 20px;
+    color: #212529;
 }
-
 .page-link{
     color: #4c0677;
     font-weight: 700;
     margin-top: 50px;
 }
-
 .page-link:hover{
     color: #4c0677;
 }
-
-/*historico*/
-.navbar-historico{
-    display: flex;
-    justify-content: end;
-    align-items: center;
-    width: 100%;
-}
-
-.navbar-historico button{
-    color:#4c0677;
-    border: none;
-    text-decoration: none;
-    color: rgb(59, 7, 84);
-    font-size: 18px;
-    font-weight: 800;
-    margin-right: 20px;
-}
-
-.navbar-historico a{
-    text-decoration: none;
-    color: rgb(59, 7, 84);
-    font-size: 18px;
-    font-weight: 800;
-    margin-right: 50px;
-}
-
 
 
 /*div historico vazio*/
@@ -628,13 +239,670 @@ h3 span, .disponibilidade{
     font-weight: 700;
 }
 
+/*páginas cadastrar livro*/
+.btn-pesquisa-bibliotecario{
+    border: 0.05rem solid #a776d9;
+    background-color: #a776d9; 
+    padding: 8px 12px;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 3px;
+    margin-top: 10px;
+}
+
+.btn-pesquisa-bibliotecario:hover{
+    background-color: #ffffff; 
+    border: 0.05rem solid #4c0677;
+    color: #4c0677;
+}
+.btn-conclui-cadastro{
+    text-align: end;
+}
+.cadastrar-livro{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    width: 100%;
+    padding-top: 30px;
+    padding-bottom: 100px;
+    background-color: #ffffff;
+}
+.input-nomes{
+    width: 100%;
+    margin-bottom: 10px;
+    font-family: nunito;
+    font-weight: 500;
+}
+.input-nomes input{
+    width: 100%;
+    margin: 0px 0px 30px 0px;
+}
+.input-selecionar{
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 30px;
+}
+.input-selecionar select{
+    width: 70%;
+    display: inline;
+    font-family: nunito;
+    font-weight: 500;
+}
+
+.input-selecionar input{
+    width: 100%;
+    display: inline;
+    font-family: nunito;
+    font-weight: 500;
+}
+
+.input-selecionar label{
+    width: 400px;
+    display: block;
+    font-family: nunito;
+    font-weight: 500;
+}
+
+.input-selecionar button{
+    width: 23%;
+    margin-left: 50px;
+}
+.input-textarea{
+    font-family: nunito;
+    font-weight: 500;
+}
+.input-textarea textarea{
+    height: 200px;
+    font-family: nunito;
+    font-weight: 500;
+}
+/*página consulta de alunos*/
+.div-dados-aluno{
+    width: 60%;
+}
+.div-dados-aluno p{
+    font-size: 12px;
+    margin: 2px;
+    font-weight: 700;
+}
+.img-pessoa1{
+    display: flex;
+    justify-content: end;
+    height: 100px; width: 160px;
+    padding: 10px;
+    margin-right: 18px;
+}
+.img-pessoa1 img{
+    width: 90px; 
+    height: 90px;
+    border-radius: 300px;
+}
+.img-pessoa2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px; 
+    width: 100px;
+}
+
+/*home aluno*/
+
+.page-item-topo {
+    padding-top: 10px;
+    padding-left: 20px;
+}
+
+.nav-login .page-item-topo {
+    margin-left: 30px;
+    margin-right: auto;
+    margin-top: 25px;
+    text-transform: uppercase;
+}
+
+.page-item-topo p {
+    font-family: nunito;
+    font-size:12px; 
+    color: #c3c3c3; 
+    display: inline; 
+    padding-right: 20px;
+}
+
+.nav-login .page-item-topo i {
+    margin-right: 10px;
+    margin-top: 20px;
+}
+
+.nav-login .page-item-topo a {
+    text-decoration: none;
+    color: rgb(59, 7, 84);
+    font-size: 18px;
+    font-weight: 800;
+    font-family: nunito;
+}
+
+.home-div-conteudo {
+    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 100px;
+    width: 100%;
+    height: 630px;
+
+}
+
+.home-div {
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 0 3px #3c3c3c;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: nunito;
+    border-radius: 5px;
+}
+
+/*página modal*/
+.modal-title{
+    font-family: nunito;
+    font-weight: 600;
+}
+
+.btn-comprido{
+    width: 150px;
+    background-color: #5f6c9e;
+    font-weight: 600;
+    color: #ffffff;
+    padding: 2px 7px;
+    font-size: 11px;
+    border-radius: 12px;
+    letter-spacing: 0.5px;
+    display: inline;
+    border: none;
+}
+
+.esquerda {
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+}
+
+.centralizar {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.centralizar-func {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: column;
+}
+
+.canvas-container {
+    width: 300px;
+    width: 300px;
+}
+
+
+/* estilo login*/
+.login-div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    justify-content: center;
+}
+.logo {
+    width: 160px;
+    height: 160px;
+    padding-top: 50px;
+    padding-right: 20px;
+    margin-bottom: 50px;
+}
+.form-login{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 30%;
+    margin: auto;
+    justify-content: center;
+    border-radius: 0px 200px;
+    padding-top: 50px;
+    padding-bottom: 250px;
+}
+.form-login input{
+    outline: 0;
+    border: none;
+    width: 500px;
+    height: 40px;
+    font-size: 15px;
+    margin: 10px 0px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgb(236, 236, 236);
+    box-shadow: inset 0 0 0 transparent, 0 0 0.3em #a776d9;  
+}
+.form-login input:focus-visible{
+    outline: 0;
+}
+.form-login input:hover{
+    background-color: rgb(241, 241, 241);
+}
+
+.form-login .btn-login{
+    width: 500px;
+    height: 50px;
+    margin: 25px 0px;
+    border-radius: 20px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+
+/*avaliacao*/
+
+.avalia-div{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    justify-content: center;
+    padding-top: 70px;
+}
+.avalia-livro-info{
+    width: 40%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.avalia-livro-info img{
+    width: 30%;
+    padding: 20px;
+}
+.avalia-livro-info div{
+    width: 50%;
+    margin-top: 20px;
+    padding: 10px;
+}
+.avalia-livro-form{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+.avalia-livro-form input, .avalia-livro-form textarea{
+    outline: 0;
+    border: none;
+    width: 500px;
+    height: 40px;
+    font-size: 20px;
+    margin: 10px 0px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgb(236, 236, 236);
+    box-shadow: inset 0 0 0 transparent, 0 0 0.3em #a776d9;  
+}
+.avalia-livro-form textarea{
+    height: 100px;  
+    padding-top: 10px;
+}
+.avalia-div .botao{
+    width: 500px;
+    height: 50px;
+    margin: 15px 0px;
+    border-radius: 20px;
+    font-size: 20px;
+    letter-spacing: 1px;
+}
+.titulo-avaliacoes{
+    margin: 100px 0px;
+    width: 100%;
+    text-align: center;
+}
+.avaliacoes-livro{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100%;
+}
+.avaliacoes-livro h1{
+    width: 100%;
+    color:rgb(59, 7, 84)
+}
+.avaliacoes-livro-div{
+    width: 28%;
+    height: 180px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    box-shadow: 4px 4px 9px 0px rgba(50, 50, 50, 0.22);
+    margin: 0px 120px 10px 120px;
+    border-radius: 20px;
+}
+.avaliacoes-livro-div .avaliacoes-img{
+    width: 20%;
+}
+.avaliacoes-img img{
+    width: 90px;
+    height: 90px;
+    border-radius: 200px;
+} 
+.avaliacoes-livro-div div{
+    width: 50%;
+    margin-top: 20px;
+    padding: 10px;
+}
+.dados-livro-avalia{
+    font-size: 14px;
+    font-family: nunito;
+    font-weight: 700;
+}
+
+input, select, textarea{
+    outline: 0;
+    border: none;
+    height: 40px;
+    font-size: 20px;
+    padding-left: 20px;
+    letter-spacing: 1px;
+    border-radius: 10px;
+    box-sizing: border-box;
+    background-color: rgb(236, 236, 236);
+    box-shadow: inset 0 0 0 transparent, 0 0 0.3em #a776d9;  
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+}
+
+
+/* Menu superior */
+
+.menu2 {
+    width: 80%;
+    height: 100%;
+    background-image: linear-gradient(to right, #4d3bcb,#2b1396);
+    padding-bottom: 20px;
+    border-radius: 20px;
+    margin: 15px auto 50px auto;
+}
+.central-input {
+    display: flex;
+    justify-content: center;
+}
+.central-input input{
+    border-radius: 10px;
+    width: calc(40% - 10px);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 10px 15px;
+    outline: none;
+    font-size: 15px;
+    border: 4px solid #cdb1e9;
+}
+.central-input button {
+    margin-top: 28px;
+    margin-left: 20px;
+    color: rgb(255, 255, 255);
+    border: 3px solid #cdb1e9;
+    padding: 8px;
+    background-color: transparent;
+    border-radius: 10px;
+    height: 42px;
+
+}
+
+/* Div FIltro */
+.centralizar-filtro {
+    display: flex;
+    justify-content: center;
+}
+.filtro {
+    margin-top: 30px;
+    width: 60%;
+}
+.fast-filter
+{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+.radio-input {
+    display: none;
+}
+.radio-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(240, 236, 236);
+    width: 60px!important;
+    height: 60px!important;
+    border-radius: 50%;
+    box-shadow: 0px 10px 10px 0px rgba(0,0,0,0.47);
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.47);
+    -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.47);
+    color: #7E7B72;
+    border-color: transparent;
+    cursor: pointer;
+}
+.radio-label i {
+    font-size: 30px;
+}
+.radio-input:checked ~ .radio-label
+{
+    color: #000;
+    background-color: #cdb1e9;
+}
+.radio-input:checked ~ .title
+{
+    color: #cdb1e9;
+}
+.text-center p{
+    margin-top: 10px;
+    font-size: 12px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+}
+
+.text-center a{
+    font-size: 12px;
+    text-align: center;
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+}
+input[type="checkbox"]{
+    display: none;
+}
+
+/* Formação livro */
+.centralizar-livros {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+    flex-wrap: wrap;
+}
+.div-livro-externo{
+    width: 30%;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 0.05rem solid #ced4da;
+    border-radius: 3px 30px;
+    height: 150px;
+    margin: 30px auto;
+}
+.div-livro-externo img{
+    width: 80px;
+    height: 110px;
+    margin-left: 40px;
+}
+.table-conteudo  p{
+    font-size: 12px;
+    margin: 2px;
+    font-weight: 700;
+}
+.status{
+    display: inline-flex;
+    justify-content: space-around;
+    color:rgb(87, 87, 87);
+    font-size: 11px;
+    width: 100%;
+    padding-bottom: 5px;
+}
+.status div{
+    width: 100%;
+    text-align: center; 
+    font-weight: 600;
+}
+.sinopse{
+    width: 90%;
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    color: #212529;
+}
+.table-conteudo h4{
+    color:#000;
+    font-weight: 900;
+    font-family: nunito;
+    margin-bottom: 0px;
+    font-size: 16px;
+}
+.centralizar-livro {
+    width: 100%;
+    margin-left: 0px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.centralizar-livro .titulo{
+    width: 64%; 
+    margin-top: 20px;
+    margin-left: 150px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+.centralizar-livro .form-loc{
+    width:53%; 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: end;
+    margin: 30px 300px 30px 0px;
+}
+
+.div-livro-locacao{
+    width: 37%;
+    display: flex; 
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    border: 0.05rem solid #ced4da;
+    border-radius: 3px 30px;
+    height: 170px;
+    margin: 30px auto;
+    padding-top: 5px;
+}
+
+.div-livro-locacao .img{
+    width: 80px;
+    height: 110px;
+    margin-left: 30px;
+}
+
+/*hover categorias*/
+.red{
+    background-color:#FA4145;
+    color: #fff;
+}
+.azul{
+    background-color:#3770AD;
+    color: #fff;
+}
+.verde{
+    background-color: #3BA04C;
+    color: #fff;
+}
+.rosa{
+    background-color:#FF375D;
+    color: #fff;
+}
+.amarelo{
+    background-color:#FFD600;
+    color: #fff;
+}
+
+.div-sucesso{
+    width: 100%;
+    padding: 30px;
+    font-weight: 900;
+    font-size: 72px;
+    background-color: #3BA04C;
+    margin: 150px 30px;
+}
+.div-sucesso p, .div-erro p{
+    font-weight: 900;
+    font-size: 24px;
+}
+.div-erro{
+    width: 100%;
+    padding: 30px;
+    font-weight: 900;
+    font-size: 72px;
+    margin: 150px 30px;
+    background-color: #FA4145;
+}
+.btn-nav-biblio{
+    font-size: 14px;
+}
+
+.livro img{
+    border-radius: 200px;
+    width: 90px;
+    height: 90px;
+}
+
+table{
+    font-weight: 600;
+    font-size: 12px;
+    text-align: center;
+}
+td{
+    padding: 12px;
+}
+.cabecalho{
+    border-style: double; 
+    border-left: none; 
+    border-right: none; 
+    border-color: black; 
+    border-bottom-width: 4px;
+    border-top-width: 4px;
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
 /*footer*/
 .footer{
     background-color: #000;
     display: flex;
     justify-content: center;
     padding: 80px 0px 50px 0px;
-
+    margin-top: 80px;
 }
 
 .footer .div-footer{
@@ -674,18 +942,91 @@ div .icon-footer {
     font-size: 25px;
     letter-spacing: 20px;
     text-decoration: none;
+}
 
+.div-info{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: #b78ce1;
+    padding: 100px;
+}
+.div-info p{
+    width: 30%;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+    font-weight: 800;
+}
+.div-info img{
+    width: 30%;
+    height: 30%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+}
+
+.div-info-2{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 100px;
+}
+.div-info-2 p{
+    width: 30%;
+    font-size: 18px;
+    text-align: center;
+    margin: auto;
+    font-weight: 800;
+}
+.div-info-2 img{
+    width: 30%;
+    height: 30%;
+    margin: auto;
+    border-radius: 5px;
+    box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+}
+
+.navbar-nav a:hover{
+    margin-left: 10px;
+}
+
+.dropdown-menu a:hover{
+    margin-left: 0px;
+    padding-left: 26px;
+}                                                                                                                         
+
+.ipt_pqn{
+    width: 100px;
 }
 
 
 
-@media  (max-width: 1500px) {
-    .alinhamento-busc, .conteudo div{
-        width: 80%;
-    }
-    .link-navegacao a{
-        font-size: 20px;
-    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media  (max-width: 1500px) and (min-width: 1300px){
     .table-conteudo .sinopse{
         font-size: 12px;
         margin-top: 10px;
@@ -694,44 +1035,242 @@ div .icon-footer {
         font-size: 22px;
     }
     .table-livro-aluno > div{
-        width: 70%;
+        width: 60%;
         min-width: 500px;
+    }
+    .table-conteudo .sinopse{
+        font-size: 10px;
+        margin-bottom: 3px;
+    }
+    .avaliacoes-livro-div{
+        width: 60%;
+    }
+    .div-livro-externo{
+        width: 45%;
+    }
+}
+@media  (max-width: 1300px) and (min-width: 1000px){
+    .table-conteudo .sinopse{
+        font-size: 12px;
+        margin-top: 10px;
+    }
+    .table-conteudo h3{
+        font-size: 22px;
+    }
+    .table-livro-aluno > div{
+        width: 60%;
+        min-width: 500px;
+    }
+    .table-conteudo .sinopse{
+        font-size: 10px;
+        margin-bottom: 3px;
+    }
+    .avaliacoes-livro-div{
+        width: 60%;
+    }
+    .div-livro-externo{
+        width: 48%;
+        margin-right: 10px;
+    }
+    .div-livro-externo img{
+        width: 70px;
+        height: 100px;
+        margin-left: 15px;
+    }
+    .sinopse{
+        width: 65%;
+        font-size: 15px;
     }
 }
 
-@media  (max-width: 1000px) {
-     .alinhamento-busca, .conteudo div{
-        width: 100%;
+@media  (max-width: 1000px) and (min-width: 700px){
+    .table-livro-aluno > div{
+        width: 70%;
+        min-width: 500px;
     }
-
     h3 span, .disponibilidade{
         font-size: 9px;
     }
-
-    .table-conteudo .sinopse{
-        font-size: 10.5px;
-        margin-top: 10px;
-    }
-
-    .table-livro-aluno > div{
-        width:  90%;
-        min-width: 500px;
-    }
-
     .table-conteudo h3{
         font-size: 18px;
         padding-top: 20px;
     }
-
-    .link-navegacao a{
+    .img-form img{
+        width: 100%;
+    }
+    .contato .form-contato{
+        width: 50%;
+        padding-top: 60px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .acesso .form-login{
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+        padding-top: 60px;
+    }
+    .acesso .informes-login{
+        width: 80%;
+        border-right: none;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .input-selecionar, .input-selecionar button, .input-nomes, .input-textarea, .btn-conclui-cadastro{
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .btn-conclui-cadastro{
+        text-align: start;
+    }
+    .page-info-name{
+        display: none;
+    }
+    .table-conteudo .sinopse{
+       font-size: 10px;
+       margin-bottom: 3px;
+    }
+    .div-nav{
+        display: none;
+    }
+    .form-login input{
+        width: 400px;
+        height: 40px;
+        font-size: 16px;
+        margin-left: 70px;
+        margin-right: 70px;
+    }
+    .form-login .btn-login{
+        width: 400px;
+        height: 50px;
+        margin-top: 15px;
         font-size: 18px;
     }
-
-    .conteudo h2, .contato h2{
-        font-size: 24px;
+    .avaliacoes-livro-div{
+        width: 70%;
     }
-    
-    .conteudo p{
+    .div-info p{
+        width: 100%;
         font-size: 20px;
+        text-align: justify;
+        margin-bottom: 20px;
+    }
+    .div-info img{
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+    .div-info-2 p{
+        width: 100%;
+        font-size: 20px;
+        text-align: justify;
+        margin-top: 20px;
+    }
+    .div-info-2 img{
+        width: 100%;
+        height: 100%;
+        margin: auto;
+    }
+    .div-livro-externo{
+        width: 80%;
+    }
+    .div-livro-externo img{
+        width: 70px;
+        height: 100px;
+        margin-left: 15px;
+    }
+    .sinopse{
+        width: 60%;
+        font-size: 15px;
+    }
+}
+
+@media  (max-width: 700px) and (min-width: 400px) {
+    .form-login input{
+        outline: 0;
+        border: none;
+        width: 300px;
+        height: 40px;
+        font-size: 16px;
+    }
+    .form-login .btn-login{
+        width: 300px;
+        height: 45px;
+        margin-top: 15px ;
+        font-size: 18px;
+        letter-spacing: 1px;
+    }
+    .avaliacoes-livro-div{
+        width: 90%;
+        margin: 10px;
+    }
+    .avaliacoes-livro{
+        padding: 100px 0px 40px 0px;
+    }
+    .avalia-livro-info{
+        width: 80%;
+    }
+    .avalia-livro-form{
+        width: 80%;
+    }
+    .avalia-livro-form input, .avalia-livro-form textarea{
+        width: 300px;
+        height: 40px;
+        font-size: 16px;
+        margin: 10px 0px 0px 0px;
+    }
+    .avalia-livro-form textarea{
+        height: 100px;  
+        padding-top: 10px;
+    }
+    .avalia-div .botao{
+        width: 300px;
+        height: 50px;
+        border-radius: 20px;
+        font-size: 16px;
+    }
+    .avalia-livro-info img{
+        width: 50%;
+        padding: 20px;
+    }
+    .avalia-livro-info div{
+        width: 55%;
+        text-align: start;
+    }
+    .div-livro-externo{
+        width: 100%;
+        height: 180px;
+    }
+    .div-livro-externo img{
+        width: 55px;
+        height: 100px;
+        margin-left: 10px;
+    }
+    .sinopse{
+        width: 70%;
+        font-size: 9px;
+    }
+    .page-info-name{
+        display: none;
+    }
+}
+
+@media  (max-width: 400px) and (min-width: 100px) {
+    .div-livro-externo{
+        width: 100%;
+        height: 250px;
+    }
+    .div-livro-externo img{
+        width: 55px;
+        height: 90px;
+        margin-left: 7px;
+    }
+    .sinopse{
+        width: 50%;
+        font-size: 8px;
+    }
+    .page-info-name{
+        display: none;
     }
 }
