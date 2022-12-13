@@ -6,7 +6,7 @@
     <title>RELATÓRIO ATHENAS</title>
 </head>
 <body>
-    <?php include '../components/navbar.php'; ?>
+    <?php include '../components/navbarBiblio.php'; ?>
     <div class="centralizar-livros ">
         <button class="btn-login button mt-5" type="button" onclick="printJS({ printable: 'relatorio', type: 'html', css: '/public/static/css/style.css'})">Imprimir</button>
     </div>

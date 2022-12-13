@@ -14,7 +14,7 @@
     </head>
     <body>
         <div class="nav-login">
-            <div class="nav-link-item"><a href="/index.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
+            <div class="nav-link-item"><a href="homeBibliotecario.php"><i class="fa fa-arrow-left-long"></i>Página Inicial</a></div>
             <div class="page-info-name"><p>Você está na página:</p><a href="#">LOCAÇÕES</a></div>
             <div class="nav-login-menu">
                 <img src="/public/static/imagens/athenas.png">
@@ -32,7 +32,7 @@
                 $busca = $aluno->busca($palavra);
 
                 $livro = new Livro();
-                $buscar = $livro->listarTodosDadosLivro($codigo_livro);
+                $buscar = $livro->listarTodosDadosLivro_l($codigo_livro);
 
                 if(count($busca)>0){
                     foreach($busca as $dados){
@@ -85,8 +85,16 @@
                 </div>
             </div>
             <div class="titulo"><h2>Você selecionou o Aluno:</h2></div>
-            <div class="div-livro-locacao livro">
-                <div class="img-pessoa1"><img src="../components/dinamic/<?php echo $dados['img_perfil'];?>"></div>
+                <div class="div-livro-locacao livro">
+                <?php 
+                    if(empty($dados['img_perfil'])){
+                        $resultado = '/public/static/imagens/default.png';
+                    }else{
+                        $resultado = '../components/dinamic/'.$dados['img_perfil'];
+                    }
+                ?>
+                <div class="img-pessoa1"><img src="<?php echo $resultado;?>"></div>
+                
                 <div class="table-conteudo">
                     <h4><?php echo $dados['nome'];?></h4>
                     <p><span>Username: </span><?php echo $dados['username'];?></p>

@@ -25,7 +25,7 @@
                             <div class="text-center">
                                 <form action="" method="POST">
                                     <input class="radio-input" type="text" value="ranking" name="type">
-                                    <button class="radio-label azul" name="btn-ranking"><i class="fa fa-ranking-star"></i></button>
+                                    <button type="submit" class="radio-label azul" name="btn-ranking"><i class="fa fa-ranking-star"></i></button>
                                     <p id="p-company" class="title">Ranking</p>
                                 </form>
                             </div>
@@ -64,7 +64,7 @@
             
                             <div class="text-center">
                                 <form action="" method="POST">
-                                    <input class="radio-input" type = "text" value="ficcao" name="pesquisar">
+                                    <input class="radio-input" type = "text" value="ficção" name="pesquisar">
                                     <button class="radio-label verde" name="btn-buscar" type="submit"><i class="fa-solid fa-jedi"></i></button>
                                     <p id="p-notLicensed" class="title">Ficção</p>
                                 </form>

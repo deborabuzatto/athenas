@@ -138,6 +138,27 @@
 			
 		}
 
+        public function listarTodosDadosLivro_l($id){
+            //LISTAGEM ÚTIL
+			$sql = "select trunc( AVG(lpa.qtd_estrelas),0) as nota, img_capa, li.codigo_livro as codigo, li.titulo, li.sinopse, li.ISBN, li.data_publicacao, 
+            li.edicao, li.volume, li.qtd_paginas, ed.nome as editora, 
+            autor.nome as escritor, cat.dsc_categoria as categoria, autor.nacionalidade, SUBSTRING(sinopse from 1 for 100) as sinopse from livro as li
+            full outer join editora as ed                      on (li.FK_editora_codigo_edit = ed.codigo_edit)
+            full outer join livro_pessoa_avalia as lpa         on (lpa.FK_livro_codigo_livro = li.codigo_livro)
+            full outer join livro_categoria as lc              on (li.codigo_livro = lc.FK_livro_codigo_livro)
+            full outer join categoria as cat                   on (cat.codigo_categoria = lc.FK_categoria_codigo_categoria)
+            full outer join livro_autor as la                  on (li.codigo_livro = la.FK_livro_codigo_livro)
+            full outer join autor                              on (la.FK_autor_codigo_autor = autor.codigo_autor)
+			where codigo_livro = :codigo_livro
+            group by  editora,codigo,escritor,categoria,nacionalidade, img_capa, sinopse";
+			$stmt = Database::prepare($sql);
+            $stmt->bindParam(':codigo_livro', $id);		
+			$stmt->execute();
+			//retorna um array com os registros da tabela indexado pelo nome da coluna da tabela e por um número
+			return $stmt->fetchAll(PDO::FETCH_BOTH );
+			
+		}
+
         public function listarCategoria(){
             $sql="SELECT * from categoria";
             $stmt = Database::prepare($sql);
@@ -343,29 +364,29 @@
 
             $sql7="DELETE FROM livro_autor WHERE fk_livro_codigo_livro = :id";
             $stmt7 = Database::prepare($sql7);	
-            $stmt7->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt7->bindParam(':id', $id);
             $stmt7->execute();
 
             $sql1="DELETE FROM livro_pessoa_avalia WHERE fk_livro_codigo_livro = :id";
             $stmt1 = Database::prepare($sql1);	
-            $stmt1->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt1->bindParam(':id', $id);
             $stmt1->execute();
 
             $sql4="DELETE FROM livro_pessoa_loca WHERE fk_livro_codigo_livro = :id";
             $stmt4 = Database::prepare($sql4);	
-            $stmt4->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt4->bindParam(':id', $id);
             $stmt4->execute();
 
             $sql="DELETE FROM livro WHERE codigo_livro = :id";
 			$stmt = Database::prepare($sql);	
-			$stmt->bindParam(':id', $id, PDO::PARAM_INT);
+			$stmt->bindParam(':id', $id);
 			$stmt->execute();
         }
         
         // FUNÇÃO DE UPDATE
         public function update($id){
             //atualiza na tabela livro
-            $sql="UPDATE $this->table SET ISBN = :ISBN, data_publicacao = :data_publicacao, 
+            $sql="UPDATE livro SET ISBN = :ISBN, data_publicacao = :data_publicacao, 
             titulo = :titulo, sinopse = :sinopse, img_capa = :img_capa WHERE codigo_livro = :id returning fk_editora_codigo_edit";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':id', $id);
@@ -399,12 +420,12 @@
             $stmt1->bindParam(':fk_autor_codigo_autor', $fk_autor_codigo_autor);
             $stmt1->execute();
 
-            //associar a categoria selecionada ao livro
-            $sql5="UPDATE livro_categoria SET fk_categoria_codigo_categoria = :fk_categoria_codigo_categoria, fk_livro_codigo_livro = :fk_livro_codigo_livro";
+            $sql5="INSERT INTO livro_categoria (FK_categoria_codigo_categoria, FK_livro_codigo_livro) VALUES (:FK_categoria_codigo_categoria, :FK_LIVRO_codigo_livro)";
             $stmt5 = Database::prepare($sql5);
-            $stmt5->bindParam(':fk_categoria_codigo_categoria', $this->categoria);
-            $stmt5->bindParam(':fk_livro_codigo_livro', $id);
+            $stmt5->bindParam(':FK_categoria_codigo_categoria', $this->categoria);
+            $stmt5->bindParam(':FK_LIVRO_codigo_livro', $id);
             $stmt5->execute();
+
         }
 
         // FUNÇÃO DE RELATÓRIO

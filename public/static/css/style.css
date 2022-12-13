@@ -813,7 +813,7 @@ input[type="checkbox"]{
     align-items: center;
     border: 0.05rem solid #ced4da;
     border-radius: 3px 30px;
-    height: 170px;
+    height: 200px;
     margin: 30px auto;
     padding-top: 5px;
 }
@@ -1001,6 +1001,16 @@ div .icon-footer {
 .ipt_pqn{
     width: 100px;
 }
+.img-avaliar{
+    width: 100%;
+}
+
+.img-avaliar img{
+    width: 150px;
+    height: 150px;
+}
+
+
 
 
 

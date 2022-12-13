@@ -62,7 +62,7 @@
         }
 
         public function insert(){
-            $sql="INSERT INTO $this->table (nome, username ,email,data_nasc,senha) VALUES (:nome,:username,:email,:data_nasc,:senha)";
+            $sql="INSERT INTO $this->table (nome, username ,email,data_nasc,senha, fk_tipo_pessoa_codigo_tipo) VALUES (:nome,:username,:email,:data_nasc,:senha, 2)";
             $stmt = Database::prepare($sql);
             $stmt->bindParam(':nome', $this->nome);
             $stmt->bindParam(':username', $this->username);

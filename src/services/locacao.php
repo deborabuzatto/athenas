@@ -14,21 +14,11 @@
         
         $acao = $loca->locacao($livro, $pessoa, $data_locacao, $data_entrega);
         if($acao){
-            $_SESSION['sucesso'] = $acao; 
-            header('Location: ../views/locacao.php');
+            $_SESSION['sucesso'] = 'O livro foi '.$acao; 
+            header('Location: ../views/homeBibliotecario.php');
         }else{
             $_SESSION['erro'] = 'Não foi possível realizar a locação; Tente novamente mais tarde.';
-            header('Location: ../views/erro.php');
+            header('Location: ../views/homeBibliotecario.php');
         }
-       
-        
-       
-        /*$disponibilidade = $loca->disponibilidade($livro);
-        if($disponibilidade['valor'] === "0"){
-            
-        } else{
-            $_SESSION['erro'] = 'Este livro não está disponível e não pode ser devolvido por outro usuário';
-        }*/
-
     }
 ?>

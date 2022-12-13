@@ -1,7 +1,13 @@
+<?php 
+    session_start();
+    if(isset($_SESSION['bibliotecario'])){
+        $aluno = $_SESSION['bibliotecario'];
+    }else{ header("Location: ../views/login.php"); }
+?>
 <!DOCTYPE html>
 <html>
     <head>
-        <?php session_start(); include '../components/header.php'; ?>
+        <?php include '../components/header.php'; ?>
         <title>PÁGINA INICIAL | HOME</title>
     </head>
 	<body>

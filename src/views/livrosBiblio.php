@@ -9,7 +9,7 @@
     }else{
         $imprimir = $livro->findAllLivro();
     }
-    if(!empty($imprimir)){
+    if(count($imprimir)>0){
         foreach($imprimir as $dados){
             $id = $dados['codigo_livro'];
             $imprime = $livro->listarTodosDadosLivro($id);
@@ -220,4 +220,6 @@
         </div>
     </div>
 </div>
-<?php }}} else{ echo '<h1 class="text-danger mt-5 mb-5">Nenhum livro encontrado.</h1>'; } ?>
+<?php }}} else{ 
+    echo '<h1 class="text-danger mt-5 mb-5">Nenhum livro encontrado.</h1>'; 
+}?>

@@ -16,8 +16,9 @@ if(isset($_POST['btn-editar'])):
 	$livro = new Livro();	
 
 	$verifica_img = $livro->find_l($codigo_livro);
-	if(empty($_FILES['file']['name'])){
+	if(empty($_FILES['file']['name']) || empty($sinopse)){
 		$nome_img = $verifica_img['img_capa'];
+		$sinopse = $verifica_img['sinopse'];
 	}else{
 		$nome_img = $_FILES['file']['name'];
 		// Recebendo nome do arquivo imagem, conferindo se o repositório onde ficará guardado existe
@@ -31,7 +32,7 @@ if(isset($_POST['btn-editar'])):
 					move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile );
 				}else{
 					$_SESSION['imagem'] = true;
-					//header("Location: ../views/cadastrarLivro.php");
+					header("Location: ../views/cadastrarLivro.php");
 					exit();
 				}
 			}catch(Exception $e) {
@@ -44,7 +45,7 @@ if(isset($_POST['btn-editar'])):
 				move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile );
 			}else{
 				$_SESSION['imagem'] = true;
-				//header("Location: ../views/cadastrarLivro.php");
+				header("Location: ../views/cadastrarLivro.php");
 				exit();
 			}
 		}
@@ -53,6 +54,8 @@ if(isset($_POST['btn-editar'])):
 		$teste = file_get_contents($caminho);
 		$data = base64_encode($teste);
 		$livro->seturl_img_64($data);
+
+		$sinopse = filter_var($_POST['sinopse'], FILTER_SANITIZE_STRING);
 	}
 
 	// inserindo os dados do livro na tabela livro
@@ -69,7 +72,7 @@ if(isset($_POST['btn-editar'])):
 
 	$insert = $livro->update($codigo_livro);
 	$_SESSION['sucesso'] = 'Sucesso ao editar livro';
-	//header('Location: ../views/homeBibliotecario.php');
+	header('Location: ../views/homeBibliotecario.php');
 	
 endif;	
 
