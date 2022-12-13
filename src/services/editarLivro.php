@@ -67,10 +67,6 @@ if(isset($_POST['btn-editar'])):
     $livro->seturl_img($nome_img);
     $extensao = pathinfo($nome_img, PATHINFO_EXTENSION);
 
-	
-	
-
-
 	$insert = $livro->update($codigo_livro);
 	$_SESSION['sucesso'] = 'Sucesso ao editar livro';
 	//header('Location: ../views/homeBibliotecario.php');

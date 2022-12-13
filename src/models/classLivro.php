@@ -336,9 +336,9 @@
 
         // FUNÇÃO DE EXCLUSÃO
         public function excluir($id){
-            $sql8="DELETE FROM livro_categoria WHERE fk_livro_codigo_livro = :id";
+            $sql8="delete from livro_categoria where fk_livro_codigo_livro = :id";
             $stmt8 = Database::prepare($sql8);	
-            $stmt8->bindParam(':id', $id, PDO::PARAM_INT);
+            $stmt8->bindParam(':id', $id);
             $stmt8->execute();
 
             $sql7="DELETE FROM livro_autor WHERE fk_livro_codigo_livro = :id";
